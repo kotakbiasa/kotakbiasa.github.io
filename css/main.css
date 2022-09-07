@@ -2127,6 +2127,7 @@ details>summary {
 .sliding-fold .fold-content,
 details .fold-content {
   margin-top: 20px;
+  max-width: var(--content-width);
 }
 
 details .fold-content p {
