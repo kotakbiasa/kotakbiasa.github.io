@@ -1461,6 +1461,7 @@ overflows table td {
 .footer .footer-copyright {
   margin-right: 13.5px;
 }
+
 .header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1766,6 +1767,7 @@ overflows table td {
   --text-color: #fff;
 
 }
+
 .Skip_input {
   margin-top: 5px;
   color: #000;
@@ -1934,7 +1936,13 @@ overflows table td {
   overflow: auto;
   list-style-type: none;
   padding-left: 0;
+}
+
+.zheng_wen_de_mu_lu_xia_hua_xian {
   border-bottom: 1px solid var(--border-color);
+  padding-left: 35px;
+  font-style: oblique;
+  line-height: 2.5;
 }
 
 .toc .toc-link {
