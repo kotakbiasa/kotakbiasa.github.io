@@ -2484,6 +2484,8 @@ details .fold-content>:last-child {
 }
 
 .Search_nav_card {
+  margin-bottom: 15px;
+  margin-right: 38px;
   position: relative;
   width: 125px;
   --border-height: 1px;
