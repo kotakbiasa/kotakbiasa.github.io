@@ -2451,6 +2451,7 @@ details .fold-content>:last-child {
   color: #00000036;
 }
 
+
 #carousel_main .left:active>.btn_p {
   color: #00000036;
   background: #00000045;
@@ -2461,6 +2462,6 @@ details .fold-content>:last-child {
   background: #00000045;
 }
 
-.header .header__right .Skip_nav_card {
+.search_Skip_nav_card {
   margin-right: 38px;
 }
