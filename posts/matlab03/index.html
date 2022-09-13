@@ -61,7 +61,7 @@
 
         <form class="Skip_nav_card" type="submit" name="formpage">
             <input class="Skip_input" placeholder="输入" required name='SkipPage' value='' onKeyDown='if(event.keyCode==13)event.returnValue=false'>
-            <input class="Text_skip_button" name='submitSkip' type='button' onClick='Go_Page()' value='前往'>
+            <input class="Text_skip_button" name='submitSkip' type='button' onClick='Go_Page()' value='搜素'>
         </form>
         <script language=javascript> function Go_Page() { var Custom_path = 'https://koinl.github.io/page_search/?s='; if (document.formpage.SkipPage.value == 1) { window.location.href = Custom_path; } else { window.location.href = Custom_path + 'page/' + document.formpage.SkipPage.value + '/'; } }</script>
 
