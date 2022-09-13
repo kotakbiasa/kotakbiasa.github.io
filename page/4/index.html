@@ -57,16 +57,7 @@
         p-id="44080" fill="#999"></path>
             </svg>
         </a></div>
-    <div class="header__right">
-
-        <form class="Skip_nav_card" type="submit" name="formpage">
-            <input class="Skip_input" placeholder="输入" required name='SkipPage' value='' onKeyDown='if(event.keyCode==13)event.returnValue=false'>
-            <input class="Text_skip_button" name='submitSkip' type='button' onClick='Go_Page()' value='搜素'>
-        </form>
-        <script language=javascript> function Go_Page() { var Custom_path = 'https://koinl.github.io/page_search/?s='; if (document.formpage.SkipPage.value == 1) { window.location.href = Custom_path; } else { window.location.href = Custom_path + 'page/' + document.formpage.SkipPage.value + '/'; } }</script>
-
-
-        <a href="javaScript:void(0);" id="btn-toggle-dark" title="夜间模式">
+    <div class="header__right"><a href="javaScript:void(0);" id="btn-toggle-dark" title="夜间模式">
             <svg t="1662256981531" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 p-id="8697" width="30" height="30">
                 <path d="M89.85 197.55m-26.03 0a26.03 26.03 0 1 0 52.06 0 26.03 26.03 0 1 0-52.06 0Z" fill="#999"
@@ -82,8 +73,7 @@
                 <path d="M511.94 950.5c-233.06 0-422.66-189.65-422.66-422.75 0-190.41 128.42-358.05 312.31-407.65 13.22-3.52 27.25 1.33 35.41 12.34 8.14 11.01 8.71 25.88 1.42 37.47-31.43 50.03-48.04 107.45-48.04 166.05 0 172.59 140.48 313.02 313.17 313.02 58.73 0 116.22-16.67 166.28-48.23a33.279 33.279 0 0 1 37.49 1.37 33.281 33.281 0 0 1 12.37 35.4C870.16 821.8 702.49 950.5 511.94 950.5zM344.17 213.93C230.3 274.77 155.8 394.66 155.8 527.76c0 196.42 159.76 356.22 356.13 356.22 133.25 0 253.21-74.72 314-188.92a376.765 376.765 0 0 1-122.39 20.44c-209.36 0-379.7-170.26-379.7-379.53 0.01-41.53 6.87-82.76 20.33-122.04z m0 0"
                     fill="#999" opacity=".8" p-id="34048"></path>
             </svg>
-        </a>
-    </div>
+        </a></div>
     <script>(() => { const rootElement = document.documentElement; const darkModeStorageKey = 'user-color-scheme'; const darkModeMediaQueryKey = '--color-mode'; const rootElementDarkModeAttributeName = 'data-user-color-scheme'; const setLS = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { } }; const removeLS = (k) => { try { localStorage.removeItem(k); } catch (e) { } }; const getLS = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }; const getModeFromCSSMediaQuery = () => { const res = getComputedStyle(rootElement).getPropertyValue(darkModeMediaQueryKey); if (res.length) return res.replace(/["'\s]/g, ''); return res === 'dark' ? 'dark' : 'light'; }; const resetRootDarkModeAttributeAndLS = () => { rootElement.removeAttribute(rootElementDarkModeAttributeName); removeLS(darkModeStorageKey); }; const validColorModeKeys = { dark: true, light: true, }; const applyCustomDarkModeSettings = (mode) => { const currentSetting = mode || getLS(darkModeStorageKey); if (document.getElementById('hl-dark-theme')) { if (validColorModeKeys[currentSetting]) { if (currentSetting === 'dark') { document.getElementById('hl-default-theme').media = 'none'; document.getElementById('hl-dark-theme').media = 'all'; } else { document.getElementById('hl-dark-theme').media = 'none'; document.getElementById('hl-default-theme').media = 'all'; } } else { if (getModeFromCSSMediaQuery() === 'dark') { document.getElementById('hl-default-theme').media = 'none'; document.getElementById('hl-dark-theme').media = 'all'; } else { document.getElementById('hl-dark-theme').media = 'none'; document.getElementById('hl-default-theme').media = 'all'; } } } else if (document.getElementById('hl-default-theme')) { document.getElementById('hl-default-theme').media = 'all'; } if (currentSetting === getModeFromCSSMediaQuery()) { resetRootDarkModeAttributeAndLS(); } else if (validColorModeKeys[currentSetting]) { rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting); } else { resetRootDarkModeAttributeAndLS(); } }; const invertDarkModeObj = { dark: 'light', light: 'dark', }; const toggleCustomDarkMode = () => { var currentSetting = getLS(darkModeStorageKey); if (validColorModeKeys[currentSetting]) { currentSetting = invertDarkModeObj[currentSetting]; } else if (currentSetting === null) { currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()]; } else { return; } setLS(darkModeStorageKey, currentSetting); return currentSetting; }; applyCustomDarkModeSettings(); window.onload = () => { const darkModeToggleBottonElement = document.getElementById('btn-toggle-dark'); darkModeToggleBottonElement.addEventListener('click', () => { applyCustomDarkModeSettings(toggleCustomDarkMode()); }); }; })();</script>
 </header>
 
@@ -135,18 +125,12 @@
                     </summary>
                     <div class="fold-content">
                         <div class="dropdown-menus" id="dropdown-menus"> • 分类 • 
-                            <a href="/categories/Hadoop/" class="dropdown-menu button">Hadoop</a> • 
-                            <a href="/categories/Data-Processing-and-Analysing/" class="dropdown-menu button">数据处理与分析(Py)</a> • 
-                            <a href="/categories/Data-Visualization/" class="dropdown-menu button">数据可视化</a> • 
-                            <a href="/categories/Data-Mining/" class="dropdown-menu button">数据挖掘</a> • 
-                            <a href="/categories/Mathematical-Modeling/" class="dropdown-menu button">数学建模</a> • 
                             <a href="/categories/Python/" class="dropdown-menu button">Python</a> • 
                             <a href="/categories/Linux/" class="dropdown-menu button">Linux</a> • 
                             <a href="/categories/Data-Structure-and-Algorithm/" class="dropdown-menu button">数据结构与算法</a> • 
                             <a href="/categories/SqlServer/" class="dropdown-menu button">SQL Server</a> • 
                             <a href="/categories/MATLAB/" class="dropdown-menu button">MATLAB</a> • 
                             <a href="/categories/java/" class="dropdown-menu button">Java</a> • 
-                            <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/" class="dropdown-menu button">电子设备</a> • 
                         </div>
                     </div>
                 </details>
@@ -293,7 +277,7 @@
                 <nav class="nav__card" id="page-nav"> <a class="extend prev" rel="prev" href="/page/3/"></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/"></a> </nav>
 
                 <form class="Skip_nav_card" type="submit" name="formpage">
-                    <input class="Skip_input" placeholder="输入" required name='SkipPage' onchange="if(/\D/.test(this.value)){alert('请输入需要跳转到的页数并且必须是正整数且大于0！');this.value='';}" value='' onKeyDown='if(event.keyCode==13)event.returnValue=false'>
+                    <input class="Skip_input" placeholder="输入" required name='SkipPage' onchange="if(/\D/.test(this.value)){alert('请输入需要跳转到的页数并且必须大于0！');this.value='';}" value='' onKeyDown='if(event.keyCode==13)event.returnValue=false'>
                     <input class="Text_skip_button" name='submitSkip' type='button' onClick='Go_Page()' value='前往'>
                 </form>
                 <script language=javascript> function Go_Page() { var Custom_path = 'https://koinl.github.io/'; if (document.formpage.SkipPage.value == 1) { window.location.href = Custom_path; } else { window.location.href = Custom_path + 'page/' + document.formpage.SkipPage.value + '/'; } }</script>

@@ -57,16 +57,7 @@
         p-id="44080" fill="#999"></path>
             </svg>
         </a></div>
-    <div class="header__right">
-
-        <form class="Skip_nav_card" type="submit" name="formpage">
-            <input class="Skip_input" placeholder="输入" required name='SkipPage' value='' onKeyDown='if(event.keyCode==13)event.returnValue=false'>
-            <input class="Text_skip_button" name='submitSkip' type='button' onClick='Go_Page()' value='搜素'>
-        </form>
-        <script language=javascript> function Go_Page() { var Custom_path = 'https://koinl.github.io/page_search/?s='; if (document.formpage.SkipPage.value == 1) { window.location.href = Custom_path; } else { window.location.href = Custom_path + 'page/' + document.formpage.SkipPage.value + '/'; } }</script>
-
-
-        <a href="javaScript:void(0);" id="btn-toggle-dark" title="夜间模式">
+    <div class="header__right"><a href="javaScript:void(0);" id="btn-toggle-dark" title="夜间模式">
             <svg t="1662256981531" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 p-id="8697" width="30" height="30">
                 <path d="M89.85 197.55m-26.03 0a26.03 26.03 0 1 0 52.06 0 26.03 26.03 0 1 0-52.06 0Z" fill="#999"
@@ -82,8 +73,7 @@
                 <path d="M511.94 950.5c-233.06 0-422.66-189.65-422.66-422.75 0-190.41 128.42-358.05 312.31-407.65 13.22-3.52 27.25 1.33 35.41 12.34 8.14 11.01 8.71 25.88 1.42 37.47-31.43 50.03-48.04 107.45-48.04 166.05 0 172.59 140.48 313.02 313.17 313.02 58.73 0 116.22-16.67 166.28-48.23a33.279 33.279 0 0 1 37.49 1.37 33.281 33.281 0 0 1 12.37 35.4C870.16 821.8 702.49 950.5 511.94 950.5zM344.17 213.93C230.3 274.77 155.8 394.66 155.8 527.76c0 196.42 159.76 356.22 356.13 356.22 133.25 0 253.21-74.72 314-188.92a376.765 376.765 0 0 1-122.39 20.44c-209.36 0-379.7-170.26-379.7-379.53 0.01-41.53 6.87-82.76 20.33-122.04z m0 0"
                     fill="#999" opacity=".8" p-id="34048"></path>
             </svg>
-        </a>
-    </div>
+        </a></div>
     <script>(() => { const rootElement = document.documentElement; const darkModeStorageKey = 'user-color-scheme'; const darkModeMediaQueryKey = '--color-mode'; const rootElementDarkModeAttributeName = 'data-user-color-scheme'; const setLS = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { } }; const removeLS = (k) => { try { localStorage.removeItem(k); } catch (e) { } }; const getLS = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }; const getModeFromCSSMediaQuery = () => { const res = getComputedStyle(rootElement).getPropertyValue(darkModeMediaQueryKey); if (res.length) return res.replace(/["'\s]/g, ''); return res === 'dark' ? 'dark' : 'light'; }; const resetRootDarkModeAttributeAndLS = () => { rootElement.removeAttribute(rootElementDarkModeAttributeName); removeLS(darkModeStorageKey); }; const validColorModeKeys = { dark: true, light: true, }; const applyCustomDarkModeSettings = (mode) => { const currentSetting = mode || getLS(darkModeStorageKey); if (document.getElementById('hl-dark-theme')) { if (validColorModeKeys[currentSetting]) { if (currentSetting === 'dark') { document.getElementById('hl-default-theme').media = 'none'; document.getElementById('hl-dark-theme').media = 'all'; } else { document.getElementById('hl-dark-theme').media = 'none'; document.getElementById('hl-default-theme').media = 'all'; } } else { if (getModeFromCSSMediaQuery() === 'dark') { document.getElementById('hl-default-theme').media = 'none'; document.getElementById('hl-dark-theme').media = 'all'; } else { document.getElementById('hl-dark-theme').media = 'none'; document.getElementById('hl-default-theme').media = 'all'; } } } else if (document.getElementById('hl-default-theme')) { document.getElementById('hl-default-theme').media = 'all'; } if (currentSetting === getModeFromCSSMediaQuery()) { resetRootDarkModeAttributeAndLS(); } else if (validColorModeKeys[currentSetting]) { rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting); } else { resetRootDarkModeAttributeAndLS(); } }; const invertDarkModeObj = { dark: 'light', light: 'dark', }; const toggleCustomDarkMode = () => { var currentSetting = getLS(darkModeStorageKey); if (validColorModeKeys[currentSetting]) { currentSetting = invertDarkModeObj[currentSetting]; } else if (currentSetting === null) { currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()]; } else { return; } setLS(darkModeStorageKey, currentSetting); return currentSetting; }; applyCustomDarkModeSettings(); window.onload = () => { const darkModeToggleBottonElement = document.getElementById('btn-toggle-dark'); darkModeToggleBottonElement.addEventListener('click', () => { applyCustomDarkModeSettings(toggleCustomDarkMode()); }); }; })();</script>
 </header>
 
@@ -135,18 +125,12 @@
                     </summary>
                     <div class="fold-content">
                         <div class="dropdown-menus" id="dropdown-menus"> • 分类 • 
-                            <a href="/categories/Hadoop/" class="dropdown-menu button">Hadoop</a> • 
-                            <a href="/categories/Data-Processing-and-Analysing/" class="dropdown-menu button">数据处理与分析(Py)</a> • 
-                            <a href="/categories/Data-Visualization/" class="dropdown-menu button">数据可视化</a> • 
-                            <a href="/categories/Data-Mining/" class="dropdown-menu button">数据挖掘</a> • 
-                            <a href="/categories/Mathematical-Modeling/" class="dropdown-menu button">数学建模</a> • 
                             <a href="/categories/Python/" class="dropdown-menu button">Python</a> • 
                             <a href="/categories/Linux/" class="dropdown-menu button">Linux</a> • 
                             <a href="/categories/Data-Structure-and-Algorithm/" class="dropdown-menu button">数据结构与算法</a> • 
                             <a href="/categories/SqlServer/" class="dropdown-menu button">SQL Server</a> • 
                             <a href="/categories/MATLAB/" class="dropdown-menu button">MATLAB</a> • 
                             <a href="/categories/java/" class="dropdown-menu button">Java</a> • 
-                            <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/" class="dropdown-menu button">电子设备</a> • 
                         </div>
                     </div>
                 </details>
@@ -191,7 +175,7 @@
                 </div>
                 <!-- 2. 正文目录 -->
                 <div class="wenzhangmulu">文章目录</div>
-                <div class="post-side__toc zheng_wen_de_mu_lu_xia_hua_xian">
+                <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;line-height: 2.5;">
                     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81MapReduce-%E6%A6%82%E8%BF%B0"><span class="toc-text">一、MapReduce 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%86%E5%B8%83%E5%BC%8F%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97"><span class="toc-text">1. 分布式并行计算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97"><span class="toc-text">1) 分布式计算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97"><span class="toc-text">2) 并行计算</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-MapReduce-%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-text">2. MapReduce 的含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-MapReduce-%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">3. MapReduce 的特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81MapReduce-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">二、MapReduce 的工作流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BE%93%E5%85%A5%E5%88%86%E7%89%87%E5%92%8C%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-text">1. 输入分片和数据格式化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Map-%E8%BF%87%E7%A8%8B"><span class="toc-text">2. Map 过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Shuffle-%E8%BF%87%E7%A8%8B"><span class="toc-text">3. Shuffle 过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Reduce-%E8%BF%87%E7%A8%8B"><span class="toc-text">4. Reduce 过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%A1%88%E4%BE%8B%E8%A7%A3%E6%9E%90%E2%80%94%E2%80%94%E5%8D%95%E8%AF%8D%E7%BB%9F%E8%AE%A1%E7%BC%96%E7%A8%8B"><span class="toc-text">三、案例解析——单词统计编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A1%88%E4%BE%8B%E6%8F%8F%E8%BF%B0"><span class="toc-text">1. 案例描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="toc-text">2. 设计思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0"><span class="toc-text">3. 编程实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="toc-text">4. 运行程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%A1%88%E4%BE%8B%E8%A7%A3%E6%9E%90%E2%80%94%E2%80%94%E4%BA%8C%E6%AC%A1%E6%8E%92%E5%BA%8F%E7%BC%96%E7%A8%8B"><span class="toc-text">四、案例解析——二次排序编程</span></a></li></ol>
                 </div>
                 <!-- 3. 正文文章 -->

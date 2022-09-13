@@ -1384,7 +1384,7 @@ overflows table td {
   transition-delay: 0.25s;
 }
 
-.btn-cssbuttons:hover ul li:nth-child(4) a {
+.btn-cssbuttons:hover ul li:nth-child(3) a {
   transition-delay: 0.3s;
 }
 
@@ -1461,7 +1461,6 @@ overflows table td {
 .footer .footer-copyright {
   margin-right: 13.5px;
 }
-
 .header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1517,7 +1516,7 @@ overflows table td {
 .header .header__left a,
 .header .header__right #btn-search,
 .header .header__right #btn-toggle-dark {
-  padding: 16px 10px 0px 10px;
+  padding: 16px 10px 16px 10px;
   font-size: 25px;
 }
 
@@ -1767,7 +1766,6 @@ overflows table td {
   --text-color: #fff;
 
 }
-
 .Skip_input {
   margin-top: 5px;
   color: #000;
@@ -1936,13 +1934,7 @@ overflows table td {
   overflow: auto;
   list-style-type: none;
   padding-left: 0;
-}
-
-.zheng_wen_de_mu_lu_xia_hua_xian {
   border-bottom: 1px solid var(--border-color);
-  padding-left: 35px;
-  font-style: oblique;
-  line-height: 2.5;
 }
 
 .toc .toc-link {
@@ -2135,7 +2127,6 @@ details>summary {
 .sliding-fold .fold-content,
 details .fold-content {
   margin-top: 20px;
-  max-width: var(--content-width);
 }
 
 details .fold-content p {
@@ -2468,8 +2459,4 @@ details .fold-content>:last-child {
 #carousel_main .right:active>.btn_p {
   color: #00000036;
   background: #00000045;
-}
-
-.header__right .Skip_nav_card {
-  margin-right: 38px;
 }

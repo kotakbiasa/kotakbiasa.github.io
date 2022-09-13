@@ -57,16 +57,7 @@
         p-id="44080" fill="#999"></path>
             </svg>
         </a></div>
-    <div class="header__right">
-
-        <form class="Skip_nav_card" type="submit" name="formpage">
-            <input class="Skip_input" placeholder="输入" required name='SkipPage' value='' onKeyDown='if(event.keyCode==13)event.returnValue=false'>
-            <input class="Text_skip_button" name='submitSkip' type='button' onClick='Go_Page()' value='搜素'>
-        </form>
-        <script language=javascript> function Go_Page() { var Custom_path = 'https://koinl.github.io/page_search/?s='; if (document.formpage.SkipPage.value == 1) { window.location.href = Custom_path; } else { window.location.href = Custom_path + 'page/' + document.formpage.SkipPage.value + '/'; } }</script>
-
-
-        <a href="javaScript:void(0);" id="btn-toggle-dark" title="夜间模式">
+    <div class="header__right"><a href="javaScript:void(0);" id="btn-toggle-dark" title="夜间模式">
             <svg t="1662256981531" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 p-id="8697" width="30" height="30">
                 <path d="M89.85 197.55m-26.03 0a26.03 26.03 0 1 0 52.06 0 26.03 26.03 0 1 0-52.06 0Z" fill="#999"
@@ -82,8 +73,7 @@
                 <path d="M511.94 950.5c-233.06 0-422.66-189.65-422.66-422.75 0-190.41 128.42-358.05 312.31-407.65 13.22-3.52 27.25 1.33 35.41 12.34 8.14 11.01 8.71 25.88 1.42 37.47-31.43 50.03-48.04 107.45-48.04 166.05 0 172.59 140.48 313.02 313.17 313.02 58.73 0 116.22-16.67 166.28-48.23a33.279 33.279 0 0 1 37.49 1.37 33.281 33.281 0 0 1 12.37 35.4C870.16 821.8 702.49 950.5 511.94 950.5zM344.17 213.93C230.3 274.77 155.8 394.66 155.8 527.76c0 196.42 159.76 356.22 356.13 356.22 133.25 0 253.21-74.72 314-188.92a376.765 376.765 0 0 1-122.39 20.44c-209.36 0-379.7-170.26-379.7-379.53 0.01-41.53 6.87-82.76 20.33-122.04z m0 0"
                     fill="#999" opacity=".8" p-id="34048"></path>
             </svg>
-        </a>
-    </div>
+        </a></div>
     <script>(() => { const rootElement = document.documentElement; const darkModeStorageKey = 'user-color-scheme'; const darkModeMediaQueryKey = '--color-mode'; const rootElementDarkModeAttributeName = 'data-user-color-scheme'; const setLS = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { } }; const removeLS = (k) => { try { localStorage.removeItem(k); } catch (e) { } }; const getLS = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }; const getModeFromCSSMediaQuery = () => { const res = getComputedStyle(rootElement).getPropertyValue(darkModeMediaQueryKey); if (res.length) return res.replace(/["'\s]/g, ''); return res === 'dark' ? 'dark' : 'light'; }; const resetRootDarkModeAttributeAndLS = () => { rootElement.removeAttribute(rootElementDarkModeAttributeName); removeLS(darkModeStorageKey); }; const validColorModeKeys = { dark: true, light: true, }; const applyCustomDarkModeSettings = (mode) => { const currentSetting = mode || getLS(darkModeStorageKey); if (document.getElementById('hl-dark-theme')) { if (validColorModeKeys[currentSetting]) { if (currentSetting === 'dark') { document.getElementById('hl-default-theme').media = 'none'; document.getElementById('hl-dark-theme').media = 'all'; } else { document.getElementById('hl-dark-theme').media = 'none'; document.getElementById('hl-default-theme').media = 'all'; } } else { if (getModeFromCSSMediaQuery() === 'dark') { document.getElementById('hl-default-theme').media = 'none'; document.getElementById('hl-dark-theme').media = 'all'; } else { document.getElementById('hl-dark-theme').media = 'none'; document.getElementById('hl-default-theme').media = 'all'; } } } else if (document.getElementById('hl-default-theme')) { document.getElementById('hl-default-theme').media = 'all'; } if (currentSetting === getModeFromCSSMediaQuery()) { resetRootDarkModeAttributeAndLS(); } else if (validColorModeKeys[currentSetting]) { rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting); } else { resetRootDarkModeAttributeAndLS(); } }; const invertDarkModeObj = { dark: 'light', light: 'dark', }; const toggleCustomDarkMode = () => { var currentSetting = getLS(darkModeStorageKey); if (validColorModeKeys[currentSetting]) { currentSetting = invertDarkModeObj[currentSetting]; } else if (currentSetting === null) { currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()]; } else { return; } setLS(darkModeStorageKey, currentSetting); return currentSetting; }; applyCustomDarkModeSettings(); window.onload = () => { const darkModeToggleBottonElement = document.getElementById('btn-toggle-dark'); darkModeToggleBottonElement.addEventListener('click', () => { applyCustomDarkModeSettings(toggleCustomDarkMode()); }); }; })();</script>
 </header>
 
@@ -135,18 +125,12 @@
                     </summary>
                     <div class="fold-content">
                         <div class="dropdown-menus" id="dropdown-menus"> • 分类 • 
-                            <a href="/categories/Hadoop/" class="dropdown-menu button">Hadoop</a> • 
-                            <a href="/categories/Data-Processing-and-Analysing/" class="dropdown-menu button">数据处理与分析(Py)</a> • 
-                            <a href="/categories/Data-Visualization/" class="dropdown-menu button">数据可视化</a> • 
-                            <a href="/categories/Data-Mining/" class="dropdown-menu button">数据挖掘</a> • 
-                            <a href="/categories/Mathematical-Modeling/" class="dropdown-menu button">数学建模</a> • 
                             <a href="/categories/Python/" class="dropdown-menu button">Python</a> • 
                             <a href="/categories/Linux/" class="dropdown-menu button">Linux</a> • 
                             <a href="/categories/Data-Structure-and-Algorithm/" class="dropdown-menu button">数据结构与算法</a> • 
                             <a href="/categories/SqlServer/" class="dropdown-menu button">SQL Server</a> • 
                             <a href="/categories/MATLAB/" class="dropdown-menu button">MATLAB</a> • 
                             <a href="/categories/java/" class="dropdown-menu button">Java</a> • 
-                            <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/" class="dropdown-menu button">电子设备</a> • 
                         </div>
                     </div>
                 </details>
@@ -191,7 +175,7 @@
                 </div>
                 <!-- 2. 正文目录 -->
                 <div class="wenzhangmulu">文章目录</div>
-                <div class="post-side__toc zheng_wen_de_mu_lu_xia_hua_xian">
+                <div class="post-side__toc" style="padding-left: 35px;font-style: oblique;line-height: 2.5;">
                     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hive-%E6%A6%82%E8%BF%B0"><span class="toc-text">Hive 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Hive"><span class="toc-text">什么是 Hive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hive-%E7%9A%84%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F"><span class="toc-text">Hive 的文件存储格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%EF%BC%88TextFile%EF%BC%89"><span class="toc-text">文本文件（TextFile）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E6%96%87%E4%BB%B6%EF%BC%88SequenceFile%EF%BC%89"><span class="toc-text">序列文件（SequenceFile）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E5%BC%8F%E8%AE%B0%E5%BD%95%E6%96%87%E4%BB%B6%EF%BC%88RCFile%EF%BC%89"><span class="toc-text">列式记录文件（RCFile）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hive-%E6%94%AF%E6%8C%81%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">Hive 支持的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hive-%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-text">Hive 常用的函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%AA%8C%E8%AF%81-Hive"><span class="toc-text">安装与验证 Hive</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-MySQL"><span class="toc-text">安装 MySQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE-Hive"><span class="toc-text">安装和配置 Hive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81-Hive"><span class="toc-text">验证 Hive</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HiveQL-%E8%AF%A6%E8%A7%A3"><span class="toc-text">HiveQL 详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">对数据库的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-text">对表的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2"><span class="toc-text">数据查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%92%8C%E8%A7%86%E5%9B%BE"><span class="toc-text">索引和视图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hive-%E5%A4%8D%E5%90%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">Hive 复合数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="toc-text">用户自定义函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E5%86%99-UDF"><span class="toc-text">编写 UDF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E5%86%99-UDAF"><span class="toc-text">编写 UDAF</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hive-%E7%9A%84-JDBC-%E6%93%8D%E4%BD%9C"><span class="toc-text">Hive 的 JDBC 操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7-Sqoop"><span class="toc-text">数据迁移工具 Sqoop</span></a></li></ol>
                 </div>
                 <!-- 3. 正文文章 -->

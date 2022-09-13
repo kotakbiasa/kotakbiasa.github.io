@@ -57,16 +57,7 @@
         p-id="44080" fill="#999"></path>
             </svg>
         </a></div>
-    <div class="header__right">
-
-        <form class="Skip_nav_card" type="submit" name="formpage">
-            <input class="Skip_input" placeholder="输入" required name='SkipPage' value='' onKeyDown='if(event.keyCode==13)event.returnValue=false'>
-            <input class="Text_skip_button" name='submitSkip' type='button' onClick='Go_Page()' value='搜素'>
-        </form>
-        <script language=javascript> function Go_Page() { var Custom_path = 'https://koinl.github.io/page_search/?s='; if (document.formpage.SkipPage.value == 1) { window.location.href = Custom_path; } else { window.location.href = Custom_path + 'page/' + document.formpage.SkipPage.value + '/'; } }</script>
-
-
-        <a href="javaScript:void(0);" id="btn-toggle-dark" title="夜间模式">
+    <div class="header__right"><a href="javaScript:void(0);" id="btn-toggle-dark" title="夜间模式">
             <svg t="1662256981531" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 p-id="8697" width="30" height="30">
                 <path d="M89.85 197.55m-26.03 0a26.03 26.03 0 1 0 52.06 0 26.03 26.03 0 1 0-52.06 0Z" fill="#999"
@@ -82,8 +73,7 @@
                 <path d="M511.94 950.5c-233.06 0-422.66-189.65-422.66-422.75 0-190.41 128.42-358.05 312.31-407.65 13.22-3.52 27.25 1.33 35.41 12.34 8.14 11.01 8.71 25.88 1.42 37.47-31.43 50.03-48.04 107.45-48.04 166.05 0 172.59 140.48 313.02 313.17 313.02 58.73 0 116.22-16.67 166.28-48.23a33.279 33.279 0 0 1 37.49 1.37 33.281 33.281 0 0 1 12.37 35.4C870.16 821.8 702.49 950.5 511.94 950.5zM344.17 213.93C230.3 274.77 155.8 394.66 155.8 527.76c0 196.42 159.76 356.22 356.13 356.22 133.25 0 253.21-74.72 314-188.92a376.765 376.765 0 0 1-122.39 20.44c-209.36 0-379.7-170.26-379.7-379.53 0.01-41.53 6.87-82.76 20.33-122.04z m0 0"
                     fill="#999" opacity=".8" p-id="34048"></path>
             </svg>
-        </a>
-    </div>
+        </a></div>
     <script>(() => { const rootElement = document.documentElement; const darkModeStorageKey = 'user-color-scheme'; const darkModeMediaQueryKey = '--color-mode'; const rootElementDarkModeAttributeName = 'data-user-color-scheme'; const setLS = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { } }; const removeLS = (k) => { try { localStorage.removeItem(k); } catch (e) { } }; const getLS = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }; const getModeFromCSSMediaQuery = () => { const res = getComputedStyle(rootElement).getPropertyValue(darkModeMediaQueryKey); if (res.length) return res.replace(/["'\s]/g, ''); return res === 'dark' ? 'dark' : 'light'; }; const resetRootDarkModeAttributeAndLS = () => { rootElement.removeAttribute(rootElementDarkModeAttributeName); removeLS(darkModeStorageKey); }; const validColorModeKeys = { dark: true, light: true, }; const applyCustomDarkModeSettings = (mode) => { const currentSetting = mode || getLS(darkModeStorageKey); if (document.getElementById('hl-dark-theme')) { if (validColorModeKeys[currentSetting]) { if (currentSetting === 'dark') { document.getElementById('hl-default-theme').media = 'none'; document.getElementById('hl-dark-theme').media = 'all'; } else { document.getElementById('hl-dark-theme').media = 'none'; document.getElementById('hl-default-theme').media = 'all'; } } else { if (getModeFromCSSMediaQuery() === 'dark') { document.getElementById('hl-default-theme').media = 'none'; document.getElementById('hl-dark-theme').media = 'all'; } else { document.getElementById('hl-dark-theme').media = 'none'; document.getElementById('hl-default-theme').media = 'all'; } } } else if (document.getElementById('hl-default-theme')) { document.getElementById('hl-default-theme').media = 'all'; } if (currentSetting === getModeFromCSSMediaQuery()) { resetRootDarkModeAttributeAndLS(); } else if (validColorModeKeys[currentSetting]) { rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting); } else { resetRootDarkModeAttributeAndLS(); } }; const invertDarkModeObj = { dark: 'light', light: 'dark', }; const toggleCustomDarkMode = () => { var currentSetting = getLS(darkModeStorageKey); if (validColorModeKeys[currentSetting]) { currentSetting = invertDarkModeObj[currentSetting]; } else if (currentSetting === null) { currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()]; } else { return; } setLS(darkModeStorageKey, currentSetting); return currentSetting; }; applyCustomDarkModeSettings(); window.onload = () => { const darkModeToggleBottonElement = document.getElementById('btn-toggle-dark'); darkModeToggleBottonElement.addEventListener('click', () => { applyCustomDarkModeSettings(toggleCustomDarkMode()); }); }; })();</script>
 </header>
 
@@ -135,18 +125,12 @@
                     </summary>
                     <div class="fold-content">
                         <div class="dropdown-menus" id="dropdown-menus"> • 分类 • 
-                            <a href="/categories/Hadoop/" class="dropdown-menu button">Hadoop</a> • 
-                            <a href="/categories/Data-Processing-and-Analysing/" class="dropdown-menu button">数据处理与分析(Py)</a> • 
-                            <a href="/categories/Data-Visualization/" class="dropdown-menu button">数据可视化</a> • 
-                            <a href="/categories/Data-Mining/" class="dropdown-menu button">数据挖掘</a> • 
-                            <a href="/categories/Mathematical-Modeling/" class="dropdown-menu button">数学建模</a> • 
                             <a href="/categories/Python/" class="dropdown-menu button">Python</a> • 
                             <a href="/categories/Linux/" class="dropdown-menu button">Linux</a> • 
                             <a href="/categories/Data-Structure-and-Algorithm/" class="dropdown-menu button">数据结构与算法</a> • 
                             <a href="/categories/SqlServer/" class="dropdown-menu button">SQL Server</a> • 
                             <a href="/categories/MATLAB/" class="dropdown-menu button">MATLAB</a> • 
                             <a href="/categories/java/" class="dropdown-menu button">Java</a> • 
-                            <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/" class="dropdown-menu button">电子设备</a> • 
                         </div>
                     </div>
                 </details>
@@ -167,10 +151,7 @@
         <div class="content-card search-result__list" id="search-result__list"></div>
     </div>
     <script>var searchDataFile = "/search.json";</script>
-    <script defer>function searchEscape(keyword) {const htmlEntityMap = {'&': '&amp;','<': '&lt;','>': '&gt;','"': '&quot;',"'": '&#39;','/': '&#x2F;',};return keyword.replace(/[&<>"'/]/g, function (i) {return htmlEntityMap[i];});}function regEscape(keyword) {const regEntityMap = {'{': '\\{','}': '\\}','[': '\\[',']': '\\]','(': '\\(',')': '\\)','?': '\\?','*': '\\*','.': '\\.','+': '\\+','^': '\\^',$: '\\$',};return keyword.replace(/[\{\}\[\]\(\)\?\*\.\+\^\$]/g, function (i) {return regEntityMap[i];});}function getParam(reqParam) {reqParam = reqParam.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');const paraReg = new RegExp('[\\?&]' + reqParam + '=([^&#]*)');const results = paraReg.exec(window.location);return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));}function setNotice(info) {const noticeSectionElement = document.getElementById('search-result__notice');noticeSectionElement.innerHTML = info;}function clearPosts() {const resultSectionElement = document.getElementById('search-result__list');resultSectionElement.innerHTML = '';}function createPosts(resArr) {const resultSectionElement = document.getElementById('search-result__list');let resultString = '';resArr.forEach((resInfo) => {const pageInfo = resInfo[0];const postTemplate = `<a href="${pageInfo.link}" class="search-result__link"><div class='search-result__item'><strong>${pageInfo.title}</strong><div class="search-result__content">${pageInfo.content}</div></div></a>`;resultString += postTemplate;});resultSectionElement.innerHTML = resultString;}function loadDataSearch(searchDataFile, skeys) {fetch(searchDataFile).then((res) => {return res.json();}).then((datas) => {const startTime = performance.now();let resultArray = [];let resultCount = 0;let keywords = skeys.trim().toLowerCase().split(/\s/);datas.forEach((data) => {if (typeof data.title === 'undefined' || typeof data.content === 'undefined') {return;}let matched = false;const dataTitle = data.title.trim().toLowerCase();const dataContent = data.content ? data.content.trim().replace(/<[^>]+>/g, '').toLowerCase(): '';let dataWeight = 0;let indexs = {};indexs.title = -1;indexs.content = -1;indexs.firstOccur = -1;indexs.lastOccur = -1;if (dataTitle) {keywords.forEach((keyword) => {indexs.title = dataTitle.indexOf(keyword);indexs.content = dataContent.indexOf(keyword);if (indexs.title !== -1 || indexs.content !== -1) {matched = true;if (indexs.content !== -1) {if (indexs.firstOccur > indexs.content || indexs.firstOccur === -1) {indexs.firstOccur = indexs.content;}if (indexs.lastOccur < indexs.content) {indexs.lastOccur = indexs.content;}}dataWeight += indexs.title !== -1 ? 2 : 0;dataWeight += indexs.content !== -1 ? 1 : 0;resultCount++;}});}if (matched) {let tPage = {};tPage.title = data.title;tPage.link = data.url;keywords.forEach((keyword) => {const regS = new RegExp(regEscape(keyword) + '(?!>)', 'gi');tPage.title = tPage.title.replace(regS, '<m>$&</m>');});if (indexs.firstOccur >= 0) {const halfLenth = 100;let start = indexs.firstOccur - halfLenth;let end = indexs.lastOccur + halfLenth;if (start < 0) {start = 0;}if (start === 0) {end = halfLenth * 2;}if (end > dataContent.length) {end = dataContent.length;}tPage.content = dataContent.substr(start, end - start);keywords.forEach((keyword) => {const regS = new RegExp(regEscape(keyword) + '(?!>)', 'gi');tPage.content = tPage.content.replace(regS, '<m>$&</m>');});}resultArray.push([tPage, dataWeight]);}});if (resultCount !== 0) {const finishTime = performance.now();
-                    setNotice(`找到 ${resultCount} 个相关结果 (在 ${Math.round((finishTime - startTime) * 100) / 100} 秒中)`);resultArray.sort((a, b) => {return b[1] - a[1];});createPosts(resultArray);} else {const finishTime = performance.now();
-                    setNotice(`未找到相关结果 (在 ${Math.round((finishTime - startTime) * 100) / 100} 秒中)`);clearPosts();}});}function keySearch(skeys) {loadDataSearch(searchDataFile, searchEscape(skeys));}function inpSearch() {const skeys = document.getElementById('search-input').value;window.history.pushState({}, 0, window.location.href.split('?')[0] + '?s=' + skeys.replace(/\s/g, '+'));keySearch(skeys);return false;}(() => {const skeys = getParam('s');if (skeys !== '') {document.getElementById('search-input').value = skeys;keySearch(skeys);}})();
-    </script>
+    <script defer src="/js/local-search.js"></script>
 </main>
 <!-- 我们是__主体部分！我是__尾部部分！ -->
         <footer class="footer">
