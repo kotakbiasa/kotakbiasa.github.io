@@ -60,7 +60,7 @@
     <div class="header__right">
         <form class="Skip_nav_card" type="submit" name="search_formpage">
             <input class="Skip_input" placeholder="输入" required name='search_SkipPage' value='' onKeyDown='if(event.keyCode==13)event.returnValue=false'>
-            <input class="Text_skip_button" name='submitSkip' type='button' onClick='Go_Page_search()' value='前往'>
+            <input class="Text_skip_button" name='submitSkip' type='button' onClick='Go_Page_search()' value='搜索'>
         </form>
         <script language=javascript> function Go_Page_search() { var Custom_path = 'https://koinl.github.io/page_search/?s='; if (document.search_formpage.search_SkipPage.value == 1) { window.location.href = Custom_path; } else { window.location.href = Custom_path + document.search_formpage.search_SkipPage.value; } }</script>
         <a href="javaScript:void(0);" id="btn-toggle-dark" title="夜间模式">
