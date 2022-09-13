@@ -191,7 +191,7 @@
                 <nav class="nav__card" id="page-nav"> <span class="page-number current">1</span> </nav>
 
                 <form class="Skip_nav_card" type="submit" name="formpage">
-                    <input class="Skip_input" placeholder="输入" required name='SkipPage' onchange="if(/\D/.test(this.value)){alert('请输入需要跳转到的页数并且必须大于0！');this.value='';}" value='' onKeyDown='if(event.keyCode==13)event.returnValue=false'>
+                    <input class="Skip_input" placeholder="输入" required name='SkipPage' onchange="if(/\D/.test(this.value)){alert('请输入需要跳转到的页数并且必须是正整数且大于0！');this.value='';}" value=''>
                     <input class="Text_skip_button" name='submitSkip' type='button' onClick='Go_Page()' value='前往'>
                 </form>
                 <script language=javascript> function Go_Page() { var Custom_path = 'https://koinl.github.io/'; if (document.formpage.SkipPage.value == 1) { window.location.href = Custom_path; } else { window.location.href = Custom_path + 'page/' + document.formpage.SkipPage.value + '/'; } }</script>
