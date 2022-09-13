@@ -2485,7 +2485,7 @@ details .fold-content>:last-child {
 
 .Search_nav_card {
   position: relative;
-  width: 46px;
+  width: 125px;
   --border-height: 1px;
   --border-before-color: #c4c4c463;
   --text-color: #fff;
