@@ -61,7 +61,7 @@ function createPosts(resArr) {
         <a href="${pageInfo.link}" class="search-result__link">
             <div class='search-result__item'>
                 <strong>
-                    ${pageInfo.title}
+                ${pageInfo.categories}${pageInfo.title}
                 </strong>
                 <div class="search-result__content">
                     ${pageInfo.content}
