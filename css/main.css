@@ -2460,3 +2460,7 @@ details .fold-content>:last-child {
   color: #00000036;
   background: #00000045;
 }
+
+.header .header__right .Skip_nav_card {
+  margin-right: 38px;
+}
