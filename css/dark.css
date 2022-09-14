@@ -92,7 +92,7 @@
 [data-user-color-scheme="dark"] table tr:not(.code):not(.gutter):nth-child(2n) {
   background-color: #272727;
 }
-
+[data-user-color-scheme="dark"] .Text_search_button,
 [data-user-color-scheme="dark"] .Text_skip_button {
   background: #b5b4b485;
 }
