@@ -2520,11 +2520,12 @@ details .fold-content>:last-child {
   border-radius: 0px 9px 9px 0px;
   cursor: pointer;
   transition: 0.75s;
+  background: #eaeaea9e;
 }
 
 .Search_input:hover,
 .Text_search_button:hover {
-  background: #cfcfcf;
+  background: #cfcfcf87;
 }
 
 .Search_input:focus,
