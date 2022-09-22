@@ -254,14 +254,15 @@ function loadDataSearch(searchDataFile, skeys) {
             let keywords = skeys.trim().toLowerCase().split(/\s/);
 
             datas.forEach((data) => {
-                if (typeof data.title === 'undefined' || typeof data.content === 'undefined') {
+                if (typeof data.title === 'undefined' || typeof data.content === 'undefined' || typeof data.categories === 'undefined') {
                     return;
                 }
 
                 let matched = false;
 
                 const dataTitle = data.title.trim().toLowerCase();
-                const dataContent = data.content
+                const dataContent = data.content;
+                const dataCategories = data.categories.trim().toLowerCase();
                     ? data.content
                         .trim()
                         .replace(/<[^>]+>/g, '')
@@ -272,14 +273,16 @@ function loadDataSearch(searchDataFile, skeys) {
                 let indexs = {};
                 indexs.title = -1;
                 indexs.content = -1;
+                indexs.categories = -1;
                 indexs.firstOccur = -1;
                 indexs.lastOccur = -1;
 
                 if (dataTitle) {
                     keywords.forEach((keyword) => {
                         indexs.title = dataTitle.indexOf(keyword);
+                        indexs.categories = dataCategories.indexOf(keyword);
                         indexs.content = dataContent.indexOf(keyword);
-                        if (indexs.title !== -1 || indexs.content !== -1) {
+                        if (indexs.title !== -1 || indexs.content !== -1 || indexs.categories !== -1) {
                             matched = true;
                             if (indexs.content !== -1) {
                                 if (indexs.firstOccur > indexs.content || indexs.firstOccur === -1) {
@@ -290,6 +293,7 @@ function loadDataSearch(searchDataFile, skeys) {
                                 }
                             }
                             dataWeight += indexs.title !== -1 ? 2 : 0;
+                            dataWeight += indexs.categories !== -1 ? 1.5 : 0;
                             dataWeight += indexs.content !== -1 ? 1 : 0;
                             resultCount++;
                         }
@@ -300,6 +304,7 @@ function loadDataSearch(searchDataFile, skeys) {
                     let tPage = {};
                     tPage.title = data.title;
                     tPage.link = data.url;
+                    tPage.categories=data.categories
                     keywords.forEach((keyword) => {
                         const regS = new RegExp(regEscape(keyword) + '(?!>)', 'gi');
                         tPage.title = tPage.title.replace(regS, '<m>$&</m>');
