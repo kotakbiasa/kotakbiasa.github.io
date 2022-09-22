@@ -2486,7 +2486,7 @@ details .fold-content>:last-child {
 .Search_nav_card {
   margin-right: 38px;
   position: relative;
-  width: 214px;
+  width: 125px;
   --border-height: 1px;
   --border-before-color: #c4c4c463;
   --text-color: #fff;
@@ -2520,12 +2520,11 @@ details .fold-content>:last-child {
   border-radius: 0px 9px 9px 0px;
   cursor: pointer;
   transition: 0.75s;
-  background: #eaeaea9e;
 }
 
 .Search_input:hover,
 .Text_search_button:hover {
-  background: #cfcfcf87;
+  background: #cfcfcf;
 }
 
 .Search_input:focus,
