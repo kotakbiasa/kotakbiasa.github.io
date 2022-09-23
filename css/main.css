@@ -2531,3 +2531,7 @@ details .fold-content>:last-child {
 .Text_search_button:focus {
   outline: none;
 }
+
+.Page_Development_log {
+  color: #ff7200;
+}
