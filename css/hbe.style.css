@@ -158,9 +158,9 @@
 	left: 0;
 }
 
-.hbe-input-label-default::before {
+.hbe-input-label-default::before { /*点击后的大框*/
 	height: 100%;
-	background: blue;
+	background: #cfcfcf;
 	top: 0;
 	-webkit-transform: translate3d(0, -100%, 0);
 	transform: translate3d(0, -100%, 0);
@@ -168,9 +168,9 @@
 	transition: transform 0.2s;
 }
 
-.hbe-input-label-default::after {
+.hbe-input-label-default::after { /*未点击地下的线*/
 	height: 2px;
-	background: blueviolet;
+	background: #666666;
 	top: 100%;
 	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
