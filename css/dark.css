@@ -102,3 +102,10 @@
 [data-user-color-scheme="dark"] .Text_skip_button:hover {
   background: #96969685;
 }
+
+[data-user-color-scheme="dark"] .hbe-button:hover {
+  background-color: #121212;
+  box-shadow: 0px 15px 20px #2d2d2d;
+  color: var(--body-color);
+  transform: translateY(-7px);
+}
