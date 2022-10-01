@@ -414,7 +414,7 @@
 .hbe-input-field-flip:focus + .hbe-input-field-flip,
 .input--filled .hbe-input-field-flip {
 	background-color: transparent;
-	border-color: #666666;
+	border-color: #cfcfcf;
 }
 /* flip theme }}} */
 
