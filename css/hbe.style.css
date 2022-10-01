@@ -24,6 +24,9 @@
 	width: 80%;
 	/* min-width: 400px;／ */
 	vertical-align: top;
+	width: 100px;
+	border-radius: 23%;
+	border: 1px #8787878a solid;
 }
 
 .hbe-input-field {
@@ -135,7 +138,7 @@
 	width: 100%;
 	background: transparent;
 	padding: 0.5em;
-	margin-bottom: 2em;
+	padding-bottom: 2.5em;
 	color: #f9f7f6;
 	z-index: 100;
 	opacity: 0;
