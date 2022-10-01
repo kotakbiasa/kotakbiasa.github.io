@@ -2567,7 +2567,7 @@ details .fold-content>:last-child {
   display: -webkit-flex;
   width: 127px;
   display: flex;
-  padding: 8px;
+  /* padding: 8px; */
   margin: 0 auto;
   margin-top: calc(2.25 * 16px + 32px);
   color: #444;
@@ -2623,7 +2623,7 @@ details .fold-content>:last-child {
 .pan-list .pan-content .pan-left .avatar {
   width: 100px;
   height: 100px;
-  margin: 16px 8px 4px 8px;
+  /* margin: 16px 8px 4px 8px; */
   margin-top: calc(-1.25 * 16px - 32px);
   border-radius: 23%;
   /* border: 2px solid #fff; */
