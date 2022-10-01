@@ -81,10 +81,10 @@
 }
 
 /* hbe button in post page */
-.hbe-button {
+/* .hbe-button {
   width: 130px;
   height: 40px;
-  background: linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%); /* W3C */
+  background: linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%); 
   border: none;
   border-radius: 5px;
   position: relative;
@@ -123,7 +123,7 @@
   right: 0;
   top: 0;
   border-radius: 0 5px 5px 0;
-}
+} */
 /* hbe button in post page */
 
 /* default theme {{{ */
