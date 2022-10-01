@@ -29,17 +29,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <script>
-        (function(){
-            if('{{ page.password }}'){
-                if (prompt('请输入文章密码') !== '{{ page.password }}'){
-                    alert('密码错误！');
-                    history.back();
-                }
-            }
-        })();
-    </script>
-    
     <link rel="mask-icon" href="/img/icon.png">
     <link rel="shortcut icon" href="/img/icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/img/icon.png">
