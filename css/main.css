@@ -2837,7 +2837,7 @@ details .fold-content>:last-child {
 
 .hbe-input-label-default::before { /*点击后的大框*/
 	height: 100%;
-	background: #cfcfcf;
+	background: #f0f0f0;
 	/* border-radius: 3%; */
 	top: 0;
 	-webkit-transform: translate3d(0, -100%, 0);
