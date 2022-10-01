@@ -2610,6 +2610,7 @@ details .fold-content>:last-child {
 } */
 
 .pan-list .pan-content .pan-left {
+  width: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
