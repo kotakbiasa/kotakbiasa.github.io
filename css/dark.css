@@ -104,7 +104,8 @@
 }
 
 [data-user-color-scheme="dark"] .hbe-button:hover {
-  background-color: #121212;
+  opacity: 0.8;
+  background-color: #2d2d2d;
   box-shadow: 0px 15px 20px #2d2d2d;
   color: var(--body-color);
   transform: translateY(-7px);
