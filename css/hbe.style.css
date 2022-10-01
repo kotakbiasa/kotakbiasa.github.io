@@ -160,7 +160,7 @@
 
 .hbe-input-label-default::before {
 	height: 100%;
-	background: #666666;
+	background: blue;
 	top: 0;
 	-webkit-transform: translate3d(0, -100%, 0);
 	transform: translate3d(0, -100%, 0);
@@ -170,7 +170,7 @@
 
 .hbe-input-label-default::after {
 	height: 2px;
-	background: #666666;
+	background: blueviolet;
 	top: 100%;
 	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
@@ -393,7 +393,7 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	color: #666666;
+	color: red;
 	padding: 0.25em 0;
 	letter-spacing: 1px;
 	font-size: 1em;
