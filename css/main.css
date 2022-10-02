@@ -2838,6 +2838,7 @@ details .fold-content>:last-child {
   font-size: 1em;
   font-size: 16px;
   padding-left: 5px;
+  font-family: cursive;
 }
 
 .hbe-input-label-default::before,
