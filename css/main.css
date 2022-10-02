@@ -2359,9 +2359,6 @@ details .fold-content>:last-child {
   margin: 30px auto;
 }
 
-
-
-
 #carousel_main {
   display: inline-block;
   height: var(--main-height-LunBoTu);
@@ -2372,6 +2369,7 @@ details .fold-content>:last-child {
   border-radius: 15px;
   margin: 0 auto;
   margin-left: 10px;
+  opacity: 0.9;
 }
 
 #carousel_main #div_img {
@@ -3502,4 +3500,6 @@ details .fold-content>:last-child {
 .desc-footer-koinl {
 max-width: var(--content-width);
 margin: 0 auto;
+margin-left: 15px;
+margin-right: 15px;
 }
