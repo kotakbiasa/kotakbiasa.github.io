@@ -3497,3 +3497,9 @@ details .fold-content>:last-child {
 .hbe-button:active {
   transform: translateY(-1px);
 }
+
+#dropdown-menus,
+.desc-footer-koinl {
+max-width: var(--content-width);
+margin: 0 auto;
+}
