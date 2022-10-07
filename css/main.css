@@ -3509,3 +3509,10 @@ details .fold-content>:last-child {
   font-family: monospace;
   font-family: serif;
 }
+
+blockquote {
+  font-size: 15px;
+  font-family: NSimSun;
+  border: 33px;
+  margin: -8px;
+}
