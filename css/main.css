@@ -549,8 +549,8 @@ table tr:not(.code):not(.gutter):nth-child(2n) {
 
 table td:not(.code):not(.gutter),
 table th:not(.code):not(.gutter) {
-
-  padding: 2px 24px;
+  min-width: 108px;
+  padding: 2px 2px;
   /* padding: 6px 13px; */
   border: 1px solid var(--border-color);
 }
@@ -1454,10 +1454,6 @@ overflows table td {
   box-shadow: 0 0.3rem 0.6rem rgba(48, 55, 66, 0.15); */
 }
 
-.footer #b2t * {
-  margin: 8px;
-}
-
 .footer .footer-copyright {
   margin-right: 13.5px;
 }
@@ -1961,8 +1957,10 @@ overflows table td {
   font-size: xx-large;
 }
 
+.footer #b2t *,
 .btn-toc * {
   margin: 8px;
+  opacity: 0.85;
 }
 
 .btn-toc:focus+.toc-menus {
