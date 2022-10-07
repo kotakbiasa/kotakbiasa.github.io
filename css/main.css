@@ -2545,6 +2545,7 @@ details .fold-content>:last-child {
 .pan-list-koinl {
   margin-top: -45px;
 }
+
 .pan-list-h3-koinl {
   display: inline-block;
   margin: -65px 0 21px -1px;
@@ -3498,7 +3499,12 @@ details .fold-content>:last-child {
 
 #dropdown-menus,
 .desc-footer-koinl {
-max-width: var(--content-width);
-margin: 0 auto;
-padding: 0 18px 0 18px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 18px 0 18px;
+}
+
+.desc-footer-koinl {
+  font-family: monospace;
+  font-family: serif;
 }
