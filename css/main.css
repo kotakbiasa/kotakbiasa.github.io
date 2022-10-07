@@ -2514,18 +2514,20 @@ details .fold-content>:last-child {
   color: ar(--border-before-color);
   box-sizing: border-box;
   padding-inline: 0.5em;
-  padding-block: 0.8em;
+  padding-block: 0.7em;
   border: none;
   border-bottom: -27px;
   border-bottom: -34px;
   border-radius: 0px 9px 9px 0px;
   cursor: pointer;
   transition: 0.75s;
+  background: #f0f0f0ba;
+  border: 1px #f0f0f0 solid;
 }
 
 .Search_input:hover,
 .Text_search_button:hover {
-  background: #cfcfcf;
+  background: #cfcfcfab;
 }
 
 .Search_input:focus,
