@@ -2274,6 +2274,7 @@ details .fold-content>:last-child {
 }
 
 .wenzhangmulu {
+  margin-top: -28px;
   padding-left: 38px;
   font-style: oblique;
   font-weight: 700;
