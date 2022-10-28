@@ -1,21 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<!-- 
-    你好~ 欢迎来到我的乐园。下面就简单介绍下我的 body 部分。
-    body 标签，主要是由加载 loading 与应用 app 所组成。
-        - loading 加载页面。顾名思义，这里不做详细叙述。
-        - app 中，分为头部部分 header、封面部分 cover、主体部分 main 和尾部部分 footer。
-            - header、cover、footer 你可以分别在页面最上方，页面的中上方、页面的最下方找到。
-                > 文章页找不到 cover、主页找不到 header 与 cover...还有什么页找不到什么？
-            - main 中，有初始/列表页、文章页、主页、搜索页、友链页，错误页。
-                - 初始/列表页在进入网站后即可看见。
-                - 文章页需要点击文章后进入。
-                - 让你有搜索内容需求时，可以进入搜索页。
-                - 与其他人的交互，则尽在友链页。
-                - 另外，我还新创建了主页，欢迎观看。
-                - 最后，当你进入了不存在的页面时，就会出现错误页。
-    祝你阅读愉快！ 
--->
+<!-- 你好~ 欢迎来到我的乐园。-->
 <head>
     <title>第一章  程序基本结构 | 锦鲤未离</title>
     <meta name="keywords" content="Python">
@@ -185,9 +170,7 @@
             </aside>
             <!-- 2. 小界面目录图标 -->
             <a class="btn-toc button" id="btn-toc" tabindex="0">
-                <svg t="1662257293901" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="29423" width="55" height="55">
-                    <path d="M480 64C214.848 64 0 278.848 0 544S214.848 1024 480 1024 960 809.152 960 544 745.152 64 480 64zM288 768C270.336 768 256 753.664 256 736S270.336 704 288 704 320 718.336 320 736 305.664 768 288 768zM288 576C270.336 576 256 561.664 256 544S270.336 512 288 512 320 526.336 320 544 305.664 576 288 576zM288 384C270.336 384 256 369.664 256 352S270.336 320 288 320 320 334.336 320 352 305.664 384 288 384zM672 768l-256 0C398.336 768 384 753.664 384 736S398.336 704 416 704l256 0c17.664 0 32 14.336 32 32S689.664 768 672 768zM672 576l-256 0C398.336 576 384 561.664 384 544S398.336 512 416 512l256 0C689.664 512 704 526.336 704 544S689.664 576 672 576zM672 384l-256 0C398.336 384 384 369.664 384 352S398.336 320 416 320l256 0C689.664 320 704 334.336 704 352S689.664 384 672 384z" p-id="43077" fill="#bfbfbf"></path>
-            </svg>
+                <svg t="1662257293901" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="29423" width="55" height="55"><path d="M480 64C214.848 64 0 278.848 0 544S214.848 1024 480 1024 960 809.152 960 544 745.152 64 480 64zM288 768C270.336 768 256 753.664 256 736S270.336 704 288 704 320 718.336 320 736 305.664 768 288 768zM288 576C270.336 576 256 561.664 256 544S270.336 512 288 512 320 526.336 320 544 305.664 576 288 576zM288 384C270.336 384 256 369.664 256 352S270.336 320 288 320 320 334.336 320 352 305.664 384 288 384zM672 768l-256 0C398.336 768 384 753.664 384 736S398.336 704 416 704l256 0c17.664 0 32 14.336 32 32S689.664 768 672 768zM672 576l-256 0C398.336 576 384 561.664 384 544S398.336 512 416 512l256 0C689.664 512 704 526.336 704 544S689.664 576 672 576zM672 384l-256 0C398.336 384 384 369.664 384 352S398.336 320 416 320l256 0C689.664 320 704 334.336 704 352S689.664 384 672 384z" p-id="43077" fill="#bfbfbf"></path></svg>
             </a>
             <!-- 3. 小界面目录流 -->
             <div class="toc-menus" id="toc-menus">
@@ -319,9 +302,6 @@
                     <p>更新于  2022-07-07 18:16:51 星期四</p>
                 </div>
             </article>
-
-
-
             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
             <script type="text/javascript">$(".highlight").wrap("<div class='code-wrapper' style='position:relative'></div>");!function (e, t, a) {var initCopyCode = function () {var copyHtml = '';copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';copyHtml += '  <i class="fa fa-clipboard"></i><span>复制</span>';copyHtml += '</button>';$(".highlight .code").before(copyHtml);var clipboard = new ClipboardJS('.btn-copy', {target: function (trigger) {return trigger.nextElementSibling;}});clipboard.on('success', function (e) {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制成功</span>";setTimeout(function () {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制</span>"}, 1000);e.clearSelection();});clipboard.on('error', function (e) {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制失败</span>";setTimeout(function () {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制</span>"}, 1000);e.clearSelection();});};initCopyCode();}(window, document);</script>
         </main>

@@ -1,21 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<!-- 
-    你好~ 欢迎来到我的乐园。下面就简单介绍下我的 body 部分。
-    body 标签，主要是由加载 loading 与应用 app 所组成。
-        - loading 加载页面。顾名思义，这里不做详细叙述。
-        - app 中，分为头部部分 header、封面部分 cover、主体部分 main 和尾部部分 footer。
-            - header、cover、footer 你可以分别在页面最上方，页面的中上方、页面的最下方找到。
-                > 文章页找不到 cover、主页找不到 header 与 cover...还有什么页找不到什么？
-            - main 中，有初始/列表页、文章页、主页、搜索页、友链页，错误页。
-                - 初始/列表页在进入网站后即可看见。
-                - 文章页需要点击文章后进入。
-                - 让你有搜索内容需求时，可以进入搜索页。
-                - 与其他人的交互，则尽在友链页。
-                - 另外，我还新创建了主页，欢迎观看。
-                - 最后，当你进入了不存在的页面时，就会出现错误页。
-    祝你阅读愉快！ 
--->
+<!-- 你好~ 欢迎来到我的乐园。-->
 <head>
     <title>主页 | 锦鲤未离</title>
     <meta name="keywords" content="">
@@ -163,10 +148,10 @@
         </div>
 
 
-        <!-- 我们是__应用部分！我是__主页部分！ -->
+
         <main class="main HOME">
             <style>.cover,.header {clip-path: circle(0); max-width: 1px; max-height: 1px; min-height: 0; margin: 0; line-height: 0;}</style>
-            <!-- 海月·前尘镜·因你闪耀·午后时光·大乔花嫁·昭君七夕·我乔神女·妲己女仆 -->
+            <!-- 昭君联动 · 海月·前尘镜·因你闪耀·午后时光·大乔花嫁·昭君七夕·我乔神女·妲己女仆 -->
             <script>function randomWord (randomFlag, min, max) {let str1 = "",range = min,arr = [
                   'https://shp.qpic.cn/ishow/2735092117/1663751765_1265602313_3889_sProdImgNo_6.jpg/0'
                 , 'https://shp.qpic.cn/ishow/2735081214/1660287379_1265602313_2633_sProdImgNo_6.jpg/0'
@@ -176,6 +161,7 @@
                 , 'http://shp.qpic.cn/ishow/2735081114/1628662774_84828260_7450_sProdImgNo_6.jpg/0'
                 , 'http://shp.qpic.cn/ishow/2735070109/1625101470_84828260_6040_sProdImgNo_6.jpg/0'
                 , 'http://shp.qpic.cn/ishow/2735061617/1623836896_84828260_11275_sProdImgNo_6.jpg/0'
+                , 'https://shp.qpic.cn/ishow/2735102114/1666333115_1265602313_24957_sProdImgNo_6.jpg/0'
             ];if (randomFlag) {range = Math.round(Math.random() * (max - min)) + min;}for (let i = 0; i < range; i++) {pos = Math.round(Math.random() * (arr.length - 1));str1 += arr[pos];}str2=str1;return pos+1;};console.log('test:',randomWord(true,1,1));</script>
             <div id="background"></div>
             <script> var imgobj=document.getElementById('background');console.log('imgobj:',imgobj);imgobj.innerHTML='<img src='+str2+'/>';</script>
