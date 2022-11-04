@@ -3571,6 +3571,7 @@ blockquote {
 
 .categories_e {
   display: inline-block;
+  z-index: 9999999;
 
 }       
 .second_categories {
