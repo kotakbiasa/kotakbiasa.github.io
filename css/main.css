@@ -1228,6 +1228,14 @@ overflows table td {
   border-radius: 5px;
 }
 
+.cover__link_by_friendPage {
+  margin-top: -10px;
+}
+
+.Link_ME_KOINL {
+  font-size: 1px;
+}
+
 .desc-com {
   display: inline-block;
 }
