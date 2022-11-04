@@ -3545,3 +3545,49 @@ blockquote {
   margin-bottom: 0.1em;
   margin-top: 0.11em;
 }
+
+.categories_All_DIV {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.first_categories {
+  display: inline-block;
+  color: #2b2b2b;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.first_categories:hover
+{
+  background-color: #3e3e3e;
+  color: #2b2b2b;
+}
+
+.categories_e {
+  display: inline-block;
+
+}       
+.second_categories {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(12, 12, 12, 0.2);
+  overflow: auto;
+}
+.second_categories a {
+  display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;  
+}
+
+.second_categories a:hover {
+  background-color: #f1f1f1
+
+}
+.categories_e:hover .second_categories {
+  display: block;
+}
