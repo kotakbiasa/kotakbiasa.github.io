@@ -3546,20 +3546,24 @@ blockquote {
   margin-top: 0.11em;
 }
 
-.categories_All_DIV {
+.cover__categories {
+  box-sizing: border-box;
+}
+
+.cover__categories .categories_All_DIV {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
-.first_categories {
+.cover__categories .categories_All_DIV .first_categories {
   display: inline-block;
   color: #2b2b2b;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
-.first_categories:hover
+.cover__categories .categories_All_DIV .first_categories:hover
 {
   background-color: #3e3e3e;
   color: #2b2b2b;
