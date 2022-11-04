@@ -30,8 +30,6 @@
 
 <body>
     <div class="loading"><span></span><span></span><span></span><span></span><span></span></div>
-    
-
     <div id="app">
 <header class="header">
     <div class="header__left"><a href="/" class="button" title="回到首页">
@@ -150,8 +148,8 @@
 
 <!-- 我们是__应用部分！我是__搜索部分！ -->
 <main class="main SEARCH">
-    <div class="content-card" style="margin-top: -77px;">
-        <h2 style="display: inline-block">搜索</h2> <p id="commit_search">(如若等待搜索结果时间过长，请耐心等待...)</p>
+    <div class="content-card Search_content-card_By_KOINL">
+        <h2 class="Search_H2_By_koinl">搜索</h2> <p id="commit_search">(如若等待搜索结果时间过长，请耐心等待...)</p>
         <div id="search">
             <form class="search-form" autocomplete="off">
                 <div class="search-input"><input maxlength="80" type="search" class="search-input" id="search-input" name="s" placeholder="请输入关键字..." required></div>
@@ -377,6 +375,6 @@ function inpSearch() {
             <p class="desc-footer-koinl">本博客由 Hexo 驱动，采用 starter 模板，使用 Cards 主题。后逐步添加记录。做博客不易，本博客仅为个人笔记使用，不用打赏机制，不做商业用途。</p>
         </footer>
     </div>
-    <script>document.onreadystatechange=function(){console.log(document.readyState);if(document.readyState=="complete"){$(".loading").fadeOut();} else{$(".app").fadeOut();}}</script>
+    <script type="text/javascript" src="js/layout_loading.js"></script>
 </body>
 </html>

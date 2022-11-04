@@ -1047,6 +1047,12 @@ overflows table td {
   padding: 0;
 }
 
+.post-side__toc_By_KOINL {
+  padding-left: 35px;
+  font-style: oblique;
+  line-height: 2.5;
+}
+
 .cover {
   display: block;
   text-align: center;
@@ -1932,6 +1938,14 @@ overflows table td {
 .search-result a.search-result__link:not(:last-of-type) .search-result__item {
   padding-bottom: calc(var(--space) / 4);
   border-bottom: 1px solid var(--border-color);
+}
+
+.Search_content-card_By_KOINL {
+  margin-top: -77px;
+}
+
+.Search_H2_By_koinl {
+  display: inline-block;
 }
 
 .toc {
