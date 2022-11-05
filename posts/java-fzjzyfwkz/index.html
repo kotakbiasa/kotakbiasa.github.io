@@ -255,6 +255,6 @@
         </footer>
     </div>
     <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript" src="js/layout_loading.js"></script>
+    <script>document.onreadystatechange=function(){console.log(document.readyState);if(document.readyState=="complete"){$(".loading").fadeOut();} else{$(".app").fadeOut();}}</script>
 </body>
 </html>
