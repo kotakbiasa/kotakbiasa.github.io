@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <!-- 你好~ 欢迎来到我的乐园。-->
 <head>
-    <title>锦鲤未离</title>
-    <meta name="keywords" content="">
+    <title>第3章  Spark RDD弹性分布式数据集 | 锦鲤未离</title>
+    <meta name="keywords" content="spark">
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
     <meta name="copyright" content="Koi_NL">
@@ -19,7 +19,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/img/icon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/icon.png">
-    <link rel="canonical" href="">
+    <link rel="canonical" href="http://example.com/posts/spark_03/">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/dark.css">
     <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
@@ -163,176 +163,78 @@
         </div>
 
 
-<!-- 我们是__主体部分！我是__初始/列表部分！ -->
-        <main class="main LIST">
-            <div class="post-list">
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">    
-                        <p></p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-10-01 10:20:17 星期六 · </p>
-                    </div>
-                    <a href="/posts/3eeb/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Applied Statistics』第 4 章  抽样推断</h2>    
-                        <p></p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-09-22 11:09:36 星期四 · </p>
-                        <a href="/categories/Applied-Statistics/" class="button">Applied Statistics</a>
-                    </div>
-                    <a href="/posts/as04/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Hadoop』第三章  MapReduce基础</h2>    
-                        <p>本章首先介绍了 MapReduce 的基础知识和工作流程，然后通过单词统计和二次排序两个...</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-09-07 12:21:59 星期三 · </p>
-                        <a href="/categories/Hadoop/" class="button">Hadoop</a>
-                    </div>
-                    <a href="/posts/hadoop03/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Hadoop』第二章  磁盘I/O操作</h2>    
-                        <p>在系统中，当需要处理的数据非常大时，数据出现损坏的可能性会大很多。因此需要进行</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-09-07 12:20:56 星期三 · </p>
-                        <a href="/categories/Hadoop/" class="button">Hadoop</a>
-                    </div>
-                    <a href="/posts/hadoop02/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Hadoop』第一章  分布式文件系统（HDFS）概述</h2>    
-                        <p>HDFS 是一个支持海量数据存储的分布式文件系统，是存储大数据文件的重要载体。本章主要介...</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-09-07 12:18:31 星期三 · </p>
-                        <a href="/categories/Hadoop/" class="button">Hadoop</a>
-                    </div>
-                    <a href="/posts/hadoop01/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Data-Processing-and-Analysing』第四章  数据预处理</h2>    
-                        <p></p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-09-07 12:07:05 星期三 · </p>
-                        <a href="/categories/Data-Processing-and-Analysing/" class="button">Data-Processing-and-Analysing</a>
-                    </div>
-                    <a href="/posts/DPaA04/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Data-Processing-and-Analysing』第三章  数据可视化（Matplotlib）</h2>    
-                        <p>数据可视化主要旨在借助于图形化手段，清晰有效地传达与沟通信息。因此本章主要在于掌握数据图...</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-09-07 12:05:54 星期三 · </p>
-                        <a href="/categories/Data-Processing-and-Analysing/" class="button">Data-Processing-and-Analysing</a>
-                    </div>
-                    <a href="/posts/DPaA03/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Data-Processing-and-Analysing』第二章  数据分析（Pandas）</h2>    
-                        <p>Pandas 库是基于 NumPy 的工具，该工具是为了完成数据分析</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-09-07 12:05:27 星期三 · </p>
-                        <a href="/categories/Data-Processing-and-Analysing/" class="button">Data-Processing-and-Analysing</a>
-                    </div>
-                    <a href="/posts/DPaA02/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Data-Processing-and-Analysing』第一章  数据计算（NumPy）</h2>    
-                        <p>NumPy 是用于科学计算的基础软件库，主要用来</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-09-07 12:03:46 星期三 · </p>
-                        <a href="/categories/Data-Processing-and-Analysing/" class="button">Data-Processing-and-Analysing</a>
-                    </div>
-                    <a href="/posts/DPaA01/" class="post-entry__link"></a>
-
-                  
+<!-- 我们是__应用部分！我是__文章部分！ -->
+        <main class="main POST">
+            <!-- 一、上·位置 --><style>.cover {clip-path: circle(0); max-width: 1px; max-height: 1px; min-height: 0; margin: 0; line-height: 0;}</style>
+            <div class="post-title">
+                <!-- 1. 文章标题 -->
+                <h1 class="post-title__text">第3章  Spark RDD弹性分布式数据集</h1>
+                <!-- 2. 时间与类别 -->
+                <div class="post-title__meta">
+                    <p>创建于  2023-03-19 10:50:11 星期日 · </p>
+                    <p class="Page_Development_log"></p>
+                    <a href="/categories/spark/" class="button">spark</a>
+                    <p class="Page_Development_log"></p>
                 </div>
             </div>
-            <div class="nav">
-                <div class="nav__prev">
-                        <a href="/" class="nav__link">
-                            <div><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg></div>
-                            <div><div class="nav__label">前一页</div><div class="nav__title">第 1 页</div></div>
-                        </a>
+            <!-- 二、右·位置 -->
+            <aside class="post-side">
+                <!-- 1. 文章目录 -->
+                <div class="post-side__toc">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RDD%E5%AE%9E%E7%8E%B0%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1"><span class="toc-text">RDD实现词频统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%AE%97%E5%AD%90%E5%AE%9E%E4%BE%8B"><span class="toc-text">各算子实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-RDD%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">1. RDD的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BD%AC%E6%8D%A2%E7%AE%97%E5%AD%90"><span class="toc-text">2. 转换算子</span></a></li></ol></li></ol>
                 </div>
-                <nav class="nav__card" id="page-nav"> <a class="extend prev" rel="prev" href="/"></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"></a> </nav>
-
-                <form class="Skip_nav_card" type="submit" name="formpage">
-                    <input class="Skip_input" placeholder="输入" required name='SkipPage' onchange="if(/\D/.test(this.value)){alert('请输入需要跳转到的页数并且必须大于0！');this.value='';}" value='' onKeyDown='if(event.keyCode==13)event.returnValue=false'>
-                    <input class="Text_skip_button" name='submitSkip' type='button' onClick='Go_Page()' value='前往'>
-                </form>
-                <script language=javascript> function Go_Page() { var Custom_path = 'https://koinl.github.io/'; if (document.formpage.SkipPage.value == 1) { window.location.href = Custom_path; } else { window.location.href = Custom_path + 'page/' + document.formpage.SkipPage.value + '/'; } }</script>
-
-                <div class="nav__next">
-                        <a href="/page/3/" class="nav__link">
-                            <div><div class="nav__label">后一页</div><div class="nav__title">第 3 页</div></div>
-                            <div><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg></div>
-                        </a>
+            </aside>
+            <!-- 2. 小界面目录图标 -->
+            <a class="btn-toc button" id="btn-toc" tabindex="0">
+                <svg t="1662257293901" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="29423" width="55" height="55"><path d="M480 64C214.848 64 0 278.848 0 544S214.848 1024 480 1024 960 809.152 960 544 745.152 64 480 64zM288 768C270.336 768 256 753.664 256 736S270.336 704 288 704 320 718.336 320 736 305.664 768 288 768zM288 576C270.336 576 256 561.664 256 544S270.336 512 288 512 320 526.336 320 544 305.664 576 288 576zM288 384C270.336 384 256 369.664 256 352S270.336 320 288 320 320 334.336 320 352 305.664 384 288 384zM672 768l-256 0C398.336 768 384 753.664 384 736S398.336 704 416 704l256 0c17.664 0 32 14.336 32 32S689.664 768 672 768zM672 576l-256 0C398.336 576 384 561.664 384 544S398.336 512 416 512l256 0C689.664 512 704 526.336 704 544S689.664 576 672 576zM672 384l-256 0C398.336 384 384 369.664 384 352S398.336 320 416 320l256 0C689.664 320 704 334.336 704 352S689.664 384 672 384z" p-id="43077" fill="#bfbfbf"></path></svg>
+            </a>
+            <!-- 3. 小界面目录流 -->
+            <div class="toc-menus" id="toc-menus">
+                <div class="toc-title">
+                    文章目录
                 </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RDD%E5%AE%9E%E7%8E%B0%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1"><span class="toc-text">RDD实现词频统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%AE%97%E5%AD%90%E5%AE%9E%E4%BE%8B"><span class="toc-text">各算子实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-RDD%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">1. RDD的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BD%AC%E6%8D%A2%E7%AE%97%E5%AD%90"><span class="toc-text">2. 转换算子</span></a></li></ol></li></ol>
             </div>
+            <!-- 三、中·正文 -->
+            <article class="post post__with-toc content-card">
+                <!-- 1. 正文缩略图 -->
+                <div class="post__header">
+                </div>
+
+                <!-- 2. 正文目录 -->
+                    <details open>
+                        <summary>
+                            <div class="wenzhangmulu">文章目录</div>
+                        </summary>
+                        <div class="fold-content">
+                            <div class="post-side__toc post-side__toc_By_KOINL">
+                                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RDD%E5%AE%9E%E7%8E%B0%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1"><span class="toc-text">RDD实现词频统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%AE%97%E5%AD%90%E5%AE%9E%E4%BE%8B"><span class="toc-text">各算子实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-RDD%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">1. RDD的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BD%AC%E6%8D%A2%E7%AE%97%E5%AD%90"><span class="toc-text">2. 转换算子</span></a></li></ol></li></ol>
+                            </div>
+                        </div>
+                    </details>
+                <!-- 3. 正文文章 -->
+                <div class="post__content">
+                    <p>RDD即弹性分布式数据集，是一个容错的、并行的数据结构，可以让用户显式的将数据存储到磁盘和内存中，并且还能控制数据的分区。 </p>
+<span id="more"></span>
+<p>Spark有两种创建RDD的方式，分别为于<strong>文件系统</strong>（本地或HDFS）和<strong>并行集合</strong>创建RDD。具体操作方式可以从<strong>标题: RDD实现词频统计</strong>的子目录<strong>准备好数据后编写RDD进行词频统计的代码</strong>第二处头部找到。 </p>
+<h2 id="RDD实现词频统计"><a href="#RDD实现词频统计" class="headerlink" title="RDD实现词频统计"></a>RDD实现词频统计</h2><details ><summary>准备好数据后编写RDD进行词频统计的代码</summary><div class="fold-content"><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop01 ~]# cd /export/data/</span><br><span class="line">[root@hadoop01 data]# vim RddTest.txt</span><br><span class="line"></span><br><span class="line">hadoop spark</span><br><span class="line">itcast rdd</span><br><span class="line">scala spark</span><br><span class="line">spark itcast</span><br><span class="line">itcast hadoop</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val lines=sc.textFile(<span class="string">&quot;file:///export/data/RddTest.txt&quot;</span>)    <span class="comment">#在linux本地读取文件创建RDD</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">scala&gt; val testRDD=sc.textFile(<span class="string">&quot;/data/test.txt&quot;</span>)    <span class="comment"># 假设在HDFS的/data目录下有同样的一个文件</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">scala&gt; val arrRDD=sc.parallelize(Array(1,2,3,4,5))    <span class="comment"># 从并行集合上面创建RDD</span></span></span><br><span class="line">lines: org.apache.spark.rdd.RDD[String] = file:///export/data/RddTest.txt MapPartitionsRDD[31] at textFile at &lt;console&gt;:24</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">将文件的每一行内容都拆分成一个个的单词元素</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val words=lines.flatMap(line=&gt;line.split(<span class="string">&quot; &quot;</span>))</span></span><br><span class="line">words: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[32] at flatMap at &lt;console&gt;:25</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val wordAndOne = words.map(word=&gt;(word,1))</span></span><br><span class="line">wordAndOne: org.apache.spark.rdd.RDD[(String, Int)] = MapPartitionsRDD[33] at map at &lt;console&gt;:25</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">通过reduceByKey操作把（Key，Value）键值对类型的RDD，按单词Key将单词出现的次数Value进行聚合</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val wordCount = wordAndOne.reduceByKey((a,b)=&gt;a+b)</span></span><br><span class="line">wordCount: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[34] at reduceByKey at &lt;console&gt;:25</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">foreach()打印输出结果</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">wordCount.foreach(println)</span></span><br><span class="line">(spark,3)</span><br><span class="line">(scala,1)</span><br><span class="line">(hadoop,2)</span><br><span class="line">(itcast,3)</span><br><span class="line">(rdd,1)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></details>
+
+<h2 id="各算子实例"><a href="#各算子实例" class="headerlink" title="各算子实例"></a>各算子实例</h2><h3 id="1-RDD的创建"><a href="#1-RDD的创建" class="headerlink" title="1. RDD的创建"></a>1. RDD的创建</h3><details ><summary>RDD的创建</summary><div class="fold-content"><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在linux本地读取文件</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val <span class="built_in">test</span>=sc.textFile(<span class="string">&quot;file:///export/data/RddTest.txt&quot;</span>)</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在hdfs中</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val testRDD=sc.textFile(<span class="string">&quot;/data/words.txt&quot;</span>)</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在已存在的集合、数组上</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val arrRDD=sc.parallelize(Array(1,2,3,4,5))</span></span><br></pre></td></tr></table></figure></div></details>
+<details ><summary>转化算子</summary><div class="fold-content"><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">筛选出满足条件的元素，该行含有spark的元素</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val linesWithSpark=lines.filter(line=&gt;line.contains(<span class="string">&quot;spark&quot;</span>))</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">文件的每一行内容都拆分成一行行的单词元素</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val words=lines.map(line=&gt;line.split(<span class="string">&quot; &quot;</span>))</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">文件的每一行内容都拆分成一个个的单词元素</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val words=lines.flatMap(line=&gt;line.split(<span class="string">&quot; &quot;</span>))</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val words=lines.flatMap(line=&gt;line.split(<span class="string">&quot; &quot;</span>)).map(word=&gt;(word,1))</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">(<span class="string">&quot;spark,1&quot;</span>)</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">合并，有(<span class="string">&quot;spark&quot;</span>,(1,1,1))</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val groupWords=words.groupByKey()</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">先执行reduceByKey()操作，将所有Key相同的Value值合并到一起，生成键值对如(<span class="string">&quot;spark&quot;</span>,(1,1,1))；然后执行函数func操作，即执行(a,b)=&gt;a+b，该函数作用是聚合求和，得到最终结果(<span class="string">&quot;spark&quot;</span>,3)</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val reduceWords=words.reduceByKey((a,b)=&gt;a+b)</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span></span><br></pre></td></tr></table></figure></div></details>
+<details ><summary>点击显/隐</summary><div class="fold-content"><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">val arrRdd=sc.parallelize(Array(1,2,3,4,5))</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">count() 返回数据集中元素个数</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">arrRdd.count()</span></span><br><span class="line">res0: Long = 5</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">first() 返回数组的第一个元素</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">arrRdd.first()</span></span><br><span class="line">res1: Int = 1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">take(n) 以数组形式返回数组集中前n个元素</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">arrRdd.take(3)</span></span><br><span class="line">res2: Array[Int] = Array(1, 2, 3)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">reduce(func) 聚合数据集中的元素</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">arrRdd.reduce((a,b)=&gt;a+b)</span></span><br><span class="line">res3: Int = 15</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">collect() 以数组的形式返回数据集中的所有元素</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">arrRdd.collect()</span></span><br><span class="line">res4: Array[Int] = Array(1, 2, 3, 4, 5)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">foreach(func) 将数据集中的每个元素传递</span></span><br><span class="line"><span class="meta prompt_">scala&gt; </span><span class="language-bash">arrRdd.foreach(x =&gt; println(x))</span></span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure></div></details>
+<details ><summary>点击显/隐</summary><div class="fold-content"><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></div></details>
+<h3 id="2-转换算子"><a href="#2-转换算子" class="headerlink" title="2. 转换算子"></a>2. 转换算子</h3><p>###3. 行动算子</p>
+
+                </div>
+                <!-- 4. 正文更新时间 -->
+                <div class="post-footer__meta">
+                    <p>更新于  2023-03-31 10:52:59 星期五</p>
+                </div>
+            </article>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+            <script type="text/javascript">$(".highlight").wrap("<div class='code-wrapper' style='position:relative'></div>");!function (e, t, a) {var initCopyCode = function () {var copyHtml = '';copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';copyHtml += '  <i class="fa fa-clipboard"></i><span>复制</span>';copyHtml += '</button>';$(".highlight .code").before(copyHtml);var clipboard = new ClipboardJS('.btn-copy', {target: function (trigger) {return trigger.nextElementSibling;}});clipboard.on('success', function (e) {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制成功</span>";setTimeout(function () {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制</span>"}, 1000);e.clearSelection();});clipboard.on('error', function (e) {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制失败</span>";setTimeout(function () {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制</span>"}, 1000);e.clearSelection();});};initCopyCode();}(window, document);</script>
         </main>
-
 
         <footer class="footer">
             <a href="#" class="button" id="b2t" title="回到顶部">
