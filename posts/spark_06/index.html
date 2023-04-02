@@ -228,13 +228,13 @@
 <li>分别在hadoop01和hadoop02节点启动生产者服务和消费者服务<details ><summary>启动生产者服务和消费者服务代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-producer.sh --broker-<span class="built_in">list</span> hadoop01:<span class="number">9092</span>,hadoop02:<span class="number">9092</span>,hadoop03:<span class="number">9092</span> --topic ittheme2</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-consumer.sh --<span class="keyword">from</span>-beginning  --topic ittheme2 --bootstrap-server hadoop01:<span class="number">9092</span>,hadoop02:<span class="number">9092</span>,hadoop03:<span class="number">9092</span></span><br></pre></td></tr></table></figure></div></details></li>
 <li>运行App主程序类，Kafka Streams测试环境达成。</li>
-<li>在生产者服务节点（hadoop01）输入hello kafka kafka语句，可在消费者服务节点（hadoop02）中查看控制台，可以看到控制台输出了{hello&#x3D;1, kafka&#x3D;2}信息</li>
+<li>在生产者服务节点（hadoop01）输入hello kafka kafka语句，可在消费者服务节点（hadoop02）中查看控制台，可以看到控制台输出了{hello&#x3D;1, kafka&#x3D;2}信息<br>[root@hadoop01 kafka_2.11-2.0.0]# bin&#x2F;kafka-topics.sh –create –topic testStreams1 –partitions 3 –replication-factor 2 –zookeeper hadoop01:2181,hadoop02:2181,hadoop03:2181<br>Error while executing topic command : Replication factor: 2 larger than available brokers: 1.<br>[2023-04-01 02:12:01,157] ERROR org.apache.kafka.common.errors.InvalidReplicationFactorException: Replication factor: 2 larger than available brokers: 1.<br> (kafka.admin.TopicCommand$)<br>[root@hadoop01 kafka_2.11-2.0.0]# bin&#x2F;kafka-topics.sh –create –topic testStreams1 –partitions 3 –replication-factor 1 –zookeeper hadoop01:2181,hadoop02:2181,hadoop03:2181<br>Created topic “testStreams1”.<br>[root@hadoop01 kafka_2.11-2.0.0]# bin&#x2F;kafka-topics.sh –create –topic testStreams2 –partitions 3 –replication-factor 1 –zookeeper hadoop01:2181,hadoop02:2181,hadoop03:2181<br>Created topic “testStreams2”.<br>[root@hadoop01 kafka_2.11-2.0.0]# bin&#x2F;kafka-console-producer.sh –broker-list hadoop01:9092,hadoop02:9092,hadoop03:9092 –topic testStreams1</li>
 </ol>
 
                 </div>
                 <!-- 4. 正文更新时间 -->
                 <div class="post-footer__meta">
-                    <p>更新于  2023-03-19 08:59:19 星期日</p>
+                    <p>更新于  2023-04-01 17:16:28 星期六</p>
                 </div>
             </article>
             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>

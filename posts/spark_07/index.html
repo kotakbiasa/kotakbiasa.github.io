@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <!-- 你好~ 欢迎来到我的乐园。-->
 <head>
-    <title>第7章  Spark Streaming 实时计算框架 | 锦鲤未离</title>
+    <title>第7章  Spark Streaming | 锦鲤未离</title>
     <meta name="keywords" content="spark">
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
@@ -168,7 +168,7 @@
             <!-- 一、上·位置 --><style>.cover {clip-path: circle(0); max-width: 1px; max-height: 1px; min-height: 0; margin: 0; line-height: 0;}</style>
             <div class="post-title">
                 <!-- 1. 文章标题 -->
-                <h1 class="post-title__text">第7章  Spark Streaming 实时计算框架</h1>
+                <h1 class="post-title__text">第7章  Spark Streaming</h1>
                 <!-- 2. 时间与类别 -->
                 <div class="post-title__meta">
                     <p>创建于  2023-03-19 08:56:01 星期日 · </p>
@@ -214,7 +214,7 @@
                     </details>
                 <!-- 3. 正文文章 -->
                 <div class="post__content">
-                    <p>可以使用 Spark Streaming 实时读取Kafka里面的数据，再进行相关计算。</p>
+                    <p>Spark Streaming是实时计算框架，主要为了对数据进行实时处理。<br>首先，简单了解了Spark Streaming的基础知识。<br>其次，Spark Streaming的核心是DStream，因此该小节最终以实例——实现网站热词排序来体现。<br>最后，将Spark Streaming整合Kafka，来实现词频统计。</p>
 <h2 id="Kafka-Streaming开发单词计数应用"><a href="#Kafka-Streaming开发单词计数应用" class="headerlink" title="Kafka Streaming开发单词计数应用"></a>Kafka Streaming开发单词计数应用</h2><h3 id="1-添加依赖"><a href="#1-添加依赖" class="headerlink" title="1. 添加依赖"></a>1. 添加依赖</h3><p>打开 pom.xml 文件，添加 Kafka Streamimh 整合 Kafka的 依赖，注意匹配版本号。</p>
 <details ><summary>添加依赖代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--引入sparkstreaming整合kafka的依赖--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spark-streaming-kafka_0-<span class="number">8_2.11</span>&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">2.3</span><span class="number">.2</span>&lt;/version&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></details>
 
@@ -231,7 +231,7 @@
                 </div>
                 <!-- 4. 正文更新时间 -->
                 <div class="post-footer__meta">
-                    <p>更新于  2023-03-19 10:37:58 星期日</p>
+                    <p>更新于  2023-04-01 22:01:10 星期六</p>
                 </div>
             </article>
             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>

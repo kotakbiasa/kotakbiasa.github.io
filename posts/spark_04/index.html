@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <!-- 你好~ 欢迎来到我的乐园。-->
 <head>
-    <title>归档锦鲤未离</title>
-    <meta name="keywords" content="">
+    <title>第4章  Spark SQL结构化数据文件处理 | 锦鲤未离</title>
+    <meta name="keywords" content="spark">
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
     <meta name="copyright" content="Koi_NL">
@@ -19,7 +19,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/img/icon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/img/icon.png">
-    <link rel="canonical" href="">
+    <link rel="canonical" href="http://example.com/posts/spark_04/">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/dark.css">
     <link rel="stylesheet" id="hl-default-theme" href="/css/hlight-main.css" media="none">
@@ -163,180 +163,85 @@
         </div>
 
 
-<!-- 我们是__主体部分！我是__初始/列表部分！ -->
-        <main class="main LIST">
-            <div class="post-list">
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Linux』第二章  进程管理</h2>    
-                        <p>6.请写出静态查看系统所有进程的命令，同时输出前两行。解: ps -...</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-06-09 11:17:59 星期四 · </p>
-                        <a href="/categories/Linux/" class="button">Linux</a>
-                    </div>
-                    <a href="/posts/linux02/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Linux』安全管理</h2>    
-                        <p>SELinux 模式共分为 3 种：强制模式：Enforcing：0许可...</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-06-09 10:50:03 星期四 · </p>
-                        <a href="/categories/Linux/" class="button">Linux</a>
-                    </div>
-                    <a href="/posts/linux07/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Linux』第六章  网络基础</h2>    
-                        <p>&lt;注: 网卡设备均以设备 ens33 举例子&gt;关于 Linux 的网...</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-06-02 10:17:29 星期四 · </p>
-                        <a href="/categories/Linux/" class="button">Linux</a>
-                    </div>
-                    <a href="/posts/linux06/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Python』第某章  PIL 库</h2>    
-                        <p>点击显/隐函数的定义与调用</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-05-31 19:30:45 星期二 · </p>
-                        <a href="/categories/Python/" class="button">Python</a>
-                    </div>
-                    <a href="/posts/py0nnnpillow/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Data Structure and Algorithm』第三章  图</h2>    
-                        <p>关于图的存储方式分为邻接矩阵和邻接表两种;关于图的遍历方式分为深度优先遍历和广度...</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-05-25 18:53:09 星期三 · </p>
-                        <a href="/categories/Data-Structure-and-Algorithm/" class="button">Data Structure and Algorithm</a>
-                    </div>
-                    <a href="/posts/dsa03/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Python』第某章  turtle 库</h2>    
-                        <p>点击显/隐函数的定义与调用</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-05-11 08:40:37 星期三 · </p>
-                        <a href="/categories/Python/" class="button">Python</a>
-                    </div>
-                    <a href="/posts/py0nnn/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『电子设备』⌊手机篇⌉ 将手机投屏到电脑</h2>    
-                        <p>您需要准备: 1 部手机, 1 部电脑, 1 根数据线. 
-您需要保证: ...</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-05-02 18:52:21 星期一 · </p>
-                        <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/" class="button">电子设备</a>
-                    </div>
-                    <a href="/posts/EDp-scrcpy/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Linux』第一章  操作基础</h2>    
-                        <p>3.请删除 &#x2F;dev&#x2F;sda 下的 sda2 分区.第一步:...</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-04-25 14:30:53 星期一 · </p>
-                        <a href="/categories/Linux/" class="button">Linux</a>
-                    </div>
-                    <a href="/posts/linuxlianxizuoye/" class="post-entry__link"></a>
-
-                  
-                </div>
-                <div class='post-entry content-card'>
-
-                    <div class="post-entry__header">
-                    </div>
-                    <div class="post-entry__content">
-                        <h2 class="post-entry__title">『Python』第三章  组合数据类型</h2>    
-                        <p>组合数据类型, 分为序列类型, 集合类型和映射类型. 
-</p>                    
-                    </div>
-                    <div class="post-entry__meta">
-                        <p>创建于  2022-04-16 19:04:06 星期六 · </p>
-                        <a href="/categories/Python/" class="button">Python</a>
-                    </div>
-                    <a href="/posts/py03/" class="post-entry__link"></a>
-
-                  
+<!-- 我们是__应用部分！我是__文章部分！ -->
+        <main class="main POST">
+            <!-- 一、上·位置 --><style>.cover {clip-path: circle(0); max-width: 1px; max-height: 1px; min-height: 0; margin: 0; line-height: 0;}</style>
+            <div class="post-title">
+                <!-- 1. 文章标题 -->
+                <h1 class="post-title__text">第4章  Spark SQL结构化数据文件处理</h1>
+                <!-- 2. 时间与类别 -->
+                <div class="post-title__meta">
+                    <p>创建于  2023-03-31 11:48:40 星期五 · </p>
+                    <p class="Page_Development_log"></p>
+                    <a href="/categories/spark/" class="button">spark</a>
+                    <p class="Page_Development_log"></p>
                 </div>
             </div>
-            <div class="nav">
-                <div class="nav__prev">
-                        <a href="/archives/page/6/" class="nav__link">
-                            <div><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg></div>
-                            <div><div class="nav__label">前一页</div><div class="nav__title">第 6 页</div></div>
-                        </a>
+            <!-- 二、右·位置 -->
+            <aside class="post-side">
+                <!-- 1. 文章目录 -->
+                <div class="post-side__toc">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DataFrame"><span class="toc-text">DataFrame</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DataFrame%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">DataFrame的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataFrame%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="toc-text">DataFrame的常用操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL%E9%A3%8E%E6%A0%BC%E6%93%8D%E4%BD%9C"><span class="toc-text">SQL风格操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dataset"><span class="toc-text">Dataset</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RDD%E8%BD%AC%E6%8D%A2%E4%B8%BADataFrame"><span class="toc-text">RDD转换为DataFrame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spark-SQL%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="toc-text">Spark SQL操作数据源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9CMySQL"><span class="toc-text">操作MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96MySQL%E7%A7%8D%E6%95%B0%E6%8D%AE"><span class="toc-text">读取MySQL种数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0MySQL"><span class="toc-text">写入数据到MySQL</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9CHive"><span class="toc-text">操作Hive</span></a></li></ol></li></ol>
                 </div>
-                <nav class="nav__card" id="page-nav"> <a class="extend prev" rel="prev" href="/archives/page/6/"></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/archives/page/8/">8</a><a class="page-number" href="/archives/page/9/">9</a><a class="page-number" href="/archives/page/10/">10</a><a class="extend next" rel="next" href="/archives/page/8/"></a> </nav>
-
-                <form class="Skip_nav_card" type="submit" name="formpage">
-                    <input class="Skip_input" placeholder="输入" required name='SkipPage' onchange="if(/\D/.test(this.value)){alert('请输入需要跳转到的页数并且必须大于0！');this.value='';}" value='' onKeyDown='if(event.keyCode==13)event.returnValue=false'>
-                    <input class="Text_skip_button" name='submitSkip' type='button' onClick='Go_Page()' value='前往'>
-                </form>
-                <script language=javascript> function Go_Page() { var Custom_path = 'https://koinl.github.io/'; if (document.formpage.SkipPage.value == 1) { window.location.href = Custom_path; } else { window.location.href = Custom_path + 'page/' + document.formpage.SkipPage.value + '/'; } }</script>
-
-                <div class="nav__next">
-                        <a href="/archives/page/8/" class="nav__link">
-                            <div><div class="nav__label">后一页</div><div class="nav__title">第 8 页</div></div>
-                            <div><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg></div>
-                        </a>
+            </aside>
+            <!-- 2. 小界面目录图标 -->
+            <a class="btn-toc button" id="btn-toc" tabindex="0">
+                <svg t="1662257293901" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="29423" width="55" height="55"><path d="M480 64C214.848 64 0 278.848 0 544S214.848 1024 480 1024 960 809.152 960 544 745.152 64 480 64zM288 768C270.336 768 256 753.664 256 736S270.336 704 288 704 320 718.336 320 736 305.664 768 288 768zM288 576C270.336 576 256 561.664 256 544S270.336 512 288 512 320 526.336 320 544 305.664 576 288 576zM288 384C270.336 384 256 369.664 256 352S270.336 320 288 320 320 334.336 320 352 305.664 384 288 384zM672 768l-256 0C398.336 768 384 753.664 384 736S398.336 704 416 704l256 0c17.664 0 32 14.336 32 32S689.664 768 672 768zM672 576l-256 0C398.336 576 384 561.664 384 544S398.336 512 416 512l256 0C689.664 512 704 526.336 704 544S689.664 576 672 576zM672 384l-256 0C398.336 384 384 369.664 384 352S398.336 320 416 320l256 0C689.664 320 704 334.336 704 352S689.664 384 672 384z" p-id="43077" fill="#bfbfbf"></path></svg>
+            </a>
+            <!-- 3. 小界面目录流 -->
+            <div class="toc-menus" id="toc-menus">
+                <div class="toc-title">
+                    文章目录
                 </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DataFrame"><span class="toc-text">DataFrame</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DataFrame%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">DataFrame的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataFrame%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="toc-text">DataFrame的常用操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL%E9%A3%8E%E6%A0%BC%E6%93%8D%E4%BD%9C"><span class="toc-text">SQL风格操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dataset"><span class="toc-text">Dataset</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RDD%E8%BD%AC%E6%8D%A2%E4%B8%BADataFrame"><span class="toc-text">RDD转换为DataFrame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spark-SQL%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="toc-text">Spark SQL操作数据源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9CMySQL"><span class="toc-text">操作MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96MySQL%E7%A7%8D%E6%95%B0%E6%8D%AE"><span class="toc-text">读取MySQL种数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0MySQL"><span class="toc-text">写入数据到MySQL</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9CHive"><span class="toc-text">操作Hive</span></a></li></ol></li></ol>
             </div>
+            <!-- 三、中·正文 -->
+            <article class="post post__with-toc content-card">
+                <!-- 1. 正文缩略图 -->
+                <div class="post__header">
+                </div>
+
+                <!-- 2. 正文目录 -->
+                    <details open>
+                        <summary>
+                            <div class="wenzhangmulu">文章目录</div>
+                        </summary>
+                        <div class="fold-content">
+                            <div class="post-side__toc post-side__toc_By_KOINL">
+                                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DataFrame"><span class="toc-text">DataFrame</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DataFrame%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">DataFrame的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataFrame%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="toc-text">DataFrame的常用操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL%E9%A3%8E%E6%A0%BC%E6%93%8D%E4%BD%9C"><span class="toc-text">SQL风格操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dataset"><span class="toc-text">Dataset</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RDD%E8%BD%AC%E6%8D%A2%E4%B8%BADataFrame"><span class="toc-text">RDD转换为DataFrame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spark-SQL%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="toc-text">Spark SQL操作数据源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9CMySQL"><span class="toc-text">操作MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96MySQL%E7%A7%8D%E6%95%B0%E6%8D%AE"><span class="toc-text">读取MySQL种数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0MySQL"><span class="toc-text">写入数据到MySQL</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9CHive"><span class="toc-text">操作Hive</span></a></li></ol></li></ol>
+                            </div>
+                        </div>
+                    </details>
+                <!-- 3. 正文文章 -->
+                <div class="post__content">
+                    <p>本章目的在于如何使用Spark SQL模块来处理结构化数据，结构化数据即以<strong>关系型数据库表</strong>形式管理的数据。</p>
+<span id="more"></span>
+
+<p>首先，本章讲解在Linux系统下对结构化数据的处理。Spark SQL模块让用户可以通过<strong>SQL</strong>、<strong>DataFrame API</strong> 和 **DataSet API **三种方式来实现对结构化数据的处理。<br>在Spark-Shell操作下，RDD很容易就能转换成为DataFrame。那么在Windows系统下呢？又该如何使RDD转换成为DataFrame？</p>
+<p>启动Spark-Shell的命令如下：<code>$ spark-shell --master local[2]</code>；如不能正常运行，可跳转到spark安装目录，使用命令 <code>$ bin/spark-shell</code> 启动Spark-shell。</p>
+<details ><summary>文件：no4-createDataFrame.txt，该文件用于本章例子</summary><div class="fold-content"><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将要用到的文件no4-createDataFrame.txt</span></span><br><span class="line">[root@hadoop01 ~]# hdfs dfs -cat /sparktest/data/no4-createDataFrame.txt</span><br><span class="line">zhangsan 20</span><br><span class="line">lisi 29</span><br><span class="line">wangwu 25</span><br><span class="line">zhaoliu 30</span><br><span class="line">tianqi 35</span><br><span class="line">jerry 40</span><br></pre></td></tr></table></figure></div></details>
+
+<h2 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h2><h3 id="DataFrame的创建"><a href="#DataFrame的创建" class="headerlink" title="DataFrame的创建"></a>DataFrame的创建</h3><p>创建DataFrame的方式是从一个已经存在的RDD调用toDF()方法进行转换，得到DataFrame；或者通过Spark读取数据源直接创建。<br>这里提供两种成员函数printSchema()和show()，作用分别为打印当前对象的Schema元数据信息和结果数据。</p>
+<details ><summary>创建DataFrame的两种方式及部分成员函数</summary><div class="fold-content"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"># 通过文件直接创建DataFrame。除了读取text(.txt)文件，还可以读取csv、json、parquet等 | 创建方式1</span><br><span class="line">scala&gt; val personDF=spark.read.text(&quot;/sparktest/data/no4-createDataFrame.txt&quot;)</span><br><span class="line">personDF: org.apache.spark.sql.DataFrame = [value: string]</span><br><span class="line"></span><br><span class="line"># 打印当前对象的Schema元数据信息：String数据类型，且可为空。</span><br><span class="line">scala&gt; personDF.printSchema()</span><br><span class="line">root</span><br><span class="line"> |-- value: string (nullable = true)</span><br><span class="line"></span><br><span class="line"># 打印当前DataFrame的结果数据</span><br><span class="line">scala&gt; personDF.show()</span><br><span class="line">+-----------+       </span><br><span class="line">|      value    |</span><br><span class="line">+-----------+</span><br><span class="line">|zhangsan 20|</span><br><span class="line">|    lisi 29|</span><br><span class="line">|  wangwu 25|</span><br><span class="line">| zhaoliu 30|</span><br><span class="line">|  tianqi 35|</span><br><span class="line">|   jerry 40|</span><br><span class="line">+-----------+</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 从已经存在的RDD进行转换得到DataFrame，首先获取数据</span><br><span class="line"># 第一步</span><br><span class="line">scala&gt; case class Person(name:String,age:Int)</span><br><span class="line">defined class Person</span><br><span class="line"># 以上三步可直接写成：</span><br><span class="line">scala&gt; val pDF=sc.textFile(&quot;/sparktest/data/no4-createDataFrame.txt&quot;).map(_.split(&quot; &quot;)).map(x =&gt; Person(x(0),x(1).toInt)).toDF()</span><br><span class="line">scala&gt; pDF.show</span><br><span class="line">+--------+---+      </span><br><span class="line">|    name|age|</span><br><span class="line">+--------+---+</span><br><span class="line">|zhangsan| 20|</span><br><span class="line">|    lisi| 29|</span><br><span class="line">|  wangwu| 25|</span><br><span class="line">| zhaoliu| 30|</span><br><span class="line">|  tianqi| 35|</span><br><span class="line">|   jerry| 40|</span><br><span class="line">+--------+---+</span><br></pre></td></tr></table></figure></div></details>
+
+<h3 id="DataFrame的常用操作"><a href="#DataFrame的常用操作" class="headerlink" title="DataFrame的常用操作"></a>DataFrame的常用操作</h3><p>DataFrame提供了两种语法风格，分别为DSL风格操作和SQL风格操作。对应的就是DataFrame API 、SQL两种方式。<br>DSL风格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#查看name 字段的数据，PersonDF会随变量名的变化而变化。</span><br><span class="line">#以下五种方式可同义替代。但第四种方法不推荐！原因是因为某些代码可能不支持！</span><br><span class="line">pDF.select(pDF.col(&quot;name&quot;),pDF.col(&quot;age&quot;)).show</span><br><span class="line">pDF.select(pDF(&quot;name&quot;),pDF(&quot;age&quot;)).show</span><br><span class="line">pDF.select(col(&quot;name&quot;),col(&quot;age&quot;)).show</span><br><span class="line">pDF.select(&quot;name&quot;,&quot;age&quot;).show</span><br><span class="line"># pDF.select(&quot;name&quot;,&quot;age&quot;+1).show 不可运行！</span><br><span class="line"># 但其他四个可运行！例如“$&quot;age&quot;+1”、“col(&quot;age&quot;)+1”</span><br><span class="line"># 请注意可以通过as来重命名列名</span><br><span class="line">pDF.select($&quot;name&quot;,($&quot;age&quot;+1).as(&quot;new_age&quot;)).show</span><br><span class="line"></span><br><span class="line">#条件过滤（对应Where语句）</span><br><span class="line">pDF.filter($&quot;age&quot; &gt;30).show</span><br><span class="line"></span><br><span class="line">#分组（对应Group By语句）</span><br><span class="line">pDF.groupBy(&quot;age&quot;).count().show</span><br><span class="line"></span><br><span class="line">#排序（对应Order By语句）</span><br><span class="line">pDF.sort($&quot;age&quot;.desc).show</span><br></pre></td></tr></table></figure>
+<h4 id="SQL风格操作"><a href="#SQL风格操作" class="headerlink" title="SQL风格操作"></a>SQL风格操作</h4><p>将DataFrame注册成一个临时表就可以进行SQL风格操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; pDF.registerTempTable(&quot;t_koinl&quot;)</span><br><span class="line">scala&gt; spark.sql(&quot;select name, age + 1 from t_koinl&quot;).show</span><br></pre></td></tr></table></figure>
+<h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><h2 id="RDD转换为DataFrame"><a href="#RDD转换为DataFrame" class="headerlink" title="RDD转换为DataFrame"></a>RDD转换为DataFrame</h2><p>在上文中，有说明在Spark-shell中如何将RDD转换为DataFrame，在本小节中，来说明如何在Windows系统下开发Scala代码。</p>
+<p>一般情况下，可以使用两种方法来实现。第一种方法是利用反射机制来推断包含特定类型对象的Schema。当<strong>case类不能提前定义，即未知数据结构</strong>时，应通过编程接口构造一个Schema，并将其应用在已知的RDD数据中。 </p>
+<h2 id="Spark-SQL操作数据源"><a href="#Spark-SQL操作数据源" class="headerlink" title="Spark SQL操作数据源"></a>Spark SQL操作数据源</h2><h3 id="操作MySQL"><a href="#操作MySQL" class="headerlink" title="操作MySQL"></a>操作MySQL</h3><h4 id="读取MySQL种数据"><a href="#读取MySQL种数据" class="headerlink" title="读取MySQL种数据"></a>读取MySQL种数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Properties</span><br><span class="line">import org.apache.spark.sql.&#123;DataFrame, SaveMode,SparkSession&#125;</span><br><span class="line"> </span><br><span class="line">object sparkSqlMysql &#123;</span><br><span class="line">  def main(args: Array[String]): Unit = &#123;</span><br><span class="line">    //创建sparkSession对象</span><br><span class="line">    val spark: SparkSession = SparkSession.builder()</span><br><span class="line">      .appName(&quot;sparkSqlMysql&quot;)</span><br><span class="line">      .master(&quot;local[2]&quot;)</span><br><span class="line">      .getOrCreate()</span><br><span class="line">    //创建Properties对象，配置连接mysql的用户名和密码</span><br><span class="line">    val prop: prop =new Properties()</span><br><span class="line">    prop.setProperty(&quot;user&quot;,&quot;root&quot;)</span><br><span class="line">    prop.setProperty(&quot;password&quot;,&quot;123456&quot;)</span><br><span class="line">    //从数据库里读取数据</span><br><span class="line">    val mysqlDF: DataFrame = spark.read.jdbc(&quot;jdbc:mysql://127.0.0.1:3306/spark&quot;, &quot;person&quot;, prop)</span><br><span class="line">    //显示Mysql中表数据</span><br><span class="line">    mysqlDF.show()</span><br><span class="line">    spark.stop()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="写入数据到MySQL"><a href="#写入数据到MySQL" class="headerlink" title="写入数据到MySQL"></a>写入数据到MySQL</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Properties</span><br><span class="line">import org.apache.spark.rdd.RDD</span><br><span class="line">import org.apache.spark.sql.&#123;DataFrame, SaveMode,SparkSession&#125;</span><br><span class="line"> case class Person(id:Int,name:String,age:Int)</span><br><span class="line"></span><br><span class="line">object sparkSqlMysql &#123;</span><br><span class="line">  def main(args: Array[String]): Unit = &#123;</span><br><span class="line">    //创建sparkSession对象</span><br><span class="line">    val spark: SparkSession = SparkSession.builder()</span><br><span class="line">      .appName(&quot;sparkSqlMysql&quot;)</span><br><span class="line">      .master(&quot;local[2]&quot;)</span><br><span class="line">      .getOrCreate()</span><br><span class="line">    val sc = spark.sparkContext.parallelize(Array(&quot;3,wangwu,22&quot;,&quot;4,zhaoliu,26&quot;))</span><br><span class="line">    //切分读取数据</span><br><span class="line">    val data: RDD[Array[String]] = sc.map(_.split(&quot;,&quot;))</span><br><span class="line">    //RDD关联Person</span><br><span class="line">    val personRdd: RDD[Person] = data.map(x =&gt; Person(x(0)。toInt,x(1), x(2).toLong))</span><br><span class="line">    //导入隐式转换</span><br><span class="line">    import spark.implicits._</span><br><span class="line">    //将RDD转换成DataFrame</span><br><span class="line">    val personDF: DataFrame = personRdd.toDF()</span><br><span class="line">    //创建Properties对象，配置连接mysql的用户名和密码</span><br><span class="line">    val prop =new Properties()</span><br><span class="line">    prop.setProperty(&quot;user&quot;,&quot;root&quot;)</span><br><span class="line">    prop.setProperty(&quot;password&quot;,&quot;123456&quot;)</span><br><span class="line">    //将personDF写入MySQL</span><br><span class="line"> </span><br><span class="line">    personDF.write.mode(SaveMode.Append).jdbc(&quot;jdbc:mysql://127.0.0.1:3306/spark?useUnicode=true&amp;characterEncoding=utf8&quot;,&quot;person&quot;,prop)</span><br><span class="line">    personDF.show()</span><br><span class="line">    spark.stop()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="操作Hive"><a href="#操作Hive" class="headerlink" title="操作Hive"></a>操作Hive</h3>
+                </div>
+                <!-- 4. 正文更新时间 -->
+                <div class="post-footer__meta">
+                    <p>更新于  2023-04-01 22:09:52 星期六</p>
+                </div>
+            </article>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
+            <script type="text/javascript">$(".highlight").wrap("<div class='code-wrapper' style='position:relative'></div>");!function (e, t, a) {var initCopyCode = function () {var copyHtml = '';copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';copyHtml += '  <i class="fa fa-clipboard"></i><span>复制</span>';copyHtml += '</button>';$(".highlight .code").before(copyHtml);var clipboard = new ClipboardJS('.btn-copy', {target: function (trigger) {return trigger.nextElementSibling;}});clipboard.on('success', function (e) {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制成功</span>";setTimeout(function () {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制</span>"}, 1000);e.clearSelection();});clipboard.on('error', function (e) {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制失败</span>";setTimeout(function () {e.trigger.innerHTML = "<i class='fa fa-clipboard'></i><span>复制</span>"}, 1000);e.clearSelection();});};initCopyCode();}(window, document);</script>
         </main>
-
 
         <footer class="footer">
             <a href="#" class="button" id="b2t" title="回到顶部">
