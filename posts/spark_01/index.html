@@ -1,384 +1,57 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="{{ page.lang }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
 <head>
-    <!--Setting-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable"  content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no,email=no">
-    
-    
-    <!--Simple SEO-->
-
-
-<meta name="robots" content=all />
-<meta name="google" content=all />
-<meta name="googlebot" content=all />
-<meta name="verify" content=all />
-    <!--Title-->
-
-<title>第1章  Scala语言基础. | 锦鲤未离</title>
-
-<link rel="alternate" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
-
-
-<link rel="icon" href="/favicon.ico">
-
-    
-
-<link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/pages/post.css">
-<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-
-
-    <!--script-->
-
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-<script>
-  var admin = "GeekaholicLin";
-  admin = admin.split(",");
-  var gitalk = new Gitalk({
-    clientID: "xxxxx",
-    clientSecret: "xxxxx",
-    repo: "geekaholiclin.github.io",
-    owner: "GeekaholicLin",
-    admin: admin,
-    id: decodeURIComponent(location.pathname),
-    distractionFreeMode: false
-  })
-
-</script>
-
-    
-    
+  <meta charset="utf-8">
+  <title>{{ head_title() }}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="{{ head_keywords() }}">
+  <meta name="description" content="{{ head_description() }}">
+  {{ partial('partial/og') }}
+  <!-- Canonical links -->
+  <link rel="canonical" href="{{ url }}">
+  <!-- Alternative links -->
+  <!-- CSS and JS-->
+  {{ head_jscss({js: true})}}
+  <!-- RSS -->
+  {{ feed_tag('atom.xml') }}
+  <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon" />
+  <script>
+        lc.init({
+          appId : '{{theme.lc.app_id}}',
+          appKey : '{{theme.lc.app_key}}',
+          serverURL : '{{theme.lc.url}}'
+        }, {
+          xid : '{{page_uid()}}',
+          url : '{{page.path || page.permalink}}',
+          title : '{{page_title()}}'
+        }, {
+          counterTable: '',
+          commentTable: '',
+          donateTable: ''
+        });
+  </script>
 <meta name="generator" content="Hexo 6.1.0"></head>
-
-<body id="normal">
-<!--[if lte IE 8]>
-<style>
-    html{ font-size: 1em }
-</style>
-<![endif]-->
-<!--[if lte IE 9]>
-<style>
-    header{ top: 71px; position: absolute!important;}
-    #container{padding-top: 151px!important;}
-</style>
-<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
-<![endif]-->
-
-<div id="wrap">
-    <header  style="position: absolute;" >
-    <div id="site-meta">
-        <a href="/" id="logo">
-            <h1 class="title">锦鲤未离</h1>
-        </a>
-        
-        <h2 class="subtitle">KoiNL</h2>
-        
-    </div>
-    <ul id="nav">
-        
-            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
-        
-            <li><a href="/atom.xml"><i class="fa fa-rss"></i>RSS</a></li>
-        
-        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a></li>
-    </ul>
-</header>
-
-    <div id="container">
-        
-<ul id="sidebar">
-    
-    
-<li class="widget notification">
-    <i class="fa fa-bell-o"></i>
-    <div>
-        
-<p>主题ylion v0.0.0版本即将上线，敬请期待~！
-主题作者：<a href="https://github.com/GeekaholicLin"
-title="fork me" target="_blank">Geekaholic</a></p>
-    </div>
-</li>
-
-    
-    
-<li class="widget widget-normal category">
-    <h3 class="fa fa-th widget-title">分类</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/"><i class="fa" aria-hidden="true">Applied Statistics</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/"><i class="fa" aria-hidden="true">Data Structure and Algorithm</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/"><i class="fa" aria-hidden="true">Data-Mining</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/"><i class="fa" aria-hidden="true">Data-Processing-and-Analysing</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/"><i class="fa" aria-hidden="true">Hadoop</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/"><i class="fa" aria-hidden="true">MATLAB</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/"><i class="fa" aria-hidden="true">SqlServer</i></a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/"><i class="fa" aria-hidden="true">spark</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/"><i class="fa" aria-hidden="true">时间序列分析</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/"><i class="fa" aria-hidden="true">测试区</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"><i class="fa" aria-hidden="true">深度卷积神经网络</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/"><i class="fa" aria-hidden="true">电子设备</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/"><i class="fa" aria-hidden="true">考试</i></a><span class="category-list-count">1</span></li></ul>
-</li>
-
-
-    
-    
-<li class="widget widget-normal archive">
-  <h3 class="fa fa-archive widget-title">归档</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/"><i class="fa" aria-hidden="true">三月 2023</i></a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/"><i class="fa" aria-hidden="true">二月 2023</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/"><i class="fa" aria-hidden="true">十一月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/"><i class="fa" aria-hidden="true">十月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/"><i class="fa" aria-hidden="true">九月 2022</i></a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/"><i class="fa" aria-hidden="true">八月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/"><i class="fa" aria-hidden="true">七月 2022</i></a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/"><i class="fa" aria-hidden="true">六月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/"><i class="fa" aria-hidden="true">五月 2022</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/"><i class="fa" aria-hidden="true">四月 2022</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/"><i class="fa" aria-hidden="true">三月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/"><i class="fa" aria-hidden="true">二月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/"><i class="fa" aria-hidden="true">一月 2022</i></a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/01/"><i class="fa" aria-hidden="true">一月 1999</i></a><span class="archive-list-count">2</span></li></ul>
-</li>
-
-
-    
-    
-<li class="widget widget-normal popular-posts" id="popular-posts">
-    <h3 class="fa fa-thermometer-3 widget-title">热门文章</h3>
-    <ul id="popular-content">
-        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
-    </ul>
-</li>
-
-    
-    
-
-    
-    
-<li class="widget widget-normal friends-link">
-    <h3 class="fa fa-globe widget-title">友链</h3><br/>
-
-    
-        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
-
-    
-
-</li>
-
-    
-</ul>
-
-
-        <div id="main">
-    <article id="post">
-        <div id="post-header">
-
-            <h1 id="第1章  Scala语言基础.">
-                
-                第1章  Scala语言基础.
-                
-            </h1>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>spark</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            null
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2023/03/24</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="第1章  Scala语言基础."
-              data-leadcloud-url="/posts/spark_01/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-</div>
-
-            
-            
-        </div>
-        
-        <div id="post-body">
-            <p>有关于Scala语言的一些基础（例如数据结构、类与对象等）已在下述代码中述明…</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> scalatestkoinl</span><br><span class="line"><span class="keyword">import</span> scala.collection.mutable.ArrayBuffer    <span class="comment">// 1.1.2 变长数组(数组缓冲)需要</span></span><br><span class="line"></span><br><span class="line">object info &#123;</span><br><span class="line"><span class="keyword">private</span> <span class="type">var</span> <span class="variable">CONSTANT</span> <span class="operator">=</span> <span class="string">&quot;汪汪汪。。。&quot;</span>    <span class="comment">//伴生对象中的私有字段</span></span><br><span class="line"><span class="keyword">case</span> <span class="keyword">class</span> <span class="title class_">Person</span>(name:String,age:Int)    <span class="comment">// 样例类</span></span><br><span class="line">def <span class="title function_">main</span><span class="params">(args:Array[String])</span>&#123;</span><br><span class="line">  <span class="comment">// 一、Scala的数据结构</span></span><br><span class="line">  <span class="comment">// 1. 数组</span></span><br><span class="line">  <span class="comment">// 1.1. 定长数组与变长数组的定义与使用</span></span><br><span class="line">  <span class="comment">// 1.1.1. 定长数组</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">arr1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Array</span>[Int](<span class="number">8</span>)    <span class="comment">// 初始化一个长度为8的定长数组，其他元素均为0</span></span><br><span class="line">  println(arr1)    <span class="comment">// 直接打印定长数组，内容为数组的hashcode值</span></span><br><span class="line">  <span class="comment">// 1.1.2. 变长数组(数组缓冲)，需要导入包，见第二行</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">ab</span> <span class="operator">=</span> ArrayBuffer[Int]()    <span class="comment">// 初始化变长数组</span></span><br><span class="line">  ab += <span class="number">1</span>    <span class="comment">// 表示尾部追加元素 +=</span></span><br><span class="line">  ab += (<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)    <span class="comment">// 追加多个元素 +=()</span></span><br><span class="line">  ab ++= Array(<span class="number">6</span>,<span class="number">7</span>)    <span class="comment">// 追加一个数组 ++=Array()</span></span><br><span class="line">  ab ++= ArrayBuffer(<span class="number">8</span>,<span class="number">9</span>)    <span class="comment">// 追加一个数组缓冲 ++=ArrayBuffer()</span></span><br><span class="line">  ab.insert(<span class="number">0</span>,<span class="number">0</span>)    <span class="comment">// 在数组某个位置插入元素用insert，从某下标插入</span></span><br><span class="line">  ab.remove(<span class="number">0</span>)    <span class="comment">// 删除数组某个位置的元素用remove按照下标删除</span></span><br><span class="line">  println(ab)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 1.2. 数组的遍历及应用（计算元素总和和查找最大元素）</span></span><br><span class="line">  <span class="type">var</span> <span class="variable">myArr</span> <span class="operator">=</span> Array(<span class="number">1.2</span>,<span class="number">2.4</span>,<span class="number">3.6</span>,<span class="number">4.8</span>)</span><br><span class="line">  <span class="keyword">for</span> (x&lt;-myArr)&#123;print(x+<span class="string">&quot; ,&quot;</span>)&#125;    <span class="comment">// 打印输出所有的数组元素</span></span><br><span class="line">  println()</span><br><span class="line">  <span class="comment">// 计算数组所有元素的总和</span></span><br><span class="line">  <span class="type">var</span> <span class="variable">total</span> <span class="operator">=</span> <span class="number">0.0</span></span><br><span class="line">  <span class="keyword">for</span> (i&lt;- <span class="number">0</span> to (myArr.length - <span class="number">1</span>))&#123;total += myArr(i)&#125; </span><br><span class="line">  println(<span class="string">&quot;总和为：&quot;</span>+total)</span><br><span class="line">  <span class="comment">// 查找数组中的最大元素</span></span><br><span class="line">  <span class="type">var</span> <span class="variable">max</span> <span class="operator">=</span> myArr(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">for</span> (i&lt;-<span class="number">1</span> to(myArr.length-<span class="number">1</span>))&#123;<span class="keyword">if</span>(myArr(i)&gt;max)max=myArr(i)&#125;</span><br><span class="line">  println(<span class="string">&quot;最大值为：&quot;</span>+max)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 1.3. 数组转换</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">arr</span> <span class="operator">=</span> Array(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>)    <span class="comment">// 定义一个数组</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">newArr</span> <span class="operator">=</span> <span class="keyword">for</span>(e&lt;- arr <span class="keyword">if</span> e%<span class="number">2</span>==<span class="number">0</span>) yield e*<span class="number">5</span>    <span class="comment">// 将偶数取出乘以5后生成一个新的数组</span></span><br><span class="line">  println(newArr.toBuffer)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 2. 元组</span></span><br><span class="line">  val tuple=(<span class="string">&quot;itcast&quot;</span>,<span class="number">3.14</span>,<span class="number">65535</span>)</span><br><span class="line">  print(tuple._1)    <span class="comment">// 获取第一个元素的值</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 3. 集合-列表</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">fruit</span> <span class="operator">=</span> <span class="string">&quot;apples&quot;</span>::(<span class="string">&quot;oranges&quot;</span>::(<span class="string">&quot;pears&quot;</span>::Nil))</span><br><span class="line">  <span class="type">val</span> <span class="variable">num</span> <span class="operator">=</span> Nil</span><br><span class="line">  <span class="title function_">println</span><span class="params">(<span class="string">&quot;head of fruit:&quot;</span>+fruit.head)</span>    <span class="comment">// 获取列表第一个元素</span></span><br><span class="line">  println(<span class="string">&quot;tail of fruit:&quot;</span>+fruit.tail)    <span class="comment">// 除第一个元素以外的元素</span></span><br><span class="line">  println(<span class="string">&quot;check if fruit is empty:&quot;</span>+fruit.isEmpty)    <span class="comment">// 是否为空</span></span><br><span class="line">  println(<span class="string">&quot;check if num is empty:&quot;</span>+num.isEmpty)   </span><br><span class="line">  println(<span class="string">&quot;take of fruit:&quot;</span>+fruit.take(<span class="number">2</span>))    <span class="comment">// 获取前2个元素</span></span><br><span class="line">  println(<span class="string">&quot;contains of fruit:&quot;</span>+fruit.contains(<span class="string">&quot;apples&quot;</span>))    <span class="comment">// 是否包含该元素</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 4. 集合-集合</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">site</span> <span class="operator">=</span> Set(<span class="string">&quot;Sougou&quot;</span>,<span class="string">&quot;Google&quot;</span>,<span class="string">&quot;Baidu&quot;</span>)</span><br><span class="line">  val nums : Set[Int] = Set()</span><br><span class="line">  println(<span class="string">&quot;第一个网站：&quot;</span>+site.head)</span><br><span class="line">  println(<span class="string">&quot;其余网站：&quot;</span>+site.tail)</span><br><span class="line">  println(<span class="string">&quot;查看site集合是否为空：&quot;</span>+site.isEmpty)</span><br><span class="line">  println(<span class="string">&quot;查看num集合是否为空：&quot;</span>+num.isEmpty)</span><br><span class="line">  println(<span class="string">&quot;查看site的前2个网站：&quot;</span>+site.take(<span class="number">2</span>))</span><br><span class="line">  println(<span class="string">&quot;查看集合是否包含网站Sougou：&quot;</span>+site.contains(<span class="string">&quot;Sougou&quot;</span>))</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 5. 集合-键值对</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">colors</span> <span class="operator">=</span> Map(<span class="string">&quot;red&quot;</span>-&gt;<span class="string">&quot;1&quot;</span>,<span class="string">&quot;azure&quot;</span>-&gt;<span class="string">&quot;2&quot;</span>,<span class="string">&quot;peru&quot;</span>-&gt;<span class="string">&quot;3&quot;</span>)</span><br><span class="line">  <span class="type">val</span> <span class="variable">perucolors</span> <span class="operator">=</span> <span class="keyword">if</span>(colors.contains(<span class="string">&quot;peru&quot;</span>))colors(<span class="string">&quot;peru&quot;</span>) <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">azurecolors</span> <span class="operator">=</span> colors.getOrElse(<span class="string">&quot;azure&quot;</span>,<span class="number">0</span>)</span><br><span class="line">  println(<span class="string">&quot;获取colors中键为read的值：&quot;</span>+colors(<span class="string">&quot;red&quot;</span>))</span><br><span class="line">  println(<span class="string">&quot;获取colors中所有的键：&quot;</span>+colors.keys)</span><br><span class="line">  println(<span class="string">&quot;获取colors中所有的值：&quot;</span>+colors.values)</span><br><span class="line">  println(<span class="string">&quot;获取colors中是否为空：&quot;</span>+colors.isEmpty)</span><br><span class="line">  println(<span class="string">&quot;获取colors中是否包含键peru，包含则返回对应值，否则返回0：&quot;</span>+perucolors)</span><br><span class="line">  println(<span class="string">&quot;获取colors中是否包含键azure，包含则返回对应值，否则返回0：&quot;</span>+azurecolors)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 二、Scala面向对象的特性</span></span><br><span class="line">  <span class="comment">// 1. 类与对象  </span></span><br><span class="line">  val pt=<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line">  pt.move(<span class="number">10</span>,<span class="number">10</span>)    <span class="comment">//移到一个新的位置</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 2. 继承</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">loc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Location</span>(<span class="number">10</span>,<span class="number">20</span>,<span class="number">15</span>);</span><br><span class="line">  loc.move(<span class="number">10</span>,<span class="number">10</span>,<span class="number">5</span>);    <span class="comment">//移到一个新的位置</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 3. 单例对象和伴生对象</span></span><br><span class="line">  <span class="comment">// 3.1. 单例对象</span></span><br><span class="line">  SingletonObject.hello()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 3.2. 伴生对象</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">dog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">info</span></span><br><span class="line">  dog.name = <span class="string">&quot;二哈666&quot;</span>    <span class="comment">// 伴生对象中的私有字段</span></span><br><span class="line">  dog.printName()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 4. 特质</span></span><br><span class="line">  <span class="type">var</span> <span class="variable">people</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">People</span></span><br><span class="line">  people.speak()</span><br><span class="line">  people.listen()</span><br><span class="line">  people.run()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 三、Scala的模式匹配和样例类</span></span><br><span class="line">  <span class="comment">// 1. 模式匹配</span></span><br><span class="line">  println(matchTest(<span class="number">3</span>))</span><br><span class="line">  def <span class="title function_">matchTest</span><span class="params">(x:Int)</span>:String = x match &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>=&gt;<span class="string">&quot;one&quot;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>=&gt;<span class="string">&quot;two&quot;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>=&gt;<span class="string">&quot;many&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 2. 样例类</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">alice</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Alice&quot;</span>, <span class="number">25</span>)</span><br><span class="line">  <span class="type">val</span> <span class="variable">bob</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Bob&quot;</span>,<span class="number">32</span>)</span><br><span class="line">  <span class="type">val</span> <span class="variable">charlie</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Charlie&quot;</span>, <span class="number">32</span>)</span><br><span class="line">  <span class="keyword">for</span> (person&lt;-List(alice,bob,charlie))&#123;</span><br><span class="line">    person match &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="title function_">Person</span><span class="params">(<span class="string">&quot;Alice&quot;</span>,<span class="number">25</span>)</span> =&gt;println(<span class="string">&quot;Hi Alice!&quot;</span>)</span><br><span class="line">      <span class="keyword">case</span> <span class="title function_">Person</span><span class="params">(<span class="string">&quot;Bob&quot;</span>,<span class="number">32</span>)</span>=&gt;println(<span class="string">&quot;Hi Bob!&quot;</span>)</span><br><span class="line">      <span class="keyword">case</span> <span class="title function_">Person</span><span class="params">(name,age)</span>=&gt;</span><br><span class="line">      println(<span class="string">&quot;Name:&quot;</span>+name+<span class="string">&quot;\t&quot;</span>+<span class="string">&quot;Age:&quot;</span>+age)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类与对象相关类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span>(val xc:Int,val yc:Int)&#123;</span><br><span class="line">  <span class="keyword">var</span> x:Int = xc</span><br><span class="line">  <span class="keyword">var</span> y:Int = yc</span><br><span class="line">  def <span class="title function_">move</span><span class="params">(dx:Int,dy:Int)</span>: Unit =&#123;</span><br><span class="line">    x = x+<span class="type">dy</span></span><br><span class="line">    <span class="variable">y</span> <span class="operator">=</span> y+dy</span><br><span class="line">    <span class="title function_">println</span><span class="params">(<span class="string">&quot;x的坐标点：&quot;</span>+x)</span>;</span><br><span class="line">    println(<span class="string">&quot;y的坐标点：&quot;</span>+y);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 类与对象与继承相关类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Location</span>(override val xc:Int, override val yc:Int,val zc:Int)<span class="keyword">extends</span> <span class="title class_">Point</span>(xc,yc)&#123;</span><br><span class="line">  <span class="keyword">var</span> z:Int = zc</span><br><span class="line">  def <span class="title function_">move</span><span class="params">(dx:Int,dy:Int,dz:Int)</span>: Unit =&#123;</span><br><span class="line">    x = x+<span class="type">dx</span></span><br><span class="line">    <span class="variable">y</span> <span class="operator">=</span> y+<span class="type">dy</span></span><br><span class="line">    <span class="variable">z</span> <span class="operator">=</span> z+dz</span><br><span class="line">    <span class="title function_">println</span><span class="params">(<span class="string">&quot;x的坐标点：&quot;</span>+x)</span></span><br><span class="line">    println(<span class="string">&quot;y的坐标点：&quot;</span>+y)</span><br><span class="line">    println(<span class="string">&quot;z的坐标点：&quot;</span>+z)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 单例对象相关类</span></span><br><span class="line">object SingletonObject&#123;</span><br><span class="line">  def <span class="title function_">hello</span><span class="params">()</span>: Unit =&#123;println(<span class="string">&quot;Hello,This is Sinleton Object&quot;</span>)&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 伴生对象相关类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">info</span>&#123;</span><br><span class="line">  val id=<span class="number">666</span></span><br><span class="line">  <span class="keyword">private</span> <span class="type">var</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;二哈&quot;</span></span><br><span class="line">  def <span class="title function_">printName</span><span class="params">()</span>:Unit=(println(info.CONSTANT+name))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//特质相关类</span></span><br><span class="line">trait Animal&#123;</span><br><span class="line">  <span class="comment">//定义一个抽象方法方法（没有实现的方法）</span></span><br><span class="line">  def <span class="title function_">speak</span><span class="params">()</span></span><br><span class="line">  def <span class="title function_">listen</span><span class="params">()</span>:Unit=&#123;&#125;</span><br><span class="line">  def <span class="title function_">run</span><span class="params">()</span>:Unit=&#123;println(<span class="string">&quot;I am running&quot;</span>)&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//定义类，继承特质</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">People</span> <span class="keyword">extends</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">  override def <span class="title function_">speak</span><span class="params">()</span>: Unit = &#123;println(<span class="string">&quot;I am speaking English&quot;</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        <div id="post-footer">
-            <div class="avatar" >
-                <img src="http://example.com/author.jpg" alt="avatar"/>
-                
-                <a href="javascript:void(0)" class="high-song">high起来 &#128541;</a>
-                
-                
-                <a href="javascript:void(0)" class="donate fa">赠我一杯 &#128536;</a>
-                
-            </div>
-            <ul class="author-profile-section">
-                <li>
-                  
-                  作者:
-                  
-                    
-                    <a href="/about.html">Koi_NL</a>
-                </li>
-                
-                <li>发表日期: <span>2023-03-24  18:56:52</span></li>
-                
-                <li>最后编辑日期: <span>2023-03-24  18:58:16</span></li>
-                
-                <li class="post-category">
-                    文章分类:
-                    
-                    <a href="/categories/spark/">spark</a>
-                    
-                </li>
-                <li class="post-tags">
-                    文章标签:
-                    
-                </li>
-                
-                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
-知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
-</a></li>
-                
-            </ul>
-            <div id="donate-wrap">
-                
-                
-                
-                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
-                
-                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
-                
-                
-            </div>
-        </div>
-    </article>
-    <div class="article-nav">
-        
-        <a href="/posts/spark_04/" class="pre-post fa fa-caret-left">第4章  Spark SQL结构化数据文件处理</a>
-        
-        
-        <a href="/posts/spark_03/" class="next-post fa">第3章  Spark RDD弹性分布式数据集</a>
-        
-    </div>
-    
-    <div id="comments">
-        
-
-<script>
-  gitalk.render("comments");
-</script>
-
-
-
-    </div>
-    
-</div>
-
-
-    </div>
-    <footer id="footer">
-    
-    <div class="social">
-        
-        <a href="https://www.example1.com" class="fa fa-free-code-camp" target="_blank" title="freecodecamp"></a>
-        
-        <a href="https://www.example2.com" class="fa fa-github" target="_blank" title="Follow me~"></a>
-        
-    </div>
-    
-    <div>
-        
-        <a href="/" class="copyright-links">Koi_NL</a>&copy;2015 - 2023.All Rights
-        Reserved.
-    </div>
-    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
-                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
-    </p>
-    
-    
-    <p>
-        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
-        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
-        </span>
-    </p>
-    
-</footer>
-
-</div>
-    <ul id="tools">
-    <li class="totop-btn fa fa-angle-up"></li>
-    <li class="exchange-btn fa fa-exchange"></li>
-  
-    <li class="toc-btn fa fa-list-ul"></li>
-    
-    
-
-    
-    <li class="comment-btn fa fa-comments-o">
-        <a href="#comments" title="comments"></a>
-    </li>
-    
-</ul>
-<p id="process"></p>
-<div id="search-overlay">
-    <div class="search-area-wrap">
-        <div id="search-area">
-            <div class="input-wrap focus">
-                <i class="fa fa-search" aria-hidden="true"></i>
-                <input id="search-input" autofocus autocomplete="off" type="text"
-                       placeholder="search this website..."/>
-            </div>
-            <ul id="search-result">
-                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-    
-
-
-    
-<script src="/js/highsong.js"></script>
-
-
-
-
-
-<script src="/js/search.js"></script>
-
-<script type="text/javascript">
-    //theme config datas
-    var copyrightObj = {};
-    copyrightObj.enable = 'true';
-    copyrightObj.triggerCopyLength = '200';
-    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
-    var leancloudObj = {};
-    leancloudObj.enable = 'true';
-    leancloudObj.className = 'BlogCounter';
-    leancloudObj.limits = '10';
-</script>
-<script type="text/javascript">
-    var search = {};
-    var search_path = "search.xml";
-    if (!search_path) {
-        search_path = "search.xml";
+<body>
+  <!-- header -->
+  {{ partial('partial/header') }}
+  <!-- main -->
+  {{ body }}
+  <!-- footer -->
+  {{ partial('partial/footer') }}
+  <!-- fixed action bar -->
+  {{ partial('partial/fab') }}
+  <!-- after footer, some 3rd script place here -->
+    <script>
+    var hljs_labels = {
+        left: "{{__('hljs.left')}}",
+        right: "{{__('hljs.right')}}",
+        copy: "{{__('hljs.copy')}}"
     }
-    search.path = "/" + search_path;
-    search.func =  _ajax.init();
-</script>
-
-<script src="/js/app.js"></script>
-
-
-
+    </script>
+    {{ js('js/hljs.js') }}
+    {{ js('js/script.js')}}
+    {{ partial('partial/analytics') }}
+    {{ partial('partial/lc') }}
 </body>
 </html>

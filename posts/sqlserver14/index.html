@@ -1,385 +1,57 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="{{ page.lang }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
 <head>
-    <!--Setting-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable"  content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no,email=no">
-    
-    
-    <!--Simple SEO-->
-
-
-<meta name="robots" content=all />
-<meta name="google" content=all />
-<meta name="googlebot" content=all />
-<meta name="verify" content=all />
-    <!--Title-->
-
-<title>『SQL Server』第十四章  数据仓库与数据挖掘 | 锦鲤未离</title>
-
-<link rel="alternate" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
-
-
-<link rel="icon" href="/favicon.ico">
-
-    
-
-<link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/pages/post.css">
-<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-
-
-    <!--script-->
-
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-<script>
-  var admin = "GeekaholicLin";
-  admin = admin.split(",");
-  var gitalk = new Gitalk({
-    clientID: "xxxxx",
-    clientSecret: "xxxxx",
-    repo: "geekaholiclin.github.io",
-    owner: "GeekaholicLin",
-    admin: admin,
-    id: decodeURIComponent(location.pathname),
-    distractionFreeMode: false
-  })
-
-</script>
-
-    
-    
+  <meta charset="utf-8">
+  <title>{{ head_title() }}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="{{ head_keywords() }}">
+  <meta name="description" content="{{ head_description() }}">
+  {{ partial('partial/og') }}
+  <!-- Canonical links -->
+  <link rel="canonical" href="{{ url }}">
+  <!-- Alternative links -->
+  <!-- CSS and JS-->
+  {{ head_jscss({js: true})}}
+  <!-- RSS -->
+  {{ feed_tag('atom.xml') }}
+  <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon" />
+  <script>
+        lc.init({
+          appId : '{{theme.lc.app_id}}',
+          appKey : '{{theme.lc.app_key}}',
+          serverURL : '{{theme.lc.url}}'
+        }, {
+          xid : '{{page_uid()}}',
+          url : '{{page.path || page.permalink}}',
+          title : '{{page_title()}}'
+        }, {
+          counterTable: '',
+          commentTable: '',
+          donateTable: ''
+        });
+  </script>
 <meta name="generator" content="Hexo 6.1.0"></head>
-
-<body id="normal">
-<!--[if lte IE 8]>
-<style>
-    html{ font-size: 1em }
-</style>
-<![endif]-->
-<!--[if lte IE 9]>
-<style>
-    header{ top: 71px; position: absolute!important;}
-    #container{padding-top: 151px!important;}
-</style>
-<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
-<![endif]-->
-
-<div id="wrap">
-    <header  style="position: absolute;" >
-    <div id="site-meta">
-        <a href="/" id="logo">
-            <h1 class="title">锦鲤未离</h1>
-        </a>
-        
-        <h2 class="subtitle">KoiNL</h2>
-        
-    </div>
-    <ul id="nav">
-        
-            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
-        
-            <li><a href="/atom.xml"><i class="fa fa-rss"></i>RSS</a></li>
-        
-        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a></li>
-    </ul>
-</header>
-
-    <div id="container">
-        
-<ul id="sidebar">
-    
-    
-<li class="widget notification">
-    <i class="fa fa-bell-o"></i>
-    <div>
-        
-<p>主题ylion v0.0.0版本即将上线，敬请期待~！
-主题作者：<a href="https://github.com/GeekaholicLin"
-title="fork me" target="_blank">Geekaholic</a></p>
-    </div>
-</li>
-
-    
-    
-<li class="widget widget-normal category">
-    <h3 class="fa fa-th widget-title">分类</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/"><i class="fa" aria-hidden="true">Applied Statistics</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/"><i class="fa" aria-hidden="true">Data Structure and Algorithm</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/"><i class="fa" aria-hidden="true">Data-Mining</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/"><i class="fa" aria-hidden="true">Data-Processing-and-Analysing</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/"><i class="fa" aria-hidden="true">Hadoop</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/"><i class="fa" aria-hidden="true">MATLAB</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/"><i class="fa" aria-hidden="true">SqlServer</i></a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/"><i class="fa" aria-hidden="true">spark</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/"><i class="fa" aria-hidden="true">时间序列分析</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/"><i class="fa" aria-hidden="true">测试区</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"><i class="fa" aria-hidden="true">深度卷积神经网络</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/"><i class="fa" aria-hidden="true">电子设备</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/"><i class="fa" aria-hidden="true">考试</i></a><span class="category-list-count">1</span></li></ul>
-</li>
-
-
-    
-    
-<li class="widget widget-normal archive">
-  <h3 class="fa fa-archive widget-title">归档</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/"><i class="fa" aria-hidden="true">三月 2023</i></a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/"><i class="fa" aria-hidden="true">二月 2023</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/"><i class="fa" aria-hidden="true">十一月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/"><i class="fa" aria-hidden="true">十月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/"><i class="fa" aria-hidden="true">九月 2022</i></a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/"><i class="fa" aria-hidden="true">八月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/"><i class="fa" aria-hidden="true">七月 2022</i></a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/"><i class="fa" aria-hidden="true">六月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/"><i class="fa" aria-hidden="true">五月 2022</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/"><i class="fa" aria-hidden="true">四月 2022</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/"><i class="fa" aria-hidden="true">三月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/"><i class="fa" aria-hidden="true">二月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/"><i class="fa" aria-hidden="true">一月 2022</i></a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/01/"><i class="fa" aria-hidden="true">一月 1999</i></a><span class="archive-list-count">2</span></li></ul>
-</li>
-
-
-    
-    
-<li class="widget widget-normal popular-posts" id="popular-posts">
-    <h3 class="fa fa-thermometer-3 widget-title">热门文章</h3>
-    <ul id="popular-content">
-        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
-    </ul>
-</li>
-
-    
-    
-
-    
-    
-<li class="widget widget-normal friends-link">
-    <h3 class="fa fa-globe widget-title">友链</h3><br/>
-
-    
-        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
-
-    
-
-</li>
-
-    
-</ul>
-
-
-        <div id="main">
-    <article id="post">
-        <div id="post-header">
-
-            <h1 id="『SQL Server』第十四章  数据仓库与数据挖掘">
-                
-                『SQL Server』第十四章  数据仓库与数据挖掘
-                
-            </h1>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>SqlServer</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            null
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2022/07/17</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="『SQL Server』第十四章  数据仓库与数据挖掘"
-              data-leadcloud-url="/posts/sqlserver14/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-</div>
-
-            
-            
-        </div>
-        
-        <div id="post-body">
-            <h1 id="第十四章-数据仓库与数据挖掘"><a href="#第十四章-数据仓库与数据挖掘" class="headerlink" title="第十四章  数据仓库与数据挖掘"></a>第十四章  数据仓库与数据挖掘</h1><p>1.数据仓库<br>(1) 特性:面向主题:设计方法<br>集成:数据的抽取,转换,（清洗），装载<br>不可更新<br>随时间变化<br>粒度:粒度与综合程度成正比<br>元数据:技术型和业务型<br>维护:实时延时和快照维护增量维护<br>(2) 设计方法:自底向上,自顶向下<br>2.OLAP:<br>即时OLAP,全局OLTP<br>基本操作:钻取,卷起<br>切片和切块,旋转<br>多维molap,关系rolap,混合 holap<br>3.数据挖掘<br>(1) 方法:关联规则挖掘：支持度和置信度<br>分类挖掘:监督学习,知道怎么分,<br>样本集,训练集,测试集,验证集:分类算法,分类器<br>聚类挖掘:无监督学习靠系统分析分类,K-means:同一集合尽可能大,不同尽可能小<br>时间序列分析<br>4.知识发现<br>步骤:数据准备,数据挖掘,结果的解释评估</p>
-<p>目录<br>1 基本概念<br>2 决策支持系统(DSS)的发展<br>2.1 基本概念<br>2.2 基于数据仓库的决策支持系统<br>3 数据仓库技术概述<br>3.1 数据仓库的概念和特性<br>3.2 数据仓库的体系结构和环境<br>3.3 数据仓库的数据组织<br>3.4 元数据<br>3.5 操作型数据存储<br>4 设计与建造数据仓库<br>4.1 数据仓库设计的需求与方法<br>4.2 数据仓库的数据模型<br>4.3 数据仓库设计步骤<br>5 数据仓库的运行与维护<br>5.1 数据仓库数据的更新维护<br>5.2 数据仓库监控与元数据管理<br>6 联机分析处理(OLAP)与多维数据模型<br>6.1 基本概念<br>6.2 多维分析的基本操作<br>6.3 OLAP的实现方式<br>7 数据挖掘技术<br>7.1 数据挖掘的步骤<br>7.2 常见的数据挖掘任务<br>1 基本概念<br>数据仓库技术所解决的问题是如何更合理和更有效的组织企业的数据体系，以更好地满足企业信息型应用对数据的要求，降低对企业的数据管理、数据获取和数据集成的成本，提高数据系统响应速度，提高数据质量和数据的一致性。<br>数据挖掘技术所解决的问题是如何针对具体的分析对象和分析需求，尝试通过智能和自动化的手段把数据转换为有用的信息和知识<br>2 决策支持系统(DSS)的发展<br>2.1 基本概念<br>    操作性数据是指由企业的基本业务系统所产生的数据，操作性数据及相应数据处理所处的环境，即用于支持企业基本业务应用的环境<br>使用DSS的目的是为了增加决策的有效性，而不是为了提高做出决策的效率<br>2.2 基于数据仓库的决策支持系统<br>    这种体系结构以数据仓库为核心，数据仓库将企业决策支持所需的数据集成在一起，构成一个集成的、一致而稳定的数据源<br>    存在两类数据<br>        原始数据<br>            一般来自于企业操作性系统，因此也可以称之为操作型数据<br>        导出数据<br>            为了提高数据查询和管理效率，根据操作型数据计算得到的数据，常用于支持分析型应用<br>3 数据仓库技术概述<br>3.1 数据仓库的概念和特性<br>    建立数据仓库的主要目的是根据决策需求对企业的数据采取适当的手段进行集成，形成一个综合、面向分析的数据环境，用于支持企业的信息型、决策型的分析应用<br>    四个特征<br>        主题性<br>        集成性<br>        不可更新性<br>        时间特性<br>3.2 数据仓库的体系结构和环境<br>    数据仓库的体系结构<br>        操作型数据<br>        操作型数据存储<br>        数据仓库<br>        数据集市<br>        个体层临时数据<br>    体系的功能<br>        数据处理<br>        数据管理<br>        数据应用<br>3.3 数据仓库的数据组织<br>    数据分级别<br>        早期细节级<br>        当前细节级<br>        轻度综合级<br>        高度综合级<br>    粒度<br>        一般将综合级别称为粒度，粒度越大、表示综合程度越高，粒度越小，综合程度越低<br>        粒度是一个重要的设计问题，它影响到数据仓库的数据量以及系统能回答的查询的数据类型<br>    数据分区<br>        数据分区问题是数据仓库的另一个重要问题，为了提高数据管理和查询的效率，分区是有效的办法<br>        分区的方式<br>            系统层分区<br>            应用层分区<br>3.4 元数据<br>    是数据仓库中的重要数据，是关于数据的数据，或者叫做描述数据的数据<br>    描述存储操作型数据的关系数据库的结构、位置、表的结构、表间关系及各种视图等的数据都是元数据<br>    建立元数据的目的是主要在于让用户能更快地找到所需的数据，让前台工具和管理员更好地理解和管理数据<br>    分类<br>        技术型元数据<br>        业务型元数据<br>3.5 操作型数据存储<br>    目的：为了支持一些特殊的应用功能<br>        即时OLAP应用<br>        全局型OLTP应用<br>    在作为数据源的操作型系统与数据仓库之间存在着一个称为操作型数据存储的(ODS)的数据层<br>    分类<br>        ODS I第一类<br>            数据更新频率是秒级<br>        ODS II 第二类<br>            数据更新频率是小时级<br>        ODS III第三类<br>            数据更新频率是天级<br>        ODS IV第四类<br>            不仅仅包括来自操作型环境的数据，也包括由数据仓库层和数据集市层的应用反馈给ODS的一些决策结果和一些报表信息<br>4 设计与建造数据仓库<br>4.1 数据仓库设计的需求与方法<br>    数据仓库的设计<br>        数据体系的设计<br>        应用体系的设计<br>    企业建立数据仓库的目的<br>        实现大量的以数据仓库各层数据为基础的基本信息处理功能<br>    设计方法<br>        数据仓库的设计过程是按照一定的题域分别设计<br>        数据仓库的设计过程是按逐个主题逐步建立的过程，那么就需要进行主题域选择<br>        数据仓库系统设计目标主要在于建立主题数据环境，强调的是数据的集成性，目标在于建立一个全局的一致的数据环境，建立企业的信息资源体系结构的数据核心，并在此基础上，建立基本的觉得支持分析应用<br>4.2 数据仓库的数据模型<br>    概念模型<br>        是用于描述客观世界中的对象及其属性的一种概念性工具<br>    逻辑模型<br>    物理模型<br>4.3 数据仓库设计步骤<br>    概念模型设计<br>    技术评估与环境准备工作<br>    逻辑模型设计<br>    物理模型设计<br>    数据生成与应用实现<br>    数据仓库运行与维护<br>5 数据仓库的运行与维护<br>5.1 数据仓库数据的更新维护<br>    维护的基本思路<br>        根据某种维护策略，在 一定条件下出发维护操作<br>        维护操作捕捉到数据源中的数据变化<br>        通过一定策略对数据仓库中的数据进行相应的更新操作<br>    维护策略<br>        实时维护<br>        延时维护<br>    捕捉数据源的变化的方法<br>        触发器<br>        修改数据源应用程序<br>        通过日志文件<br>        快照比较法<br>    导出数据的维护方法<br>        一是根据维护对象的数据源对齐进行重新计算<br>        二是根据数据源的变化量在维护对象原有数据的基础上进行数据添加和修改，即增量式维护<br>5.2 数据仓库监控与元数据管理<br>    数据仓库监控<br>    元数据管理<br>6 联机分析处理(OLAP)与多维数据模型<br>6.1 基本概念<br>    OLAP主要用于支持复杂的分析操作，侧重对觉得人员和高层管理人员的决策支持<br>    数据的多维分析是针对数据仓库中以多维形式组织起来的数据，从多个角度、不同层次、采用各种数据分析技术、对数据进行剖析，以使用户能从不同角度和不同层次观察和分析数据<br>6.2 多维分析的基本操作<br>    钻取<br>    切片<br>    旋转<br>6.3 OLAP的实现方式<br>    MOLAP基于多维数据库的OLAP<br>    ROLAP基于关系数据库的OALP<br>    HOLAP混合型的OLAP<br>7 数据挖掘技术<br>7.1 数据挖掘的步骤<br>    数据准备<br>    数据挖掘<br>    结果解释评估<br>7.2 常见的数据挖掘任务<br>    分类<br>    估计<br>    预测<br>    相关性分组<br>    关联规则<br>    聚类<br>    描述</p>
-
-        </div>
-        <div id="post-footer">
-            <div class="avatar" >
-                <img src="http://example.com/author.jpg" alt="avatar"/>
-                
-                <a href="javascript:void(0)" class="high-song">high起来 &#128541;</a>
-                
-                
-                <a href="javascript:void(0)" class="donate fa">赠我一杯 &#128536;</a>
-                
-            </div>
-            <ul class="author-profile-section">
-                <li>
-                  
-                  作者:
-                  
-                    
-                    <a href="/about.html">Koi_NL</a>
-                </li>
-                
-                <li>发表日期: <span>2022-07-17  09:14:49</span></li>
-                
-                <li>最后编辑日期: <span>2022-07-18  15:30:46</span></li>
-                
-                <li class="post-category">
-                    文章分类:
-                    
-                    <a href="/categories/SqlServer/">SqlServer</a>
-                    
-                </li>
-                <li class="post-tags">
-                    文章标签:
-                    
-                </li>
-                
-                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
-知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
-</a></li>
-                
-            </ul>
-            <div id="donate-wrap">
-                
-                
-                
-                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
-                
-                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
-                
-                
-            </div>
-        </div>
-    </article>
-    <div class="article-nav">
-        
-        <a href="/posts/sqlserver11/" class="pre-post fa fa-caret-left">『SQL Server』第十一章  故障管理</a>
-        
-        
-        <a href="/posts/sqlserver13/" class="next-post fa">『SQL Server』第十三章  大规模数据库架构</a>
-        
-    </div>
-    
-    <div id="comments">
-        
-
-<script>
-  gitalk.render("comments");
-</script>
-
-
-
-    </div>
-    
-</div>
-
-
-    </div>
-    <footer id="footer">
-    
-    <div class="social">
-        
-        <a href="https://www.example1.com" class="fa fa-free-code-camp" target="_blank" title="freecodecamp"></a>
-        
-        <a href="https://www.example2.com" class="fa fa-github" target="_blank" title="Follow me~"></a>
-        
-    </div>
-    
-    <div>
-        
-        <a href="/" class="copyright-links">Koi_NL</a>&copy;2015 - 2023.All Rights
-        Reserved.
-    </div>
-    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
-                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
-    </p>
-    
-    
-    <p>
-        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
-        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
-        </span>
-    </p>
-    
-</footer>
-
-</div>
-    <ul id="tools">
-    <li class="totop-btn fa fa-angle-up"></li>
-    <li class="exchange-btn fa fa-exchange"></li>
-  
-    <li class="toc-btn fa fa-list-ul"></li>
-    
-    
-
-    
-    <li class="comment-btn fa fa-comments-o">
-        <a href="#comments" title="comments"></a>
-    </li>
-    
-</ul>
-<p id="process"></p>
-<div id="search-overlay">
-    <div class="search-area-wrap">
-        <div id="search-area">
-            <div class="input-wrap focus">
-                <i class="fa fa-search" aria-hidden="true"></i>
-                <input id="search-input" autofocus autocomplete="off" type="text"
-                       placeholder="search this website..."/>
-            </div>
-            <ul id="search-result">
-                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98"><span class="toc-number">1.</span> <span class="toc-text">第十四章  数据仓库与数据挖掘</span></a></li></ol>
-
-
-    
-<script src="/js/highsong.js"></script>
-
-
-
-
-
-<script src="/js/search.js"></script>
-
-<script type="text/javascript">
-    //theme config datas
-    var copyrightObj = {};
-    copyrightObj.enable = 'true';
-    copyrightObj.triggerCopyLength = '200';
-    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
-    var leancloudObj = {};
-    leancloudObj.enable = 'true';
-    leancloudObj.className = 'BlogCounter';
-    leancloudObj.limits = '10';
-</script>
-<script type="text/javascript">
-    var search = {};
-    var search_path = "search.xml";
-    if (!search_path) {
-        search_path = "search.xml";
+<body>
+  <!-- header -->
+  {{ partial('partial/header') }}
+  <!-- main -->
+  {{ body }}
+  <!-- footer -->
+  {{ partial('partial/footer') }}
+  <!-- fixed action bar -->
+  {{ partial('partial/fab') }}
+  <!-- after footer, some 3rd script place here -->
+    <script>
+    var hljs_labels = {
+        left: "{{__('hljs.left')}}",
+        right: "{{__('hljs.right')}}",
+        copy: "{{__('hljs.copy')}}"
     }
-    search.path = "/" + search_path;
-    search.func =  _ajax.init();
-</script>
-
-<script src="/js/app.js"></script>
-
-
-
+    </script>
+    {{ js('js/hljs.js') }}
+    {{ js('js/script.js')}}
+    {{ partial('partial/analytics') }}
+    {{ partial('partial/lc') }}
 </body>
 </html>

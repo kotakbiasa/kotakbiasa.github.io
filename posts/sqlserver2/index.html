@@ -1,427 +1,57 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="{{ page.lang }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
 <head>
-    <!--Setting-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable"  content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no,email=no">
-    
-    
-    <!--Simple SEO-->
-
-
-<meta name="robots" content=all />
-<meta name="google" content=all />
-<meta name="googlebot" content=all />
-<meta name="verify" content=all />
-    <!--Title-->
-
-<title>『SQL Server』考二 | 锦鲤未离</title>
-
-<link rel="alternate" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
-
-
-<link rel="icon" href="/favicon.ico">
-
-    
-
-<link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/pages/post.css">
-<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-
-
-    <!--script-->
-
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-<script>
-  var admin = "GeekaholicLin";
-  admin = admin.split(",");
-  var gitalk = new Gitalk({
-    clientID: "xxxxx",
-    clientSecret: "xxxxx",
-    repo: "geekaholiclin.github.io",
-    owner: "GeekaholicLin",
-    admin: admin,
-    id: decodeURIComponent(location.pathname),
-    distractionFreeMode: false
-  })
-
-</script>
-
-    
-    
+  <meta charset="utf-8">
+  <title>{{ head_title() }}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="{{ head_keywords() }}">
+  <meta name="description" content="{{ head_description() }}">
+  {{ partial('partial/og') }}
+  <!-- Canonical links -->
+  <link rel="canonical" href="{{ url }}">
+  <!-- Alternative links -->
+  <!-- CSS and JS-->
+  {{ head_jscss({js: true})}}
+  <!-- RSS -->
+  {{ feed_tag('atom.xml') }}
+  <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon" />
+  <script>
+        lc.init({
+          appId : '{{theme.lc.app_id}}',
+          appKey : '{{theme.lc.app_key}}',
+          serverURL : '{{theme.lc.url}}'
+        }, {
+          xid : '{{page_uid()}}',
+          url : '{{page.path || page.permalink}}',
+          title : '{{page_title()}}'
+        }, {
+          counterTable: '',
+          commentTable: '',
+          donateTable: ''
+        });
+  </script>
 <meta name="generator" content="Hexo 6.1.0"></head>
-
-<body id="normal">
-<!--[if lte IE 8]>
-<style>
-    html{ font-size: 1em }
-</style>
-<![endif]-->
-<!--[if lte IE 9]>
-<style>
-    header{ top: 71px; position: absolute!important;}
-    #container{padding-top: 151px!important;}
-</style>
-<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
-<![endif]-->
-
-<div id="wrap">
-    <header  style="position: absolute;" >
-    <div id="site-meta">
-        <a href="/" id="logo">
-            <h1 class="title">锦鲤未离</h1>
-        </a>
-        
-        <h2 class="subtitle">KoiNL</h2>
-        
-    </div>
-    <ul id="nav">
-        
-            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
-        
-            <li><a href="/atom.xml"><i class="fa fa-rss"></i>RSS</a></li>
-        
-        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a></li>
-    </ul>
-</header>
-
-    <div id="container">
-        
-<ul id="sidebar">
-    
-    
-<li class="widget notification">
-    <i class="fa fa-bell-o"></i>
-    <div>
-        
-<p>主题ylion v0.0.0版本即将上线，敬请期待~！
-主题作者：<a href="https://github.com/GeekaholicLin"
-title="fork me" target="_blank">Geekaholic</a></p>
-    </div>
-</li>
-
-    
-    
-<li class="widget widget-normal category">
-    <h3 class="fa fa-th widget-title">分类</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/"><i class="fa" aria-hidden="true">Applied Statistics</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/"><i class="fa" aria-hidden="true">Data Structure and Algorithm</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/"><i class="fa" aria-hidden="true">Data-Mining</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/"><i class="fa" aria-hidden="true">Data-Processing-and-Analysing</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/"><i class="fa" aria-hidden="true">Hadoop</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/"><i class="fa" aria-hidden="true">MATLAB</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/"><i class="fa" aria-hidden="true">SqlServer</i></a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/"><i class="fa" aria-hidden="true">spark</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/"><i class="fa" aria-hidden="true">时间序列分析</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/"><i class="fa" aria-hidden="true">测试区</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"><i class="fa" aria-hidden="true">深度卷积神经网络</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/"><i class="fa" aria-hidden="true">电子设备</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/"><i class="fa" aria-hidden="true">考试</i></a><span class="category-list-count">1</span></li></ul>
-</li>
-
-
-    
-    
-<li class="widget widget-normal archive">
-  <h3 class="fa fa-archive widget-title">归档</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/"><i class="fa" aria-hidden="true">三月 2023</i></a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/"><i class="fa" aria-hidden="true">二月 2023</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/"><i class="fa" aria-hidden="true">十一月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/"><i class="fa" aria-hidden="true">十月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/"><i class="fa" aria-hidden="true">九月 2022</i></a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/"><i class="fa" aria-hidden="true">八月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/"><i class="fa" aria-hidden="true">七月 2022</i></a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/"><i class="fa" aria-hidden="true">六月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/"><i class="fa" aria-hidden="true">五月 2022</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/"><i class="fa" aria-hidden="true">四月 2022</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/"><i class="fa" aria-hidden="true">三月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/"><i class="fa" aria-hidden="true">二月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/"><i class="fa" aria-hidden="true">一月 2022</i></a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/01/"><i class="fa" aria-hidden="true">一月 1999</i></a><span class="archive-list-count">2</span></li></ul>
-</li>
-
-
-    
-    
-<li class="widget widget-normal popular-posts" id="popular-posts">
-    <h3 class="fa fa-thermometer-3 widget-title">热门文章</h3>
-    <ul id="popular-content">
-        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
-    </ul>
-</li>
-
-    
-    
-
-    
-    
-<li class="widget widget-normal friends-link">
-    <h3 class="fa fa-globe widget-title">友链</h3><br/>
-
-    
-        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
-
-    
-
-</li>
-
-    
-</ul>
-
-
-        <div id="main">
-    <article id="post">
-        <div id="post-header">
-
-            <h1 id="『SQL Server』考二">
-                
-                『SQL Server』考二
-                
-            </h1>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>SqlServer</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            null
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2022/07/18</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="『SQL Server』考二"
-              data-leadcloud-url="/posts/sqlserver2/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-</div>
-
-            
-            
-        </div>
-        
-        <div id="post-body">
-            <p>没有8，9，至10（含）</p>
-<h2 id="第一套"><a href="#第一套" class="headerlink" title="第一套"></a>第一套</h2><p>商品表（商品号，商品名，单价）<br>销售表（销售单据号，商品号，销售时间，销售数量，销售单价）。<br>商品号，单价，销售数量，销售单价均为整型<br>请编写查询某年某商品的销售总毛利的存储过程，毛利&#x3D;销售数量<em>（销售单价-单价）<br>要求商品号和年份为输入参数，总毛利用输出参数返回。<br>CREATE PROC p_name @商品号 int,@年份 int,@毛利 int output<br>AS<br>DECLARE @销售量 int,@单价 int,@销售单价 int<br>BEGIN<br>SELECT @单价 &#x3D; 单价 FROM 商品表 WHERE 商品号&#x3D;@商品号<br>SELECT @销售单价&#x3D; 销售单价, @销售量&#x3D; sum(销售数量)FROM 销售表 WHERE<br>@商品号&#x3D;商品号 AND 销售时间&#x3D;@年份<br>IF @单价 IS NULL THEN  &#x2F;<em>有？</em>&#x2F;<br>  ROLLBACK;<br>  RETURN;<br>END IF<br>IF @销售单价 IS NULL THEN&#x2F;<em>卖？</em>&#x2F;<br>  ROLLBACK;<br>  RETURN;<br>END IF<br>SET @毛利&#x3D;(@销售单价-@单价)</em>@销售量<br>end</p>
-<h2 id="第二套"><a href="#第二套" class="headerlink" title="第二套"></a>第二套</h2><p>在SQL Server 2008中，设某数据库中有商品表（商品号，商品名，进货价格)，商品号为主码;销售表（商品号，销售时间，销售数量，销售价格，本次利润)，商品号和销售时间为主码，销售价格为本次销售商品的单价。现要求每当在销售表中插入前4列数据时（假设—次只插入一行数据)，系统自动计算本次销售产生的利润，并将该利润赋给销售表的第5列”本次利润”。请编写实现上述功能的后触发型触发器代码。(10分)<br>CREATE TRIGGER tri_name ON 销售表 FOR INSERT<br>  AS<br>   DECLARE @进价 money, @销量 int,@售价 money,@利润 money<br>   SElECT @进价 &#x3D; 进货价格 FROM 商品表<br>   SELECT @销量 &#x3D; 销售数量,@售价 &#x3D; 销售价格 FROM inserted<br>   SET @利润 &#x3D; @销量*(@售价-@进价)<br>   UPDATE 销售表 SET 本次利润 &#x3D; @利润<br>   WHERE 商品号 IN(SELECT 商品号 FROM inserted)<br>   AND 销售时间 IN(SELECT 销售时间 FROM inserted)<br>END</p>
-<h2 id="第三套"><a href="#第三套" class="headerlink" title="第三套"></a>第三套</h2><p>设在SQL Server 2008某数据库中，已建立了四个文件组: fg1、fg2、fg3和fg4，以及一个分区函数RangePF1。RangePF1的定义代码如下:<br>CREATE PARTITION FUNCTION RangePF1(int)AS RANGE LEFT FOR VALUES(100,200,300)<br>(1)请基于RangePF1创建一个分区方案RangePS1，每个分区对应一个文件组。(5分)<br>(2）请使用RangePS1创建一个分区表PartitionT(Gid, GoodName, Price)，该表基于Gid列创建分区。其中Gid: int类型，取值大于等于1; GoodName:统一字符编码可变长类型，最多可存储20个汉字;Price:定点小数类型，小数部分1位，整数部分到千位。(5分)<br>[][创建分区方案 方案名 as 分区 函数名 to （文件组）]<br>[][CREATE TABLE tb_name （）on 方案名（Gid）]<br>1:<br>create partition scheme RangePS1<br>as partition RangePF1<br>to(fg1,fg2,fg3,fg4)<br>2:<br>create table orders<br>(<br>GID int identity(1,1) primary key,<br>GoodName varchar(40),<br>Price numeric(5,1)<br>)<br>on RangePS1(GID)</p>
-<h2 id="第五套"><a href="#第五套" class="headerlink" title="第五套"></a>第五套</h2><p>设有图书管理数据库，包含三张表:图书明细表(图书编号，图书类别，图书名称，作者，出版社，出版日期，定价);读者表（借书证号，姓名，系别，办证日期);借出信息表（借出编号，借书证号，图书编号，借书日期);完成下列操作:(10分)定义一个多语句表值函数，用于查询学生借书情况，只需提供参数:借书证号，就可以通过调用函数返回此学生的借书情况，若有借书籍，则返回所借书籍的编号、书籍名称、定价和借书日期;若没有在借书籍，则返回记录为空。设函数名为: f_BorrowBook(@jszh char(20))。</p>
-<p>CREATE FUNCTION f_BorrowBook(@jszh char(20))<br>RETURNS @jsqkb TABLE(书籍编号 char(20),书籍名称 char(50),定价 float,借书日期 datetime)<br>AS<br>BEGIN<br>INSERT INTO @jsqkb<br>SELECT图书明细表.图书编号,图书名称,定价,借出信息表.借书日期 FROM 借出信息表,图书明细表<br>WHERE 借出信息表.图书编号&#x3D;图书明细表.图书编号 AND 借出信息表.借书证号&#x3D;@jszh<br>RETURN<br>END</p>
-<h2 id="第七套"><a href="#第七套" class="headerlink" title="第七套"></a>第七套</h2><p>BORROWER：<br>借书证号  姓名  系名  班级<br>12011106 张三 计算机 12-1<br>12011107 李四 计算机 12-1<br>12012113 王五 语文 12-2</p>
-<p>LOANS??<br>借书证号  图书馆登记号  借书日期<br>12011106 T001001 2012.01.02<br>12012113 T001026 2013.02.06</p>
-<p>BOOKS??<br>索书号 书名  作者 图书登记号 出版社 价格<br>TP311.1 数据库 李明 T001001 人民 19.00<br>TP311.2 二级C语言 王珊 T001026 科学 32.00<br>1.检索至少借了五本书的同学借书证号，姓名，系名，借书数量<br>2.检索借书和王五同学所借图书的任意一本相同的学牲姓名，系名，书名和借书日期<br>SELECT LOANS.借书证号,姓名,系名,COUNT(<em>) AS 借书数量<br>FROM BORROWER,LOANS<br>WHERE BORROWER.借书证号&#x3D;LOANS.借书证号<br>GROUP BY LOANS.借书证号,姓名,系名<br>HAVING COUNT(</em>)&gt;&#x3D;5;</p>
-<p>SELECT 姓名,系名,书名,借书日期<br>FROM  BORROWER,LOANS , BOOKS<br>WHERE<br> BORROWER.借书证号&#x3D;LOANS.借书证号 AND LOANS.图书馆登记号&#x3D;BOOKS.图书馆登记号<br>AND 索书号 IN<br>(SELECT 索书号 FROM BORROWER,LOANS,BOOKS<br>WHERE BORROW.借书证号&#x3D;LOANS.借书证号<br>AND LOANS.图书馆登记号&#x3D;BOOKS.图书馆登记号<br>AND 姓名&#x3D;”王五”)<br>group by 姓名,系名,书名,借书日期<br>having 姓名 !&#x3D;’王五’</p>
-<h2 id="塢-洢"><a href="#塢-洢" class="headerlink" title="??????????????????????????????????????塢?????????????????? ?洢????"></a>??????????????????????????????????????塢?????????????????? ?洢????</h2><p>CREATE TABLE 商品表(<br>商品号 char(10) PRIMARY KEY,<br>商品名 varchar(40),<br>类别 varchar(20),<br>进货单价 int,<br>销售总量 int default 0)<br>CREATE TABLE 销售表(<br>商品号 char(10) REFERENCES 商品表(商品号),<br>销售时间 datetime,<br>销售数量 int,<br>销售单价 int,<br>PRIMARY KEY(商品号,销售时间))<br>9.12.创建存储过程:指定类别的每种商品今年的销售总数量</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create proc p_name @lb varchar(20)</span><br><span class="line">as</span><br><span class="line">select 商品名, (select sum(销售数量) from 销售表 a </span><br><span class="line">where a.商品号=b.商品号 and year(销售时间)=year(getdate())) as 销售总数量</span><br><span class="line">from 商品表 b</span><br><span class="line">where b.类别=@lb</span><br></pre></td></tr></table></figure>
-<p>8.11.创建存储过程:指定类别的每种商品今年的销售总金额</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create proc p_name @lb varchar(20)</span><br><span class="line">as</span><br><span class="line">select 商品名, (select sum(销售数量*销售单价) from 销售表 a</span><br><span class="line">where a.商品号=b.商品号 and year(销售时间)=year(getdate())) as 销售总金额</span><br><span class="line">from 商品表 b</span><br><span class="line">where b.类别=@lb</span><br></pre></td></tr></table></figure>
-<p>13.创建存储过程:指定类别的每种商品去年的销售总数量</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create proc p_name @lb varchar(20)</span><br><span class="line">as</span><br><span class="line">select a.商品号,商品名,sum(销售数量) as 销售总数量</span><br><span class="line">from 商品表 a join 销售表 b</span><br><span class="line">on a.商品号=b.商品号</span><br><span class="line">where year(销售时间)=year(dateadd(year,-1,getdate()))</span><br><span class="line">and 类别=@lb</span><br><span class="line">group by a.商品号,商品名</span><br></pre></td></tr></table></figure>
-<p>17.创建存储过程:指定日期范围每种商品的销售总数量,包括未销售的商品.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create proc p1 @start_date date, @end_date date</span><br><span class="line">as</span><br><span class="line">select 商品表.商品号,sum(销售数量) from 商品表</span><br><span class="line">left join 销售表 on 商品表.商品号=销售表.商品号</span><br><span class="line">where 销售时间 between @start_date and @end_date</span><br><span class="line">group by 商品表.商品号</span><br></pre></td></tr></table></figure>
-<p>19.创建存储过程:指定商品号的商品销售总数量</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create proc p1 @model varchar(10),@total int output</span><br><span class="line">as</span><br><span class="line">set @total=(select sum(销售数量) from 销售表 s </span><br><span class="line">join 商品表 c on s.商品号=c.商品号</span><br><span class="line">where 商品号=@model)</span><br></pre></td></tr></table></figure>
-<p>14.创建存储过程:指定类别的每个商品的销售总利润,包括未销售的(值为0)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create proc p_Profit @lb char(10)</span><br><span class="line">as</span><br><span class="line">select 商品表.商品号,</span><br><span class="line">case</span><br><span class="line">when 销售表.商品号 is null then 0</span><br><span class="line">else sum((销售单价-进货单价)*数量)</span><br><span class="line">end as 销售总利润</span><br><span class="line">from 商品表 left join 销售表 on 商品表.商品号=销售表.商品号</span><br><span class="line">where 类别=@lb</span><br><span class="line">group by 商品表.商品号</span><br></pre></td></tr></table></figure>
-<p>16.标量函数:指定商品号返回销售总金额</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create function dbo.f_TotalQty(@GoodID char)</span><br><span class="line">returns int</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">return(select sum(销售数量*销售单价)from 商品表 join 销售表</span><br><span class="line">on 商品表.商品号=销售表.商品号</span><br><span class="line">where 商品号=@GoodID)</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>4.多语句表值函数: 返回类别参数的每种商品在2012年的销售总利润,并降序输出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create function f_Profit(@lb char(10))</span><br><span class="line">returns @ProfitTable table(商品号 char(10),总利润 int)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">insert into @ProfitTable</span><br><span class="line">select a.商品号,sum(销售数量*(销售单价-进货单价)) as 总利润</span><br><span class="line">from 销售表 a join 商品表 b on a.商品号=b.商品号</span><br><span class="line">where a.商品号 in(select 商品号 from 商品表 where 类别=@lb)</span><br><span class="line">group by a.商品号</span><br><span class="line">order by 总利润 desc</span><br><span class="line">return @ProfitTable</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>10.6.多语句表值函数：统计指定年份中每个商品的销售总额</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create function fun_name(@year int)</span><br><span class="line">returns @fun_name table(商品号 char(10),销售总金额 int)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">insert into @fun_name</span><br><span class="line">select a.商品号,sum(a.销售单价*b.销售数量) from 商品表 a</span><br><span class="line">join 销售表 b on a.商品号=b.商品号</span><br><span class="line">where year(b.销售时间)=@year</span><br><span class="line">group by a.商品号</span><br><span class="line">return</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>15.18.创建触发器:每当在销售表中插入一条销售记录, 修改商品表中对应商品的销售总量</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create trigger tri_name on 销售表 for insert</span><br><span class="line">as</span><br><span class="line">update 商品表</span><br><span class="line">set 销售总量=商品表.销售总量+(select 销售数量 from inserted)</span><br><span class="line">where 商品号 in(select 商品号 from inserted)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create trigger tri_name on 销售表 after insert</span><br><span class="line">as</span><br><span class="line">declare @Sales_Amount int</span><br><span class="line">set @Sales_Amount=(select 销售数量 from inserted)</span><br><span class="line">update 商品表 set 销售总量=商品表.销售总量+@Sales_Amount</span><br><span class="line">where 商品号 in (select 商品号 from inserted)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-<h2 id="第二十套"><a href="#第二十套" class="headerlink" title="第二十套"></a>第二十套</h2><p>CREATE TABLE 出租表(<br>房屋号 char(10),<br>出租日期 datetime,<br>租期 int not null, –月数<br>到期日期 datetime,<br>PRIMARY KEY(房屋号,出租日期));<br>创建触发器:每当在出租表插入一行数据(房屋号,出租日期,租期),自动计算到期日期<br>CREATE TRIGGER tri ON 出租表 FOR insert<br>AS<br>update 出租表 SET 到期日期 &#x3D; dateadd(month,租期,出租日期)<br>WHERE 房屋号 &#x3D; (SELECT 房屋号 FROM inserted )<br>and 出租日期&#x3D;(select 出租日期 from inserted)</p>
-<h2 id="洢"><a href="#洢" class="headerlink" title="?????????????? ????????洢????"></a>?????????????? ????????洢????</h2><p>create table 房屋表(<br>房屋号 char(10) primary key,<br>房屋地址 char(20) not null,<br>面积 int,<br>月租金 int<br>)<br>create table 租贷表(<br>房屋号 char(10),<br>租贷日期 datetime,<br>租贷月数 int not null,<br>本次总租金 int,<br>primary key(房屋号,租贷日期),<br>foreign key(房屋号) references 房屋表(房屋号)<br>)<br>创建触发器:每当在租贷表插入一行数据（房屋号，租贷日期，租贷月数），计算本次月租金</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create trigger tri_name on 租贷表 for insert</span><br><span class="line">as</span><br><span class="line">declare @x int </span><br><span class="line">set @x=(select 月租金 from 房屋表 where 房屋号=</span><br><span class="line">(select 房屋号 from inserted))</span><br><span class="line">update 租贷表 set 本次月租金=租贷月数*@x</span><br><span class="line">from 租贷表 a join 房屋表 b on a.房屋号=b.房屋号</span><br><span class="line">and a.租贷日期=b.租贷日期</span><br></pre></td></tr></table></figure>
-<p>创建存储过程：输入房屋号，计算历史租金总和</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create proc p1 @room char(10),@total int output</span><br><span class="line">as</span><br><span class="line">set @total=(select sum(租贷月数*月租金) from 房屋表</span><br><span class="line">join 租贷表 on 房屋表.房屋号=租贷表.房屋号</span><br><span class="line">where a.房屋号=@room)</span><br></pre></td></tr></table></figure>
-
-        </div>
-        <div id="post-footer">
-            <div class="avatar" >
-                <img src="http://example.com/author.jpg" alt="avatar"/>
-                
-                <a href="javascript:void(0)" class="high-song">high起来 &#128541;</a>
-                
-                
-                <a href="javascript:void(0)" class="donate fa">赠我一杯 &#128536;</a>
-                
-            </div>
-            <ul class="author-profile-section">
-                <li>
-                  
-                  作者:
-                  
-                    
-                    <a href="/about.html">Koi_NL</a>
-                </li>
-                
-                <li>发表日期: <span>2022-07-18  19:08:39</span></li>
-                
-                <li>最后编辑日期: <span>2022-07-25  09:22:31</span></li>
-                
-                <li class="post-category">
-                    文章分类:
-                    
-                    <a href="/categories/SqlServer/">SqlServer</a>
-                    
-                </li>
-                <li class="post-tags">
-                    文章标签:
-                    
-                </li>
-                
-                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
-知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
-</a></li>
-                
-            </ul>
-            <div id="donate-wrap">
-                
-                
-                
-                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
-                
-                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
-                
-                
-            </div>
-        </div>
-    </article>
-    <div class="article-nav">
-        
-        <a href="/posts/sqlserver3/" class="pre-post fa fa-caret-left">『SQL Server』考三</a>
-        
-        
-        <a href="/posts/sqlserver12/" class="next-post fa">『SQL Server』第十二章  备份与恢复数据库</a>
-        
-    </div>
-    
-    <div id="comments">
-        
-
-<script>
-  gitalk.render("comments");
-</script>
-
-
-
-    </div>
-    
-</div>
-
-
-    </div>
-    <footer id="footer">
-    
-    <div class="social">
-        
-        <a href="https://www.example1.com" class="fa fa-free-code-camp" target="_blank" title="freecodecamp"></a>
-        
-        <a href="https://www.example2.com" class="fa fa-github" target="_blank" title="Follow me~"></a>
-        
-    </div>
-    
-    <div>
-        
-        <a href="/" class="copyright-links">Koi_NL</a>&copy;2015 - 2023.All Rights
-        Reserved.
-    </div>
-    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
-                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
-    </p>
-    
-    
-    <p>
-        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
-        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
-        </span>
-    </p>
-    
-</footer>
-
-</div>
-    <ul id="tools">
-    <li class="totop-btn fa fa-angle-up"></li>
-    <li class="exchange-btn fa fa-exchange"></li>
-  
-    <li class="toc-btn fa fa-list-ul"></li>
-    
-    
-
-    
-    <li class="comment-btn fa fa-comments-o">
-        <a href="#comments" title="comments"></a>
-    </li>
-    
-</ul>
-<p id="process"></p>
-<div id="search-overlay">
-    <div class="search-area-wrap">
-        <div id="search-area">
-            <div class="input-wrap focus">
-                <i class="fa fa-search" aria-hidden="true"></i>
-                <input id="search-input" autofocus autocomplete="off" type="text"
-                       placeholder="search this website..."/>
-            </div>
-            <ul id="search-result">
-                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%A5%97"><span class="toc-number">1.</span> <span class="toc-text">第一套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%A5%97"><span class="toc-number">2.</span> <span class="toc-text">第二套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E5%A5%97"><span class="toc-number">3.</span> <span class="toc-text">第三套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E5%A5%97"><span class="toc-number">4.</span> <span class="toc-text">第五套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E5%A5%97"><span class="toc-number">5.</span> <span class="toc-text">第七套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A1%A2-%E6%B4%A2"><span class="toc-number">6.</span> <span class="toc-text">??????????????????????????????????????塢?????????????????? ?洢????</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%A5%97"><span class="toc-number">7.</span> <span class="toc-text">第二十套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B4%A2"><span class="toc-number">8.</span> <span class="toc-text">?????????????? ????????洢????</span></a></li></ol>
-
-
-    
-<script src="/js/highsong.js"></script>
-
-
-
-
-
-<script src="/js/search.js"></script>
-
-<script type="text/javascript">
-    //theme config datas
-    var copyrightObj = {};
-    copyrightObj.enable = 'true';
-    copyrightObj.triggerCopyLength = '200';
-    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
-    var leancloudObj = {};
-    leancloudObj.enable = 'true';
-    leancloudObj.className = 'BlogCounter';
-    leancloudObj.limits = '10';
-</script>
-<script type="text/javascript">
-    var search = {};
-    var search_path = "search.xml";
-    if (!search_path) {
-        search_path = "search.xml";
+<body>
+  <!-- header -->
+  {{ partial('partial/header') }}
+  <!-- main -->
+  {{ body }}
+  <!-- footer -->
+  {{ partial('partial/footer') }}
+  <!-- fixed action bar -->
+  {{ partial('partial/fab') }}
+  <!-- after footer, some 3rd script place here -->
+    <script>
+    var hljs_labels = {
+        left: "{{__('hljs.left')}}",
+        right: "{{__('hljs.right')}}",
+        copy: "{{__('hljs.copy')}}"
     }
-    search.path = "/" + search_path;
-    search.func =  _ajax.init();
-</script>
-
-<script src="/js/app.js"></script>
-
-
-
+    </script>
+    {{ js('js/hljs.js') }}
+    {{ js('js/script.js')}}
+    {{ partial('partial/analytics') }}
+    {{ partial('partial/lc') }}
 </body>
 </html>

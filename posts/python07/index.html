@@ -1,406 +1,57 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="{{ page.lang }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
 <head>
-    <!--Setting-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable"  content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no,email=no">
-    
-    
-    <!--Simple SEO-->
-
-
-<meta name="robots" content=all />
-<meta name="google" content=all />
-<meta name="googlebot" content=all />
-<meta name="verify" content=all />
-    <!--Title-->
-
-<title>第七章  文件和数据格式化 | 锦鲤未离</title>
-
-<link rel="alternate" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
-
-
-<link rel="icon" href="/favicon.ico">
-
-    
-
-<link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/pages/post.css">
-<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-
-
-    <!--script-->
-
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-<script>
-  var admin = "GeekaholicLin";
-  admin = admin.split(",");
-  var gitalk = new Gitalk({
-    clientID: "xxxxx",
-    clientSecret: "xxxxx",
-    repo: "geekaholiclin.github.io",
-    owner: "GeekaholicLin",
-    admin: admin,
-    id: decodeURIComponent(location.pathname),
-    distractionFreeMode: false
-  })
-
-</script>
-
-    
-    
+  <meta charset="utf-8">
+  <title>{{ head_title() }}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="{{ head_keywords() }}">
+  <meta name="description" content="{{ head_description() }}">
+  {{ partial('partial/og') }}
+  <!-- Canonical links -->
+  <link rel="canonical" href="{{ url }}">
+  <!-- Alternative links -->
+  <!-- CSS and JS-->
+  {{ head_jscss({js: true})}}
+  <!-- RSS -->
+  {{ feed_tag('atom.xml') }}
+  <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon" />
+  <script>
+        lc.init({
+          appId : '{{theme.lc.app_id}}',
+          appKey : '{{theme.lc.app_key}}',
+          serverURL : '{{theme.lc.url}}'
+        }, {
+          xid : '{{page_uid()}}',
+          url : '{{page.path || page.permalink}}',
+          title : '{{page_title()}}'
+        }, {
+          counterTable: '',
+          commentTable: '',
+          donateTable: ''
+        });
+  </script>
 <meta name="generator" content="Hexo 6.1.0"></head>
-
-<body id="normal">
-<!--[if lte IE 8]>
-<style>
-    html{ font-size: 1em }
-</style>
-<![endif]-->
-<!--[if lte IE 9]>
-<style>
-    header{ top: 71px; position: absolute!important;}
-    #container{padding-top: 151px!important;}
-</style>
-<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
-<![endif]-->
-
-<div id="wrap">
-    <header  style="position: absolute;" >
-    <div id="site-meta">
-        <a href="/" id="logo">
-            <h1 class="title">锦鲤未离</h1>
-        </a>
-        
-        <h2 class="subtitle">KoiNL</h2>
-        
-    </div>
-    <ul id="nav">
-        
-            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
-        
-            <li><a href="/atom.xml"><i class="fa fa-rss"></i>RSS</a></li>
-        
-        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a></li>
-    </ul>
-</header>
-
-    <div id="container">
-        
-<ul id="sidebar">
-    
-    
-<li class="widget notification">
-    <i class="fa fa-bell-o"></i>
-    <div>
-        
-<p>主题ylion v0.0.0版本即将上线，敬请期待~！
-主题作者：<a href="https://github.com/GeekaholicLin"
-title="fork me" target="_blank">Geekaholic</a></p>
-    </div>
-</li>
-
-    
-    
-<li class="widget widget-normal category">
-    <h3 class="fa fa-th widget-title">分类</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/"><i class="fa" aria-hidden="true">Applied Statistics</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/"><i class="fa" aria-hidden="true">Data Structure and Algorithm</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/"><i class="fa" aria-hidden="true">Data-Mining</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/"><i class="fa" aria-hidden="true">Data-Processing-and-Analysing</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/"><i class="fa" aria-hidden="true">Hadoop</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/"><i class="fa" aria-hidden="true">MATLAB</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/"><i class="fa" aria-hidden="true">SqlServer</i></a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/"><i class="fa" aria-hidden="true">spark</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/"><i class="fa" aria-hidden="true">时间序列分析</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/"><i class="fa" aria-hidden="true">测试区</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"><i class="fa" aria-hidden="true">深度卷积神经网络</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/"><i class="fa" aria-hidden="true">电子设备</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/"><i class="fa" aria-hidden="true">考试</i></a><span class="category-list-count">1</span></li></ul>
-</li>
-
-
-    
-    
-<li class="widget widget-normal archive">
-  <h3 class="fa fa-archive widget-title">归档</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/"><i class="fa" aria-hidden="true">三月 2023</i></a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/"><i class="fa" aria-hidden="true">二月 2023</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/"><i class="fa" aria-hidden="true">十一月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/"><i class="fa" aria-hidden="true">十月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/"><i class="fa" aria-hidden="true">九月 2022</i></a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/"><i class="fa" aria-hidden="true">八月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/"><i class="fa" aria-hidden="true">七月 2022</i></a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/"><i class="fa" aria-hidden="true">六月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/"><i class="fa" aria-hidden="true">五月 2022</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/"><i class="fa" aria-hidden="true">四月 2022</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/"><i class="fa" aria-hidden="true">三月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/"><i class="fa" aria-hidden="true">二月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/"><i class="fa" aria-hidden="true">一月 2022</i></a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/01/"><i class="fa" aria-hidden="true">一月 1999</i></a><span class="archive-list-count">2</span></li></ul>
-</li>
-
-
-    
-    
-<li class="widget widget-normal popular-posts" id="popular-posts">
-    <h3 class="fa fa-thermometer-3 widget-title">热门文章</h3>
-    <ul id="popular-content">
-        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
-    </ul>
-</li>
-
-    
-    
-
-    
-    
-<li class="widget widget-normal friends-link">
-    <h3 class="fa fa-globe widget-title">友链</h3><br/>
-
-    
-        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
-
-    
-
-</li>
-
-    
-</ul>
-
-
-        <div id="main">
-    <article id="post">
-        <div id="post-header">
-
-            <h1 id="第七章  文件和数据格式化">
-                
-                第七章  文件和数据格式化
-                
-            </h1>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>Python</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            null
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2022/07/27</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="第七章  文件和数据格式化"
-              data-leadcloud-url="/posts/python07/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
-</div>
-
-            
-            
-        </div>
-        
-        <div id="post-body">
-            <p>7.1文件的使用<br>文件是存储在辅助存储器上的一组数据序列，可以包含任何数据内容。概念上，文件是数据的集合和抽象。文件包括文本文件和二进制文件两种类型。<br>7.1.1文件的类型<br>文本文件一般由单一特定编码的字符组成，如UTF-8编码，内容容易统一展示和阅读。大部分文本文件都可以通过文本编辑软件或文字处理软件创建、修改和阅读。由于文本文件<br>存在编码,所以，它也可以被看作是存储在磁盘上的长字符串，如一个txt 格式的文本文件<br>二进制文件直接由比特О和比特1组成，没有统一的字符编码，文件内部数据的组织格<br>式与文件用途有关。二进制是信息按照非字符但有特定格式形式的文件，如png格式的图片文件、avi格式的视频文件。二进制文件和文本文件最主要的区别在于是否有统一的这符编码。二进制文件没有统一的字符编码，只能当作字节流，而不能看作是字符串<br>无论文件创建为文本文件或者是二进制文件，都可以用“文本文件方式”和“二进制文件方式”打开，但打开后的操作不同。<br>一个文本文件 a.txt，其内容为“全国计算机等级考试”，采用文本方式打开。这里需要将文本文件与Python程序文件放在同一个目录中。<br>采用文本方式读入文件，文件经过编码形成字符串，打印出有含义的字符;采用二进制方式打开文件,文件被解析为字节流。由于存在编码,字符串中的一个字符由多个字节表示。<br>7.1.2文件的打开和关闭<br>Python对文本文件和二进制文件采用统一的操作步骤，即“打开—操作—关闭”，操作系统中的文件默认处于存储状态，首先需要将其打开，使用得当前程序有权操作这个文件，打开不存在的文件系统可以创建这个文件。打开后的文件处于占用状态，此时，另一个进程不能操作这个文件。可以通过一组方法读取文件的内容或向文件写入内容，操作之后需要将文件关闭，关闭将释放对文件的控制使用文件恢复成存储状态，此时，另一进程能够操作这个文件。<br>Python通过open()函数打开一个文件，并返回一个操作这个文件的变量。语法结构:<br>变量名&#x3D;open(文件路径及文件名,打开模式)<br>open()函数有两个参数:文件名和打开模式。文件名可以是文件的实际名字，也可以是包含完整路径的名字。打开模式用于控制使用何种方式打开文件，open()函数提供了7种基本的打开模式。<br>文件的打开模式<br>r 只读模式，如果文件不存在，返回异常FileNotFoundError，默认值<br>w 覆盖写模式，文件不存在则创建，存在则完全覆盖原文件<br>x 创建写模式，文件不存在则创建，存在则返回异常FileExistsError<br>a 追加写模式，文件不存在则创建，存在则在原文件最后追加内容<br>b 二进制文件模式<br>t 文本文件模式，默认值</p>
-<ul>
-<li>与r&#x2F;w&#x2F;x&#x2F;a一同使用，在原功能基础上增加同时读写功能<br>打开模式使用字符串方式表示，根据字符串定义，单引号或者双引号均可。上述打开模式中，r,w,x,a或以和 b,t,+组合使用，形成既表达读写又表达文件模式的方式。</li>
-</ul>
-<p>7.1.3文件的读写<br>根据打开方式不同，文件读写也会根据文本文件或二进制打开方式有所不同。<br>f.read(size&#x3D;-1)：从文件中读入整个文件内容。参数可选，如果给出，读入前size长度的字符串或字节流。<br>f.readline(size&#x3D;-1)：从文件中读入一行内容。参数可选，如果给出，读入该行前size长度的字符串或字节流。<br>f.readlines(hint&#x3D;-1)：从文件中读入所有行，以每行为元素形成一个列表。参数可选，如果给出，读入hint行。<br>f.seek(offset)：改变当前文件操作指针的位置，offset的值:o为文件开头;2为文件结尾。<br>如果文件以文本文件方式打开，则读入字符串;如果文件以二进制方式打开，则读入字节流。<br>如果文件不大，可以一次性将文件内容读入，保存到程序内部变量中。f.read()是最常用的一次性读入文件的函数．其结果是一个字符串。<br>f.write(s)：向文件写入一个字符串或字节流<br>f.writelines(lines)：将一个元素为字符串的列表整体写入文件<br>f.write(s)向文件写入字符串 s，每次写入后，将会记录一个写入指针。该方法可以反复调用，在写入指针后分批写入内容，直至文件被关闭。<br>使用f.write(s)时，要显示地使用”\n”对写入文本进行分行，如果不进行分行，每次写入的字符串会被连接起来。<br>f.writelines(lines)直接将列表类型的各元素连接起来写入文件f。<br>7.2数据组织的维度<br>一组数据在被计算机处理前需要进行一定的组织，表明数据之间的基本关系和逻辑，进而形成“数据的维度”。根据数据的关系不同，数据组织可以分为:一维数据、二维数据和高维数据。<br>7.2.1一维数据<br>一维数据由对等关系的有序或无序数据构成，采用线性方式组织，对应于数学中数组的概念。例如，中国的直辖市列表即可表示为一维数据，一维数据具有线性特点。<br>维数据十分常见，任何表现为序列或集合的内容都可以看作是一维数据。<br>7.2.2二维数据<br>二维数据，也称表格数据，由关联关系数据构成，采用二维表格方式组织，对应于数学中的矩阵，常见的表格都属于二维数据。<br>例如，国家统计局发布的居民消费价格数是二维数据。表格横向包括“指标”“2014年”“2015年”“2016年”，分别表示项目和时间维度，表格纵向为具体指标点，形成了二维数据关系。其中，第一行为说明部分，可以看作是与其他行一致的二维数据一行，也可以看作具数据外的数明部分<br>7.2.3高维数据<br>高维数据由键值对类型的数据构成，采用对象方式组织，可以我层嵌套。<br>高维数据在Web系统中十分常用，作另当今Internet组织内容的主要方式，高维数据衍生出HTML、XML、JSON等具体数据组织的语法结构。<br>以JSON格式为例，下面给出了描述“本书”的高维数据表示形式，其中冒号(:）形成一个键值对，逗号(,）分隔键值对，JSON格式中[]组织各键值对成为一个整体，与“本书”形成高层次的键值对。高维数据相比一维数据和二维数据能表达更加灵活和复杂的数据产系。<br>7.3.1一维数据的表示<br>一维数据是最简单的数据组织类型，幽于是线性结构，在Python 语言中主要采用列表形式表示。例如，中国的直辖市数据可以采用一个列表变量表示。<br>采用列表类型表示一维数据的时候需要注意每个数据的数据类型。7.3.2一维数据的存储<br>一维数据的文件存储有多种方式，总体思路是采用特殊字符分隔各数据。采用存储方法包括如下4种。<br>(1）采用空格分隔元素，列如:<br>(2)采用逗号分隔元素，例如:<br>(3）使用换行分隔元素，例如:<br>(4)  其他特殊符号分割<br>这4种方法中，逗号分隔的存储格式叫作csv格式(Comma-Separated Values，即逗号分隔值)，它是一种通用的、相对简单的文件格式，在商业和科学上广泛应用，大部分编辑器都支持直接读入或保存文件为CSv格式，如 Windows平台上的记事本或微软Office Excel等。存储的文件一般采用.csv为扩展名。<br>一维数据保存成CSV格式后，各元素采用逗号分隔，形成一行，这里的逗号是英文逗号。从Python表示到数据存储，需要将列表对象输出为CSV格式以及CSV格式读入成列表对象。<br>列表对象输出为CSV格式文件方法如下，采用字符串的join()方法最为方便。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list=[]</span><br><span class="line">f=open()</span><br><span class="line">f.write(&#x27;,&#x27;.join(list)+&#x27;\n&#x27;)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
-<p>7.3.3一维数据的处理<br>对一维数据进行处理首先需要从CSV格式文件读入一维数据,并将其表示为列表对象。需要注意，从CSV文件中获得内容时，最后一个元素后面包含了一个换行符(“‘n”)。对于数据的表达和使用来说，这个换行是多余的，需要采用字符串的strip()方法去掉数据尾部的换行符，进一步使用split()方法以逗号进行分隔。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f=open()</span><br><span class="line">list=f.read().strip(&#x27;\n&#x27;).split(&#x27;,&#x27;)</span><br><span class="line">f.close()</span><br><span class="line">print(list)</span><br></pre></td></tr></table></figure>
-<p>7.4二维数据的处理<br>7.4.1二维数据的表示<br>二维数据由多个一维数据构成，可以看作是一维数据的组合形式。因此，二维数据可以采用二维列表来表示,即列表的每个元素对应二维数据的一行,这个元素本身也是列表类型,其内部各元素对应这行中的各列值。<br>提示:二维数据的数据类型<br>二维数据一般采用相同的数据类型存储数据，便于操作。<br>尽管在二维数据中存在大量数值，但由于本例中数值所在行或列不都是数字，存在字符文本，因此，将数值统一表示为字符串形式。<br>7.4.2二维数据的存储<br>二维数据由一维数据组成，用CSV格式文件存储。CSV文件的每一行是一维数据，整个CSV文件是一个二维数据。存储以下数据为.csv文件，名称为cpi.csv。<br>二维数据存储为CSV格式，需要将二维列表对象写入CSV格式文件以及将CSV格式读成二维列表对象。<br>二维列表对象输出为CSV格式文件方法如下。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list=</span><br><span class="line">f=o</span><br><span class="line">for row in list:</span><br><span class="line">    f.write(&#x27;,&#x27;.join(row)+&#x27;\n&#x27;)</span><br><span class="line">f.c</span><br></pre></td></tr></table></figure>
-<p>7.4.3二维数据的处理<br>对二维数据进行处理首先需要从CSV格式文件读入二维数据，并将其表示为二维列表对象。读取CSV格式文件方法如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f=o</span><br><span class="line">list=[]</span><br><span class="line">for line in f:</span><br><span class="line">    list.append(line.strip(&#x27;\n&#x27;).split(&#x27;,&#x27;))</span><br><span class="line">f.c</span><br><span class="line">print(list)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-        </div>
-        <div id="post-footer">
-            <div class="avatar" >
-                <img src="http://example.com/author.jpg" alt="avatar"/>
-                
-                <a href="javascript:void(0)" class="high-song">high起来 &#128541;</a>
-                
-                
-                <a href="javascript:void(0)" class="donate fa">赠我一杯 &#128536;</a>
-                
-            </div>
-            <ul class="author-profile-section">
-                <li>
-                  
-                  作者:
-                  
-                    
-                    <a href="/about.html">Koi_NL</a>
-                </li>
-                
-                <li>发表日期: <span>2022-07-27  08:45:51</span></li>
-                
-                <li>最后编辑日期: <span>2022-07-27  09:38:07</span></li>
-                
-                <li class="post-category">
-                    文章分类:
-                    
-                    <a href="/categories/Python/">Python</a>
-                    
-                </li>
-                <li class="post-tags">
-                    文章标签:
-                    
-                </li>
-                
-                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
-知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
-</a></li>
-                
-            </ul>
-            <div id="donate-wrap">
-                
-                
-                
-                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
-                
-                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
-                
-                
-            </div>
-        </div>
-    </article>
-    <div class="article-nav">
-        
-        <a href="/posts/sqlservers/" class="pre-post fa fa-caret-left">三级考试(数据库篇)错题整理(选择题, 填空题篇)</a>
-        
-        
-        <a href="/posts/python08/" class="next-post fa">第八章  计算生态</a>
-        
-    </div>
-    
-    <div id="comments">
-        
-
-<script>
-  gitalk.render("comments");
-</script>
-
-
-
-    </div>
-    
-</div>
-
-
-    </div>
-    <footer id="footer">
-    
-    <div class="social">
-        
-        <a href="https://www.example1.com" class="fa fa-free-code-camp" target="_blank" title="freecodecamp"></a>
-        
-        <a href="https://www.example2.com" class="fa fa-github" target="_blank" title="Follow me~"></a>
-        
-    </div>
-    
-    <div>
-        
-        <a href="/" class="copyright-links">Koi_NL</a>&copy;2015 - 2023.All Rights
-        Reserved.
-    </div>
-    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
-                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
-    </p>
-    
-    
-    <p>
-        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
-        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
-        </span>
-    </p>
-    
-</footer>
-
-</div>
-    <ul id="tools">
-    <li class="totop-btn fa fa-angle-up"></li>
-    <li class="exchange-btn fa fa-exchange"></li>
-  
-    <li class="toc-btn fa fa-list-ul"></li>
-    
-    
-
-    
-    <li class="comment-btn fa fa-comments-o">
-        <a href="#comments" title="comments"></a>
-    </li>
-    
-</ul>
-<p id="process"></p>
-<div id="search-overlay">
-    <div class="search-area-wrap">
-        <div id="search-area">
-            <div class="input-wrap focus">
-                <i class="fa fa-search" aria-hidden="true"></i>
-                <input id="search-input" autofocus autocomplete="off" type="text"
-                       placeholder="search this website..."/>
-            </div>
-            <ul id="search-result">
-                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-    
-
-
-    
-<script src="/js/highsong.js"></script>
-
-
-
-
-
-<script src="/js/search.js"></script>
-
-<script type="text/javascript">
-    //theme config datas
-    var copyrightObj = {};
-    copyrightObj.enable = 'true';
-    copyrightObj.triggerCopyLength = '200';
-    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
-    var leancloudObj = {};
-    leancloudObj.enable = 'true';
-    leancloudObj.className = 'BlogCounter';
-    leancloudObj.limits = '10';
-</script>
-<script type="text/javascript">
-    var search = {};
-    var search_path = "search.xml";
-    if (!search_path) {
-        search_path = "search.xml";
+<body>
+  <!-- header -->
+  {{ partial('partial/header') }}
+  <!-- main -->
+  {{ body }}
+  <!-- footer -->
+  {{ partial('partial/footer') }}
+  <!-- fixed action bar -->
+  {{ partial('partial/fab') }}
+  <!-- after footer, some 3rd script place here -->
+    <script>
+    var hljs_labels = {
+        left: "{{__('hljs.left')}}",
+        right: "{{__('hljs.right')}}",
+        copy: "{{__('hljs.copy')}}"
     }
-    search.path = "/" + search_path;
-    search.func =  _ajax.init();
-</script>
-
-<script src="/js/app.js"></script>
-
-
-
+    </script>
+    {{ js('js/hljs.js') }}
+    {{ js('js/script.js')}}
+    {{ partial('partial/analytics') }}
+    {{ partial('partial/lc') }}
 </body>
 </html>
