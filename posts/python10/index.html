@@ -1,0 +1,387 @@
+<!doctype html>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable"  content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    
+    
+    <!--Simple SEO-->
+
+
+<meta name="robots" content=all />
+<meta name="google" content=all />
+<meta name="googlebot" content=all />
+<meta name="verify" content=all />
+    <!--Title-->
+
+<title>第十章  第三方库概览 | 锦鲤未离</title>
+
+<link rel="alternate" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/pages/post.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+
+    <!--script-->
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<script>
+  var admin = "GeekaholicLin";
+  admin = admin.split(",");
+  var gitalk = new Gitalk({
+    clientID: "xxxxx",
+    clientSecret: "xxxxx",
+    repo: "geekaholiclin.github.io",
+    owner: "GeekaholicLin",
+    admin: admin,
+    id: decodeURIComponent(location.pathname),
+    distractionFreeMode: false
+  })
+
+</script>
+
+    
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body id="normal">
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<style>
+    header{ top: 71px; position: absolute!important;}
+    #container{padding-top: 151px!important;}
+</style>
+<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<div id="wrap">
+    <header  style="position: absolute;" >
+    <div id="site-meta">
+        <a href="/" id="logo">
+            <h1 class="title">锦鲤未离</h1>
+        </a>
+        
+        <h2 class="subtitle">KoiNL</h2>
+        
+    </div>
+    <ul id="nav">
+        
+            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+        
+            <li><a href="/atom.xml"><i class="fa fa-rss"></i>RSS</a></li>
+        
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a></li>
+    </ul>
+</header>
+
+    <div id="container">
+        
+<ul id="sidebar">
+    
+    
+<li class="widget notification">
+    <i class="fa fa-bell-o"></i>
+    <div>
+        
+<p>主题ylion v0.0.0版本即将上线，敬请期待~！
+主题作者：<a href="https://github.com/GeekaholicLin"
+title="fork me" target="_blank">Geekaholic</a></p>
+    </div>
+</li>
+
+    
+    
+<li class="widget widget-normal category">
+    <h3 class="fa fa-th widget-title">分类</h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/"><i class="fa" aria-hidden="true">Applied Statistics</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/"><i class="fa" aria-hidden="true">Data Structure and Algorithm</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/"><i class="fa" aria-hidden="true">Data-Mining</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/"><i class="fa" aria-hidden="true">Data-Processing-and-Analysing</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/"><i class="fa" aria-hidden="true">Hadoop</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/"><i class="fa" aria-hidden="true">MATLAB</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/"><i class="fa" aria-hidden="true">SqlServer</i></a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/"><i class="fa" aria-hidden="true">spark</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/"><i class="fa" aria-hidden="true">时间序列分析</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/"><i class="fa" aria-hidden="true">测试区</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"><i class="fa" aria-hidden="true">深度卷积神经网络</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/"><i class="fa" aria-hidden="true">电子设备</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/"><i class="fa" aria-hidden="true">考试</i></a><span class="category-list-count">1</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal archive">
+  <h3 class="fa fa-archive widget-title">归档</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/"><i class="fa" aria-hidden="true">三月 2023</i></a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/"><i class="fa" aria-hidden="true">二月 2023</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/"><i class="fa" aria-hidden="true">十一月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/"><i class="fa" aria-hidden="true">十月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/"><i class="fa" aria-hidden="true">九月 2022</i></a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/"><i class="fa" aria-hidden="true">八月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/"><i class="fa" aria-hidden="true">七月 2022</i></a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/"><i class="fa" aria-hidden="true">六月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/"><i class="fa" aria-hidden="true">五月 2022</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/"><i class="fa" aria-hidden="true">四月 2022</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/"><i class="fa" aria-hidden="true">三月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/"><i class="fa" aria-hidden="true">二月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/"><i class="fa" aria-hidden="true">一月 2022</i></a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/01/"><i class="fa" aria-hidden="true">一月 1999</i></a><span class="archive-list-count">2</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal popular-posts" id="popular-posts">
+    <h3 class="fa fa-thermometer-3 widget-title">热门文章</h3>
+    <ul id="popular-content">
+        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+    </ul>
+</li>
+
+    
+    
+
+    
+    
+<li class="widget widget-normal friends-link">
+    <h3 class="fa fa-globe widget-title">友链</h3><br/>
+
+    
+        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
+
+    
+
+</li>
+
+    
+</ul>
+
+
+        <div id="main">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="第十章  第三方库概览">
+                
+                第十章  第三方库概览
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>Python</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            null
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2022/07/26</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="第十章  第三方库概览"
+              data-leadcloud-url="/posts/python10/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+</div>
+
+            
+            
+        </div>
+        
+        <div id="post-body">
+            <p>10.1Python第三方库的获取和安装<br>Python第三方库依照安装方式灵活性和难易程序有3个方法，这三个方法是: pip工具安装、自定义安装、文件安装。<br>10.1.1pip工具安装<br>最常用且最高效的Python第三方库安装方式是采用pip工具安装。pip是Python官方提供并维护的在线第三方库安装工具。对于Python3.x版本环境，可以采用 pip3命令代替pip命令专为Python3.x版本安装第三方库。<br>使用pip安装第三方库需要联网。<br>安装语法:<br>pip install库名<br>10.1.2自定义安装<br>自定义安装指按照第三方库提供的步骤和方式安装。第三方库都有主页用于维护库的代码和文档。科学计算用的 numpy 的官方主页是:<a target="_blank" rel="noopener" href="http://numpy.org.浏览网页找到下载链接.http//scipy.org/scipylib/download.html%E3%80%82%E8%BF%9B%E8%80%8C%E6%A0%B9%E6%8D%AE%E6%8F%90%E7%A4%BA%E6%AD%A5%E9%AA%A4%E5%AE%89%E8%A3%85%E3%80%82">http://numpy.org。浏览网页找到下载链接。http://scipy.org/scipylib/download.html。进而根据提示步骤安装。</a><br>自定义安装一般适用于在pip中尚无登记或安装失败的第三方库。<br>10.1.3文件安装<br>由于Python某些第三方库仅提供源代码，通过pip下载文件后无法在 Windows系统编译安装，会导致第三方库安装失败。在 Windows平台下所遇到无法安装第三方库的问题大多属于这类<br>10.1.4pip工具使用<br>除了进行第三方库安装之外，pip工具能对第三方库进行基本的维护。执行pip-h 将列出pip 常用的子命令。<br>pip支持安装(install&gt;、下载( download)、卸载( uninstall&gt;、列表(list)、查看(show)、查找(search）等一系列安装和维护子命令。<br>pip 的uninstall子命令可以卸载一个已经安装的第三方库。<br>10.2PyInstaller库概述<br>PyIlnstaller是一个十分有用的 Python第三方库，它能够在 Windows、Linux、MacOS等操作系统下将Python源文件打包、变成直接可运行的可执行文件。<br>通过对源文件打包，Python程序可以在没有安装Python 的环境中运行，也可以作为一个独立文件方便传递和管理。PyInstaller需要在命令行下用pip工具安装。<br>pip install Pylnstaller<br>pip指令可以将PyInstaller 库自动安装到Python 解释器目录，与pip或pip3命令路径相同，可以直接在命令行调用。<br>Pylnstaller针对不同操作系统打包生成的可执行文件都不同。<br>10.3PyInstaller库与程序打包<br>使用PyInstaller库对Python源文件打包十分简单。语法结构:<br>Pyinstaller源文件名<br>执行完毕后，源文件所在目录将生成dist和 build两个文件夹。其中，build目录是PyInstaller存储临时文件的目录，可以安全删除。最终的打包程序在dist内部与源文件同中的目录中。目录中其他文件是可执行文件的动态链接库。<br>可以通过-F参数对Python源文件生成一个独立的可执行文件。<br>pyinstaller -F a.py<br>执行后在dist目录中出了a.exe文件，没有任何依赖库，执行它即可运行程序。使用Pylnstaller库需要注意以下问题:<br>文件路径不能出现空格和英文句号(.)源文件必须是UTF_8编码，暂时不支持其他编码类型。<br>pyinstaller命令的常用参数<br>-h、–help：查看帮助<br>–clean：清理打包过程中的临时文件<br>-D，–onedir：默认值，生成dist目录<br>-F，–onefile：在 dist文件夹中只能生成独立的打包文件<br>-i&lt;图标文件名.ico&gt;：指定打包程序使用的图标icon文件<br>pyinstaller命令不需要在Python源文件中增加代码，只需要通过命令进行打包即可。</p>
+<p>10.4jieba库概述<br>由于中文文本的单词不是通过空格或者标点符号分割,中文及类似语言存在一个重要的“分词”问题。<br>jieba是Python 中一个重要的第三方中文分词函数库，能够将一段中文文本分割成中文词语的序列。jieba 库需要通过pip指令安装。<br>pip installer jieba<br>jieba 库的分词原理是利用一个中文词库，将待分词的内容与分词词库进行比对，通过图结构和动态规划方法找到最大概率的词组。除了分词，jieba还提供增加自定义中文单词的功能。<br>jieba库支持三种分词模式:精确模式，将句子最精确地切开，适合文本分析;全模式，把句子中所有可以成词的词语都扫描出来,速度非常快,但是不能解决歧义;搜索引擎模式，在精确模式基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。<br>对中文分词来说，jieba只需要一行代码。(英文文本不存在分词问题)<br>10.5jieba库与中文分词<br>jieba 库主要提供中文分词功能，可以辅助自定义分词词典。<br>jieba库常用的分词函数<br>jieba.lcut(s)：精确模式，返回一个列表类型<br>jieba.lcut(s,cut_all&#x3D;True)：全模式，返回一个列表类型<br>jieba.lcut_for_search(s)：搜索引擎模式，返回一个列表类型<br>jieba.add_word(w)：向分词字典中增加新词w<br>jieba.lcut(s)是最常用的中文分词函数，用于精确模式，即将字符串分割成等量的中文词组，返回结果是列表类型。<br>jieba.lcut(s,cut_all&#x3D;True)用于全模式，即将字符串的所有分词可能均列出来，返回结果是列表类型，冗余性最大。<br>相比精确模式，全模式会找到所有分词可能，比如“计算机”被分词为3个可能词语“计算”、“计算机”、“算机”。<br>Jieba.lcut_for_search(s)返回搜索引掌候式，首先执行精确模式，在对其中长词进一步切分获得最终结果。<br>相比精确模式，其中长词“计算机”被再次分词成“计算”、“算机”、“计算机”三个词语，存在一定冗余。<br>提示:精确模式因为不产生冗余，最为常用。<br>搜索引擎模式更倾向于寻找短诃语，这种方式具有一定冗余度，但相比全模式较少。<br>3种分词模式如何选择?看需求<br>如果希望对文本准确分词，不产生冗余，只能选择jieba.Icut(s)函数<br>希望对文本分词更准确，不漏掉仕何可能的分词结果，选用全模式。没想好怎么用，可以使用搜索引擎模式。<br>jieba.add word()函数，用来向jieba词库增加新的单词。<br>10.6wordcloud 库概述<br>数据展示的方式多种多样，传统的统计图尽管很“科学”，但略显古板。尤其对于文本来说，更加直观、带有一定艺术感的展示效果需要很大，对于这类需求，词云特有的展示方式深得人心。<br>词云以词语为基本单元,根据其在文本中出现的频率设计不同大小以形成视觉上的不同效果，形成“关键云层”或“关键词渲染”，从而使用读者只要“一瞥”即可领略文本的主旨。这种展示方式已经成为文本展示的样板。<br>Wordcloud库是专门用于根据文本生成词云的Python第三方库，十分常用且有趣。提示:词去<br>能够将文本转变成词云，也是一种必备能力。<br>有关wordcloud库的详细介绍可访问<a target="_blank" rel="noopener" href="https://amueller.github.io/word">https://amueller.github.io/word</a> cloud&#x2F;安装wordcloud库在 Windows的cmd命令行使用如下:<br>10.7wordcloud库与可视化词云<br>在生成词云时，wordcloud默认会以空格或标点分隔符对目标文本进行分词处理。对于<br>中文文本，分词处理需要由用户来完成。一般步骤是先将文本分词处理，然后以空格拼接，再调用wordcloud库函数,处理中文时还需要指定中文字体。例如,选择了微软雅黑( msyh.ttc）<br>作为显示效果,需要将该字体文件与代码存放在同一目录下或在字体文件名前加上完整路径。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import jieba</span><br><span class="line">from wordcloud import WordCloud</span><br><span class="line">txt=&#x27;程序设计语言是计算机能够理解和识别用户操作意图的一种交互体系，它按照特定规则组织、计算机指令，使用计算机能够自动进行各种运算处理&#x27;</span><br><span class="line">words=jieba.lcut(txt)</span><br><span class="line">newtxt=&#x27; &#x27;.join(words)</span><br><span class="line">wordcloud=WordCloud(font_path=&#x27;msyh.ttc&#x27;).generate(newtxt)wordcloud.to_file(&#x27;词云中文案例.png&#x27;)</span><br></pre></td></tr></table></figure>
+<p>Wordcloud库的核心是 WordCloud类，所有的功能都封装在 WordCloud类中。使用时需要实例化一个 WordCloud类的对象，并调用其 generate(text)方法将text文本转化为词云。WordCloud在创建时有一系列可选参数，用于配置词云图片。<br>font_path<br>指定字体文件的完整路径，默认None<br>width<br>生成图片宽度，默认400像素<br>height<br>生成图片高度，默认200像素<br>mask<br>词云形状，默认None，即方形图<br>min_font_size<br>词云中最小的字体字号，默认4号<br>font_step<br>字号步进间隔，默认1<br>max_font_size<br>词云中最大的字体字号，默认None，根据高度自动调节<br>max_words<br>词云图中最大词数，默认200<br>stopwords<br>被排除词列表，排除词不在词云中显示<br>background_color<br>图片背景色，默认黑色<br>WordCloud类的常用方法<br>generate(text)<br>由text文本生成词云<br>to_file(filename)<br>将词云图保存为名为filename的文件<br>wordcloud可以生成任何形状的词云，为了获取形状，需要提供一张形状的图像。</p>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="http://example.com/author.jpg" alt="avatar"/>
+                
+                <a href="javascript:void(0)" class="high-song">high起来 &#128541;</a>
+                
+                
+                <a href="javascript:void(0)" class="donate fa">赠我一杯 &#128536;</a>
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>
+                  
+                  作者:
+                  
+                    
+                    <a href="/about.html">Koi_NL</a>
+                </li>
+                
+                <li>发表日期: <span>2022-07-26  20:19:47</span></li>
+                
+                <li>最后编辑日期: <span>2022-07-26  20:52:55</span></li>
+                
+                <li class="post-category">
+                    文章分类:
+                    
+                    <a href="/categories/Python/">Python</a>
+                    
+                </li>
+                <li class="post-tags">
+                    文章标签:
+                    
+                </li>
+                
+                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        <a href="/posts/python09/" class="pre-post fa fa-caret-left">第九章  标准库概览</a>
+        
+        
+        <a href="/posts/python06/" class="next-post fa">第六章  第三方生态</a>
+        
+    </div>
+    
+    <div id="comments">
+        
+
+<script>
+  gitalk.render("comments");
+</script>
+
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+    <footer id="footer">
+    
+    <div class="social">
+        
+        <a href="https://www.example1.com" class="fa fa-free-code-camp" target="_blank" title="freecodecamp"></a>
+        
+        <a href="https://www.example2.com" class="fa fa-github" target="_blank" title="Follow me~"></a>
+        
+    </div>
+    
+    <div>
+        
+        <a href="/" class="copyright-links">Koi_NL</a>&copy;2015 - 2023.All Rights
+        Reserved.
+    </div>
+    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
+                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
+    </p>
+    
+    
+    <p>
+        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
+        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
+        </span>
+    </p>
+    
+</footer>
+
+</div>
+    <ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <li class="exchange-btn fa fa-exchange"></li>
+  
+    <li class="toc-btn fa fa-list-ul"></li>
+    
+    
+
+    
+    <li class="comment-btn fa fa-comments-o">
+        <a href="#comments" title="comments"></a>
+    </li>
+    
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text"
+                       placeholder="search this website..."/>
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+
+
+    
+<script src="/js/highsong.js"></script>
+
+
+
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = 'true';
+    copyrightObj.triggerCopyLength = '200';
+    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
+    var leancloudObj = {};
+    leancloudObj.enable = 'true';
+    leancloudObj.className = 'BlogCounter';
+    leancloudObj.limits = '10';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "search.xml";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "/" + search_path;
+    search.func =  _ajax.init();
+</script>
+
+<script src="/js/app.js"></script>
+
+
+
+</body>
+</html>

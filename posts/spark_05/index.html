@@ -1,0 +1,386 @@
+<!doctype html>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable"  content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    
+    
+    <!--Simple SEO-->
+
+
+<meta name="robots" content=all />
+<meta name="google" content=all />
+<meta name="googlebot" content=all />
+<meta name="verify" content=all />
+    <!--Title-->
+
+<title>第5章  HBase 分布式数据库 | 锦鲤未离</title>
+
+<link rel="alternate" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/pages/post.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+
+    <!--script-->
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<script>
+  var admin = "GeekaholicLin";
+  admin = admin.split(",");
+  var gitalk = new Gitalk({
+    clientID: "xxxxx",
+    clientSecret: "xxxxx",
+    repo: "geekaholiclin.github.io",
+    owner: "GeekaholicLin",
+    admin: admin,
+    id: decodeURIComponent(location.pathname),
+    distractionFreeMode: false
+  })
+
+</script>
+
+    
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body id="normal">
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<style>
+    header{ top: 71px; position: absolute!important;}
+    #container{padding-top: 151px!important;}
+</style>
+<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<div id="wrap">
+    <header  style="position: absolute;" >
+    <div id="site-meta">
+        <a href="/" id="logo">
+            <h1 class="title">锦鲤未离</h1>
+        </a>
+        
+        <h2 class="subtitle">KoiNL</h2>
+        
+    </div>
+    <ul id="nav">
+        
+            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+        
+            <li><a href="/atom.xml"><i class="fa fa-rss"></i>RSS</a></li>
+        
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a></li>
+    </ul>
+</header>
+
+    <div id="container">
+        
+<ul id="sidebar">
+    
+    
+<li class="widget notification">
+    <i class="fa fa-bell-o"></i>
+    <div>
+        
+<p>主题ylion v0.0.0版本即将上线，敬请期待~！
+主题作者：<a href="https://github.com/GeekaholicLin"
+title="fork me" target="_blank">Geekaholic</a></p>
+    </div>
+</li>
+
+    
+    
+<li class="widget widget-normal category">
+    <h3 class="fa fa-th widget-title">分类</h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/"><i class="fa" aria-hidden="true">Applied Statistics</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/"><i class="fa" aria-hidden="true">Data Structure and Algorithm</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/"><i class="fa" aria-hidden="true">Data-Mining</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/"><i class="fa" aria-hidden="true">Data-Processing-and-Analysing</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/"><i class="fa" aria-hidden="true">Hadoop</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/"><i class="fa" aria-hidden="true">MATLAB</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/"><i class="fa" aria-hidden="true">SqlServer</i></a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/"><i class="fa" aria-hidden="true">spark</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/"><i class="fa" aria-hidden="true">时间序列分析</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/"><i class="fa" aria-hidden="true">测试区</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"><i class="fa" aria-hidden="true">深度卷积神经网络</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/"><i class="fa" aria-hidden="true">电子设备</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/"><i class="fa" aria-hidden="true">考试</i></a><span class="category-list-count">1</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal archive">
+  <h3 class="fa fa-archive widget-title">归档</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/"><i class="fa" aria-hidden="true">三月 2023</i></a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/"><i class="fa" aria-hidden="true">二月 2023</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/"><i class="fa" aria-hidden="true">十一月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/"><i class="fa" aria-hidden="true">十月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/"><i class="fa" aria-hidden="true">九月 2022</i></a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/"><i class="fa" aria-hidden="true">八月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/"><i class="fa" aria-hidden="true">七月 2022</i></a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/"><i class="fa" aria-hidden="true">六月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/"><i class="fa" aria-hidden="true">五月 2022</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/"><i class="fa" aria-hidden="true">四月 2022</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/"><i class="fa" aria-hidden="true">三月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/"><i class="fa" aria-hidden="true">二月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/"><i class="fa" aria-hidden="true">一月 2022</i></a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/01/"><i class="fa" aria-hidden="true">一月 1999</i></a><span class="archive-list-count">2</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal popular-posts" id="popular-posts">
+    <h3 class="fa fa-thermometer-3 widget-title">热门文章</h3>
+    <ul id="popular-content">
+        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+    </ul>
+</li>
+
+    
+    
+
+    
+    
+<li class="widget widget-normal friends-link">
+    <h3 class="fa fa-globe widget-title">友链</h3><br/>
+
+    
+        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
+
+    
+
+</li>
+
+    
+</ul>
+
+
+        <div id="main">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="第5章  HBase 分布式数据库">
+                
+                第5章  HBase 分布式数据库
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>spark</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            null
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2023/03/31</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="第5章  HBase 分布式数据库"
+              data-leadcloud-url="/posts/spark_05/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+</div>
+
+            
+            
+        </div>
+        
+        <div id="post-body">
+            <p>Spark计算框架如何在分布式环境下对数据处理后的结构进行随机地、实时地存储？HBase前来解决这个问题。</p>
+<span id="more"></span>
+<p>HBase一般使用<strong>Shell命令行</strong>或者**Java API **方式进行操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop01 conf]# hbase shell</span><br><span class="line">2023-03-31 20:06:06,069 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable</span><br><span class="line">HBase Shell</span><br><span class="line">Use &quot;help&quot; to get list of supported commands.</span><br><span class="line">Use &quot;exit&quot; to quit this interactive shell.</span><br><span class="line">Version 2.0.2, r1cfab033e779df840d5612a85277f42a6a4e8172, Tue Aug 28 20:50:40 PDT 2018</span><br><span class="line">Took 0.0022 seconds                                                    </span><br><span class="line">hbase(main):001:0&gt; create &#x27;student&#x27;,&#x27;info&#x27;.&#x27;score&#x27;</span><br><span class="line">SyntaxError: (hbase):1: syntax error, unexpected tSTRING_BEG</span><br><span class="line">create &#x27;student&#x27;,&#x27;info&#x27;.&#x27;score&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">hbase(main):002:0&gt; create &#x27;student&#x27;,&#x27;info&#x27;,&#x27;score&#x27;</span><br><span class="line">Created table student</span><br><span class="line">Took 2.2020 seconds                                                    </span><br><span class="line">=&gt; Hbase::Table - student</span><br><span class="line">hbase(main):003:0&gt; list</span><br><span class="line">TABLE                                                                  </span><br><span class="line">student                                                                </span><br><span class="line">1 row(s)</span><br><span class="line">Took 0.0968 seconds                                                    </span><br><span class="line">=&gt; [&quot;student&quot;]</span><br><span class="line">hbase(main):004:0&gt; put &#x27;student&#x27;,&#x27;1001&#x27;,&#x27;info:name&#x27;,&#x27;Graay&#x27;</span><br><span class="line">Took 0.6300 seconds     </span><br><span class="line">hbase(main):006:0&gt; put &#x27;student&#x27;,&#x27;1001&#x27;,&#x27;info:age&#x27;,&#x27;18&#x27;</span><br><span class="line">Took 0.0259 seconds                                                    </span><br><span class="line">hbase(main):007:0&gt; scan &#x27;student&#x27;</span><br><span class="line">ROW                COLUMN+CELL                                         </span><br><span class="line"> 1001              column=info:age, timestamp=1680318580788, value=18  </span><br><span class="line"> 1001              column=info:name, timestamp=1680318521517, value=Gra</span><br><span class="line">                   ay                                                  </span><br><span class="line">1 row(s)</span><br><span class="line">Took 0.1029 seconds                                                    </span><br><span class="line">hbase(main):008:0&gt; put &#x27;student&#x27;,&#x27;1002&#x27;,&#x27;info:age&#x27;,&#x27;21&#x27;</span><br><span class="line">Took 0.0161 seconds                                                    </span><br><span class="line">hbase(main):009:0&gt; scan &#x27;student&#x27;</span><br><span class="line">ROW                COLUMN+CELL                                         </span><br><span class="line"> 1001              column=info:age, timestamp=1680318580788, value=18  </span><br><span class="line"> 1001              column=info:name, timestamp=1680318521517, value=Gra</span><br><span class="line">                   ay                                                  </span><br><span class="line"> 1002              column=info:age, timestamp=1680318604807, value=21  </span><br><span class="line">2 row(s)</span><br><span class="line">Took 0.0136 seconds                                                    </span><br><span class="line">hbase(main):010:0&gt; describe &#x27;student&#x27;</span><br><span class="line">Table student is ENABLED                                               </span><br><span class="line">student                                                                </span><br><span class="line">COLUMN FAMILIES DESCRIPTION                                            </span><br><span class="line">&#123;NAME =&gt; &#x27;info&#x27;, VERSIONS =&gt; &#x27;1&#x27;, EVICT_BLOCKS_ON_CLOSE =&gt; &#x27;false&#x27;, NEW</span><br><span class="line">_VERSION_BEHAVIOR =&gt; &#x27;false&#x27;, KEEP_DELETED_CELLS =&gt; &#x27;FALSE&#x27;, CACHE_DATA</span><br><span class="line">_ON_WRITE =&gt; &#x27;false&#x27;, DATA_BLOCK_ENCODING =&gt; &#x27;NONE&#x27;, TTL =&gt; &#x27;FOREVER&#x27;, </span><br><span class="line">MIN_VERSIONS =&gt; &#x27;0&#x27;, REPLICATION_SCOPE =&gt; &#x27;0&#x27;, BLOOMFILTER =&gt; &#x27;ROW&#x27;, CA</span><br><span class="line">CHE_INDEX_ON_WRITE =&gt; &#x27;false&#x27;, IN_MEMORY =&gt; &#x27;false&#x27;, CACHE_BLOOMS_ON_WR</span><br><span class="line">ITE =&gt; &#x27;false&#x27;, PREFETCH_BLOCKS_ON_OPEN =&gt; &#x27;false&#x27;, COMPRESSION =&gt; &#x27;NON</span><br><span class="line">E&#x27;, BLOCKCACHE =&gt; &#x27;true&#x27;, BLOCKSIZE =&gt; &#x27;65536&#x27;&#125;                        </span><br><span class="line">&#123;NAME =&gt; &#x27;score&#x27;, VERSIONS =&gt; &#x27;1&#x27;, EVICT_BLOCKS_ON_CLOSE =&gt; &#x27;false&#x27;, NE</span><br><span class="line">W_VERSION_BEHAVIOR =&gt; &#x27;false&#x27;, KEEP_DELETED_CELLS =&gt; &#x27;FALSE&#x27;, CACHE_DAT</span><br><span class="line">A_ON_WRITE =&gt; &#x27;false&#x27;, DATA_BLOCK_ENCODING =&gt; &#x27;NONE&#x27;, TTL =&gt; &#x27;FOREVER&#x27;,</span><br><span class="line"> MIN_VERSIONS =&gt; &#x27;0&#x27;, REPLICATION_SCOPE =&gt; &#x27;0&#x27;, BLOOMFILTER =&gt; &#x27;ROW&#x27;, C</span><br><span class="line">ACHE_INDEX_ON_WRITE =&gt; &#x27;false&#x27;, IN_MEMORY =&gt; &#x27;false&#x27;, CACHE_BLOOMS_ON_W</span><br><span class="line">RITE =&gt; &#x27;false&#x27;, PREFETCH_BLOCKS_ON_OPEN =&gt; &#x27;false&#x27;, COMPRESSION =&gt; &#x27;NO</span><br><span class="line">NE&#x27;, BLOCKCACHE =&gt; &#x27;true&#x27;, BLOCKSIZE =&gt; &#x27;65536&#x27;&#125;                       </span><br><span class="line">2 row(s)</span><br><span class="line">Took 0.2478 seconds                                                    </span><br><span class="line">hbase(main):011:0&gt; get &#x27;student&#x27;,&#x27;1001&#x27;</span><br><span class="line">COLUMN             CELL                                                </span><br><span class="line"> info:age          timestamp=1680318580788, value=18                   </span><br><span class="line"> info:name         timestamp=1680318521517, value=Graay                </span><br><span class="line">1 row(s)</span><br><span class="line">Took 0.1066 seconds                                                    </span><br><span class="line">hbase(main):012:0&gt; count &#x27;student&#x27;</span><br><span class="line">2 row(s)</span><br><span class="line">Took 0.0993 seconds                                                    </span><br><span class="line">=&gt; 2</span><br><span class="line">hbase(main):013:0&gt; delete &#x27;student&#x27;,&#x27;1002&#x27;,&#x27;info:sex&#x27;</span><br><span class="line">Took 0.0651 seconds                                                    </span><br><span class="line">hbase(main):014:0&gt; deleteall &#x27;student&#x27;,&#x27;1001&#x27;</span><br><span class="line">Took 0.0595 seconds </span><br><span class="line">hbase(main):017:0&gt; truncate &#x27;student&#x27;</span><br><span class="line">Truncating &#x27;student&#x27; table (it may take a while):</span><br><span class="line">Disabling table...</span><br><span class="line">Truncating table...</span><br><span class="line">Took 2.8205 seconds </span><br><span class="line">hbase(main):019:0&gt; scan &#x27;student&#x27;</span><br><span class="line">ROW                COLUMN+CELL                                         </span><br><span class="line">0 row(s)</span><br><span class="line">Took 1.4101 seconds                                                    </span><br><span class="line">hbase(main):020:0&gt; disable &#x27;student&#x27;</span><br><span class="line">Took 0.5823 seconds                                                    </span><br><span class="line">hbase(main):021:0&gt; drop &#x27;student&#x27;</span><br><span class="line">Took 0.5392 seconds                                                    </span><br><span class="line">hbase(main):022:0&gt; </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="http://example.com/author.jpg" alt="avatar"/>
+                
+                <a href="javascript:void(0)" class="high-song">high起来 &#128541;</a>
+                
+                
+                <a href="javascript:void(0)" class="donate fa">赠我一杯 &#128536;</a>
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>
+                  
+                  作者:
+                  
+                    
+                    <a href="/about.html">Koi_NL</a>
+                </li>
+                
+                <li>发表日期: <span>2023-03-31  17:00:05</span></li>
+                
+                <li>最后编辑日期: <span>2023-04-01  11:14:15</span></li>
+                
+                <li class="post-category">
+                    文章分类:
+                    
+                    <a href="/categories/spark/">spark</a>
+                    
+                </li>
+                <li class="post-tags">
+                    文章标签:
+                    
+                </li>
+                
+                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        
+        <a href="/posts/spark_04/" class="next-post fa">第4章  Spark SQL结构化数据文件处理</a>
+        
+    </div>
+    
+    <div id="comments">
+        
+
+<script>
+  gitalk.render("comments");
+</script>
+
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+    <footer id="footer">
+    
+    <div class="social">
+        
+        <a href="https://www.example1.com" class="fa fa-free-code-camp" target="_blank" title="freecodecamp"></a>
+        
+        <a href="https://www.example2.com" class="fa fa-github" target="_blank" title="Follow me~"></a>
+        
+    </div>
+    
+    <div>
+        
+        <a href="/" class="copyright-links">Koi_NL</a>&copy;2015 - 2023.All Rights
+        Reserved.
+    </div>
+    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
+                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
+    </p>
+    
+    
+    <p>
+        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
+        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
+        </span>
+    </p>
+    
+</footer>
+
+</div>
+    <ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <li class="exchange-btn fa fa-exchange"></li>
+  
+    <li class="toc-btn fa fa-list-ul"></li>
+    
+    
+
+    
+    <li class="comment-btn fa fa-comments-o">
+        <a href="#comments" title="comments"></a>
+    </li>
+    
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text"
+                       placeholder="search this website..."/>
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    
+
+
+    
+<script src="/js/highsong.js"></script>
+
+
+
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = 'true';
+    copyrightObj.triggerCopyLength = '200';
+    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
+    var leancloudObj = {};
+    leancloudObj.enable = 'true';
+    leancloudObj.className = 'BlogCounter';
+    leancloudObj.limits = '10';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "search.xml";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "/" + search_path;
+    search.func =  _ajax.init();
+</script>
+
+<script src="/js/app.js"></script>
+
+
+
+</body>
+</html>

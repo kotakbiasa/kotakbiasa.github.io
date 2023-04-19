@@ -1,0 +1,501 @@
+<!doctype html>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable"  content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    
+    
+    <!--Simple SEO-->
+
+
+<meta name="robots" content=all />
+<meta name="google" content=all />
+<meta name="googlebot" content=all />
+<meta name="verify" content=all />
+    <!--Title-->
+
+<title>第六章  网络基础 | 锦鲤未离</title>
+
+<link rel="alternate" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/pages/post.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+
+    <!--script-->
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<script>
+  var admin = "GeekaholicLin";
+  admin = admin.split(",");
+  var gitalk = new Gitalk({
+    clientID: "xxxxx",
+    clientSecret: "xxxxx",
+    repo: "geekaholiclin.github.io",
+    owner: "GeekaholicLin",
+    admin: admin,
+    id: decodeURIComponent(location.pathname),
+    distractionFreeMode: false
+  })
+
+</script>
+
+    
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body id="normal">
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<style>
+    header{ top: 71px; position: absolute!important;}
+    #container{padding-top: 151px!important;}
+</style>
+<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<div id="wrap">
+    <header  style="position: absolute;" >
+    <div id="site-meta">
+        <a href="/" id="logo">
+            <h1 class="title">锦鲤未离</h1>
+        </a>
+        
+        <h2 class="subtitle">KoiNL</h2>
+        
+    </div>
+    <ul id="nav">
+        
+            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+        
+            <li><a href="/atom.xml"><i class="fa fa-rss"></i>RSS</a></li>
+        
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a></li>
+    </ul>
+</header>
+
+    <div id="container">
+        
+<ul id="sidebar">
+    
+    
+<li class="widget notification">
+    <i class="fa fa-bell-o"></i>
+    <div>
+        
+<p>主题ylion v0.0.0版本即将上线，敬请期待~！
+主题作者：<a href="https://github.com/GeekaholicLin"
+title="fork me" target="_blank">Geekaholic</a></p>
+    </div>
+</li>
+
+    
+    
+<li class="widget widget-normal category">
+    <h3 class="fa fa-th widget-title">分类</h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/"><i class="fa" aria-hidden="true">Applied Statistics</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/"><i class="fa" aria-hidden="true">Data Structure and Algorithm</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/"><i class="fa" aria-hidden="true">Data-Mining</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/"><i class="fa" aria-hidden="true">Data-Processing-and-Analysing</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/"><i class="fa" aria-hidden="true">Hadoop</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/"><i class="fa" aria-hidden="true">MATLAB</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/"><i class="fa" aria-hidden="true">SqlServer</i></a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/"><i class="fa" aria-hidden="true">spark</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/"><i class="fa" aria-hidden="true">时间序列分析</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/"><i class="fa" aria-hidden="true">测试区</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"><i class="fa" aria-hidden="true">深度卷积神经网络</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/"><i class="fa" aria-hidden="true">电子设备</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/"><i class="fa" aria-hidden="true">考试</i></a><span class="category-list-count">1</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal archive">
+  <h3 class="fa fa-archive widget-title">归档</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/"><i class="fa" aria-hidden="true">三月 2023</i></a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/"><i class="fa" aria-hidden="true">二月 2023</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/"><i class="fa" aria-hidden="true">十一月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/"><i class="fa" aria-hidden="true">十月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/"><i class="fa" aria-hidden="true">九月 2022</i></a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/"><i class="fa" aria-hidden="true">八月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/"><i class="fa" aria-hidden="true">七月 2022</i></a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/"><i class="fa" aria-hidden="true">六月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/"><i class="fa" aria-hidden="true">五月 2022</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/"><i class="fa" aria-hidden="true">四月 2022</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/"><i class="fa" aria-hidden="true">三月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/"><i class="fa" aria-hidden="true">二月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/"><i class="fa" aria-hidden="true">一月 2022</i></a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/01/"><i class="fa" aria-hidden="true">一月 1999</i></a><span class="archive-list-count">2</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal popular-posts" id="popular-posts">
+    <h3 class="fa fa-thermometer-3 widget-title">热门文章</h3>
+    <ul id="popular-content">
+        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+    </ul>
+</li>
+
+    
+    
+
+    
+    
+<li class="widget widget-normal friends-link">
+    <h3 class="fa fa-globe widget-title">友链</h3><br/>
+
+    
+        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
+
+    
+
+</li>
+
+    
+</ul>
+
+
+        <div id="main">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="第六章  网络基础">
+                
+                第六章  网络基础
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>Linux</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            null
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2022/06/02</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="第六章  网络基础"
+              data-leadcloud-url="/posts/linux06/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>321</strong>天之前发表，文中内容可能已经过时。如有疑问，请在评论区留言。
+            </p>
+            
+        </div>
+        
+        <div id="post-body">
+            <p>&lt;注: 网卡设备均以设备 ens33 举例子&gt;<br>关于 Linux 的网络配置, 可分为配置网络 IP 临时 [ifconfig, ip] 与 永久 [nmcli, 网络链接配置文件]。<br>临时本篇暂且不论，只论永久。<br>网络配置文件仅作为了解性内容，重点在于 nmcli 的处理。</p>
+<p>网络配置文件: vim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-网卡设备名（ens33等）</p>
+<p>网卡设备本身</p>
+<p>网卡的连接配置<br>nmcli 分为对设备和连接的设置，多个连接可以应用到同一个设备上面，但同一时间只能启用一个连接</p>
+<h2 id="对设备的设置"><a href="#对设备的设置" class="headerlink" title="对设备的设置"></a>对设备的设置</h2><h3 id="查询设备状况"><a href="#查询设备状况" class="headerlink" title="查询设备状况"></a>查询设备状况</h3><p>当查询设备简略时，使用 <code>nmcli device status</code> 就足矣。<br>若要查询所有设备的具体信息，使用 <code>nmcli device show</code>。当然，若在其后加上具体名称，则仅仅查询该设备的信息<br>另外，你还可以将设备进行断连或连接状态。</p>
+<h2 id="对连接的设置"><a href="#对连接的设置" class="headerlink" title="对连接的设置"></a>对连接的设置</h2><h3 id="查询连接情况"><a href="#查询连接情况" class="headerlink" title="查询连接情况"></a>查询连接情况</h3><p>简要查询全部信息，使用 <code>nmcli conncetion show</code>，查询某一详细信息，在其后追加其名称。当然，也可以禁用或启用它。</p>
+<table>
+<thead>
+<tr>
+<th align="center">用法</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">nmcli device status</td>
+<td align="center">设备状况</td>
+</tr>
+<tr>
+<td align="center">nmcli device show ens33</td>
+<td align="center">显示 ens33 状态</td>
+</tr>
+<tr>
+<td align="center">nmcli d disconnect &#x2F; connect ens33</td>
+<td align="center">ens33 设备禁 &#x2F; 启用</td>
+</tr>
+<tr>
+<td align="center">nmcli connection show</td>
+<td align="center">显示连接</td>
+</tr>
+<tr>
+<td align="center">nmcli connection show ens33</td>
+<td align="center">显示 ens33 网络连接</td>
+</tr>
+<tr>
+<td align="center">nmcli connection down &#x2F; up ens33</td>
+<td align="center">禁 &#x2F; 启用连接配置</td>
+</tr>
+</tbody></table>
+<h3 id="对连接配置的修改"><a href="#对连接配置的修改" class="headerlink" title="对连接配置的修改"></a>对连接配置的修改</h3><p>对于修改，无非就是增删改，下面通过例子来说明：</p>
+<p>例1：- 创建名为 conn2 的连接配置, 指定静态 ip 地址, 不自动连接. (分配，类型，地址，网关)<br><code>nmcli c a ifname ens33 con-name conn2</code><br><code>ipv4.method manual type Ethernet ipv4.addresses 192.168.85.136/24 gw4 192.168.85.2</code><br><code>autoconnect no</code> </p>
+<ul>
+<li>经查看, 可知 conn2 连接已存在, 但未关联到某个设备上.<br><code>nmcli c s</code></li>
+</ul>
+<p>例2：等，见表格下</p>
+<table>
+<thead>
+<tr>
+<th align="center">nucli 参数</th>
+<th align="center">配置文件参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ipv4.method manval &#x2F; auto</td>
+<td align="center">BOOTPROTO&#x3D;none or static &#x2F; dhcp</td>
+<td align="center">动态分配 IP</td>
+</tr>
+<tr>
+<td align="center">ifname ens33</td>
+<td align="center">DEVICE&#x3D;ens33</td>
+<td align="center">指定网卡名称</td>
+</tr>
+<tr>
+<td align="center">ipv4.addresses 192.168.100.100&#x2F;24</td>
+<td align="center">IPADDR&#x3D;192.168.100.100’&#x2F;n’PREFIX&#x3D;24</td>
+<td align="center">IP 地址与掩码位数</td>
+</tr>
+<tr>
+<td align="center">gw4 192.168.100.1(2?)</td>
+<td align="center">GATEWAY&#x3D;192.168.100.1</td>
+<td align="center">设置网关</td>
+</tr>
+<tr>
+<td align="center">ipv4.dns 8.8.8.8</td>
+<td align="center">DNS0&#x3D;8.8.8.8</td>
+<td align="center">设置 DNS 服务器</td>
+</tr>
+<tr>
+<td align="center">ipv4.dns-search example.com</td>
+<td align="center">DOMAIN&#x3D;example.com</td>
+<td align="center">域名</td>
+</tr>
+<tr>
+<td align="center">connection.autoconnect yes</td>
+<td align="center">ONBOOT&#x3D;yes</td>
+<td align="center">开机自动连接</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>查看 配置文件 conn2<br>cat &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-conn2</p>
+</li>
+<li><p>首先禁用 ens33 连接, 再启用 conn2 连接. 这就是 两个网络情况下切换网络的方法.<br>nmcli c d ens33<br>nmcli c u conn2</p>
+</li>
+<li><p>可通过查看连接状态了解详情.<br>nmcli c s</p>
+</li>
+<li><p>查看 ens33 设备的状态.<br>nmcli d s<br>nmcli d show ens33</p>
+</li>
+<li><p>修改 conn2 的连接配置, IP为 , DNS 为 , 并设置开机自动启用连接.<br>nmcli c m conn2 ipv4.addresses 192.168.85.59&#x2F;24 ipv4.dns 192.168.85.1 connection.autoconnect yes </p>
+</li>
+<li><p>查看 ifcfg-conn2配置文件的内容<br>cat -n &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-conn2</p>
+</li>
+<li><p>重启网络服务, 使新配置生效.<br>systemctl restart network</p>
+</li>
+<li><p>将网络恢复原先状态<br>nmcli c d conn2</p>
+</li>
+</ul>
+<p>配置文件的修改实际上就是修改连接配置</p>
+<details ><summary>点击显/隐查看网卡设备 ens33 的配置文件参数</summary><div class="fold-content"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Ethernet    # 类型</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">BOOTPROTO=dhcp    # 静态 none 或 static, 动态 dhcp</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens33</span><br><span class="line">UUID=6bf39c75-5e3b-4499-af27-7db5c701ea5e</span><br><span class="line">DEVICE=ens33</span><br><span class="line">ONBOOT=no    # 开机自启</span><br><span class="line">IPADDR=192.168.85.121    # IP</span><br><span class="line">PREFIX=24    # 子网掩码, 24 代表 255.255.255.0</span><br><span class="line">DNS1=192.168.85.2    # DNS</span><br><span class="line">IPADDR1=192.168.85.155    # 第二个 IP</span><br><span class="line">NETMASK1=255.255.255.0 # 子网掩码</span><br></pre></td></tr></table></figure></div></details>
+
+<h2 id="systemctl-命令"><a href="#systemctl-命令" class="headerlink" title="systemctl 命令"></a>systemctl 命令</h2><p>systemctl start 服务名<br>stop,status,restart,enable,disable</p>
+<h2 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h2><p>hostname<br>hostname new_name</p>
+<h2 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h2><p>ping -c 3 <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a><br>检测 IP 连通性</p>
+<h2 id="traceroute"><a href="#traceroute" class="headerlink" title="traceroute"></a>traceroute</h2><p>traceroute -q 4 <a target="_blank" rel="noopener" href="http://www.38.com/">www.38.com</a></p>
+<h2 id="ip"><a href="#ip" class="headerlink" title="ip"></a>ip</h2><p>ip a show ens33</p>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="http://example.com/author.jpg" alt="avatar"/>
+                
+                <a href="javascript:void(0)" class="high-song">high起来 &#128541;</a>
+                
+                
+                <a href="javascript:void(0)" class="donate fa">赠我一杯 &#128536;</a>
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>
+                  
+                  作者:
+                  
+                    
+                    <a href="/about.html">Koi_NL</a>
+                </li>
+                
+                <li>发表日期: <span>2022-06-02  10:17:29</span></li>
+                
+                <li>最后编辑日期: <span>2022-08-24  07:13:31</span></li>
+                
+                <li class="post-category">
+                    文章分类:
+                    
+                    <a href="/categories/Linux/">Linux</a>
+                    
+                </li>
+                <li class="post-tags">
+                    文章标签:
+                    
+                </li>
+                
+                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        <a href="/posts/linux07/" class="pre-post fa fa-caret-left">安全管理</a>
+        
+        
+        <a href="/posts/py0nnnpillow/" class="next-post fa">第某章  PIL 库</a>
+        
+    </div>
+    
+    <div id="comments">
+        
+
+<script>
+  gitalk.render("comments");
+</script>
+
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+    <footer id="footer">
+    
+    <div class="social">
+        
+        <a href="https://www.example1.com" class="fa fa-free-code-camp" target="_blank" title="freecodecamp"></a>
+        
+        <a href="https://www.example2.com" class="fa fa-github" target="_blank" title="Follow me~"></a>
+        
+    </div>
+    
+    <div>
+        
+        <a href="/" class="copyright-links">Koi_NL</a>&copy;2015 - 2023.All Rights
+        Reserved.
+    </div>
+    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
+                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
+    </p>
+    
+    
+    <p>
+        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
+        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
+        </span>
+    </p>
+    
+</footer>
+
+</div>
+    <ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <li class="exchange-btn fa fa-exchange"></li>
+  
+    <li class="toc-btn fa fa-list-ul"></li>
+    
+    
+
+    
+    <li class="comment-btn fa fa-comments-o">
+        <a href="#comments" title="comments"></a>
+    </li>
+    
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text"
+                       placeholder="search this website..."/>
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%AE%BE%E5%A4%87%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">对设备的设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E5%86%B5"><span class="toc-number">1.1.</span> <span class="toc-text">查询设备状况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">对连接的设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%BF%9E%E6%8E%A5%E6%83%85%E5%86%B5"><span class="toc-number">2.1.</span> <span class="toc-text">查询连接情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%BF%9E%E6%8E%A5%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-number">2.2.</span> <span class="toc-text">对连接配置的修改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#systemctl-%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">systemctl 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="toc-number">4.</span> <span class="toc-text">主机名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ping"><span class="toc-number">5.</span> <span class="toc-text">ping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#traceroute"><span class="toc-number">6.</span> <span class="toc-text">traceroute</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip"><span class="toc-number">7.</span> <span class="toc-text">ip</span></a></li></ol>
+
+
+    
+<script src="/js/highsong.js"></script>
+
+
+
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = 'true';
+    copyrightObj.triggerCopyLength = '200';
+    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
+    var leancloudObj = {};
+    leancloudObj.enable = 'true';
+    leancloudObj.className = 'BlogCounter';
+    leancloudObj.limits = '10';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "search.xml";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "/" + search_path;
+    search.func =  _ajax.init();
+</script>
+
+<script src="/js/app.js"></script>
+
+
+
+</body>
+</html>

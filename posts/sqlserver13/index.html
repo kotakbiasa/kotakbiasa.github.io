@@ -1,0 +1,385 @@
+<!doctype html>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable"  content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    
+    
+    <!--Simple SEO-->
+
+
+<meta name="robots" content=all />
+<meta name="google" content=all />
+<meta name="googlebot" content=all />
+<meta name="verify" content=all />
+    <!--Title-->
+
+<title>『SQL Server』第十三章  大规模数据库架构 | 锦鲤未离</title>
+
+<link rel="alternate" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/pages/post.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+
+    <!--script-->
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<script>
+  var admin = "GeekaholicLin";
+  admin = admin.split(",");
+  var gitalk = new Gitalk({
+    clientID: "xxxxx",
+    clientSecret: "xxxxx",
+    repo: "geekaholiclin.github.io",
+    owner: "GeekaholicLin",
+    admin: admin,
+    id: decodeURIComponent(location.pathname),
+    distractionFreeMode: false
+  })
+
+</script>
+
+    
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body id="normal">
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<style>
+    header{ top: 71px; position: absolute!important;}
+    #container{padding-top: 151px!important;}
+</style>
+<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<div id="wrap">
+    <header  style="position: absolute;" >
+    <div id="site-meta">
+        <a href="/" id="logo">
+            <h1 class="title">锦鲤未离</h1>
+        </a>
+        
+        <h2 class="subtitle">KoiNL</h2>
+        
+    </div>
+    <ul id="nav">
+        
+            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+        
+            <li><a href="/atom.xml"><i class="fa fa-rss"></i>RSS</a></li>
+        
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a></li>
+    </ul>
+</header>
+
+    <div id="container">
+        
+<ul id="sidebar">
+    
+    
+<li class="widget notification">
+    <i class="fa fa-bell-o"></i>
+    <div>
+        
+<p>主题ylion v0.0.0版本即将上线，敬请期待~！
+主题作者：<a href="https://github.com/GeekaholicLin"
+title="fork me" target="_blank">Geekaholic</a></p>
+    </div>
+</li>
+
+    
+    
+<li class="widget widget-normal category">
+    <h3 class="fa fa-th widget-title">分类</h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/"><i class="fa" aria-hidden="true">Applied Statistics</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/"><i class="fa" aria-hidden="true">Data Structure and Algorithm</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/"><i class="fa" aria-hidden="true">Data-Mining</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/"><i class="fa" aria-hidden="true">Data-Processing-and-Analysing</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/"><i class="fa" aria-hidden="true">Hadoop</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/"><i class="fa" aria-hidden="true">MATLAB</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/"><i class="fa" aria-hidden="true">SqlServer</i></a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/"><i class="fa" aria-hidden="true">spark</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/"><i class="fa" aria-hidden="true">时间序列分析</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/"><i class="fa" aria-hidden="true">测试区</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"><i class="fa" aria-hidden="true">深度卷积神经网络</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/"><i class="fa" aria-hidden="true">电子设备</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/"><i class="fa" aria-hidden="true">考试</i></a><span class="category-list-count">1</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal archive">
+  <h3 class="fa fa-archive widget-title">归档</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/"><i class="fa" aria-hidden="true">三月 2023</i></a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/"><i class="fa" aria-hidden="true">二月 2023</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/"><i class="fa" aria-hidden="true">十一月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/"><i class="fa" aria-hidden="true">十月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/"><i class="fa" aria-hidden="true">九月 2022</i></a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/"><i class="fa" aria-hidden="true">八月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/"><i class="fa" aria-hidden="true">七月 2022</i></a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/"><i class="fa" aria-hidden="true">六月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/"><i class="fa" aria-hidden="true">五月 2022</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/"><i class="fa" aria-hidden="true">四月 2022</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/"><i class="fa" aria-hidden="true">三月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/"><i class="fa" aria-hidden="true">二月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/"><i class="fa" aria-hidden="true">一月 2022</i></a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/01/"><i class="fa" aria-hidden="true">一月 1999</i></a><span class="archive-list-count">2</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal popular-posts" id="popular-posts">
+    <h3 class="fa fa-thermometer-3 widget-title">热门文章</h3>
+    <ul id="popular-content">
+        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+    </ul>
+</li>
+
+    
+    
+
+    
+    
+<li class="widget widget-normal friends-link">
+    <h3 class="fa fa-globe widget-title">友链</h3><br/>
+
+    
+        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
+
+    
+
+</li>
+
+    
+</ul>
+
+
+        <div id="main">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="『SQL Server』第十三章  大规模数据库架构">
+                
+                『SQL Server』第十三章  大规模数据库架构
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>SqlServer</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            null
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2022/07/17</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="『SQL Server』第十三章  大规模数据库架构"
+              data-leadcloud-url="/posts/sqlserver13/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+</div>
+
+            
+            
+        </div>
+        
+        <div id="post-body">
+            <h1 id="第十三章-大规模数据库架构"><a href="#第十三章-大规模数据库架构" class="headerlink" title="第十三章  大规模数据库架构"></a>第十三章  大规模数据库架构</h1><p>1.分布式数据库:物理上分散,逻辑上集中<br>目标:本地自治,非集中式管理,高可用性(最基本特征)<br>                    位置独立性,分片独立性,复制独立性(分布透明性)<br>                    分布式查询,事务管理(复杂性)<br>                数据分布:数据分片:水平,垂直,导出,混合<br>                         数据分配:集中,分割(更新事务),全复制(事务更新少,数据少),混合<br>                体系结构:全局外模式<br>                        全局概念模式<br>                        分片模式<br>                        分配模式<br>                        局部概念模式<br>                        局部内模式<br>                        局部数据库<br>2.并行数据库:结构:共享内存结构<br>                  共享磁盘结构<br>                  无共享结构<br>                  层次结构<br>              数据划分与并行计算:合理划分可以使响应速度变化,处理性能更优<br>数据划分:一维数据划分:轮转法:整个关系<br>                                    散列法:点查询,连接查询,散列函数选择是关键点<br>                                    范围划分法:范围查询,点查询数据分布不均匀<br>                      多维数据划分:MAGIC多维划分法<br>                                  CMD多维划分法<br>                                  BERD多维划分法<br>               并行算法:并行排序<br>                        并行连接:划分连接,分片-复制连接<br>                        其他的关系操作:选择,除重,投影,聚集<br>3.云数据库:服务类型:IaaS:将基础设施作为服务<br>                    PaaS:将平台作为服务<br>SaaS:将软件作为服务</p>
+<p>分布式查询:导致数据传输量大的主要原因是数据间的连接操作和 并 操作,半连接操作可用减少场地之间的数据传输量<br>分布式事务管理:恢复控制:基于 两 阶段 的提交协议,协调者与参与者<br>              并发控制:封锁协议:三级封锁协议<br>          为了保证全局事务的原子性，参与事务执行的所有场地或者全部提交，或者全 回滚 &#x2F; 撤销 。<br>两阶段封锁协议保证事务的调度可串行性<br>第二节：并行数据库<br>共享内存, 共享磁盘, 无共享, 层次结构<br>数据划分与并行计算:合理划分可以使响应速度变化,处理性能更优<br>:一维数据划分<br>多维数据划分<br>  轮转法；整体扫描<br>  散列划分：根据A属性划分<br>  范围划分：根据B属性取值区间<br>第三节：云计算数据库架构<br>云计算通过集中所有的计算资源，采用硬件 虚拟化 技术，为使用者提供强大的计算能力、存储和宽带等资源。<br>第四节 ：XML数据库</p>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="http://example.com/author.jpg" alt="avatar"/>
+                
+                <a href="javascript:void(0)" class="high-song">high起来 &#128541;</a>
+                
+                
+                <a href="javascript:void(0)" class="donate fa">赠我一杯 &#128536;</a>
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>
+                  
+                  作者:
+                  
+                    
+                    <a href="/about.html">Koi_NL</a>
+                </li>
+                
+                <li>发表日期: <span>2022-07-17  09:14:49</span></li>
+                
+                <li>最后编辑日期: <span>2022-07-16  08:54:52</span></li>
+                
+                <li class="post-category">
+                    文章分类:
+                    
+                    <a href="/categories/SqlServer/">SqlServer</a>
+                    
+                </li>
+                <li class="post-tags">
+                    文章标签:
+                    
+                </li>
+                
+                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        <a href="/posts/sqlserver14/" class="pre-post fa fa-caret-left">『SQL Server』第十四章  数据仓库与数据挖掘</a>
+        
+        
+        <a href="/posts/sqlserver03/" class="next-post fa">『SQL Server』第三章  系统设计</a>
+        
+    </div>
+    
+    <div id="comments">
+        
+
+<script>
+  gitalk.render("comments");
+</script>
+
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+    <footer id="footer">
+    
+    <div class="social">
+        
+        <a href="https://www.example1.com" class="fa fa-free-code-camp" target="_blank" title="freecodecamp"></a>
+        
+        <a href="https://www.example2.com" class="fa fa-github" target="_blank" title="Follow me~"></a>
+        
+    </div>
+    
+    <div>
+        
+        <a href="/" class="copyright-links">Koi_NL</a>&copy;2015 - 2023.All Rights
+        Reserved.
+    </div>
+    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
+                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
+    </p>
+    
+    
+    <p>
+        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
+        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
+        </span>
+    </p>
+    
+</footer>
+
+</div>
+    <ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <li class="exchange-btn fa fa-exchange"></li>
+  
+    <li class="toc-btn fa fa-list-ul"></li>
+    
+    
+
+    
+    <li class="comment-btn fa fa-comments-o">
+        <a href="#comments" title="comments"></a>
+    </li>
+    
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text"
+                       placeholder="search this website..."/>
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%B6%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">第十三章  大规模数据库架构</span></a></li></ol>
+
+
+    
+<script src="/js/highsong.js"></script>
+
+
+
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = 'true';
+    copyrightObj.triggerCopyLength = '200';
+    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
+    var leancloudObj = {};
+    leancloudObj.enable = 'true';
+    leancloudObj.className = 'BlogCounter';
+    leancloudObj.limits = '10';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "search.xml";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "/" + search_path;
+    search.func =  _ajax.init();
+</script>
+
+<script src="/js/app.js"></script>
+
+
+
+</body>
+</html>

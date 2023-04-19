@@ -1,0 +1,454 @@
+<!doctype html>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable"  content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    
+    
+    <!--Simple SEO-->
+
+
+<meta name="robots" content=all />
+<meta name="google" content=all />
+<meta name="googlebot" content=all />
+<meta name="verify" content=all />
+    <!--Title-->
+
+<title>第三章  存储和逻辑卷管理 | 锦鲤未离</title>
+
+<link rel="alternate" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/pages/post.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+
+    <!--script-->
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<script>
+  var admin = "GeekaholicLin";
+  admin = admin.split(",");
+  var gitalk = new Gitalk({
+    clientID: "xxxxx",
+    clientSecret: "xxxxx",
+    repo: "geekaholiclin.github.io",
+    owner: "GeekaholicLin",
+    admin: admin,
+    id: decodeURIComponent(location.pathname),
+    distractionFreeMode: false
+  })
+
+</script>
+
+    
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body id="normal">
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<style>
+    header{ top: 71px; position: absolute!important;}
+    #container{padding-top: 151px!important;}
+</style>
+<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<div id="wrap">
+    <header  style="position: absolute;" >
+    <div id="site-meta">
+        <a href="/" id="logo">
+            <h1 class="title">锦鲤未离</h1>
+        </a>
+        
+        <h2 class="subtitle">KoiNL</h2>
+        
+    </div>
+    <ul id="nav">
+        
+            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+        
+            <li><a href="/atom.xml"><i class="fa fa-rss"></i>RSS</a></li>
+        
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a></li>
+    </ul>
+</header>
+
+    <div id="container">
+        
+<ul id="sidebar">
+    
+    
+<li class="widget notification">
+    <i class="fa fa-bell-o"></i>
+    <div>
+        
+<p>主题ylion v0.0.0版本即将上线，敬请期待~！
+主题作者：<a href="https://github.com/GeekaholicLin"
+title="fork me" target="_blank">Geekaholic</a></p>
+    </div>
+</li>
+
+    
+    
+<li class="widget widget-normal category">
+    <h3 class="fa fa-th widget-title">分类</h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/"><i class="fa" aria-hidden="true">Applied Statistics</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/"><i class="fa" aria-hidden="true">Data Structure and Algorithm</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/"><i class="fa" aria-hidden="true">Data-Mining</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/"><i class="fa" aria-hidden="true">Data-Processing-and-Analysing</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/"><i class="fa" aria-hidden="true">Hadoop</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/"><i class="fa" aria-hidden="true">Linux</i></a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/"><i class="fa" aria-hidden="true">MATLAB</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/"><i class="fa" aria-hidden="true">SqlServer</i></a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/"><i class="fa" aria-hidden="true">spark</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/"><i class="fa" aria-hidden="true">时间序列分析</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/"><i class="fa" aria-hidden="true">测试区</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"><i class="fa" aria-hidden="true">深度卷积神经网络</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/"><i class="fa" aria-hidden="true">电子设备</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/"><i class="fa" aria-hidden="true">考试</i></a><span class="category-list-count">1</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal archive">
+  <h3 class="fa fa-archive widget-title">归档</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/"><i class="fa" aria-hidden="true">三月 2023</i></a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/"><i class="fa" aria-hidden="true">二月 2023</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/"><i class="fa" aria-hidden="true">十一月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/"><i class="fa" aria-hidden="true">十月 2022</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/"><i class="fa" aria-hidden="true">九月 2022</i></a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/"><i class="fa" aria-hidden="true">八月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/"><i class="fa" aria-hidden="true">七月 2022</i></a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/"><i class="fa" aria-hidden="true">六月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/"><i class="fa" aria-hidden="true">五月 2022</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/"><i class="fa" aria-hidden="true">四月 2022</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/"><i class="fa" aria-hidden="true">三月 2022</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/"><i class="fa" aria-hidden="true">二月 2022</i></a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/"><i class="fa" aria-hidden="true">一月 2022</i></a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/01/"><i class="fa" aria-hidden="true">一月 1999</i></a><span class="archive-list-count">2</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal popular-posts" id="popular-posts">
+    <h3 class="fa fa-thermometer-3 widget-title">热门文章</h3>
+    <ul id="popular-content">
+        <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+    </ul>
+</li>
+
+    
+    
+
+    
+    
+<li class="widget widget-normal friends-link">
+    <h3 class="fa fa-globe widget-title">友链</h3><br/>
+
+    
+        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
+
+    
+
+</li>
+
+    
+</ul>
+
+
+        <div id="main">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="第三章  存储和逻辑卷管理">
+                
+                第三章  存储和逻辑卷管理
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>Linux</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            null
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2022/06/09</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="第三章  存储和逻辑卷管理"
+              data-leadcloud-url="/posts/linux03/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>314</strong>天之前发表，文中内容可能已经过时。如有疑问，请在评论区留言。
+            </p>
+            
+        </div>
+        
+        <div id="post-body">
+            <p>新建完分区后，需重新读取内核。另，若挂载则需先进行格式化<br>对于一个硬盘，最多可以设置四个主分区。<br>三个主分区，一个扩展分区<br>fdisk &#x2F;dev&#x2F;sda p查看临时盘信息 n创建 d删除 t修改id w保存<br>Linux 83<br>Linux lvm 8e<br>Linud swap 82</p>
+<h2 id="一-存储管理"><a href="#一-存储管理" class="headerlink" title="一. 存储管理"></a>一. 存储管理</h2><h3 id="1-磁盘分区"><a href="#1-磁盘分区" class="headerlink" title="1. 磁盘分区"></a>1. 磁盘分区</h3><h4 id="1-查看磁盘分区"><a href="#1-查看磁盘分区" class="headerlink" title="1) 查看磁盘分区"></a>1) 查看磁盘分区</h4><p>fdisk -l<br>lsblk -f(设备挂载情况）</p>
+<h4 id="2-添加分区"><a href="#2-添加分区" class="headerlink" title="2) 添加分区"></a>2) 添加分区</h4><p>fdisk &#x2F;dev&#x2F;sda，n，p，4，↲，+512M，w，partprobe</p>
+<h4 id="3-删除分区"><a href="#3-删除分区" class="headerlink" title="3) 删除分区"></a>3) 删除分区</h4><p>fdisk &#x2F;dev&#x2F;sda，d，2，w，partprobe</p>
+<h3 id="2-磁盘挂载与卸载"><a href="#2-磁盘挂载与卸载" class="headerlink" title="2. 磁盘挂载与卸载"></a>2. 磁盘挂载与卸载</h3><h4 id="1-磁盘挂载"><a href="#1-磁盘挂载" class="headerlink" title="1) 磁盘挂载"></a>1) 磁盘挂载</h4><p>注：所挂载目录需存在<br>mkfs -t ext4 &#x2F;dev&#x2F;sda4<br>mount &#x2F;dev&#x2F;sda4 &#x2F;sta&#x2F;knl</p>
+<h4 id="2-磁盘卸载"><a href="#2-磁盘卸载" class="headerlink" title="2) 磁盘卸载"></a>2) 磁盘卸载</h4><p>umount &#x2F;dev&#x2F;sda4</p>
+<h2 id="二-交换分区"><a href="#二-交换分区" class="headerlink" title="二. 交换分区"></a>二. 交换分区</h2><p>fdisk &#x2F;dev&#x2F;sda，n…，t 82 w，partprobe<br>mkswap &#x2F;dev&#x2F;sda6<br>swapon &#x2F;dev&#x2F;sda6<br>vi &#x2F;etc&#x2F;fstab<br>&#x2F;dev&#x2F;hda6 swap swap defaults 0 0<br>mount -a</p>
+<p>or</p>
+<p>dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;opt&#x2F;swapfile bs&#x3D;1M count&#x3D;1000 (bs blocksize ，每个块大小为1M.count&#x3D;2048。则总大小为2G的文件。创建一个1G的文件作为交换分区使用)<br>mkswap &#x2F;opt&#x2F;swapfile<br>swapon &#x2F;opt&#x2F;swapfile<br>vi &#x2F;etc&#x2F;fstab<br>&#x2F;opt&#x2F;swapfile swap swap defaults 0 0<br>mount -a</p>
+<h2 id="二、逻辑卷管理"><a href="#二、逻辑卷管理" class="headerlink" title="二、逻辑卷管理"></a>二、逻辑卷管理</h2><p>LVM 是 Logical Volume Manager 的简称，中文就是逻辑卷管理。<br><img src="https://img-blog.csdnimg.cn/20190807200211507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg2MzM2MQ==,size_16,color_FFFFFF,t_70"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sda n... t 4 8e w    # 硬盘分区，分区id设置为8e </span><br><span class="line">pvcreate /dev/sda4    # 把物理分区建立物理卷</span><br><span class="line">vgcreate -s 4MB vg /dev/sda4 /dev/sda5    # 把物理卷整合为卷组,-s PE 大小：指定 PE 的大小，单位可以是 MB,GB,TB 等。如果不写默认 PE 大小是 4MB</span><br><span class="line">    vgreduce vg /dev/sda5    # 添加减少卷组里的物理卷</span><br><span class="line">lvcreate -L 512M -n lv vg    # 卷组划分为逻辑卷,-L 容量：指定逻辑卷大小，单位 MB，GB，TB 等，-l 个数：按照 PE 个数指定逻辑卷大小，这个参数需要换算容量，太麻烦</span><br><span class="line">    lvresize -L +1M /dev/vg/lv    # 调整逻辑卷的大小。lvdisplay&#x27;s LV Size: 513M -&gt;大小改变了，但是 df -h /disklvm/&#x27;s 文件系统：/dev/mapper/scvg-userlv 的容量：512M</span><br><span class="line">    resize2fs /dev/vg/lv    #df -h /disklvm/&#x27;s 文件系统：/dev/mapper/scvg-userlv 的容量：513M</span><br><span class="line">    # 挂载</span><br><span class="line">mount /dev/vg/lv /挂载目录/    # 挂载目录需存在且已格式化。mkdir /挂载目录/    mkfs -t ext4 /dev/vg/lv</span><br></pre></td></tr></table></figure>
+
+<p>4.删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">umount /dev/vg/lv    # 卸载挂载</span><br><span class="line">e2fsck -f /dev/dd/yy    # 卸载文件系统</span><br><span class="line">lvremove /dev/vg/lv    # 删除逻辑卷</span><br><span class="line">vgremove vg    # 删除卷组</span><br><span class="line">pvremove /dev/sda4    # 删除物理卷</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">任务</th>
+<th align="center">PV</th>
+<th align="center">VG</th>
+<th align="center">LV</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">创建</td>
+<td align="center">create</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">删除</td>
+<td align="center">remove</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">显示详细属性</td>
+<td align="center">display</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">扫描列表</td>
+<td align="center">s</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">显示简单信息（不常用）</td>
+<td align="center">scan</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">扩展</td>
+<td align="center">-</td>
+<td align="center">extend</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">缩减</td>
+<td align="center">-</td>
+<td align="center">reduce</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="http://example.com/author.jpg" alt="avatar"/>
+                
+                <a href="javascript:void(0)" class="high-song">high起来 &#128541;</a>
+                
+                
+                <a href="javascript:void(0)" class="donate fa">赠我一杯 &#128536;</a>
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>
+                  
+                  作者:
+                  
+                    
+                    <a href="/about.html">Koi_NL</a>
+                </li>
+                
+                <li>发表日期: <span>2022-06-09  11:18:06</span></li>
+                
+                <li>最后编辑日期: <span>2022-08-24  08:46:19</span></li>
+                
+                <li class="post-category">
+                    文章分类:
+                    
+                    <a href="/categories/Linux/">Linux</a>
+                    
+                </li>
+                <li class="post-tags">
+                    文章标签:
+                    
+                </li>
+                
+                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="http://example.com/alipay.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="http://example.com/wechat.png" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        <a href="/posts/linux04/" class="pre-post fa fa-caret-left">第四章  用户和组管理</a>
+        
+        
+        <a href="/posts/linux02/" class="next-post fa">第二章  进程管理</a>
+        
+    </div>
+    
+    <div id="comments">
+        
+
+<script>
+  gitalk.render("comments");
+</script>
+
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+    <footer id="footer">
+    
+    <div class="social">
+        
+        <a href="https://www.example1.com" class="fa fa-free-code-camp" target="_blank" title="freecodecamp"></a>
+        
+        <a href="https://www.example2.com" class="fa fa-github" target="_blank" title="Follow me~"></a>
+        
+    </div>
+    
+    <div>
+        
+        <a href="/" class="copyright-links">Koi_NL</a>&copy;2015 - 2023.All Rights
+        Reserved.
+    </div>
+    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
+                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
+    </p>
+    
+    
+    <p>
+        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
+        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
+        </span>
+    </p>
+    
+</footer>
+
+</div>
+    <ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <li class="exchange-btn fa fa-exchange"></li>
+  
+    <li class="toc-btn fa fa-list-ul"></li>
+    
+    
+
+    
+    <li class="comment-btn fa fa-comments-o">
+        <a href="#comments" title="comments"></a>
+    </li>
+    
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text"
+                       placeholder="search this website..."/>
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">一. 存储管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-number">1.1.</span> <span class="toc-text">1. 磁盘分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-number">1.1.1.</span> <span class="toc-text">1) 查看磁盘分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%B7%BB%E5%8A%A0%E5%88%86%E5%8C%BA"><span class="toc-number">1.1.2.</span> <span class="toc-text">2) 添加分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E5%88%86%E5%8C%BA"><span class="toc-number">1.1.3.</span> <span class="toc-text">3) 删除分区</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD%E4%B8%8E%E5%8D%B8%E8%BD%BD"><span class="toc-number">1.2.</span> <span class="toc-text">2. 磁盘挂载与卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD"><span class="toc-number">1.2.1.</span> <span class="toc-text">1) 磁盘挂载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A3%81%E7%9B%98%E5%8D%B8%E8%BD%BD"><span class="toc-number">1.2.2.</span> <span class="toc-text">2) 磁盘卸载</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA"><span class="toc-number">2.</span> <span class="toc-text">二. 交换分区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">二、逻辑卷管理</span></a></li></ol>
+
+
+    
+<script src="/js/highsong.js"></script>
+
+
+
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = 'true';
+    copyrightObj.triggerCopyLength = '200';
+    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
+    var leancloudObj = {};
+    leancloudObj.enable = 'true';
+    leancloudObj.className = 'BlogCounter';
+    leancloudObj.limits = '10';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "search.xml";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "/" + search_path;
+    search.func =  _ajax.init();
+</script>
+
+<script src="/js/app.js"></script>
+
+
+
+</body>
+</html>
