@@ -1,79 +1,415 @@
-extends base
+<!DOCTYPE html>
+<html>
 
-block head
-  if is_tag()
-    title 标签：#{page.tag} | #{config.title}
-  else if page.category
-    title 分类：#{page.category} | #{config.title}
-  else if page.year && page.month
-    title 归档：#{page.year} 年 #{page.month} 月 | #{config.title}
-  else if !page.posts
-    title #{page.title} | #{config.title}
-  else
-    title= config.title
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-mixin article(post)
-  article
-    header
-      if page.posts
-        h2
-          a(href=url_for(post.path))= post.title
-      else
-        small.right
-          a(target='_blank', href=sourceOfPost(post, theme.source_url)) 查看源代码
-        h1= post.title
+    
+    <title>配置hadoop | 锦鲤未离</title>
 
-    .article-meta.clearfix
-      time.left= post.date.format(config.date_format)
+    <meta name="description" content="锦鲤未离">
+    <meta name="keywords" content="">
 
-      if post.categories
-        ul.tags.left
-          - post.categories.each(function(category) {
-            li
-              a(href=url_for(category.path))= category.name
-          - });
+    
 
-      if post.tags
-        ul.tags.right
-          - post.tags.each(function(tag) {
-            li
-              a(href=url_for(tag.path))= tag.name
-          - });
+    <meta property="og:locale" content="zh-CN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "配置hadoop | 锦鲤未离"  />
+    <meta property="og:description" content= "锦鲤未离" />
+    <meta property="og:url" content="http://example.com/posts/This-article-is-used-to-test-the-style/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="Koi_NL" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="锦鲤未离" />
+    <meta name="twitter:title" content="配置hadoop | 锦鲤未离"/>
+    <meta name="twitter:description" content="锦鲤未离"/>
+    <script type="application/ld+json">
+        {
+            "description": "锦鲤未离",
+            "author": { "@type": "Person", "name": "Koi_NL" },
+            "@type": "BlogPosting",
+            "url": "http://example.com/posts/This-article-is-used-to-test-the-style/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http://example.comundefined"
+            },
+            "name": "Koi_NL"
+            },
+            "headline": "配置hadoop | 锦鲤未离",
+            "datePublished": "1998-12-31T16:00:00.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "http://example.com/posts/This-article-is-used-to-test-the-style/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
 
-    .markdown-body!= post.content
 
-    if !page.posts && theme.duoshuo
-      .ds-thread(data-thread-key=commentKey(post), data-title=post.title, data-url=post.permalink)
 
-  if !page.posts && post.appends
-    for append in formatArray(post.appends)
-      .article-widget
-        +widget-inter(append)
 
-block body
-  for banner in formatArray(theme.banners)
-    .article-widget
-      +widget-inter(banner)
+    
 
-  if is_tag()
-    .article-widget
-      strong 标签 ##{page.tag}
+    
 
-  if page.category
-    .article-widget
-      strong 分类 ##{page.category}
+    
 
-  if page.year && page.month
-    .article-widget
-      strong 归档 #{page.year} 年 #{page.month} 月
+    
 
-  if page.posts
-    - page.posts.each(function(post) {
-      +article(post)
-    - });
+    
 
-    .archive-pagination
-      .paginator!= fixPaginator(paginator({prev_text: '&laquo;', next_text: '&raquo;'}))
+    
 
-  else
-    +article(page)
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = false
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <a class="header-type-title" href="/">锦鲤未离</a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-clfz7mlky00015o10gn3m0otp" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      配置hadoop
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="1998-12-31T16:00:00.000Z" itemprop="datePublished">1999-01-01</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区</a>
+            </div>
+            
+
+            
+
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h2 id="配置虚拟机集群环境"><a href="#配置虚拟机集群环境" class="headerlink" title="配置虚拟机集群环境"></a>配置虚拟机集群环境</h2><h3 id="修改主机名，获取IP地址"><a href="#修改主机名，获取IP地址" class="headerlink" title="修改主机名，获取IP地址"></a>修改主机名，获取IP地址</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# hostnamectl set-hostname hadoop01</span><br><span class="line">[root@localhost ~]# ifconfig</span><br><span class="line">ens33: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.213.128  netmask 255.255.255.0  broadcast 192.168.213.255</span><br><span class="line">        inet6 fe80::3422:fe22:194f:42dd  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 00:0c:29:39:5b:d4  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 20228  bytes 28822793 (27.4 MiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 5069  bytes 310726 (303.4 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# systemctl stop firewalld.service</span><br><span class="line">[root@localhost ~]# systemctl disable firewalld.service</span><br><span class="line">Removed symlink /etc/systemd/system/multi-user.target.wants/firewalld.service.</span><br><span class="line">Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.</span><br><span class="line">[root@localhost ~]# systemctl status firewalld.service</span><br><span class="line">● firewalld.service - firewalld - dynamic firewall daemon</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled; vendor preset: enabled)</span><br><span class="line">   Active: inactive (dead)</span><br><span class="line">     Docs: man:firewalld(1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="新建工作目录"><a href="#新建工作目录" class="headerlink" title="新建工作目录"></a>新建工作目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir /opt/packages</span><br><span class="line">[root@localhost ~]# mkdir /opt/programs</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装和配置JDK"><a href="#安装和配置JDK" class="headerlink" title="安装和配置JDK"></a>安装和配置JDK</h3><ul>
+<li>卸载掉原有的JDK<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# rpm -qa|grep openjdk</span><br><span class="line">java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">[root@localhost ~]# rpm -e --nodeps </span><br><span class="line">rpm: no packages given for erase</span><br><span class="line">[root@localhost ~]# rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">[root@localhost ~]# rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">[root@localhost ~]# rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">[root@localhost ~]# rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>-重新进行安装，在&#x2F;etc&#x2F;profile中添加环境变量后刷新，进行验证是否安装成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop01 ~]# rpm -qa|grep openjdk</span><br><span class="line">[root@hadoop01 ~]# tar -zxvf /opt/packages/jdk-8u211-linux-x64.tar.gz -C /opt/programs/</span><br><span class="line">[root@hadoop01 ~]# vim /etc/profile</span><br><span class="line">[root@hadoop01 ~]# source /etc/profile</span><br><span class="line">[root@hadoop01 ~]# java -version</span><br><span class="line">java version &quot;1.8.0_211&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_211-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.211-b12, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/programs/jdk1.8.0_211</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="克隆虚拟机"><a href="#克隆虚拟机" class="headerlink" title="克隆虚拟机"></a>克隆虚拟机</h3><p>在&#x2F;etc&#x2F;hosts文件修改如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">::1         localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line">192.168.213.128   hadoop01</span><br><span class="line">192.168.213.129   hadoop02</span><br><span class="line">192.168.213.130   hadoop03</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="配置集群各节点SSH免密码登录"><a href="#配置集群各节点SSH免密码登录" class="headerlink" title="配置集群各节点SSH免密码登录"></a>配置集群各节点SSH免密码登录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br><span class="line">ssh-copy-id hadoop01</span><br><span class="line">ssh-copy-id hadoop02</span><br><span class="line">ssh-copy-id hadoop03</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="安装与部署ZooKeeper"><a href="#安装与部署ZooKeeper" class="headerlink" title="安装与部署ZooKeeper"></a>安装与部署ZooKeeper</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/packages/zookeeper-3.4.12.tar.gz -C /opt/programs/</span><br><span class="line">[root@hadoop01 ~]# cd /opt/programs/zookeeper-3.4.12/</span><br><span class="line">[root@hadoop01 zookeeper-3.4.12]# mkdir data logs</span><br><span class="line">[root@hadoop01 zookeeper-3.4.12]# cd data</span><br><span class="line">[root@hadoop01 data]# echo &#x27;1&#x27;&gt;myid</span><br><span class="line">[root@hadoop01 data]# cd ../conf</span><br><span class="line">[root@hadoop01 conf]# cp zoo_sample.cfg zoo.cfg</span><br><span class="line">[root@hadoop01 conf]# vim zoo.cfg </span><br><span class="line">[root@hadoop01 conf]# scp -r /opt/programs/zookeeper-3.4.12/ root@hadoop02:/opt/programs/</span><br><span class="line">[root@hadoop01 conf]# scp -r /opt/programs/zookeeper-3.4.12/ root@hadoop03:/opt/programs/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dataDir=/opt/programs/zookeeper-3.4.12/data</span><br><span class="line"></span><br><span class="line">dataLogDir=/opt/programs/zookeeper-3.4.12/logs</span><br><span class="line">server.1=hadoop01:2888:3888</span><br><span class="line">server.2=hadoop02:2888:3888</span><br><span class="line">server.3=hadoop03:2888:3888</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop01 conf]# ssh hadoop02</span><br><span class="line">Last login: Fri Mar 31 03:43:51 2023 from hadoop01</span><br><span class="line">[root@hadoop02 ~]# echo &#x27;2&#x27;&gt;/opt/programs/zookeeper-3.4.12/data/myid</span><br><span class="line">[root@hadoop02 ~]# ssh hadoop03</span><br><span class="line">Last login: Fri Mar 31 03:43:57 2023 from hadoop02</span><br><span class="line">[root@hadoop03 ~]# echo &#x27;3&#x27;&gt;/opt/programs/zookeeper-3.4.12/data/myid</span><br><span class="line">[root@hadoop01 conf]# zkServer.sh start</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export ZOOKEEPER_HOME=/opt/programs/zookeeper-3.4.12</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$ZOOKEEPER_HOME/bin</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop01 ~]# tar -zxvf /opt/packages/hadoop-2.7.6.tar.gz -C /opt/programs/</span><br><span class="line">[root@hadoop01 ~]# cd /opt/programs/hadoop-2.7.6/etc/hadoop/</span><br><span class="line">[root@hadoop01 hadoop]# vim core-site.xml</span><br><span class="line">[root@hadoop01 hadoop]# vim hdfs-site.xml </span><br><span class="line">[root@hadoop01 hadoop]# mv mapred-site.xml.template mapred-site.xml</span><br><span class="line">[root@hadoop01 hadoop]# vim mapred-site.xml </span><br><span class="line">[root@hadoop01 hadoop]# vim yarn-site.xml </span><br><span class="line">[root@hadoop01 hadoop]# vim slaves</span><br><span class="line">[root@hadoop01 hadoop]# vim hadoop-env.sh </span><br><span class="line">[root@hadoop01 hadoop]# vim mapred-env.sh </span><br><span class="line">[root@hadoop01 hadoop]# vim yarn-env.sh </span><br><span class="line">[root@hadoop01 hadoop]# scp -r /opt/programs/hadoop-2.7.6/ root@hadoop02:/opt/programs/ </span><br><span class="line">[root@hadoop01 hadoop]# scp -r /opt/programs/hadoop-2.7.6/ root@hadoop03:/opt/programs/ </span><br><span class="line"></span><br><span class="line">[root@hadoop01 hadoop]# vim /etc/profile</span><br><span class="line">[root@hadoop01 hadoop]# source /etc/profile</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/programs/jdk1.8.0_211</span><br><span class="line"></span><br><span class="line">export HADOOP_HOME=/opt/programs/hadoop-2.7.6</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop01 hadoop]# hadoop-daemon.sh start journalnode</span><br><span class="line">starting journalnode, logging to /opt/programs/hadoop-2.7.6/logs/hadoop-root-journalnode-hadoop01.out</span><br><span class="line">[root@hadoop01 hadoop]# ssh hadoop02</span><br><span class="line">Last login: Fri Mar 31 04:15:59 2023 from hadoop01</span><br><span class="line">[root@hadoop02 ~]# hadoop-daemon.sh start journalnode</span><br><span class="line">starting journalnode, logging to /opt/programs/hadoop-2.7.6/logs/hadoop-root-journalnode-hadoop02.out</span><br><span class="line">[root@hadoop02 ~]# ssh hadoop03</span><br><span class="line">Last login: Fri Mar 31 04:16:33 2023 from hadoop02</span><br><span class="line">[root@hadoop03 ~]# hadoop-daemon.sh start journalnode</span><br><span class="line">starting journalnode, logging to /opt/programs/hadoop-2.7.6/logs/hadoop-root-journalnode-hadoop03.out</span><br><span class="line">[root@hadoop01 hadoop]# hdfs namenode -format</span><br><span class="line">...</span><br><span class="line">23/03/31 04:19:26 INFO common.Storage: Storage directory /opt/programs/hadoop-2.7.6/tmp/dfs/name has been successfully formatted.</span><br><span class="line">...</span><br><span class="line">[root@hadoop01 hadoop]# cd /opt/programs/hadoop-2.7.6/</span><br><span class="line">[root@hadoop01 hadoop-2.7.6]# scp -r tmp/ root@hadoop02:/opt/programs/hadoop-2.7.6/</span><br><span class="line">[root@hadoop01 hadoop-2.7.6]# hdfs zkfc -formatZK</span><br><span class="line">[root@hadoop01 hadoop-2.7.6]# start-dfs.sh</span><br><span class="line">[root@hadoop01 hadoop-2.7.6]# start-yarn.sh</span><br><span class="line"></span><br><span class="line">[root@hadoop01 zookeeper-3.4.12]# jps</span><br><span class="line">2692 QuorumPeerMain</span><br><span class="line">3045 DataNode</span><br><span class="line">3224 JournalNode</span><br><span class="line">3387 DFSZKFailoverController</span><br><span class="line">2941 NameNode</span><br><span class="line">3549 ResourceManager</span><br><span class="line">3662 NodeManager</span><br><span class="line">3775 Jps</span><br><span class="line">[root@hadoop01 zookeeper-3.4.12]# ssh hadoop02</span><br><span class="line">Last login: Fri Mar 31 05:11:46 2023</span><br><span class="line">[root@hadoop02 ~]# jps</span><br><span class="line">2770 NameNode</span><br><span class="line">2917 JournalNode</span><br><span class="line">2840 DataNode</span><br><span class="line">3144 NodeManager</span><br><span class="line">3321 Jps</span><br><span class="line">2635 QuorumPeerMain</span><br><span class="line">3005 DFSZKFailoverController</span><br><span class="line">[root@hadoop02 ~]# ssh hadoop03</span><br><span class="line">Last login: Fri Mar 31 05:11:42 2023</span><br><span class="line">[root@hadoop03 ~]# jps</span><br><span class="line">2789 JournalNode</span><br><span class="line">3077 Jps</span><br><span class="line">2712 DataNode</span><br><span class="line">2586 QuorumPeerMain</span><br><span class="line">2910 NodeManager</span><br><span class="line">[root@hadoop03 ~]# </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop01 ~]# tar -zxvf /opt/packages/scala-2.11.8.tgz -C /opt/programs/</span><br><span class="line">[root@hadoop01 ~]# source /etc/profile</span><br><span class="line">[root@hadoop01 ~]# scala -version</span><br><span class="line">Scala code runner version 2.11.8 -- Copyright 2002-2016, LAMP/EPFL</span><br><span class="line">[root@hadoop01 ~]# tar -zxvf /opt/packages/spark-2.3.3-bin-hado.tgz -C /opt/programs/</span><br><span class="line"></span><br><span class="line">[root@hadoop01 ~]# cd /opt/programs/spark-2.3.3-bin-hadoop2.7/conf</span><br><span class="line">[root@hadoop01 conf]# cp spark-env.sh.template spark-env.sh</span><br><span class="line">[root@hadoop01 conf]# vim spark-env.sh</span><br><span class="line">[root@hadoop01 conf]# cp slaves.template slaves</span><br><span class="line">[root@hadoop01 conf]# vim slaves</span><br><span class="line">[root@hadoop01 conf]# scp -r /opt/programs/spark-2.3.3-bin-hadoop2.7 root@hadoop02:/opt/programs/</span><br><span class="line"></span><br><span class="line">[root@hadoop01 conf]# scp -r /opt/programs/spark-2.3.3-bin-hadoop2.7 root@hadoop03:/opt/programs/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export SCALA_HOME=/opt/programs/scala-2.11.8</span><br><span class="line">export PATH=$PATH:$SCALA_HOME/bin</span><br><span class="line"></span><br><span class="line">export JAVA_HOME=/opt/programs/jdk1.8.0_211</span><br><span class="line">export SCALA_HOME=/opt/programs/scala-2.11.8</span><br><span class="line">export HADOOP_HOME=/opt/programs/hadoop-2.7.6</span><br><span class="line">export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop</span><br><span class="line">export SPARK_MASTER_HOST=hadoop01</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop01 ~]# tar -zxvf /opt/packages/hbase-2.0.2-bin.tar.gz -C /opt/programs/</span><br><span class="line">[root@hadoop01 ~]# cd /opt/programs/hbase-2.0.2/conf/</span><br><span class="line">[root@hadoop01 conf]# vim hbase-env.sh </span><br><span class="line">[root@hadoop01 conf]# vim hbase-site.xml </span><br><span class="line">[root@hadoop01 conf]# vim regionservers </span><br><span class="line">[root@hadoop01 conf]# scp -r /opt/programs/hbase-2.0.2/ root@hadoop02:/opt/programs/</span><br><span class="line">[root@hadoop01 conf]# scp -r /opt/programs/hbase-2.0.2/ root@hadoop03:/opt/programs/</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/programs/jdk1.8.0_211</span><br><span class="line">export HBASE_MANAGES_ZK=false</span><br><span class="line"></span><br><span class="line">export HBASE_HOME=/opt/programs/hbase-2.0.2</span><br><span class="line">export PATH=$PATH:$HBASE_HOME/bin</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop01 conf]# jps</span><br><span class="line">3392 ResourceManager</span><br><span class="line">3089 JournalNode</span><br><span class="line">3250 DFSZKFailoverController</span><br><span class="line">3506 NodeManager</span><br><span class="line">2803 NameNode</span><br><span class="line">7748 HRegionServer</span><br><span class="line">2540 QuorumPeerMain</span><br><span class="line">2909 DataNode</span><br><span class="line">7613 HMaster</span><br><span class="line">7807 Jps</span><br><span class="line">[root@hadoop01 conf]# ssh hadoop02</span><br><span class="line">Last login: Fri Mar 31 19:07:15 2023 from hadoop01</span><br><span class="line">[root@hadoop02 ~]# jps</span><br><span class="line">4292 HRegionServer</span><br><span class="line">1977 DataNode</span><br><span class="line">4442 Jps</span><br><span class="line">1899 NameNode</span><br><span class="line">1788 QuorumPeerMain</span><br><span class="line">2317 NodeManager</span><br><span class="line">2062 JournalNode</span><br><span class="line">2175 DFSZKFailoverController</span><br><span class="line">[root@hadoop02 ~]# ssh hadoop03</span><br><span class="line">Last login: Fri Mar 31 19:03:58 2023 from hadoop02</span><br><span class="line">[root@hadoop03 ~]# jps</span><br><span class="line">1970 JournalNode</span><br><span class="line">1783 QuorumPeerMain</span><br><span class="line">3753 HRegionServer</span><br><span class="line">3913 Jps</span><br><span class="line">2093 NodeManager</span><br><span class="line">1887 DataNode</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop01 spark-2.3.3-bin-hadoop2.7]# tar -zxvf /opt/packages/kafka_2.11-2.0.0.tgz -C /opt/programs/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/posts/This-article-is-used-to-test-the-style/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          本篇用于测试样式
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=配置hadoop - 锦鲤未离&url=http%3A%2F%2Fexample.com%2Fposts%2FThis-article-is-used-to-test-the-style%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=配置hadoop - 锦鲤未离&u=http%3A%2F%2Fexample.com%2Fposts%2FThis-article-is-used-to-test-the-style%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=配置hadoop - 锦鲤未离&url=http://example.com/posts/This-article-is-used-to-test-the-style/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/">Applied Statistics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/">Data-Mining</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/posts/spark_05/">第5章  HBase 分布式数据库</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_04/">第4章  Spark SQL结构化数据文件处理</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_01/">第1章  Scala语言基础.</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_03/">第3章  Spark RDD弹性分布式数据集</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_08/">第8章  Spark MLlib机器学习算法库</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/">1999</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            锦鲤未离 &copy; 2023<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

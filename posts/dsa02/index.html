@@ -1,79 +1,415 @@
-extends base
+<!DOCTYPE html>
+<html>
 
-block head
-  if is_tag()
-    title 标签：#{page.tag} | #{config.title}
-  else if page.category
-    title 分类：#{page.category} | #{config.title}
-  else if page.year && page.month
-    title 归档：#{page.year} 年 #{page.month} 月 | #{config.title}
-  else if !page.posts
-    title #{page.title} | #{config.title}
-  else
-    title= config.title
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-mixin article(post)
-  article
-    header
-      if page.posts
-        h2
-          a(href=url_for(post.path))= post.title
-      else
-        small.right
-          a(target='_blank', href=sourceOfPost(post, theme.source_url)) 查看源代码
-        h1= post.title
+    
+    <title>第二章  树和二叉树 | 锦鲤未离</title>
 
-    .article-meta.clearfix
-      time.left= post.date.format(config.date_format)
+    <meta name="description" content="锦鲤未离">
+    <meta name="keywords" content="">
 
-      if post.categories
-        ul.tags.left
-          - post.categories.each(function(category) {
-            li
-              a(href=url_for(category.path))= category.name
-          - });
+    
 
-      if post.tags
-        ul.tags.right
-          - post.tags.each(function(tag) {
-            li
-              a(href=url_for(tag.path))= tag.name
-          - });
+    <meta property="og:locale" content="zh-CN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "第二章  树和二叉树 | 锦鲤未离"  />
+    <meta property="og:description" content= "锦鲤未离" />
+    <meta property="og:url" content="http://example.com/posts/dsa02/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="Koi_NL" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="锦鲤未离" />
+    <meta name="twitter:title" content="第二章  树和二叉树 | 锦鲤未离"/>
+    <meta name="twitter:description" content="锦鲤未离"/>
+    <script type="application/ld+json">
+        {
+            "description": "锦鲤未离",
+            "author": { "@type": "Person", "name": "Koi_NL" },
+            "@type": "BlogPosting",
+            "url": "http://example.com/posts/dsa02/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http://example.comundefined"
+            },
+            "name": "Koi_NL"
+            },
+            "headline": "第二章  树和二叉树 | 锦鲤未离",
+            "datePublished": "2022-03-29T11:27:50.221Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "http://example.com/posts/dsa02/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
 
-    .markdown-body!= post.content
 
-    if !page.posts && theme.duoshuo
-      .ds-thread(data-thread-key=commentKey(post), data-title=post.title, data-url=post.permalink)
 
-  if !page.posts && post.appends
-    for append in formatArray(post.appends)
-      .article-widget
-        +widget-inter(append)
 
-block body
-  for banner in formatArray(theme.banners)
-    .article-widget
-      +widget-inter(banner)
+    
 
-  if is_tag()
-    .article-widget
-      strong 标签 ##{page.tag}
+    
 
-  if page.category
-    .article-widget
-      strong 分类 ##{page.category}
+    
 
-  if page.year && page.month
-    .article-widget
-      strong 归档 #{page.year} 年 #{page.month} 月
+    
 
-  if page.posts
-    - page.posts.each(function(post) {
-      +article(post)
-    - });
+    
 
-    .archive-pagination
-      .paginator!= fixPaginator(paginator({prev_text: '&laquo;', next_text: '&raquo;'}))
+    
 
-  else
-    +article(page)
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = false
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <a class="header-type-title" href="/">锦鲤未离</a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cleweiiky0037yw10387a9i1k" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      第二章  树和二叉树
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2022-03-29T11:27:50.221Z" itemprop="datePublished">2022-03-29</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm</a>
+            </div>
+            
+
+            
+
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <p>在本篇中, 首先讲述了关于二叉树的相关知识, 第二讲述了关于最优二叉树 (哈夫曼树) 所建立的哈夫曼编码. 第三阐述了树与二叉树的关系与转换</p>
+<p>二叉树的存储, 其次讲述了二叉树的四种遍历方式, 以及如何将二叉树进行翻转</p>
+<h2 id="二叉树的存储"><a href="#二叉树的存储" class="headerlink" title="二叉树的存储"></a>二叉树的存储</h2><ul>
+<li>顺序存储: 只适用于完全二叉树</li>
+<li>链式存储</li>
+</ul>
+<h2 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h2><ul>
+<li>分为先序遍历 (DLR) , 中序遍历 (LDR) ,后序遍历 (LRD) 和层序遍历</li>
+<li>先序遍历: 依次从上往下访问根节点, 左子树, 右子树, 若二叉树为空返回空操作</li>
+<li>中序遍历: 依次从上往下访问左子树, 根节点, 右子树, 若二叉树为空返回空操作</li>
+<li>后序遍历: 依次从上往下访问左子树, 右子树, 根节点, 若二叉树为空返回空操作</li>
+<li>层序遍历: 若二叉树为空, 则空操作返回; 否则, 从根节点从上而下逐层遍历, 同一层中顺序为从左到右</li>
+</ul>
+<h2 id="二叉树的翻转"><a href="#二叉树的翻转" class="headerlink" title="二叉树的翻转"></a>二叉树的翻转</h2><ul>
+<li>左右翻转那种样子</li>
+</ul>
+<h2 id="二叉树的存储-遍历与翻转的代码实现"><a href="#二叉树的存储-遍历与翻转的代码实现" class="headerlink" title="二叉树的存储, 遍历与翻转的代码实现"></a>二叉树的存储, 遍历与翻转的代码实现</h2><details ><summary>点击显/隐图片</summary><div class="fold-content"><p>待定</p>
+</div></details>
+<details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;二叉树存储: 链式&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, key=<span class="literal">None</span>, lchild=<span class="literal">None</span>, rchild=<span class="literal">None</span></span>):</span><br><span class="line">        self.key, self.lchild, self.rchild = key, lchild, rchild  <span class="comment"># 表示数据域, 左子树, 右子树</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BTree</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, root=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;建立二叉树&quot;&quot;&quot;</span></span><br><span class="line">        self.root = root</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">PreOrder</span>(<span class="params">self, root</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;先序遍历: 依次从上往下访问根节点, 左子树, 右子树, 若二叉树为空返回空操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="built_in">print</span>(root.key, end=<span class="string">&quot; &quot;</span>); self.PreOrder(root.lchild); self.PreOrder(root.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">InOrder</span>(<span class="params">self, root</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;中序遍历: 依次从上往下访问左子树, 根节点, 右子树, 若二叉树为空返回空操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self.InOrder(root.lchild); <span class="built_in">print</span>(root.key, end=<span class="string">&quot; &quot;</span>); self.InOrder(root.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">PostOrder</span>(<span class="params">self, root</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;中序遍历: 依次从上往下访问左子树, 右子树, 根节点, 若二叉树为空返回空操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self.PostOrder(root.lchild); self.PostOrder(root.rchild); <span class="built_in">print</span>(root.key, end=<span class="string">&quot; &quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">breath_travel</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;层序遍历: 若二叉树为空, 则空操作返回; 否则, 从根节点从上而下逐层遍历, 同一层中顺序为从左到右&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root == <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        queue = []</span><br><span class="line">        queue.append(root)</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            node = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">print</span>(node.key, end=<span class="string">&quot; &quot;</span>)</span><br><span class="line">            <span class="keyword">if</span> node.lchild != <span class="literal">None</span>:</span><br><span class="line">                queue.append(node.lchild)</span><br><span class="line">            <span class="keyword">if</span> node.rchild != <span class="literal">None</span>:</span><br><span class="line">                queue.append(node.rchild)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Mirror</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;翻转二叉树&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">mirror</span>(<span class="params">self, root</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        root.lchild, root.rchild = root.rchild, root.lchild</span><br><span class="line">        self.mirror(root.lchild)</span><br><span class="line">        self.mirror(root.rchild)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    root = Node(<span class="number">1</span>, Node(<span class="number">2</span>, Node(<span class="number">4</span>, Node(<span class="number">8</span>), Node(<span class="number">9</span>)), Node(<span class="number">5</span>, Node(<span class="number">10</span>), Node(<span class="number">11</span>))),</span><br><span class="line">                Node(<span class="number">3</span>, Node(<span class="number">6</span>, Node(<span class="number">12</span>), Node(<span class="number">13</span>)), Node(<span class="number">7</span>, Node(<span class="number">14</span>), Node(<span class="number">15</span>))))</span><br><span class="line">    bt = BTree()</span><br><span class="line">    m = Mirror()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;先序遍历: &quot;</span>, bt.PreOrder(root))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;中序遍历: &quot;</span>, bt.InOrder(root))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;后序遍历: &quot;</span>, bt.PostOrder(root))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;层序遍历: &quot;</span>, bt.breath_travel())</span><br><span class="line">    m.mirror(root)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;翻转后的中序遍历&quot;</span>, bt.InOrder(root))</span><br></pre></td></tr></table></figure></div></details>
+
+<h2 id="由遍历序列创建二叉树"><a href="#由遍历序列创建二叉树" class="headerlink" title="由遍历序列创建二叉树"></a>由遍历序列创建二叉树</h2><ul>
+<li><p>可分为 “知先序中序求后序” , “知中序后序求先序” . </p>
+</li>
+<li><p>例 1 : 由先序, 中序推出后序遍历<br>已知二叉树的先序遍历是 ABCDEF , 中序遍历是 CBAEDF , 求后序遍历. </p>
+<details ><summary>点击显/隐思路</summary><div class="fold-content"><p>先序遍历是先打印根节点, 故可知 A 为根节点;<br>中序遍历是先递归左子树, 再打印根节点, 故可知 CB 为左子树节点, EDF为右子树节点.<br>左子树判断开始:<br>先序遍历是先打印根节点, 再递归左子树, 所以 B 是 A 的左孩子;<br>中序遍历是先递归左子树, 再打印根节点, C 在 B 前, 所以 C 是 B 的左孩子;<br>左子树告一段落;<br>右子树判断开始:<br>先序遍历是先递归左子树 BC , 再递归右子树 DEF , 所以 D 是 A 的右孩子;<br>中序遍历是先递归左子树, 再打印根节点, 再递归右子树, D 在 EDF 的中间, 所以 E 为 D 的左孩子, F 为 D 的右孩子.<br>右子树告一段落.<br>现在可以得到: 根节点: A, 根节点左右孩子 BD , B 的左孩子 C , D 的左右孩子 EF.<br>后序遍历由此可知: CBEFDA . </p>
+</div></details>
+</li>
+<li><p>例 2 : 由中序, 后序推出先序遍历<br>已知二叉树的中序遍历是 ABCDEFG , 后序遍历是 BDCAFGE , 求先序遍历.</p>
+</li>
+</ul>
+<details ><summary>点击显/隐思路</summary><div class="fold-content"><p>后序遍历最后一个是根节点, 因此可知 E 为根节点.<br>中序遍历先递归左子树, 再打印根节点, 再递归右子树, 由此可知 ABCD 为左子树, FG 为右子树.<br>左子树判断开始:<br>在后序遍历中, 子树的根节点是在子树的最后一个, 因此 A 为 E 的左孩子<br>在中序遍历中, 遍历顺序为 (左根右) LDR (LeftDataRight) , 所以 BCD 全为 A 的右孩子.<br>在后序遍历中, 遍历顺序为LRD, 所以 BD 是 C 的左右孩子.<br>所以 D 很明显, 是 A 的右孩子.<br>左子树告一段落;<br>右子树判断开始:<br>在后序遍历中, 子树的根节点是在子树的最后一个, 因此 G 为 E 的右孩子.<br>在后序遍历中, 遍历顺序为 LRD, 所以 F 是 G 的孩子.<br>在中序遍历中, 遍历顺序为 LDR, 所以 F 是 G 的左孩子.<br>右子树告一段落.<br>现在可以得到: 根节点 E , E 的左右孩子 AG , A 的右孩子 D, D 的左右孩子 BC , G 的左孩子 F .<br>先序遍历由此可知: EACBDGF . </p>
+</div></details>
+
+<p>##哈夫曼树<br>例 3：现有节点a，b，c，d，e，f 6个字符，其权值分别为a（9），b（12），c（6），d（3），e（5），f（15），构建哈夫曼树。</p>
+<details ><summary>点击显/隐</summary><div class="fold-content"><p>注：左子树的值小于右子树。<br>进行排序，值中，最小的是d，e，因此d，e分别为左右子树，权值之和为de（8）<br>将 de 加入后排序，最小的是 c，de，因此 c，de分别为左右子树，权值之和为 cde（14）<br>将cde加入后排序，最小的是 a，b，因此 a，b 分别为左右子树，权值之和为ab（21）<br>将 ab加入后排序，最小的是 cde，f，因此 cde，f分别为左右子树，权值之和为 cdef（29）<br>只剩下ab，cdef，因此ab，cdef分别为左右子树，权值之和为 abcdef（50）。</p>
+</div></details>
+
+<p>例 4：得到上述哈夫曼树的编码。</p>
+<details ><summary>点击显/隐</summary><div class="fold-content"><p>从根节点出发，左子树边为0，右子树为1，进行编码。<br>a：00；b：01；c：100；d：1010；e：1011；f：11.</p>
+<p>可以得到1：权值越大，长度越短。<br>可以得到2：每一个结点都是叶子结点，因此保证了译码的唯一性。</p>
+</div></details>
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/posts/dsa01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          第一章  线性表
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/matlabyyp02/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">应用篇-第二章  图形对用户界面设计[未完成]</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=第二章  树和二叉树 - 锦鲤未离&url=http%3A%2F%2Fexample.com%2Fposts%2Fdsa02%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=第二章  树和二叉树 - 锦鲤未离&u=http%3A%2F%2Fexample.com%2Fposts%2Fdsa02%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=第二章  树和二叉树 - 锦鲤未离&url=http://example.com/posts/dsa02/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/">Applied Statistics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/">Data-Mining</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/posts/spark_05/">第5章  HBase 分布式数据库</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_04/">第4章  Spark SQL结构化数据文件处理</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_01/">第1章  Scala语言基础.</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_03/">第3章  Spark RDD弹性分布式数据集</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_08/">第8章  Spark MLlib机器学习算法库</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/">1999</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            锦鲤未离 &copy; 2023<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

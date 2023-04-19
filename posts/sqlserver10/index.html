@@ -1,79 +1,380 @@
-extends base
+<!DOCTYPE html>
+<html>
 
-block head
-  if is_tag()
-    title 标签：#{page.tag} | #{config.title}
-  else if page.category
-    title 分类：#{page.category} | #{config.title}
-  else if page.year && page.month
-    title 归档：#{page.year} 年 #{page.month} 月 | #{config.title}
-  else if !page.posts
-    title #{page.title} | #{config.title}
-  else
-    title= config.title
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-mixin article(post)
-  article
-    header
-      if page.posts
-        h2
-          a(href=url_for(post.path))= post.title
-      else
-        small.right
-          a(target='_blank', href=sourceOfPost(post, theme.source_url)) 查看源代码
-        h1= post.title
+    
+    <title>『SQL Server』第十章  数据库运行管理与维护 | 锦鲤未离</title>
 
-    .article-meta.clearfix
-      time.left= post.date.format(config.date_format)
+    <meta name="description" content="锦鲤未离">
+    <meta name="keywords" content="">
 
-      if post.categories
-        ul.tags.left
-          - post.categories.each(function(category) {
-            li
-              a(href=url_for(category.path))= category.name
-          - });
+    
 
-      if post.tags
-        ul.tags.right
-          - post.tags.each(function(tag) {
-            li
-              a(href=url_for(tag.path))= tag.name
-          - });
+    <meta property="og:locale" content="zh-CN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "『SQL Server』第十章  数据库运行管理与维护 | 锦鲤未离"  />
+    <meta property="og:description" content= "锦鲤未离" />
+    <meta property="og:url" content="http://example.com/posts/sqlserver10/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="Koi_NL" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="锦鲤未离" />
+    <meta name="twitter:title" content="『SQL Server』第十章  数据库运行管理与维护 | 锦鲤未离"/>
+    <meta name="twitter:description" content="锦鲤未离"/>
+    <script type="application/ld+json">
+        {
+            "description": "锦鲤未离",
+            "author": { "@type": "Person", "name": "Koi_NL" },
+            "@type": "BlogPosting",
+            "url": "http://example.com/posts/sqlserver10/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http://example.comundefined"
+            },
+            "name": "Koi_NL"
+            },
+            "headline": "『SQL Server』第十章  数据库运行管理与维护 | 锦鲤未离",
+            "datePublished": "2022-07-17T01:14:49.651Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "http://example.com/posts/sqlserver10/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
 
-    .markdown-body!= post.content
 
-    if !page.posts && theme.duoshuo
-      .ds-thread(data-thread-key=commentKey(post), data-title=post.title, data-url=post.permalink)
 
-  if !page.posts && post.appends
-    for append in formatArray(post.appends)
-      .article-widget
-        +widget-inter(append)
 
-block body
-  for banner in formatArray(theme.banners)
-    .article-widget
-      +widget-inter(banner)
+    
 
-  if is_tag()
-    .article-widget
-      strong 标签 ##{page.tag}
+    
 
-  if page.category
-    .article-widget
-      strong 分类 ##{page.category}
+    
 
-  if page.year && page.month
-    .article-widget
-      strong 归档 #{page.year} 年 #{page.month} 月
+    
 
-  if page.posts
-    - page.posts.each(function(post) {
-      +article(post)
-    - });
+    
 
-    .archive-pagination
-      .paginator!= fixPaginator(paginator({prev_text: '&laquo;', next_text: '&raquo;'}))
+    
 
-  else
-    +article(page)
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = false
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <a class="header-type-title" href="/">锦鲤未离</a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cleweiikc001nyw106wpic30m" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      『SQL Server』第十章  数据库运行管理与维护
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2022-07-17T01:14:49.651Z" itemprop="datePublished">2022-07-17</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/SqlServer/">SqlServer</a>
+            </div>
+            
+
+            
+
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h1 id="第十章-数据库运行管理与维护及其优化"><a href="#第十章-数据库运行管理与维护及其优化" class="headerlink" title="第十章  数据库运行管理与维护及其优化"></a>第十章  数据库运行管理与维护及其优化</h1><p>1.运行维护工作:<br>日常维护:数据库转储与恢复,数据库安全性完整性控制：新建数据库用户,存储控空间管理,并发控制<br>系统监控与分析<br>系统性能优化调整<br>系统进化升级<br>数据库的重组和重构<br>2.运行状态监控:构架体系(即数据库存储空间管理)<br>              性能:数据库运行环境:外部调整:CPU和网络<br>                                        内存<br>                                        磁盘I&#x2F;O<br>                                        减少竞争<br>                   参数调整<br>                   模式调整:反规范化:(派生)冗余,组新表,分割表,增汇总表<br>                   存储优化:建立索引视图和聚集<br>                   查询优化:使用:索引,临时表,存储过程<br>                           避免:排序,顺序存取,避免正则表达式,外连接,游标,大事务</p>
+<p>实现死锁检测的是什么图?  (事务等待)图<br>事务的acid特性:原子性：保持一致性，要么做，要么不做，必须全部反映与否<br>一致性：没有其他并发执行的事务，不做就好像从未发生过<br>　　　　　　　　隔离性:其正在访问的数据却被其他进程修改<br>持久性：已提交的事务必须能正确写入，对数据库的改变是永久的<br>当数据库系统中存在死锁时,通常选择1个或几个死锁事务,怎么样这些事务(撤销)</p>
+<p>一起查询的表，可以聚集文件<br>分组排序的表，可以散列文件，不适用于范围查询</p>
+<p>使用索引的原则：<br>经常搜索，连接，范围搜索，排序，where子句的列<br>主键
+                           </p>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/posts/sqlserver04/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          『SQL Server』第四章  应用系统功能设计
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/sqlserver11/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">『SQL Server』第十一章  故障管理</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=『SQL Server』第十章  数据库运行管理与维护 - 锦鲤未离&url=http%3A%2F%2Fexample.com%2Fposts%2Fsqlserver10%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=『SQL Server』第十章  数据库运行管理与维护 - 锦鲤未离&u=http%3A%2F%2Fexample.com%2Fposts%2Fsqlserver10%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=『SQL Server』第十章  数据库运行管理与维护 - 锦鲤未离&url=http://example.com/posts/sqlserver10/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/">Applied Statistics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/">Data-Mining</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/posts/spark_05/">第5章  HBase 分布式数据库</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_04/">第4章  Spark SQL结构化数据文件处理</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_01/">第1章  Scala语言基础.</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_03/">第3章  Spark RDD弹性分布式数据集</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_08/">第8章  Spark MLlib机器学习算法库</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/">1999</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            锦鲤未离 &copy; 2023<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

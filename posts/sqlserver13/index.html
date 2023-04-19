@@ -1,79 +1,377 @@
-extends base
+<!DOCTYPE html>
+<html>
 
-block head
-  if is_tag()
-    title 标签：#{page.tag} | #{config.title}
-  else if page.category
-    title 分类：#{page.category} | #{config.title}
-  else if page.year && page.month
-    title 归档：#{page.year} 年 #{page.month} 月 | #{config.title}
-  else if !page.posts
-    title #{page.title} | #{config.title}
-  else
-    title= config.title
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-mixin article(post)
-  article
-    header
-      if page.posts
-        h2
-          a(href=url_for(post.path))= post.title
-      else
-        small.right
-          a(target='_blank', href=sourceOfPost(post, theme.source_url)) 查看源代码
-        h1= post.title
+    
+    <title>『SQL Server』第十三章  大规模数据库架构 | 锦鲤未离</title>
 
-    .article-meta.clearfix
-      time.left= post.date.format(config.date_format)
+    <meta name="description" content="锦鲤未离">
+    <meta name="keywords" content="">
 
-      if post.categories
-        ul.tags.left
-          - post.categories.each(function(category) {
-            li
-              a(href=url_for(category.path))= category.name
-          - });
+    
 
-      if post.tags
-        ul.tags.right
-          - post.tags.each(function(tag) {
-            li
-              a(href=url_for(tag.path))= tag.name
-          - });
+    <meta property="og:locale" content="zh-CN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "『SQL Server』第十三章  大规模数据库架构 | 锦鲤未离"  />
+    <meta property="og:description" content= "锦鲤未离" />
+    <meta property="og:url" content="http://example.com/posts/sqlserver13/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="Koi_NL" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="锦鲤未离" />
+    <meta name="twitter:title" content="『SQL Server』第十三章  大规模数据库架构 | 锦鲤未离"/>
+    <meta name="twitter:description" content="锦鲤未离"/>
+    <script type="application/ld+json">
+        {
+            "description": "锦鲤未离",
+            "author": { "@type": "Person", "name": "Koi_NL" },
+            "@type": "BlogPosting",
+            "url": "http://example.com/posts/sqlserver13/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http://example.comundefined"
+            },
+            "name": "Koi_NL"
+            },
+            "headline": "『SQL Server』第十三章  大规模数据库架构 | 锦鲤未离",
+            "datePublished": "2022-07-17T01:14:49.636Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "http://example.com/posts/sqlserver13/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
 
-    .markdown-body!= post.content
 
-    if !page.posts && theme.duoshuo
-      .ds-thread(data-thread-key=commentKey(post), data-title=post.title, data-url=post.permalink)
 
-  if !page.posts && post.appends
-    for append in formatArray(post.appends)
-      .article-widget
-        +widget-inter(append)
 
-block body
-  for banner in formatArray(theme.banners)
-    .article-widget
-      +widget-inter(banner)
+    
 
-  if is_tag()
-    .article-widget
-      strong 标签 ##{page.tag}
+    
 
-  if page.category
-    .article-widget
-      strong 分类 ##{page.category}
+    
 
-  if page.year && page.month
-    .article-widget
-      strong 归档 #{page.year} 年 #{page.month} 月
+    
 
-  if page.posts
-    - page.posts.each(function(post) {
-      +article(post)
-    - });
+    
 
-    .archive-pagination
-      .paginator!= fixPaginator(paginator({prev_text: '&laquo;', next_text: '&raquo;'}))
+    
 
-  else
-    +article(page)
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = false
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <a class="header-type-title" href="/">锦鲤未离</a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cleweiik9001jyw106o3c39ei" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      『SQL Server』第十三章  大规模数据库架构
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2022-07-17T01:14:49.636Z" itemprop="datePublished">2022-07-17</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/SqlServer/">SqlServer</a>
+            </div>
+            
+
+            
+
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h1 id="第十三章-大规模数据库架构"><a href="#第十三章-大规模数据库架构" class="headerlink" title="第十三章  大规模数据库架构"></a>第十三章  大规模数据库架构</h1><p>1.分布式数据库:物理上分散,逻辑上集中<br>目标:本地自治,非集中式管理,高可用性(最基本特征)<br>                    位置独立性,分片独立性,复制独立性(分布透明性)<br>                    分布式查询,事务管理(复杂性)<br>                数据分布:数据分片:水平,垂直,导出,混合<br>                         数据分配:集中,分割(更新事务),全复制(事务更新少,数据少),混合<br>                体系结构:全局外模式<br>                        全局概念模式<br>                        分片模式<br>                        分配模式<br>                        局部概念模式<br>                        局部内模式<br>                        局部数据库<br>2.并行数据库:结构:共享内存结构<br>                  共享磁盘结构<br>                  无共享结构<br>                  层次结构<br>              数据划分与并行计算:合理划分可以使响应速度变化,处理性能更优<br>数据划分:一维数据划分:轮转法:整个关系<br>                                    散列法:点查询,连接查询,散列函数选择是关键点<br>                                    范围划分法:范围查询,点查询数据分布不均匀<br>                      多维数据划分:MAGIC多维划分法<br>                                  CMD多维划分法<br>                                  BERD多维划分法<br>               并行算法:并行排序<br>                        并行连接:划分连接,分片-复制连接<br>                        其他的关系操作:选择,除重,投影,聚集<br>3.云数据库:服务类型:IaaS:将基础设施作为服务<br>                    PaaS:将平台作为服务<br>SaaS:将软件作为服务</p>
+<p>分布式查询:导致数据传输量大的主要原因是数据间的连接操作和 并 操作,半连接操作可用减少场地之间的数据传输量<br>分布式事务管理:恢复控制:基于 两 阶段 的提交协议,协调者与参与者<br>              并发控制:封锁协议:三级封锁协议<br>          为了保证全局事务的原子性，参与事务执行的所有场地或者全部提交，或者全 回滚 &#x2F; 撤销 。<br>两阶段封锁协议保证事务的调度可串行性<br>第二节：并行数据库<br>共享内存, 共享磁盘, 无共享, 层次结构<br>数据划分与并行计算:合理划分可以使响应速度变化,处理性能更优<br>:一维数据划分<br>多维数据划分<br>  轮转法；整体扫描<br>  散列划分：根据A属性划分<br>  范围划分：根据B属性取值区间<br>第三节：云计算数据库架构<br>云计算通过集中所有的计算资源，采用硬件 虚拟化 技术，为使用者提供强大的计算能力、存储和宽带等资源。<br>第四节 ：XML数据库</p>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/posts/sqlserver14/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          『SQL Server』第十四章  数据仓库与数据挖掘
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/sqlserver03/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">『SQL Server』第三章  系统设计</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=『SQL Server』第十三章  大规模数据库架构 - 锦鲤未离&url=http%3A%2F%2Fexample.com%2Fposts%2Fsqlserver13%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=『SQL Server』第十三章  大规模数据库架构 - 锦鲤未离&u=http%3A%2F%2Fexample.com%2Fposts%2Fsqlserver13%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=『SQL Server』第十三章  大规模数据库架构 - 锦鲤未离&url=http://example.com/posts/sqlserver13/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/">Applied Statistics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/">Data-Mining</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/posts/spark_05/">第5章  HBase 分布式数据库</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_04/">第4章  Spark SQL结构化数据文件处理</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_01/">第1章  Scala语言基础.</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_03/">第3章  Spark RDD弹性分布式数据集</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_08/">第8章  Spark MLlib机器学习算法库</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/">1999</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            锦鲤未离 &copy; 2023<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

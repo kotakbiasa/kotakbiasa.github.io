@@ -1,79 +1,533 @@
-extends base
+<!DOCTYPE html>
+<html>
 
-block head
-  if is_tag()
-    title 标签：#{page.tag} | #{config.title}
-  else if page.category
-    title 分类：#{page.category} | #{config.title}
-  else if page.year && page.month
-    title 归档：#{page.year} 年 #{page.month} 月 | #{config.title}
-  else if !page.posts
-    title #{page.title} | #{config.title}
-  else
-    title= config.title
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-mixin article(post)
-  article
-    header
-      if page.posts
-        h2
-          a(href=url_for(post.path))= post.title
-      else
-        small.right
-          a(target='_blank', href=sourceOfPost(post, theme.source_url)) 查看源代码
-        h1= post.title
+    
+    <title>第一章  分布式文件系统（HDFS）概述 | 锦鲤未离</title>
 
-    .article-meta.clearfix
-      time.left= post.date.format(config.date_format)
+    <meta name="description" content="锦鲤未离">
+    <meta name="keywords" content="">
 
-      if post.categories
-        ul.tags.left
-          - post.categories.each(function(category) {
-            li
-              a(href=url_for(category.path))= category.name
-          - });
+    
 
-      if post.tags
-        ul.tags.right
-          - post.tags.each(function(tag) {
-            li
-              a(href=url_for(tag.path))= tag.name
-          - });
+    <meta property="og:locale" content="zh-CN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "第一章  分布式文件系统（HDFS）概述 | 锦鲤未离"  />
+    <meta property="og:description" content= "锦鲤未离" />
+    <meta property="og:url" content="http://example.com/posts/hadoop01/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="Koi_NL" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="锦鲤未离" />
+    <meta name="twitter:title" content="第一章  分布式文件系统（HDFS）概述 | 锦鲤未离"/>
+    <meta name="twitter:description" content="锦鲤未离"/>
+    <script type="application/ld+json">
+        {
+            "description": "锦鲤未离",
+            "author": { "@type": "Person", "name": "Koi_NL" },
+            "@type": "BlogPosting",
+            "url": "http://example.com/posts/hadoop01/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http://example.comundefined"
+            },
+            "name": "Koi_NL"
+            },
+            "headline": "第一章  分布式文件系统（HDFS）概述 | 锦鲤未离",
+            "datePublished": "2022-09-07T04:18:31.731Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "http://example.com/posts/hadoop01/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
 
-    .markdown-body!= post.content
 
-    if !page.posts && theme.duoshuo
-      .ds-thread(data-thread-key=commentKey(post), data-title=post.title, data-url=post.permalink)
 
-  if !page.posts && post.appends
-    for append in formatArray(post.appends)
-      .article-widget
-        +widget-inter(append)
 
-block body
-  for banner in formatArray(theme.banners)
-    .article-widget
-      +widget-inter(banner)
+    
 
-  if is_tag()
-    .article-widget
-      strong 标签 ##{page.tag}
+    
 
-  if page.category
-    .article-widget
-      strong 分类 ##{page.category}
+    
 
-  if page.year && page.month
-    .article-widget
-      strong 归档 #{page.year} 年 #{page.month} 月
+    
 
-  if page.posts
-    - page.posts.each(function(post) {
-      +article(post)
-    - });
+    
 
-    .archive-pagination
-      .paginator!= fixPaginator(paginator({prev_text: '&laquo;', next_text: '&raquo;'}))
+    
 
-  else
-    +article(page)
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = false
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <a class="header-type-title" href="/">锦鲤未离</a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cleweiikz0039yw10g2db9llh" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      第一章  分布式文件系统（HDFS）概述
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2022-09-07T04:18:31.731Z" itemprop="datePublished">2022-09-07</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
+            </div>
+            
+
+            
+
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <p>HDFS 是一个支持海量数据存储的分布式文件系统，是存储大数据文件的重要载体。本章主要介绍了 HDFS 的体系结构、运行机制、工作流程和基本操作。</p>
+<h2 id="一、HFDS-概述"><a href="#一、HFDS-概述" class="headerlink" title="一、HFDS 概述"></a>一、HFDS 概述</h2><h3 id="1-HDFS-的设计目标和不足"><a href="#1-HDFS-的设计目标和不足" class="headerlink" title="1. HDFS 的设计目标和不足"></a>1. HDFS 的设计目标和不足</h3><blockquote>
+<p>设计目标：</p>
+<ol>
+<li>支持超大文件存储</li>
+<li>采用一次写入多次读取（write-once-read-many）访问模型</li>
+<li>具有故障检测和快速自动恢复功能</li>
+<li>采用流式数据访问</li>
+<li>支持移动计算</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>不足：</p>
+<ol>
+<li>不适合处理低延迟数据访问</li>
+<li>无法高效存储大量小文件</li>
+<li>不支持多用户写入和任意修改文件</li>
+</ol>
+</blockquote>
+<h3 id="2-HDFS-的体系结构"><a href="#2-HDFS-的体系结构" class="headerlink" title="2. HDFS 的体系结构"></a>2. HDFS 的体系结构</h3><p>HDFS 是一个<strong>主&#x2F;从（master&#x2F;slave）</strong>架构的系统，即一个 HDFS 集群由一个 <strong>NameNode</strong> 和若干 <strong>DataNode</strong> 组成。它俩也是 HDFS 的<strong>核心组件</strong>，其中，NameNode 被称为“<strong>元数据节点</strong>”、另一个被称为“<strong>数据节点</strong>”。</p>
+<h4 id="3-数据块（block）"><a href="#3-数据块（block）" class="headerlink" title="3. 数据块（block）"></a>3. 数据块（block）</h4><p>磁盘数据块是磁盘读写的最小单位，也只能读写块整倍大小的数据。HDFS 的默认数据块大小为 <strong>128MB</strong>。</p>
+<blockquote>
+<p>通常为512B，那为什么设置这么大？<strong>数据块越大，寻址开销越小</strong>。当然，盲目过大也不行，MapReduce 中的 Map 一次只处理一个块的内容，<strong>过大会导致整体任务量变少</strong>，进而影响数据的<strong>并行</strong>处理速度。</p>
+</blockquote>
+<blockquote>
+<p>优点：<br>可以存储任意大小的数据文件，只要物理切片就可以。<br>简化了存储系统的管理：元数据信息和文件数据信息分开管理。<br>有利于实现分布式文件系统的容错性：一个节点出故障，其他块读取副本。<br>有利于实现负载军和并提高集群可靠性：某个数据节点的剩余空间低于临界点，就将这个数据节点移动到其他的数据节点上；此外，数据块的副本被安排在不同的机架上，即使丢失某台机架，读取副本即可，大大提高了集群的可靠性。与此同时，Hadoop 的故障检测和快速自动回复功能就可以及时将这些块副本数量恢复到正常水平。</p>
+</blockquote>
+<h4 id="4-NameNode-和-SecondaryNameNode"><a href="#4-NameNode-和-SecondaryNameNode" class="headerlink" title="4. NameNode 和 SecondaryNameNode"></a>4. NameNode 和 SecondaryNameNode</h4><h5 id="1-元数据节点（NameNode）"><a href="#1-元数据节点（NameNode）" class="headerlink" title="1) 元数据节点（NameNode）"></a>1) 元数据节点（NameNode）</h5><p>管理 HDFS 文件系统的命名空间（namespace）。其实就是 HDFS 的目录结构，用户可以进行增删改重命名等 HDFS 文件。</p>
+<blockquote>
+<p>所存储的元数据信息：</p>
+<ol>
+<li>文件名、目录名与层次关系</li>
+<li>文件目录的属主和权限</li>
+<li>每个文件由哪些数据块组成</li>
+<li>数据块到数据节点的映射信息</li>
+</ol>
+</blockquote>
+<p>元数据信息被持久化的存到本地磁盘的两个文件中：<strong>fsimage（元数据镜像文件）</strong>和 <strong>edits（事务日志文件）</strong>。</p>
+<p>元数据节点正常运行时，所有更新操作被写入 edits 文件中，如果直接写入元数据镜像文件，逐渐一段时间后，过大会导致系统运行速度变慢。即 edits 文件越来越大，不会对系统有明显影响，但是元数据节点的重启过程会越来越慢。</p>
+<h5 id="2-SecondaryNameNode（辅助者-·-元数据节点）"><a href="#2-SecondaryNameNode（辅助者-·-元数据节点）" class="headerlink" title="2) SecondaryNameNode（辅助者 · 元数据节点）"></a>2) SecondaryNameNode（辅助者 · 元数据节点）</h5><p>解决掉 edits 文件过大的问题。是对 元数据镜像文件和事务日志文件进行定期合并。由于合并时需要消耗内存，因此通常这俩<strong>没在一个节点</strong>上面。</p>
+<blockquote>
+<p>优点：</p>
+<ol>
+<li>提升了集群性能，保存了元数据节点的元数据信息，一定程度上提高了元数据的安全性和可靠性。</li>
+</ol>
+</blockquote>
+<h5 id="3-数据节点（DataNode）"><a href="#3-数据节点（DataNode）" class="headerlink" title="3) 数据节点（DataNode）"></a>3) 数据节点（DataNode）</h5><p>一个数据节点有多个数据块，每个数据块会在多个数据节点上存储副本，但一个数据节点只能有一个副本。</p>
+<blockquote>
+<p>作用：<br>负责向<strong>客户端</strong>或<strong>元数据节点</strong>提供数据的检索和读写服务，并通过<strong>心跳机制</strong>定期向元数据节点发送自己的块列表信息。<br>一般情况下，数据节点会从磁盘中读取数据块，但如果某个块被频繁访问，系统会将其存放在数据节点的内存中。</p>
+</blockquote>
+<h6 id="从现有集群里面动态增加一个数据节点，怎么破？"><a href="#从现有集群里面动态增加一个数据节点，怎么破？" class="headerlink" title="从现有集群里面动态增加一个数据节点，怎么破？"></a>从现有集群里面动态增加一个数据节点，怎么破？</h6><p>—索引眼：<em>增加数据节点<strong>增加一个数据节点</strong>增加一个DataNode<strong>增加DataNode</strong>hadoop04**Hadoop04</em>—</p>
+<h2 id="二、数据错误与恢复"><a href="#二、数据错误与恢复" class="headerlink" title="二、数据错误与恢复"></a>二、数据错误与恢复</h2><p>HDFS 的主要目标有一条是“具有故障检测和快速自动恢复功能”，这就要求即使再出错的情况下也要保证数据存储的可靠性。常见的出错情况包括block 损坏、NameNode 和 DataNode 的错误。</p>
+<h3 id="1-block-损坏处理"><a href="#1-block-损坏处理" class="headerlink" title="1. block 损坏处理"></a>1. block 损坏处理</h3><p><strong>网络传输错误</strong>和<strong>机器硬件故障</strong>等因素会造成数据损坏。<br>客户端在读取文件时会对每个读取的块进行校验，如果出错，就会读取其他数据节点上的数据块，并将错误块报告给元数据节点，元数据节点随后会重新复制。<br>此外，每一个数据节点都会开启一个<strong>块扫描进程</strong>，来定期验证块的正确性，不正确会报告给元数据节点进行处理。</p>
+<h3 id="2-NameNode-和-DataNode-错误处理"><a href="#2-NameNode-和-DataNode-错误处理" class="headerlink" title="2. NameNode 和 DataNode 错误处理"></a>2. NameNode 和 DataNode 错误处理</h3><h4 id="1-NameNode-错误处理"><a href="#1-NameNode-错误处理" class="headerlink" title="1) NameNode 错误处理"></a>1) NameNode 错误处理</h4><p>NameNode 上保存了元数据信息，仅此一份独一无二，因此必须确保该安全。</p>
+<blockquote>
+<p>容错方式有以下三种：</p>
+<ol>
+<li>元数据信息持久化到本地磁盘并同步到 NFS 中，但会因网络带宽等原因造成元数据丢失。</li>
+<li>运行 SecondaryNameNode。但由于该备份的元数据信息滞后于 NameNode，所以也会丢失掉部分的数据信息。</li>
+<li>启用主备两个NameNode。</li>
+</ol>
+</blockquote>
+<h2 id="三、HDFS的运行机制"><a href="#三、HDFS的运行机制" class="headerlink" title="三、HDFS的运行机制"></a>三、HDFS的运行机制</h2><h3 id="1-副本机制"><a href="#1-副本机制" class="headerlink" title="1. 副本机制"></a>1. 副本机制</h3><blockquote>
+<p>作用：<br>为了维护爱与和平…咳咳串台了，再来！为了保证集群的容错性和可用性。</p>
+</blockquote>
+<h3 id="2-心跳机制"><a href="#2-心跳机制" class="headerlink" title="2. 心跳机制"></a>2. 心跳机制</h3><p>NameNode 启动后，会等待所有 DataNode 的“心跳”：DataNode 每隔一定间隔（默认三秒）主动向 NameNode 发送“心跳”，主动报告自己的状态信息。然后 NameNode 通过心跳向 DataNode 下达命令。<br>如果长时间未收到，则可以证明该 DataNode 宕机，然后检查该 DataNode 上的块副本信息并备份到其他的 DataNode 上。<br>对了，DataNode 会给主备主数据节点都会发送“心跳”。</p>
+<h3 id="3-副本放置与机架感应策略"><a href="#3-副本放置与机架感应策略" class="headerlink" title="3. 副本放置与机架感应策略"></a>3. 副本放置与机架感应策略</h3><h4 id="1-副本放置"><a href="#1-副本放置" class="headerlink" title="1) 副本放置"></a>1) 副本放置</h4><p>一个集群中多个机架，每个机架上多个数据节点，每个数据节点保存多个块副本。另外，元数据节点的元数据存储着每个数据节点所属的机架 ID。那么，如何分配文件的块副本到集群中的数据节点上面呢？</p>
+<p>默认下，副本的配置数为 3，其中，有两个被放在同一机架的不同数据节点上面，另外一个被另一个机架上。</p>
+<blockquote>
+<p>一般情况下，3 个足矣。若大于等于 3，则之后的副本可以随意放置。避免一个机架有太多同意副本即可。</p>
+</blockquote>
+<h4 id="2-机架感应（rack-aware）"><a href="#2-机架感应（rack-aware）" class="headerlink" title="2) 机架感应（rack-aware）"></a>2) 机架感应（rack-aware）</h4><p>由于副本的存放位置会影响 HDFS 的可靠性和性能，HDFS 采用了一种机架感知策略来提高数据的可靠性，并提高网络带宽的利用率。<br>这样一来，即使一个机架发生故障，由于其他机架上的副本仍然可用，不会影响数据的可靠性。另外，当读取数据时，应用程序可用在多个机架上同时读取，大大提高数据的读取速度。</p>
+<h3 id="4-联邦（Federation）机制"><a href="#4-联邦（Federation）机制" class="headerlink" title="4. 联邦（Federation）机制"></a>4. 联邦（Federation）机制</h3><p>每个文件的元数据信息都需要保存到 NameNode 的内存中，于是便有了联邦机制。</p>
+<blockquote>
+<p>作用：<br>集群横向扩展的方式解决 NameNode 的瓶颈问题，即<strong>增加元数据节点的数量</strong>。<br>由于 Hadoop 针对海量数据进行存储管理，并采用了数据冗余存储方式，所以<strong>磁盘I&#x2F;O才是集群的《主要瓶颈》。</strong></p>
+</blockquote>
+<p>在联邦机制中，每个 NameNode 分别管理文件系统命名口径的一部分（命名空间卷）。各卷中分别存储了命名空间的元数据和文件数据块的块池。同时，各卷相互独立互不影响互不通信。此外，集群中的所有 DataNode 都必须注册到各个 NameNode。</p>
+<p>不过，没有解决掉单点故障问题，若某一个 NameNode 失效，仍无法恢复无法访问。</p>
+<h3 id="5-HA（7-24小时不中断服务）-机制"><a href="#5-HA（7-24小时不中断服务）-机制" class="headerlink" title="5. HA（7*24小时不中断服务） 机制"></a>5. HA（7*24小时不中断服务） 机制</h3><p>所谓HA，即高可用（7*24小时不中断服务）。实现高可用最关键的是消除单点故障。<br>方式：允许运行主备两个 NameNode，当 NameNode 节点发生故障时，可以快速启用备用的 NameNode，以确保集群正常运行。</p>
+<p>备主数据节点和主主数据节点始终同步（元数据信息一致），它们之间通过 JournalNode 守护进程进行通信。</p>
+<h3 id="6-安全模式"><a href="#6-安全模式" class="headerlink" title="6. 安全模式"></a>6. 安全模式</h3><p>启用后，就进入了安全模式。该模式下，主数据节点会检查块的完整性。此外，它还是一种只读模式。<br>正常情况下，NameNode启动（额外延迟30s）就会退出安全模式，但是如果DataNode 丢失的数据块超过设定的值，集群就会一直处于安全模式。</p>
+<p>两件事</p>
+<ol>
+<li>等待每个数据节点的心跳，判断是否宕机，然后NameNode 将 DataNode 所发送的 block 报告与其元数据进行对比，以判断数据块是否正常。</li>
+<li>在内存中加载 fsimage，然后将 fsimage 和edits 合并成新的 fsimage，并创建一个新的 edits。合并完成后删除旧的 fsimage 和 edits，并将新的俩重命名。<h3 id="7-垃圾回收"><a href="#7-垃圾回收" class="headerlink" title="7. 垃圾回收"></a>7. 垃圾回收</h3>没有任何利用价值的块副本被认为是垃圾：若一个文件被删除，那么备份的该文件副本也就没有用。<br>删除不会直接删除，会移动到回收站。<h2 id="四、HDFS-的工作流程"><a href="#四、HDFS-的工作流程" class="headerlink" title="四、HDFS 的工作流程"></a>四、HDFS 的工作流程</h2>在 Hadoop 集群中，<strong>客户端</strong>与<strong>元数据节点</strong>之间的通信、<strong>元数据节点</strong>与<strong>数据节点</strong>之间的通信、<strong>数据节点</strong>相互之间的通信、都是基于 <strong>RPC（远程过程调用）</strong>机制的。</li>
+</ol>
+<h3 id="1-启动流程"><a href="#1-启动流程" class="headerlink" title="1. 启动流程"></a>1. 启动流程</h3><p>在 HDFS 的启动过程中，需要启动 NameNode 和DataNode。<br>启动时，会先进入安全模式。<br>数据节点启动时，会开启一个 DataBlockScanner 进程来扫描 block，并且由该进程定期向各个 NameNode 发送“心跳”。</p>
+<h3 id="2-读流程"><a href="#2-读流程" class="headerlink" title="2. 读流程"></a>2. 读流程</h3><p>Client 读取时，首先会访问 NameNode 以确认是否可以读取。是，则 Client 获得文件的 block 和 DataNode 信息，然后执行 HDFS 的读操作来获取数据。在读取数据结束后，需要关闭文件输入流。</p>
+<h3 id="3-写流程"><a href="#3-写流程" class="headerlink" title="3. 写流程"></a>3. 写流程</h3><p>Client 将数据预备写入到 HDFS 文件时，首先会访问 NameNode 确认写入的权限和文件是否存在（存在是否覆盖）。是，Client 在 NameNode 上创建写入文件的元数据信息，并返回可存储数据的 block 和 DataNode 信息，然后根据返回信息执行副本复制过程。写入结束后，需要关闭文件输出流。</p>
+<h3 id="4-删除流程"><a href="#4-删除流程" class="headerlink" title="4. 删除流程"></a>4. 删除流程</h3><h4 id="1-使用-HDFS-命令删除文件"><a href="#1-使用-HDFS-命令删除文件" class="headerlink" title="1) 使用 HDFS 命令删除文件"></a>1) 使用 HDFS 命令删除文件</h4><p>root 用户的回收站目录为 <code>hdfs://hadoop0:9000/user/root/.Trash</code>。<br>当用户使用 HDFS 命令执行删除操作后，系统会将需要删除的文件移动到回收站内的“&#x2F;Current”下。例如，root用户删除了“koinl01.txt”文件，就可以在 <code>hdfs://hadoop0:9000/user/root/.Trash/Current/koinl01.txt</code> 找到。<br>回收站也是有时间周期滴。</p>
+<h4 id="2-使用-Java-API-删除文件"><a href="#2-使用-Java-API-删除文件" class="headerlink" title="2) 使用 Java API 删除文件"></a>2) 使用 Java API 删除文件</h4><p>需要有一段延迟时间，才可以真正删除掉。</p>
+<h2 id="五、HDFS-的基本操作"><a href="#五、HDFS-的基本操作" class="headerlink" title="五、HDFS 的基本操作"></a>五、HDFS 的基本操作</h2><p>基本操作包括：创建文件、移动文件、查看文件目录、读取文件等</p>
+<h3 id="1-HDFS-命令行操作"><a href="#1-HDFS-命令行操作" class="headerlink" title="1. HDFS 命令行操作"></a>1. HDFS 命令行操作</h3><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">解析</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">hdfs dfs -help</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -ls &#x2F;</td>
+<td align="center">查看HDFS根目录下目录和文件</td>
+<td align="center">-R选项递归展示</td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -mkdir &#x2F;mywork</td>
+<td align="center">根目录下创建文件夹</td>
+<td align="center">-p选项多级目录</td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -put a.txt &#x2F;mywork</td>
+<td align="center">虚拟机本地文件上传到HDFS中</td>
+<td align="center">-f 强制覆盖</td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -get &#x2F;mywork&#x2F;a.txt &#x2F;root&#x2F;Downloads</td>
+<td align="center">HDFS中文件下载到虚拟机本地</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -cp &#x2F;mywork&#x2F;a.txt &#x2F;mywork&#x2F;t1</td>
+<td align="center">HDFS中文件复制到目录</td>
+<td align="center">若复制到文件，即复制+重命名</td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -mv &#x2F;mywork&#x2F;a.txt &#x2F;input&#x2F;</td>
+<td align="center">HDFS中文件移动到目录</td>
+<td align="center">若移动到文件，即移动+重命名</td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -cat &#x2F;input&#x2F;word.txt</td>
+<td align="center">HDFS中查看文件内容</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -rm &#x2F;imput&#x2F;a.txt</td>
+<td align="center">HDFS中删除文件</td>
+<td align="center">-r选项删除目录</td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -df&#x2F;</td>
+<td align="center">查看HDFS可用空间</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="2-HDFS-Java-API-操作"><a href="#2-HDFS-Java-API-操作" class="headerlink" title="2. HDFS Java API 操作"></a>2. HDFS Java API 操作</h3><p>使用 HDFS Java API 可以远程对 HDFS 中文件进行创建、上传、下载、删除、读写等操作。</p>
+<h4 id="1-新建-Map-x2F-Reduce-项目和测试类"><a href="#1-新建-Map-x2F-Reduce-项目和测试类" class="headerlink" title="1) 新建 Map&#x2F;Reduce 项目和测试类"></a>1) 新建 Map&#x2F;Reduce 项目和测试类</h4><h5 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h5><p>在 Testfiles 类中添加一个<strong>用于创建目录</strong>的 createDir() 测试方法，该方法可以创建新目录<br>。</p>
+<h5 id="上传-Windows-本地文件"><a href="#上传-Windows-本地文件" class="headerlink" title="上传 Windows 本地文件"></a>上传 Windows 本地文件</h5><p>在 Testfiles 类中添加一个<strong>用于上传文件</strong>的 putFiles() 测试方法，该方法用于从 Windows 系统本地上传多个文件到集群。</p>
+<h5 id="下载文件到本地"><a href="#下载文件到本地" class="headerlink" title="下载文件到本地"></a>下载文件到本地</h5><p>在 Testfiles 类中添加一个<strong>用于下载文件</strong>的 getFiles() 测试方法，该方法通过正则表达式过滤出以“txt”为文件扩展名的文件并下载。</p>
+<h5 id="删除文件（或目录）"><a href="#删除文件（或目录）" class="headerlink" title="删除文件（或目录）"></a>删除文件（或目录）</h5><p>在 Testfiles 类中添加一个<strong>用于删除文件（或目录）</strong>的 deleteFiles() 测试方法，该方法用于从 HDFS 中删除文件（或目录）。</p>
+<h5 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h5><p>在 Testfiles 类中添加一个<strong>用于写入数据到文件</strong>的 writeHDFS() 测试方法，该方法用于向 HDFS 中写入文件。</p>
+<h5 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h5><p>在 Testfiles 类中添加一个<strong>用于读取文件数据</strong>的 readHDFS() 测试方法，该方法可以分行读取文件数据。</p>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/posts/hadoop02/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          第二章  磁盘I/O操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/DPaA04/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">第四章  数据预处理</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=第一章  分布式文件系统（HDFS）概述 - 锦鲤未离&url=http%3A%2F%2Fexample.com%2Fposts%2Fhadoop01%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=第一章  分布式文件系统（HDFS）概述 - 锦鲤未离&u=http%3A%2F%2Fexample.com%2Fposts%2Fhadoop01%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=第一章  分布式文件系统（HDFS）概述 - 锦鲤未离&url=http://example.com/posts/hadoop01/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/">Applied Statistics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/">Data-Mining</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/posts/spark_05/">第5章  HBase 分布式数据库</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_04/">第4章  Spark SQL结构化数据文件处理</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_01/">第1章  Scala语言基础.</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_03/">第3章  Spark RDD弹性分布式数据集</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_08/">第8章  Spark MLlib机器学习算法库</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/">1999</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            锦鲤未离 &copy; 2023<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

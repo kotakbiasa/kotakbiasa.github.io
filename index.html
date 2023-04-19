@@ -1,79 +1,715 @@
-extends base
+<!DOCTYPE html>
+<html>
 
-block head
-  if is_tag()
-    title 标签：#{page.tag} | #{config.title}
-  else if page.category
-    title 分类：#{page.category} | #{config.title}
-  else if page.year && page.month
-    title 归档：#{page.year} 年 #{page.month} 月 | #{config.title}
-  else if !page.posts
-    title #{page.title} | #{config.title}
-  else
-    title= config.title
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-mixin article(post)
-  article
-    header
-      if page.posts
-        h2
-          a(href=url_for(post.path))= post.title
-      else
-        small.right
-          a(target='_blank', href=sourceOfPost(post, theme.source_url)) 查看源代码
-        h1= post.title
+    
+    <title>锦鲤未离</title>
 
-    .article-meta.clearfix
-      time.left= post.date.format(config.date_format)
+    <meta name="description" content="锦鲤未离">
+    <meta name="keywords" content="">
 
-      if post.categories
-        ul.tags.left
-          - post.categories.each(function(category) {
-            li
-              a(href=url_for(category.path))= category.name
-          - });
+    
 
-      if post.tags
-        ul.tags.right
-          - post.tags.each(function(tag) {
-            li
-              a(href=url_for(tag.path))= tag.name
-          - });
 
-    .markdown-body!= post.content
 
-    if !page.posts && theme.duoshuo
-      .ds-thread(data-thread-key=commentKey(post), data-title=post.title, data-url=post.permalink)
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content=""/>
+    <meta property="og:description" content=""/>
+    <meta property="og:locale" content="zh-CN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://example.com/index.html" />
+    <meta property="og:site_name" content="Koi_NL" />
+    <meta property="article:publisher" content="" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "",
+            "description": "",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Koi_NL"
+            },
+        }
+    </script>
 
-  if !page.posts && post.appends
-    for append in formatArray(post.appends)
-      .article-widget
-        +widget-inter(append)
 
-block body
-  for banner in formatArray(theme.banners)
-    .article-widget
-      +widget-inter(banner)
+    
 
-  if is_tag()
-    .article-widget
-      strong 标签 ##{page.tag}
+    
 
-  if page.category
-    .article-widget
-      strong 分类 ##{page.category}
+    
 
-  if page.year && page.month
-    .article-widget
-      strong 归档 #{page.year} 年 #{page.month} 月
+    
 
-  if page.posts
-    - page.posts.each(function(post) {
-      +article(post)
-    - });
+    
 
-    .archive-pagination
-      .paginator!= fixPaginator(paginator({prev_text: '&laquo;', next_text: '&raquo;'}))
+    
 
-  else
-    +article(page)
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = false
+        window.aomori = {
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = false
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <a class="header-type-title" href="/">锦鲤未离</a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="index">
+  
+    
+      <article
+id="post-Spark/第5章  HBase 分布式数据库"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/posts/spark_05/">第5章  HBase 分布式数据库</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>Spark计算框架如何在分布式环境下对数据处理后的结构进行随机地、实时地存储？HBase前来解决这个问题。</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2023-03-31T09:00:05.856Z" itemprop="datePublished">2023-03-31</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/spark/">spark</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-Spark/第4章  Spark SQL结构化数据文件处理"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/posts/spark_04/">第4章  Spark SQL结构化数据文件处理</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>本章目的在于如何使用Spark SQL模块来处理结构化数据，结构化数据即以<strong>关系型数据库表</strong>形式管理的数据。</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2023-03-31T03:48:40.204Z" itemprop="datePublished">2023-03-31</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/spark/">spark</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-Spark/第1章  Scala语言基础"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/posts/spark_01/">第1章  Scala语言基础.</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>有关于Scala语言的一些基础（例如数据结构、类与对象等）已在下述代码中述明…</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> scalatestkoinl</span><br><span class="line"><span class="keyword">import</span> scala.collection.mutable.ArrayBuffer    <span class="comment">// 1.1.2 变长数组(数组缓冲)需要</span></span><br><span class="line"></span><br><span class="line">object info &#123;</span><br><span class="line"><span class="keyword">private</span> <span class="type">var</span> <span class="variable">CONSTANT</span> <span class="operator">=</span> <span class="string">&quot;汪汪汪。。。&quot;</span>    <span class="comment">//伴生对象中的私有字段</span></span><br><span class="line"><span class="keyword">case</span> <span class="keyword">class</span> <span class="title class_">Person</span>(name:String,age:Int)    <span class="comment">// 样例类</span></span><br><span class="line">def <span class="title function_">main</span><span class="params">(args:Array[String])</span>&#123;</span><br><span class="line">  <span class="comment">// 一、Scala的数据结构</span></span><br><span class="line">  <span class="comment">// 1. 数组</span></span><br><span class="line">  <span class="comment">// 1.1. 定长数组与变长数组的定义与使用</span></span><br><span class="line">  <span class="comment">// 1.1.1. 定长数组</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">arr1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Array</span>[Int](<span class="number">8</span>)    <span class="comment">// 初始化一个长度为8的定长数组，其他元素均为0</span></span><br><span class="line">  println(arr1)    <span class="comment">// 直接打印定长数组，内容为数组的hashcode值</span></span><br><span class="line">  <span class="comment">// 1.1.2. 变长数组(数组缓冲)，需要导入包，见第二行</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">ab</span> <span class="operator">=</span> ArrayBuffer[Int]()    <span class="comment">// 初始化变长数组</span></span><br><span class="line">  ab += <span class="number">1</span>    <span class="comment">// 表示尾部追加元素 +=</span></span><br><span class="line">  ab += (<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)    <span class="comment">// 追加多个元素 +=()</span></span><br><span class="line">  ab ++= Array(<span class="number">6</span>,<span class="number">7</span>)    <span class="comment">// 追加一个数组 ++=Array()</span></span><br><span class="line">  ab ++= ArrayBuffer(<span class="number">8</span>,<span class="number">9</span>)    <span class="comment">// 追加一个数组缓冲 ++=ArrayBuffer()</span></span><br><span class="line">  ab.insert(<span class="number">0</span>,<span class="number">0</span>)    <span class="comment">// 在数组某个位置插入元素用insert，从某下标插入</span></span><br><span class="line">  ab.remove(<span class="number">0</span>)    <span class="comment">// 删除数组某个位置的元素用remove按照下标删除</span></span><br><span class="line">  println(ab)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 1.2. 数组的遍历及应用（计算元素总和和查找最大元素）</span></span><br><span class="line">  <span class="type">var</span> <span class="variable">myArr</span> <span class="operator">=</span> Array(<span class="number">1.2</span>,<span class="number">2.4</span>,<span class="number">3.6</span>,<span class="number">4.8</span>)</span><br><span class="line">  <span class="keyword">for</span> (x&lt;-myArr)&#123;print(x+<span class="string">&quot; ,&quot;</span>)&#125;    <span class="comment">// 打印输出所有的数组元素</span></span><br><span class="line">  println()</span><br><span class="line">  <span class="comment">// 计算数组所有元素的总和</span></span><br><span class="line">  <span class="type">var</span> <span class="variable">total</span> <span class="operator">=</span> <span class="number">0.0</span></span><br><span class="line">  <span class="keyword">for</span> (i&lt;- <span class="number">0</span> to (myArr.length - <span class="number">1</span>))&#123;total += myArr(i)&#125; </span><br><span class="line">  println(<span class="string">&quot;总和为：&quot;</span>+total)</span><br><span class="line">  <span class="comment">// 查找数组中的最大元素</span></span><br><span class="line">  <span class="type">var</span> <span class="variable">max</span> <span class="operator">=</span> myArr(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">for</span> (i&lt;-<span class="number">1</span> to(myArr.length-<span class="number">1</span>))&#123;<span class="keyword">if</span>(myArr(i)&gt;max)max=myArr(i)&#125;</span><br><span class="line">  println(<span class="string">&quot;最大值为：&quot;</span>+max)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 1.3. 数组转换</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">arr</span> <span class="operator">=</span> Array(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>)    <span class="comment">// 定义一个数组</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">newArr</span> <span class="operator">=</span> <span class="keyword">for</span>(e&lt;- arr <span class="keyword">if</span> e%<span class="number">2</span>==<span class="number">0</span>) yield e*<span class="number">5</span>    <span class="comment">// 将偶数取出乘以5后生成一个新的数组</span></span><br><span class="line">  println(newArr.toBuffer)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 2. 元组</span></span><br><span class="line">  val tuple=(<span class="string">&quot;itcast&quot;</span>,<span class="number">3.14</span>,<span class="number">65535</span>)</span><br><span class="line">  print(tuple._1)    <span class="comment">// 获取第一个元素的值</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 3. 集合-列表</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">fruit</span> <span class="operator">=</span> <span class="string">&quot;apples&quot;</span>::(<span class="string">&quot;oranges&quot;</span>::(<span class="string">&quot;pears&quot;</span>::Nil))</span><br><span class="line">  <span class="type">val</span> <span class="variable">num</span> <span class="operator">=</span> Nil</span><br><span class="line">  <span class="title function_">println</span><span class="params">(<span class="string">&quot;head of fruit:&quot;</span>+fruit.head)</span>    <span class="comment">// 获取列表第一个元素</span></span><br><span class="line">  println(<span class="string">&quot;tail of fruit:&quot;</span>+fruit.tail)    <span class="comment">// 除第一个元素以外的元素</span></span><br><span class="line">  println(<span class="string">&quot;check if fruit is empty:&quot;</span>+fruit.isEmpty)    <span class="comment">// 是否为空</span></span><br><span class="line">  println(<span class="string">&quot;check if num is empty:&quot;</span>+num.isEmpty)   </span><br><span class="line">  println(<span class="string">&quot;take of fruit:&quot;</span>+fruit.take(<span class="number">2</span>))    <span class="comment">// 获取前2个元素</span></span><br><span class="line">  println(<span class="string">&quot;contains of fruit:&quot;</span>+fruit.contains(<span class="string">&quot;apples&quot;</span>))    <span class="comment">// 是否包含该元素</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 4. 集合-集合</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">site</span> <span class="operator">=</span> Set(<span class="string">&quot;Sougou&quot;</span>,<span class="string">&quot;Google&quot;</span>,<span class="string">&quot;Baidu&quot;</span>)</span><br><span class="line">  val nums : Set[Int] = Set()</span><br><span class="line">  println(<span class="string">&quot;第一个网站：&quot;</span>+site.head)</span><br><span class="line">  println(<span class="string">&quot;其余网站：&quot;</span>+site.tail)</span><br><span class="line">  println(<span class="string">&quot;查看site集合是否为空：&quot;</span>+site.isEmpty)</span><br><span class="line">  println(<span class="string">&quot;查看num集合是否为空：&quot;</span>+num.isEmpty)</span><br><span class="line">  println(<span class="string">&quot;查看site的前2个网站：&quot;</span>+site.take(<span class="number">2</span>))</span><br><span class="line">  println(<span class="string">&quot;查看集合是否包含网站Sougou：&quot;</span>+site.contains(<span class="string">&quot;Sougou&quot;</span>))</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 5. 集合-键值对</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">colors</span> <span class="operator">=</span> Map(<span class="string">&quot;red&quot;</span>-&gt;<span class="string">&quot;1&quot;</span>,<span class="string">&quot;azure&quot;</span>-&gt;<span class="string">&quot;2&quot;</span>,<span class="string">&quot;peru&quot;</span>-&gt;<span class="string">&quot;3&quot;</span>)</span><br><span class="line">  <span class="type">val</span> <span class="variable">perucolors</span> <span class="operator">=</span> <span class="keyword">if</span>(colors.contains(<span class="string">&quot;peru&quot;</span>))colors(<span class="string">&quot;peru&quot;</span>) <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">azurecolors</span> <span class="operator">=</span> colors.getOrElse(<span class="string">&quot;azure&quot;</span>,<span class="number">0</span>)</span><br><span class="line">  println(<span class="string">&quot;获取colors中键为read的值：&quot;</span>+colors(<span class="string">&quot;red&quot;</span>))</span><br><span class="line">  println(<span class="string">&quot;获取colors中所有的键：&quot;</span>+colors.keys)</span><br><span class="line">  println(<span class="string">&quot;获取colors中所有的值：&quot;</span>+colors.values)</span><br><span class="line">  println(<span class="string">&quot;获取colors中是否为空：&quot;</span>+colors.isEmpty)</span><br><span class="line">  println(<span class="string">&quot;获取colors中是否包含键peru，包含则返回对应值，否则返回0：&quot;</span>+perucolors)</span><br><span class="line">  println(<span class="string">&quot;获取colors中是否包含键azure，包含则返回对应值，否则返回0：&quot;</span>+azurecolors)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 二、Scala面向对象的特性</span></span><br><span class="line">  <span class="comment">// 1. 类与对象  </span></span><br><span class="line">  val pt=<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line">  pt.move(<span class="number">10</span>,<span class="number">10</span>)    <span class="comment">//移到一个新的位置</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 2. 继承</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">loc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Location</span>(<span class="number">10</span>,<span class="number">20</span>,<span class="number">15</span>);</span><br><span class="line">  loc.move(<span class="number">10</span>,<span class="number">10</span>,<span class="number">5</span>);    <span class="comment">//移到一个新的位置</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 3. 单例对象和伴生对象</span></span><br><span class="line">  <span class="comment">// 3.1. 单例对象</span></span><br><span class="line">  SingletonObject.hello()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 3.2. 伴生对象</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">dog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">info</span></span><br><span class="line">  dog.name = <span class="string">&quot;二哈666&quot;</span>    <span class="comment">// 伴生对象中的私有字段</span></span><br><span class="line">  dog.printName()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 4. 特质</span></span><br><span class="line">  <span class="type">var</span> <span class="variable">people</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">People</span></span><br><span class="line">  people.speak()</span><br><span class="line">  people.listen()</span><br><span class="line">  people.run()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 三、Scala的模式匹配和样例类</span></span><br><span class="line">  <span class="comment">// 1. 模式匹配</span></span><br><span class="line">  println(matchTest(<span class="number">3</span>))</span><br><span class="line">  def <span class="title function_">matchTest</span><span class="params">(x:Int)</span>:String = x match &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>=&gt;<span class="string">&quot;one&quot;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>=&gt;<span class="string">&quot;two&quot;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>=&gt;<span class="string">&quot;many&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 2. 样例类</span></span><br><span class="line">  <span class="type">val</span> <span class="variable">alice</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Alice&quot;</span>, <span class="number">25</span>)</span><br><span class="line">  <span class="type">val</span> <span class="variable">bob</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Bob&quot;</span>,<span class="number">32</span>)</span><br><span class="line">  <span class="type">val</span> <span class="variable">charlie</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Charlie&quot;</span>, <span class="number">32</span>)</span><br><span class="line">  <span class="keyword">for</span> (person&lt;-List(alice,bob,charlie))&#123;</span><br><span class="line">    person match &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="title function_">Person</span><span class="params">(<span class="string">&quot;Alice&quot;</span>,<span class="number">25</span>)</span> =&gt;println(<span class="string">&quot;Hi Alice!&quot;</span>)</span><br><span class="line">      <span class="keyword">case</span> <span class="title function_">Person</span><span class="params">(<span class="string">&quot;Bob&quot;</span>,<span class="number">32</span>)</span>=&gt;println(<span class="string">&quot;Hi Bob!&quot;</span>)</span><br><span class="line">      <span class="keyword">case</span> <span class="title function_">Person</span><span class="params">(name,age)</span>=&gt;</span><br><span class="line">      println(<span class="string">&quot;Name:&quot;</span>+name+<span class="string">&quot;\t&quot;</span>+<span class="string">&quot;Age:&quot;</span>+age)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类与对象相关类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span>(val xc:Int,val yc:Int)&#123;</span><br><span class="line">  <span class="keyword">var</span> x:Int = xc</span><br><span class="line">  <span class="keyword">var</span> y:Int = yc</span><br><span class="line">  def <span class="title function_">move</span><span class="params">(dx:Int,dy:Int)</span>: Unit =&#123;</span><br><span class="line">    x = x+<span class="type">dy</span></span><br><span class="line">    <span class="variable">y</span> <span class="operator">=</span> y+dy</span><br><span class="line">    <span class="title function_">println</span><span class="params">(<span class="string">&quot;x的坐标点：&quot;</span>+x)</span>;</span><br><span class="line">    println(<span class="string">&quot;y的坐标点：&quot;</span>+y);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 类与对象与继承相关类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Location</span>(override val xc:Int, override val yc:Int,val zc:Int)<span class="keyword">extends</span> <span class="title class_">Point</span>(xc,yc)&#123;</span><br><span class="line">  <span class="keyword">var</span> z:Int = zc</span><br><span class="line">  def <span class="title function_">move</span><span class="params">(dx:Int,dy:Int,dz:Int)</span>: Unit =&#123;</span><br><span class="line">    x = x+<span class="type">dx</span></span><br><span class="line">    <span class="variable">y</span> <span class="operator">=</span> y+<span class="type">dy</span></span><br><span class="line">    <span class="variable">z</span> <span class="operator">=</span> z+dz</span><br><span class="line">    <span class="title function_">println</span><span class="params">(<span class="string">&quot;x的坐标点：&quot;</span>+x)</span></span><br><span class="line">    println(<span class="string">&quot;y的坐标点：&quot;</span>+y)</span><br><span class="line">    println(<span class="string">&quot;z的坐标点：&quot;</span>+z)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 单例对象相关类</span></span><br><span class="line">object SingletonObject&#123;</span><br><span class="line">  def <span class="title function_">hello</span><span class="params">()</span>: Unit =&#123;println(<span class="string">&quot;Hello,This is Sinleton Object&quot;</span>)&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 伴生对象相关类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">info</span>&#123;</span><br><span class="line">  val id=<span class="number">666</span></span><br><span class="line">  <span class="keyword">private</span> <span class="type">var</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;二哈&quot;</span></span><br><span class="line">  def <span class="title function_">printName</span><span class="params">()</span>:Unit=(println(info.CONSTANT+name))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//特质相关类</span></span><br><span class="line">trait Animal&#123;</span><br><span class="line">  <span class="comment">//定义一个抽象方法方法（没有实现的方法）</span></span><br><span class="line">  def <span class="title function_">speak</span><span class="params">()</span></span><br><span class="line">  def <span class="title function_">listen</span><span class="params">()</span>:Unit=&#123;&#125;</span><br><span class="line">  def <span class="title function_">run</span><span class="params">()</span>:Unit=&#123;println(<span class="string">&quot;I am running&quot;</span>)&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//定义类，继承特质</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">People</span> <span class="keyword">extends</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">  override def <span class="title function_">speak</span><span class="params">()</span>: Unit = &#123;println(<span class="string">&quot;I am speaking English&quot;</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2023-03-24T10:56:52.156Z" itemprop="datePublished">2023-03-24</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/spark/">spark</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-Spark/第3章  Spark RDD弹性分布式数据集"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/posts/spark_03/">第3章  Spark RDD弹性分布式数据集</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>RDD即弹性分布式数据集，是一个数据结构。其是分布式内存的抽象概念，容错且并行。</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2023-03-19T02:50:11.581Z" itemprop="datePublished">2023-03-19</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/spark/">spark</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-Spark/第8章  Spark MLlib机器学习算法库"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/posts/spark_08/">第8章  Spark MLlib机器学习算法库</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>Spark MLlib实现了ALS算法，它是机器学习的协同过滤算法。机器学习的协同过滤式推荐算法是通过观察所有用户给产品的评分来推断每个用户的喜好，并向用户推荐合适的产品。</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2023-03-19T01:38:17.758Z" itemprop="datePublished">2023-03-19</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/spark/">spark</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-Spark/第7章  Spark Streaming 实时计算框架"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/posts/spark_07/">第7章  Spark Streaming</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>Spark Streaming是实时计算框架，主要为了对数据进行实时处理。<br>首先，简单了解了Spark Streaming的基础知识。<br>其次，Spark Streaming的核心是DStream，因此该小节最终以实例——实现网站热词排序来体现。<br>最后，将Spark Streaming整合Kafka，来实现词频统计。</p>
+<h2 id="Kafka-Streaming开发单词计数应用"><a href="#Kafka-Streaming开发单词计数应用" class="headerlink" title="Kafka Streaming开发单词计数应用"></a>Kafka Streaming开发单词计数应用</h2><h3 id="1-添加依赖"><a href="#1-添加依赖" class="headerlink" title="1. 添加依赖"></a>1. 添加依赖</h3><p>打开 pom.xml 文件，添加 Kafka Streamimh 整合 Kafka的 依赖，注意匹配版本号。</p>
+<details ><summary>添加依赖代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--引入sparkstreaming整合kafka的依赖--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spark-streaming-kafka_0-<span class="number">8_2.11</span>&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">2.3</span><span class="number">.2</span>&lt;/version&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></details>
+
+<h3 id="2-编写代码"><a href="#2-编写代码" class="headerlink" title="2. 编写代码"></a>2. 编写代码</h3><ul>
+<li>文件 LogProcessor.java，单词计数的业务功能开发<br>在spark_ chapter07项目的&#x2F;src&#x2F;main&#x2F;scala&#x2F;cn.itcast.dstream目录下， 创建一个名为”SparkStreaming Kafka_createDstream”的Scala类，用来编写Spark Streaming应用程序实现词频统计。<details ><summary>Spark Streaming应用程序实现词频统计的Java代码</summary><div class="fold-content"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> kafka.serializer.StringDecoder</span><br><span class="line"><span class="keyword">import</span> org.apache.spark.streaming.dstream.&#123;DStream, InputDStream&#125;</span><br><span class="line"><span class="keyword">import</span> org.apache.spark.streaming.kafka.KafkaUtils</span><br><span class="line"><span class="keyword">import</span> org.apache.spark.streaming.&#123;Seconds, StreamingContext&#125;</span><br><span class="line"><span class="keyword">import</span> org.apache.spark.&#123;SparkConf, SparkContext&#125;</span><br><span class="line"></span><br><span class="line">object SparkStreaming_Kafka_createDirectStream &#123;</span><br><span class="line">    def <span class="title function_">main</span><span class="params">(args: Array[String])</span>: Unit = &#123;</span><br><span class="line">        <span class="comment">//1.创建sparkConf对象，用于配置Spark环境</span></span><br><span class="line">        val sparkConf: SparkConf = <span class="keyword">new</span> <span class="title class_">SparkConf</span>()</span><br><span class="line">                .setAppName(<span class="string">&quot;SparkStreaming_Kafka_createDirectStream&quot;</span>).setMaster(<span class="string">&quot;local[2]&quot;</span>)</span><br><span class="line">        <span class="comment">//2.创建sparkContext对象，用于操作Spark集群</span></span><br><span class="line">        <span class="type">val</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SparkContext</span>(sparkConf)</span><br><span class="line">        <span class="comment">//3.设置日志输出级别</span></span><br><span class="line">        sc.setLogLevel(<span class="string">&quot;WARN&quot;</span>)</span><br><span class="line">        <span class="comment">//4.创建StreamingContext对象，用于创建DStream对象</span></span><br><span class="line">        <span class="type">val</span> <span class="variable">ssc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StreamingContext</span>(sc,Seconds(<span class="number">5</span>))</span><br><span class="line">        <span class="comment">//5.通过ssc对象设置chectPoint（检查点）</span></span><br><span class="line">        ssc.checkpoint(<span class="string">&quot;./Kafka_Direct&quot;</span>)</span><br><span class="line">        <span class="comment">//6.配置kafka相关参数 （metadata.broker.list为老版本的集群地址）</span></span><br><span class="line">        val kafkaParams=Map(<span class="string">&quot;metadata.broker.list&quot;</span>-&gt;<span class="string">&quot;hadoop01:9092,hadoop02:9092,hadoop03:9092&quot;</span>,<span class="string">&quot;group.id&quot;</span>-&gt;<span class="string">&quot;spark_direct&quot;</span>)</span><br><span class="line">        <span class="comment">//7.定义topic</span></span><br><span class="line">        val topics=Set(<span class="string">&quot;kafka_direct0&quot;</span>)</span><br><span class="line">        <span class="comment">//8.通过低级api方式将kafka与sparkStreaming进行整合</span></span><br><span class="line">        val dstream: InputDStream[(String, String)] =</span><br><span class="line">KafkaUtils.createDirectStream[String,String,StringDecoder,StringDecoder](ssc,kafkaParams,topics)</span><br><span class="line">        <span class="comment">//9.获取kafka中topic中的数据</span></span><br><span class="line">        val topicData: DStream[String] = dstream.map(_._2)</span><br><span class="line">        <span class="comment">//10.通过flatMap()和map()方法转换操作按空格进行切分每一行,并将切分的单词出现次数记录为1</span></span><br><span class="line">        val wordAndOne: DStream[(String, Int)] = topicData.flatMap(_.split(<span class="string">&quot; &quot;</span>)).map((_,<span class="number">1</span>))</span><br><span class="line">        <span class="comment">//11.通过reduceByKey（）方法转换操作统计单词在全局中出现的次数</span></span><br><span class="line">        val result: DStream[(String, Int)] = wordAndOne.reduceByKey(_+_)</span><br><span class="line">        <span class="comment">//12.打印输出结果</span></span><br><span class="line">        result.print()</span><br><span class="line">        <span class="comment">//13.开启流式计算</span></span><br><span class="line">        ssc.start()</span><br><span class="line">        ssc.awaitTermination()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></details>
+运行上述代码后，依次在hadoop01、hadoop02、hadoop03服务器执行命令<code>zkServer.sh start</code>启动ZooKeeper集群；然后再依次在Kafka的根目录下执行命令<code>bin/kafka-server-start.sh config/server.properties</code>启动Kafka集群。</li>
+</ul>
+<ol>
+<li>创建Topic, 指定消息的类别<details ><summary>创建来源主题和目标主题代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kafka-topics.sh --create \</span><br><span class="line">--topic kafka_direct0 \</span><br><span class="line">--partitions <span class="number">3</span> \</span><br><span class="line">--replication-factor <span class="number">1</span> \</span><br><span class="line">--zookeeper hadoop01:<span class="number">2181</span>,hadoop02:<span class="number">2181</span>,hadoop03:<span class="number">2181</span></span><br></pre></td></tr></table></figure></div></details></li>
+<li>在hadoop01启动生产者服务，生产数据<details ><summary>启动生产者服务和消费者服务代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-producer.sh --broker-<span class="built_in">list</span> hadoop01:<span class="number">9092</span> --topic kafka_direct0</span><br></pre></td></tr></table></figure></div></details></li>
+<li>在生产者服务节点（hadoop01）输入hello kafka kafka语句，可在IDEA工具中查看控制台，可以看到控制台输出了{hello&#x3D;1, kafka&#x3D;2}信息</li>
+</ol>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2023-03-19T00:56:01.672Z" itemprop="datePublished">2023-03-19</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/spark/">spark</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-Spark/第6章  Kafka分布式发布订阅消息系统"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/posts/spark_06/">第6章  Kafka分布式发布订阅消息系统</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>消息传递模式分为点对点和发布订阅两种消息传递模式, Kafka使用消费组的概念统一了上述两种消息传递模式。</p>
+<h2 id="Kafka-Streams开发单词计数应用"><a href="#Kafka-Streams开发单词计数应用" class="headerlink" title="Kafka Streams开发单词计数应用"></a>Kafka Streams开发单词计数应用</h2><h3 id="1-添加依赖"><a href="#1-添加依赖" class="headerlink" title="1. 添加依赖"></a>1. 添加依赖</h3><p>打开 pom.xml 文件，添加 Kafka Streams 依赖，注意匹配版本号。</p>
+<details ><summary>添加依赖代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.kafka&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;kafka-streams&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">2.4</span><span class="number">.0</span>&lt;/version&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></details>
+
+<h3 id="2-编写代码"><a href="#2-编写代码" class="headerlink" title="2. 编写代码"></a>2. 编写代码</h3><ul>
+<li>文件 LogProcessor.java，单词计数的业务功能开发<details ><summary>单词计数的业务功能开发Java代码</summary><div class="fold-content"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.kafka.streams.processor.Processor;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.streams.processor.ProcessorContext;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化上下文对象</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogProcessor</span> <span class="keyword">implements</span> <span class="title class_">Processor</span>&lt;<span class="type">byte</span>[],<span class="type">byte</span>[]&gt; &#123;</span><br><span class="line">    <span class="comment">//上下文对象</span></span><br><span class="line">    <span class="keyword">private</span> ProcessorContext processorContext;</span><br><span class="line">    @ Override</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(ProcessorContext processorContext)</span> &#123;</span><br><span class="line">        <span class="comment">//初始化方法</span></span><br><span class="line">        <span class="built_in">this</span>.processorContext=processorContext;</span><br><span class="line">    &#125;</span><br><span class="line">    @ Override</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(<span class="type">byte</span>[] key, <span class="type">byte</span>[] value)</span> &#123;</span><br><span class="line">        <span class="comment">//处理一条消息，每每接收到消息就处理并更新状态进行存储</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">inputOri</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(value);</span><br><span class="line">        HashMap &lt;String,Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String,Integer&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">times</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(inputOri.contains(<span class="string">&quot; &quot;</span>))&#123;</span><br><span class="line">            <span class="comment">//截取字段</span></span><br><span class="line">            String [] words = inputOri.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            <span class="keyword">for</span> (String word : words)&#123;</span><br><span class="line">                <span class="keyword">if</span>(map.containsKey(word))&#123;</span><br><span class="line">                    map.put(word,map.get(word)+<span class="number">1</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    map.put(word,times);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        inputOri = map.toString();</span><br><span class="line">        processorContext.forward(key,inputOri.getBytes());</span><br><span class="line">    &#125;</span><br><span class="line">    @ Override</span><br><span class="line">    <span class="comment">// 关闭处理器，例如资源清理工作</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">close</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></details></li>
+<li>运行主程序的类APP，测试上述业务程序<details ><summary>测试上述业务程序的Java代码</summary><div class="fold-content"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.kafka.streams.KafkaStreams;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.streams.StreamsConfig;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.streams.Topology;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.streams.processor.Processor;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.streams.processor.ProcessorSupplier;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">App</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 1 声明来源主题和目标主题</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">fromTopic</span> <span class="operator">=</span> <span class="string">&quot;ittheme&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">toTopic</span> <span class="operator">=</span> <span class="string">&quot;ittheme2&quot;</span>;</span><br><span class="line">        <span class="comment">// 2.1 设置Kafka流处理应用程序的配置参数信息</span></span><br><span class="line">        <span class="type">Properties</span> <span class="variable">props</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">        props.put(StreamsConfig.APPLICATION_ID_CONFIG,<span class="string">&quot;LogProcessor&quot;</span>);</span><br><span class="line">        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,<span class="string">&quot;master:9092,slave1:9092,slave2:9092&quot;</span>);</span><br><span class="line">        <span class="comment">// 2.2 实例化StreamsConfig并构建拓扑结构对象</span></span><br><span class="line">        <span class="type">StreamsConfig</span> <span class="variable">config</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StreamsConfig</span>(props);</span><br><span class="line">        <span class="type">Topology</span> <span class="variable">topology</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Topology</span>();</span><br><span class="line">        <span class="comment">// 应用程序创建拓扑结构器后，调用addSource()、addProcessor()、addSink()方法构建出任务的执行拓扑关系</span></span><br><span class="line">        <span class="comment">// 3.1 添加源处理节点，为源处理节点指定名称和它订阅的主题</span></span><br><span class="line">        topology.addSource(<span class="string">&quot;SOURCE&quot;</span>,fromTopic)</span><br><span class="line">                <span class="comment">//添加自定义处理节点，指定名称，处理器类和上一个节点的名称</span></span><br><span class="line">                .addProcessor(<span class="string">&quot;PROCESSOR&quot;</span>, <span class="keyword">new</span> <span class="title class_">ProcessorSupplier</span>() &#123;</span><br><span class="line">                	<span class="comment">//调用这个方法，就知道这条数据用哪个process处理，</span></span><br><span class="line">                    <span class="keyword">public</span> Processor <span class="title function_">get</span><span class="params">()</span> &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">LogProcessor</span>();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,<span class="string">&quot;SOURCE&quot;</span>)</span><br><span class="line">                <span class="comment">//添加目标处理节点，需要指定目标处理节点的名称，和上一个节点名称。</span></span><br><span class="line">                .addSink(<span class="string">&quot;SINK&quot;</span>,toTopic,<span class="string">&quot;PROCESSOR&quot;</span>);<span class="comment">//最后给SINK</span></span><br><span class="line">        <span class="comment">//实例化KafkaStreams，并启动程序</span></span><br><span class="line">        <span class="type">KafkaStreams</span> <span class="variable">streams</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">KafkaStreams</span>(topology,config);</span><br><span class="line">        streams.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></details></li>
+</ul>
+<h3 id="3-执行测试"><a href="#3-执行测试" class="headerlink" title="3. 执行测试"></a>3. 执行测试</h3><ol>
+<li>代码编写完成后，在hadoop01节点创建两个主题（创建来源主题和目标主题）<details ><summary>创建来源主题和目标主题代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-topics.sh --create --topic ittheme1 --partitions <span class="number">3</span> --replication-factor <span class="number">2</span> --zookeeper hadoop01:<span class="number">2181</span>,hadoop02:<span class="number">2181</span>,hadoop03:<span class="number">2181</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-topics.sh --create --topic ittheme2 --partitions <span class="number">3</span> --replication-factor <span class="number">2</span> --zookeeper hadoop01:<span class="number">2181</span>,hadoop02:<span class="number">2181</span>,hadoop03:<span class="number">2181</span></span><br></pre></td></tr></table></figure></div></details></li>
+<li>分别在hadoop01和hadoop02节点启动生产者服务和消费者服务<details ><summary>启动生产者服务和消费者服务代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-producer.sh --broker-<span class="built_in">list</span> hadoop01:<span class="number">9092</span>,hadoop02:<span class="number">9092</span>,hadoop03:<span class="number">9092</span> --topic ittheme2</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-consumer.sh --<span class="keyword">from</span>-beginning  --topic ittheme2 --bootstrap-server hadoop01:<span class="number">9092</span>,hadoop02:<span class="number">9092</span>,hadoop03:<span class="number">9092</span></span><br></pre></td></tr></table></figure></div></details></li>
+<li>运行App主程序类，Kafka Streams测试环境达成。</li>
+<li>在生产者服务节点（hadoop01）输入hello kafka kafka语句，可在消费者服务节点（hadoop02）中查看控制台，可以看到控制台输出了{hello&#x3D;1, kafka&#x3D;2}信息<br>[root@hadoop01 kafka_2.11-2.0.0]# bin&#x2F;kafka-topics.sh –create –topic testStreams1 –partitions 3 –replication-factor 2 –zookeeper hadoop01:2181,hadoop02:2181,hadoop03:2181<br>Error while executing topic command : Replication factor: 2 larger than available brokers: 1.<br>[2023-04-01 02:12:01,157] ERROR org.apache.kafka.common.errors.InvalidReplicationFactorException: Replication factor: 2 larger than available brokers: 1.<br> (kafka.admin.TopicCommand$)<br>[root@hadoop01 kafka_2.11-2.0.0]# bin&#x2F;kafka-topics.sh –create –topic testStreams1 –partitions 3 –replication-factor 1 –zookeeper hadoop01:2181,hadoop02:2181,hadoop03:2181<br>Created topic “testStreams1”.<br>[root@hadoop01 kafka_2.11-2.0.0]# bin&#x2F;kafka-topics.sh –create –topic testStreams2 –partitions 3 –replication-factor 1 –zookeeper hadoop01:2181,hadoop02:2181,hadoop03:2181<br>Created topic “testStreams2”.<br>[root@hadoop01 kafka_2.11-2.0.0]# bin&#x2F;kafka-console-producer.sh –broker-list hadoop01:9092,hadoop02:9092,hadoop03:9092 –topic testStreams1</li>
+</ol>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2023-03-18T23:55:06.087Z" itemprop="datePublished">2023-03-19</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/spark/">spark</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-深度卷积神经网络/第1章  时间序列数据概述"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/posts/DCNN_ALL/">第1章  深度卷积神经网络分析</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="五、PyTorch——深度学习框架"><a href="#五、PyTorch——深度学习框架" class="headerlink" title="五、PyTorch——深度学习框架"></a>五、PyTorch——深度学习框架</h2><h3 id="1-Tensor-基本操作"><a href="#1-Tensor-基本操作" class="headerlink" title="1. Tensor 基本操作"></a>1. Tensor 基本操作</h3><h4 id="1-创建"><a href="#1-创建" class="headerlink" title="1) 创建"></a>1) 创建</h4><h4 id="2-创建"><a href="#2-创建" class="headerlink" title="2) 创建"></a>2) 创建</h4><h4 id="3-创建"><a href="#3-创建" class="headerlink" title="3) 创建"></a>3) 创建</h4><h2 id="六、数据集与数据处理"><a href="#六、数据集与数据处理" class="headerlink" title="六、数据集与数据处理"></a>六、数据集与数据处理</h2><h2 id="七、卷积神经网络的训练"><a href="#七、卷积神经网络的训练" class="headerlink" title="七、卷积神经网络的训练"></a>七、卷积神经网络的训练</h2>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2023-03-08T11:14:57.746Z" itemprop="datePublished">2023-03-08</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-时间序列分析/第1章  时间序列数据概述"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/posts/Time-Series_Analysis_ALL/">第1章  时间序列分析</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="一、时间序列分析基础"><a href="#一、时间序列分析基础" class="headerlink" title="一、时间序列分析基础"></a>一、时间序列分析基础</h2><h3 id="1-时间序列数据概述"><a href="#1-时间序列数据概述" class="headerlink" title="1. 时间序列数据概述"></a>1. 时间序列数据概述</h3><h3 id="2-时间序列的基本概念"><a href="#2-时间序列的基本概念" class="headerlink" title="2. 时间序列的基本概念"></a>2. 时间序列的基本概念</h3><h3 id="3-时间序列基本模型"><a href="#3-时间序列基本模型" class="headerlink" title="3. 时间序列基本模型"></a>3. 时间序列基本模型</h3><p>分为白噪声模型，自回归模型（AR模型），滑动平均模型（MA模型）、自回归滑动平均模型</p>
+<h3 id="4-时间序列预测方法"><a href="#4-时间序列预测方法" class="headerlink" title="4. 时间序列预测方法"></a>4. 时间序列预测方法</h3><p>分为均值预测法、朴素预测法、滑动平均法、指数平滑法、模型预测法</p>
+<h2 id="二、线性时间序列模型基础"><a href="#二、线性时间序列模型基础" class="headerlink" title="二、线性时间序列模型基础"></a>二、线性时间序列模型基础</h2><h3 id="1-自回归模型"><a href="#1-自回归模型" class="headerlink" title="1. 自回归模型"></a>1. 自回归模型</h3><p>自回归模型定阶方法：偏自相关系数法、信息准则法、模型诊断法</p>
+<h3 id="2-滑动平均模型"><a href="#2-滑动平均模型" class="headerlink" title="2. 滑动平均模型"></a>2. 滑动平均模型</h3><p>滑动回归模型定阶方法：自相关系数法、信息准则法、模型诊断法</p>
+<h3 id="3-自回归滑动平均模型"><a href="#3-自回归滑动平均模型" class="headerlink" title="3. 自回归滑动平均模型"></a>3. 自回归滑动平均模型</h3><h3 id="4-线性时间序列建模步骤"><a href="#4-线性时间序列建模步骤" class="headerlink" title="4. 线性时间序列建模步骤"></a>4. 线性时间序列建模步骤</h3><p>对数据进行变换，以确保数据满足平稳性假设。 为上述变换后的数据建立模型。 估计模型中的参数。 对模型进行诊断，以判断模型设定是否和数据特征相匹配。 </p>
+<p>##三、单位根时间序列模型<br>特殊的自回归过程。在时间序列的建模中，需要先对数据进行平稳性检验，常用的有DF检验、ADF检验和PP检验</p>
+<h2 id="四、非线性时间序列模型"><a href="#四、非线性时间序列模型" class="headerlink" title="四、非线性时间序列模型"></a>四、非线性时间序列模型</h2><p>例如二次函数曲线</p>
+<h2 id="五、-协整时间序列模型"><a href="#五、-协整时间序列模型" class="headerlink" title="五、 协整时间序列模型"></a>五、 协整时间序列模型</h2><p>单整：原序列非平稳，对原序列进行 d 阶差分后实现平稳，则称原序列为 d 阶单整序列<br>协整：两个序列都是非平稳，但他们具有长期均衡关系，如果两个序列的回归残差序列平稳，那这两个序列具有协整关系<br>协整检验—Engle-Granger检验</p>
+<p>实际上就是检验两个序列的回归残差序列是否平稳，Engle-Granger检验与ADF检验的原理一样</p>
+<h2 id="六、波动率模型"><a href="#六、波动率模型" class="headerlink" title="六、波动率模型"></a>六、波动率模型</h2><p>自回归条件异方差模型（ARCH）</p>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2023-03-05T07:24:48.757Z" itemprop="datePublished">2023-03-05</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+
+  
+    <nav class="pagination">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next</a>
+    </nav>
+  
+</div>
+
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/">Applied Statistics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/">Data-Mining</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/posts/spark_05/">第5章  HBase 分布式数据库</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_04/">第4章  Spark SQL结构化数据文件处理</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_01/">第1章  Scala语言基础.</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_03/">第3章  Spark RDD弹性分布式数据集</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_08/">第8章  Spark MLlib机器学习算法库</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/">1999</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            锦鲤未离 &copy; 2023<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

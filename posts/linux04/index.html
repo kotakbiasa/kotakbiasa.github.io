@@ -1,79 +1,403 @@
-extends base
+<!DOCTYPE html>
+<html>
 
-block head
-  if is_tag()
-    title 标签：#{page.tag} | #{config.title}
-  else if page.category
-    title 分类：#{page.category} | #{config.title}
-  else if page.year && page.month
-    title 归档：#{page.year} 年 #{page.month} 月 | #{config.title}
-  else if !page.posts
-    title #{page.title} | #{config.title}
-  else
-    title= config.title
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-mixin article(post)
-  article
-    header
-      if page.posts
-        h2
-          a(href=url_for(post.path))= post.title
-      else
-        small.right
-          a(target='_blank', href=sourceOfPost(post, theme.source_url)) 查看源代码
-        h1= post.title
+    
+    <title>第四章  用户和组管理 | 锦鲤未离</title>
 
-    .article-meta.clearfix
-      time.left= post.date.format(config.date_format)
+    <meta name="description" content="锦鲤未离">
+    <meta name="keywords" content="">
 
-      if post.categories
-        ul.tags.left
-          - post.categories.each(function(category) {
-            li
-              a(href=url_for(category.path))= category.name
-          - });
+    
 
-      if post.tags
-        ul.tags.right
-          - post.tags.each(function(tag) {
-            li
-              a(href=url_for(tag.path))= tag.name
-          - });
+    <meta property="og:locale" content="zh-CN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "第四章  用户和组管理 | 锦鲤未离"  />
+    <meta property="og:description" content= "锦鲤未离" />
+    <meta property="og:url" content="http://example.com/posts/linux04/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="Koi_NL" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="锦鲤未离" />
+    <meta name="twitter:title" content="第四章  用户和组管理 | 锦鲤未离"/>
+    <meta name="twitter:description" content="锦鲤未离"/>
+    <script type="application/ld+json">
+        {
+            "description": "锦鲤未离",
+            "author": { "@type": "Person", "name": "Koi_NL" },
+            "@type": "BlogPosting",
+            "url": "http://example.com/posts/linux04/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http://example.comundefined"
+            },
+            "name": "Koi_NL"
+            },
+            "headline": "第四章  用户和组管理 | 锦鲤未离",
+            "datePublished": "2022-06-09T03:18:08.001Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "http://example.com/posts/linux04/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
 
-    .markdown-body!= post.content
 
-    if !page.posts && theme.duoshuo
-      .ds-thread(data-thread-key=commentKey(post), data-title=post.title, data-url=post.permalink)
 
-  if !page.posts && post.appends
-    for append in formatArray(post.appends)
-      .article-widget
-        +widget-inter(append)
 
-block body
-  for banner in formatArray(theme.banners)
-    .article-widget
-      +widget-inter(banner)
+    
 
-  if is_tag()
-    .article-widget
-      strong 标签 ##{page.tag}
+    
 
-  if page.category
-    .article-widget
-      strong 分类 ##{page.category}
+    
 
-  if page.year && page.month
-    .article-widget
-      strong 归档 #{page.year} 年 #{page.month} 月
+    
 
-  if page.posts
-    - page.posts.each(function(post) {
-      +article(post)
-    - });
+    
 
-    .archive-pagination
-      .paginator!= fixPaginator(paginator({prev_text: '&laquo;', next_text: '&raquo;'}))
+    
 
-  else
-    +article(page)
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = false
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <a class="header-type-title" href="/">锦鲤未离</a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cleweiikq002lyw109opt2uyl" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      第四章  用户和组管理
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2022-06-09T03:18:08.001Z" itemprop="datePublished">2022-06-09</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/Linux/">Linux</a>
+            </div>
+            
+
+            
+
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <p>用户信息一般保存在 &#x2F;etc&#x2F;passwd 与 &#x2F;etc&#x2F;shadow 中; 组信息一般保存在 &#x2F;etc&#x2F;group 与 &#x2F;etc&#x2F;gshadow 中.</p>
+<p>其中, UID 的 <code>koinl:x:1000:1000:koinl:/home/koinl:/bin/bash</code> 分别表示 <code>用户名:密码:UID:GID:用户描述信息:用户主目录:用户默认登录 Shell</code> ;<br>其二, GID 的 <code>koinl:x:1000:</code> 分别表示 <code>组名:密码:GID:组成员</code>.</p>
+<p>在 UID 与 GID 中, 0 表示超级用户 root, 系统用户 UID 的数字范围为 1<del>499, 普通用户的数字范围为 499</del>65535.</p>
+<p>在下述中, 会阐述下关于增删改用户与组的命令以及修改用户密码的命令.</p>
+<h2 id="一-用户管理"><a href="#一-用户管理" class="headerlink" title="一. 用户管理"></a>一. 用户管理</h2><h3 id="1-查看用户"><a href="#1-查看用户" class="headerlink" title="1. 查看用户"></a>1. 查看用户</h3><p>通常情况下，使用 <code>id u1</code> 就可以揽大部分情况，其中<code>uid=1234(u1) gid=1000(koinl) groups=1000(koinl)</code>分别表示 UID、GID、组名。<br>若需要更精确的信息，可以使用<code>cat /etc/passwd | tail -5</code>。</p>
+<h3 id="1-创建用户"><a href="#1-创建用户" class="headerlink" title="1. 创建用户"></a>1. 创建用户</h3><p>useradd om,<br>-u 选项可以指定 UID; -g 选项可以指定 GID 或属组;<br>-G 选项可以指定附属组, -d 选项可以指定主目录.</p>
+<details ><summary>点击显/隐创建用户代码</summary><div class="fold-content"><p>[root@localhost koinl]# useradd -u 1234 -g koinl u1<br>[root@localhost koinl]# id u1<br>uid&#x3D;1234(u1) gid&#x3D;1000(koinl) groups&#x3D;1000(koinl)<br>可以得到创建后的信息: <code>uid=1234(u1) gid=1000(koinl) groups=1000(koinl)</code></p>
+</div></details>
+
+<h3 id="2-修改用户"><a href="#2-修改用户" class="headerlink" title="2. 修改用户"></a>2. 修改用户</h3><p>usermod om,<br>-l 选项仅修改名称 (主目录名称不会改变); -g 选项可以修改 GID; -u 选项可以修改 UID<br>-G 选项可以指定附属组, -d 选项可以指定主目录.</p>
+<details ><summary>点击显/隐修改用户代码</summary><div class="fold-content"><p>已知旧用户信息: <code>uid=1202(koi) gid=1202(koi) groups=1202(koi)</code><br>[root@localhost koinl]# usermod -l KOI -g u1 -u 1220 koi<br>[root@localhost koinl]# id KOI<br>uid&#x3D;1220(KOI) gid&#x3D;1200(u1) groups&#x3D;1200(u1)<br>可以得到修改后的信息: <code>uid=1220(KOI) gid=1200(u1) groups=1200(u1)</code></p>
+</div></details>
+
+<h3 id="3-删除用户"><a href="#3-删除用户" class="headerlink" title="3. 删除用户"></a>3. 删除用户</h3><p>userdel om,<br>-r 选项连同主目录一起删除</p>
+<h3 id="4-修改密码"><a href="#4-修改密码" class="headerlink" title="4. 修改密码"></a>4. 修改密码</h3><p>passwd [om],<br>-d 选项可以设置成为无密码</p>
+<details ><summary>点击显/隐</summary><div class="fold-content"><p>[root@s7 ~]# passwd wuhs<br>Changing password for user wuhs.<br>New password:<br>BAD PASSWORD: The password is shorter than 8 characters<br>Retype new password:<br>passwd: all authentication tokens updated successfully.</p>
+</div></details>
+
+<h2 id="二-组管理"><a href="#二-组管理" class="headerlink" title="二. 组管理"></a>二. 组管理</h2><h3 id="1-创建组"><a href="#1-创建组" class="headerlink" title="1. 创建组"></a>1. 创建组</h3><p>groupadd student,<br>-g 选项可以指定 GID;</p>
+<h3 id="2-修改组"><a href="#2-修改组" class="headerlink" title="2. 修改组"></a>2. 修改组</h3><p>groupmod student,<br>-n 选项可以修改名称; -g 选项可以修改 GID;</p>
+<details ><summary>点击显/隐修改组代码</summary><div class="fold-content"><p>已知旧组信息: <code>STUDENT:x:1349:</code><br>[root@localhost koinl]# groupmod -n stu -g 1299 STUDENT<br>[root@localhost koinl]# cat &#x2F;etc&#x2F;group | tail -1<br>stu:x:1299:<br>可以得到修改后的信息: <code>stu:x:1299:</code></p>
+</div></details>
+
+<h3 id="3-删除组"><a href="#3-删除组" class="headerlink" title="3. 删除组"></a>3. 删除组</h3><p>groupdel student, 组中必须无用户</p>
+<h3 id="4-查看组"><a href="#4-查看组" class="headerlink" title="4. 查看组"></a>4. 查看组</h3><p>与查看用户信息类似, 同样使用 <code>cat /etc/group | tail -5</code>即可.</p>
+<blockquote>
+<p>小背诵:<br>用户 user 组 group,<br>增删改 add del mod,<br>用户中, u g 定改 ID, l 改名<br>组中, g 定改 ID, n 改名</p>
+</blockquote>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/posts/linux05/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          第六章  用户管理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/linux03/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">第三章  存储和逻辑卷管理</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=第四章  用户和组管理 - 锦鲤未离&url=http%3A%2F%2Fexample.com%2Fposts%2Flinux04%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=第四章  用户和组管理 - 锦鲤未离&u=http%3A%2F%2Fexample.com%2Fposts%2Flinux04%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=第四章  用户和组管理 - 锦鲤未离&url=http://example.com/posts/linux04/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/">Applied Statistics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/">Data-Mining</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/posts/spark_05/">第5章  HBase 分布式数据库</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_04/">第4章  Spark SQL结构化数据文件处理</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_01/">第1章  Scala语言基础.</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_03/">第3章  Spark RDD弹性分布式数据集</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_08/">第8章  Spark MLlib机器学习算法库</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/">1999</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            锦鲤未离 &copy; 2023<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

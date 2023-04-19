@@ -1,79 +1,398 @@
-extends base
+<!DOCTYPE html>
+<html>
 
-block head
-  if is_tag()
-    title 标签：#{page.tag} | #{config.title}
-  else if page.category
-    title 分类：#{page.category} | #{config.title}
-  else if page.year && page.month
-    title 归档：#{page.year} 年 #{page.month} 月 | #{config.title}
-  else if !page.posts
-    title #{page.title} | #{config.title}
-  else
-    title= config.title
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-mixin article(post)
-  article
-    header
-      if page.posts
-        h2
-          a(href=url_for(post.path))= post.title
-      else
-        small.right
-          a(target='_blank', href=sourceOfPost(post, theme.source_url)) 查看源代码
-        h1= post.title
+    
+    <title>第五章  文件操作 | 锦鲤未离</title>
 
-    .article-meta.clearfix
-      time.left= post.date.format(config.date_format)
+    <meta name="description" content="&lt;p&gt;本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!">
+    <meta name="keywords" content="">
 
-      if post.categories
-        ul.tags.left
-          - post.categories.each(function(category) {
-            li
-              a(href=url_for(category.path))= category.name
-          - });
+    
 
-      if post.tags
-        ul.tags.right
-          - post.tags.each(function(tag) {
-            li
-              a(href=url_for(tag.path))= tag.name
-          - });
+    <meta property="og:locale" content="zh-CN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "第五章  文件操作 | 锦鲤未离"  />
+    <meta property="og:description" content= "&lt;p&gt;本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!" />
+    <meta property="og:url" content="http://example.com/posts/python05/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="Koi_NL" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="&lt;p&gt;本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!" />
+    <meta name="twitter:title" content="第五章  文件操作 | 锦鲤未离"/>
+    <meta name="twitter:description" content="&lt;p&gt;本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!"/>
+    <script type="application/ld+json">
+        {
+            "description": "&lt;p&gt;本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!",
+            "author": { "@type": "Person", "name": "Koi_NL" },
+            "@type": "BlogPosting",
+            "url": "http://example.com/posts/python05/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http://example.comundefined"
+            },
+            "name": "Koi_NL"
+            },
+            "headline": "第五章  文件操作 | 锦鲤未离",
+            "datePublished": "2022-02-10T06:37:24.004Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "http://example.com/posts/python05/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
 
-    .markdown-body!= post.content
 
-    if !page.posts && theme.duoshuo
-      .ds-thread(data-thread-key=commentKey(post), data-title=post.title, data-url=post.permalink)
 
-  if !page.posts && post.appends
-    for append in formatArray(post.appends)
-      .article-widget
-        +widget-inter(append)
 
-block body
-  for banner in formatArray(theme.banners)
-    .article-widget
-      +widget-inter(banner)
+    
 
-  if is_tag()
-    .article-widget
-      strong 标签 ##{page.tag}
+    
 
-  if page.category
-    .article-widget
-      strong 分类 ##{page.category}
+    
 
-  if page.year && page.month
-    .article-widget
-      strong 归档 #{page.year} 年 #{page.month} 月
+    
 
-  if page.posts
-    - page.posts.each(function(post) {
-      +article(post)
-    - });
+    
 
-    .archive-pagination
-      .paginator!= fixPaginator(paginator({prev_text: '&laquo;', next_text: '&raquo;'}))
+    
 
-  else
-    +article(page)
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = false
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <a class="header-type-title" href="/">锦鲤未离</a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cleweiijy000lyw10gw1295tp" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      第五章  文件操作
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2022-02-10T06:37:24.004Z" itemprop="datePublished">2022-02-10</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/Python/">Python</a>
+            </div>
+            
+
+            
+
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <p>本章节讲了文件的开关读写操作与文件备份和文件夹的一些操作. 酱, 点击”more”观看更多吧!<span id="more"></span><br></p>
+<h1 id="第五章-文件操作"><a href="#第五章-文件操作" class="headerlink" title="第五章  文件操作"></a>第五章  文件操作</h1><h2 id="文件的基本操作"><a href="#文件的基本操作" class="headerlink" title="文件的基本操作"></a>文件的基本操作</h2><h3 id="打开open"><a href="#打开open" class="headerlink" title="打开open"></a>打开open</h3><p><code>f = open(&#39;name&#39;, &#39;mode&#39;)</code><br>f为文件对象<br>name: 目标文件名的字符串或路径<br>mode: 访问模式:只读: r, 如果文件不存在, 报错; 可省<br>　　　　　 　 　写入: w, 文件无则创建;<br>　　　　　 　 　追加: a, 文件无则创建;<br>但凡带 +, 可读写; 但凡带 b, 为二进制格式</p>
+<h3 id="读写-read-write"><a href="#读写-read-write" class="headerlink" title="读写 read, write"></a>读写 read, write</h3><p>读: </p>
+<ul>
+<li>read(): f.read(num)<br>num表读取几个字节, 未注明则全部</li>
+<li>readlines(): f.readlines()<br>返回为列表, 每一行为一个元素<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(f.readlines())   # [&#x27;hello\n&#x27;,&#x27;abc&#x27;]</span><br></pre></td></tr></table></figure></li>
+<li>readline(): 第 n 次读取第 n 行内容<br>f.write(‘aaa’)</li>
+<li>文件指针</li>
+<li>什么是文件指针? </li>
+<li>seek(): f.seek(偏移量, 起始位置)<br>起始位置: 0开头1当前2结尾<h3 id="关闭-close"><a href="#关闭-close" class="headerlink" title="关闭 close"></a>关闭 close</h3>f.close()<h2 id="文件备份"><a href="#文件备份" class="headerlink" title="文件备份"></a>文件备份</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 接受用户输入目标文件名</span><br><span class="line">old_name = input(&#x27;请输入您要备份的文件名: &#x27;)</span><br><span class="line"># 规划备份文件名</span><br><span class="line">	 # 提取目标文件后缀.的下标,为什么从右提取? 因为有奇奇怪怪的名字: a.mp3.mp4 是视频文件哒</span><br><span class="line">index = old_name.rfind(&#x27;.&#x27;)</span><br><span class="line">########## 限制只有有效文件名进行备份 ##########</span><br><span class="line">if index &gt; 0:</span><br><span class="line">	postfix = old_name[index:]</span><br><span class="line">	 # 组织备份文件名与备份标签与文件后缀(切片噢)</span><br><span class="line">new_name = old_name[:index] + &#x27;_副本&#x27; + postfix</span><br><span class="line"># 备份文件写入数据</span><br><span class="line">	# 打开源文件和备份文件</span><br><span class="line">old_f = open(old_name, &#x27;rb&#x27;)</span><br><span class="line">new_f = open(new_name, &#x27;wb&#x27;)</span><br><span class="line">	# 将源文件数据写入备份文件</span><br><span class="line">while True:</span><br><span class="line">	con = old_f.read(1024)   # 避免数据过大导致死机, 设置一次读取的长度</span><br><span class="line">	if len(con) == 0:</span><br><span class="line">		   break</span><br><span class="line">	new_f.write(con)</span><br><span class="line">	# 关闭文件</span><br><span class="line">old_f.close()</span><br><span class="line">new_f.close()</span><br></pre></td></tr></table></figure>
+<h2 id="文件和文件夹的操作"><a href="#文件和文件夹的操作" class="headerlink" title="文件和文件夹的操作"></a>文件和文件夹的操作</h2>要进行这个操作啊得借助os模块的相关功能;<br>所以啊得进行导入: <code>import os</code>;<br>然后再使用模块相关功能: <code>os.func()</code></li>
+<li>文件</li>
+<li>重命名: <code>os.rename(old_name,new_name) </code></li>
+<li>删除: <code>os.remove(name)</code></li>
+<li>文件夹</li>
+<li>创建: os.mkdir(文件夹名字)</li>
+<li>删除: os.rmdir(文件夹名字)</li>
+<li>获取当前文件目录路径: os.getcwd()</li>
+<li>切换目录: os.chdir(新目录名)</li>
+<li>获取目录列表: os.listdir()<h2 id="例-批量修改文件名-可添加或删除指定字符串"><a href="#例-批量修改文件名-可添加或删除指定字符串" class="headerlink" title="例: 批量修改文件名, 可添加或删除指定字符串"></a>例: 批量修改文件名, 可添加或删除指定字符串</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"># 设置增删字符串的标识, 1为添加, 2为删除</span><br><span class="line">flag = 1</span><br><span class="line"># 获取指定目录的所有文件列表</span><br><span class="line">file_list = os.listdir()</span><br><span class="line"># 将原有文件名增删指定字符串, 构造新名字</span><br><span class="line">for name in file_list:</span><br><span class="line">	if flag == 1:</span><br><span class="line">		new_name = &#x27;Python_&#x27; + name</span><br><span class="line">	elif flag == 2:</span><br><span class="line">		new_name = name[len(&#x27;Python_&#x27;):]</span><br><span class="line"># 进行重命名</span><br><span class="line">	os.rename(name, new_name)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="一二维数据的格式化和处理"><a href="#一二维数据的格式化和处理" class="headerlink" title="一二维数据的格式化和处理"></a>一二维数据的格式化和处理</h2><p>一二维数据数据的存储格式为 CSV 格式，后缀为 .csv。</p>
+<h3 id="一二维数据的表示和读写"><a href="#一二维数据的表示和读写" class="headerlink" title="一二维数据的表示和读写"></a>一二维数据的表示和读写</h3><p>导入CSV格式到列表<br>将二维列表美观地处理一下<br>一维数据写入 CSV 文件<br>二维数据写入 CSV 文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">price.csv 文件内容：</span></span><br><span class="line"><span class="string">现在是~,我应该~,听！</span></span><br><span class="line"><span class="string">早上！,睡觉！,呼噜</span></span><br><span class="line"><span class="string">中午！,吃饭！,嗷呜</span></span><br><span class="line"><span class="string">下午！,睡觉！,没错</span></span><br><span class="line"><span class="string">晚上！,熬夜！,哼哼</span></span><br><span class="line"><span class="string">price_write1.csv 文件内容：</span></span><br><span class="line"><span class="string">现在是~,我应该~,听！</span></span><br><span class="line"><span class="string">price_write2.csv 文件内容：</span></span><br><span class="line"><span class="string">现在是~,我应该~,听！</span></span><br><span class="line"><span class="string">早中晚！,睡吃睡！,呼呜酱</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;price.csv&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;导入CSV文件到列表&#x27;&#x27;&#x27;</span></span><br><span class="line">ls=[]</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> file:</span><br><span class="line">    line=line.replace(<span class="string">&#x27;\n&#x27;</span>,<span class="string">&#x27;&#x27;</span>)    <span class="comment"># [[...&#x27;听！\n&#x27;...: 去掉不必要的换行号</span></span><br><span class="line">    ls.append(line.split(<span class="string">&#x27;,&#x27;</span>))    <span class="comment"># 以split(&#x27;,&#x27;)方法从CSV文件中获取内容</span></span><br><span class="line"><span class="built_in">print</span>(ls)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;逐行处理CSV格式数据&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(ls)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(ls[<span class="number">0</span>])):</span><br><span class="line">        <span class="built_in">print</span>(ls[i][j],end=<span class="string">&quot;\t&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">file.close()</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;一维数据写入CSV文件&#x27;&#x27;&#x27;</span></span><br><span class="line">file_write1=<span class="built_in">open</span>(<span class="string">&#x27;price_write1.csv&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">ls=[<span class="string">&#x27;现在是~&#x27;</span>,<span class="string">&#x27;我应该~&#x27;</span>,<span class="string">&#x27;听！&#x27;</span>]</span><br><span class="line">file_write1.write(<span class="string">&#x27;,&#x27;</span>.join(ls)+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">file_write1.close()</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;二维数据写入CSV文件&#x27;&#x27;&#x27;</span></span><br><span class="line">file_write2=<span class="built_in">open</span>(<span class="string">&#x27;price_write2.csv&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">ls=[[<span class="string">&#x27;现在是~&#x27;</span>, <span class="string">&#x27;我应该~&#x27;</span>, <span class="string">&#x27;听！&#x27;</span>], [<span class="string">&#x27;早中晚！&#x27;</span>, <span class="string">&#x27;睡吃睡！&#x27;</span>, <span class="string">&#x27;呼呜酱&#x27;</span>]]</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> ls:</span><br><span class="line">    file_write2.write(<span class="string">&#x27;,&#x27;</span>.join(row)+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">file_write2.close()</span><br></pre></td></tr></table></figure>
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/posts/tips/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          小贴士~
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/py01/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">第一章  程序基本结构</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=第五章  文件操作 - 锦鲤未离&url=http%3A%2F%2Fexample.com%2Fposts%2Fpython05%2F">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=第五章  文件操作 - 锦鲤未离&u=http%3A%2F%2Fexample.com%2Fposts%2Fpython05%2F">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=第五章  文件操作 - 锦鲤未离&url=http://example.com/posts/python05/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Applied-Statistics/">Applied Statistics</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Mining/">Data-Mining</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MATLAB/">MATLAB</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E8%AF%95/">考试</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/posts/spark_05/">第5章  HBase 分布式数据库</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_04/">第4章  Spark SQL结构化数据文件处理</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_01/">第1章  Scala语言基础.</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_03/">第3章  Spark RDD弹性分布式数据集</a>
+          </li>
+        
+          <li>
+            <a href="/posts/spark_08/">第8章  Spark MLlib机器学习算法库</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1999/">1999</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            锦鲤未离 &copy; 2023<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
