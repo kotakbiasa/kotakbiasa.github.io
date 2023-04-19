@@ -1,701 +1,79 @@
-<!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-<!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <title>第三章  MapReduce基础 | 锦鲤未离</title>
-
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-  <meta name="description" content="本章首先介绍了 MapReduce 的基础知识和工作流程，然后通过单词统计和二次排序两个案例介绍了如何利用 MapReduce 进行编程。Hadoop 支持多种语言但对 Java 支持最好，在编写 MapReduce 函数时，需要新建 3 个类：Mapper 类、Reducer 类、main 类。另外，前两个类也可以作为内部类放到 main 类中。Mapper 类需要集成 MapRecude AP">
-<meta property="og:type" content="article">
-<meta property="og:title" content="第三章  MapReduce基础">
-<meta property="og:url" content="http://example.com/posts/hadoop03/index.html">
-<meta property="og:site_name" content="锦鲤未离">
-<meta property="og:description" content="本章首先介绍了 MapReduce 的基础知识和工作流程，然后通过单词统计和二次排序两个案例介绍了如何利用 MapReduce 进行编程。Hadoop 支持多种语言但对 Java 支持最好，在编写 MapReduce 函数时，需要新建 3 个类：Mapper 类、Reducer 类、main 类。另外，前两个类也可以作为内部类放到 main 类中。Mapper 类需要集成 MapRecude AP">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-07T04:21:59.916Z">
-<meta property="article:modified_time" content="2022-09-11T13:46:04.759Z">
-<meta property="article:author" content="Koi_NL">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternative" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.ico">
-  
-    
-  <meta content="{{ title }}" name="description">
-  <meta content="{{ title }}" name="keywords">
-  <meta content="{{ title }}" name="author">
-
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
-
-  <!-- Global styles START -->   
-  
-<link rel="stylesheet" href="/metronic/assets/plugins/font-awesome/css/font-awesome.min.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/plugins/bootstrap/css/bootstrap.min.css">
-
-  <!-- Global styles END --> 
-   
-  <!-- Page level plugin styles START -->
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/animate.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/plugins/owl.carousel/assets/owl.carousel.css">
-
-  <!-- Page level plugin styles END -->
-
-  <!-- Theme styles START -->
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/components.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/slider.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/corporate/css/style.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/portfolio.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/corporate/css/style-responsive.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/corporate/css/themes/red.css">
-
-  
-<link rel="stylesheet" href="/css/theme-styles.css">
-
-  <!-- Theme styles END -->
-<meta name="generator" content="Hexo 6.1.0"></head>
-
-<body class="corporate">
-  <!-- BEGIN TOP BAR -->
-<div class="pre-header">
-  <div class="container">
-    <div class="row">
-      <!-- BEGIN TOP BAR LEFT PART -->
-      <div class="col-md-6 col-sm-6 col-xs-9 additional-shop-info">
-	<ul class="list-unstyled list-inline">
-	  <li><i class="fa fa-phone"></i><span>716-472-4484</span></li>
-	  <li><i class="fa fa-envelope-o"></i><span>ptsteadman@gmail.com</span></li>
-	</ul>
-      </div>
-      <!-- END TOP BAR LEFT PART -->
-      <!-- BEGIN TOP BAR MENU -->
-      <div class="col-md-6 col-sm-6 col-xs-3 additional-nav">
-	<ul class="list-unstyled list-inline pull-right">
-	  <li><a href="/login">Log In</a></li>
-	</ul>
-      </div>
-      <!-- END TOP BAR MENU -->
-    </div>
-  </div>        
-</div>
-<!-- END TOP BAR -->
-<!-- BEGIN HEADER -->
-<div class="header">
-  <div class="container">
-    <!--<a class="site-logo" href="/" id="logo">锦鲤未离</a>-->
-
-    <a class="site-logo" href="/">
-      <img src="/metronic/assets/corporate/img/logos/logo-corp-red.png" alt="Metronic FrontEnd">
-    </a>
-
-    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-
-    <!-- BEGIN NAVIGATION -->
-    <div class="header-navigation pull-right font-transform-inherit">
-      <ul>
-	
-	<li class="">
-	  <a  href="/">Home</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/projects/">Projects</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/archives/">Blog</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/contact/">Contact</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/about/">About</a>
-	</li>
-	
-	<!-- BEGIN TOP SEARCH -->
-	<li class="menu-search">
-	  <span class="sep"></span>
-	  <i class="fa fa-search search-btn"></i>
-	  <div class="search-box">
-	    <form action="#">
-	      <div class="input-group">
-		<input type="text" placeholder="Search" class="form-control st-default-search-input">
-		<span class="input-group-btn">
-		  <button class="btn btn-primary" type="submit">Search</button>
-		</span>
-	      </div>
-	    </form>
-	  </div> 
-	</li>
-	<!-- END TOP SEARCH -->
-      </ul>
-    </div>
-    <!-- END NAVIGATION -->
-  </div>
-</div>
-<!-- Header END -->
-
-  <div class="container">
-  <ul class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li><a href="/archives/">Blog</a></li>
-    <li class="active">Post</li>
-  </ul>
-  <section id="main">
-    
-    <h2 itemprop="name">
-      <a class="article-title" href="/posts/hadoop03/">第三章  MapReduce基础</a>
-    </h2>
-
-
-    <div class="row">
-<div class="col-md-9 col-sm-9 blog-posts">
-<article id="post-过去半年前的学习部分/2021-2022年课程/202209Hadoop集群系统/3第三章  MapReduce基础" class="article article-type-post blog-item" itemscope itemprop="blogPost">
-  <div class="article-meta">
-  </div>
-  <div class="article-inner">
-    
-    
-    <header class="article-header">
-      <ul class="blog-info">
-	<li><i class="fa fa-user"></i> Anonymous</li>
-	<li><i class="fa fa-calendar"></i>
-	  <time datetime="2022-09-07T04:21:59.916Z" itemprop="datePublished">2022/09/07</time>
-
-	</li>
-	<li class="hidden-xs"><i class="fa fa-comments"></i>
-	  <a href="http://example.com/posts/hadoop03/#disqus_thread" class="article-comment-link">Comments</a>
-	</li>
-	<li class="hidden-xs"><i class="fa fa-tags"></i> 
-	  
-
-	</li>
-      </ul>
-      
-  <div class="article-category">
-    
-    Category: 
-    
-    Categories:
-    <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
-  </div>
-  <br>
-
-
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本章首先介绍了 MapReduce 的基础知识和工作流程，然后通过单词统计和二次排序两个案例介绍了如何利用 MapReduce 进行编程。<br>Hadoop 支持多种语言但对 Java 支持最好，在编写 MapReduce 函数时，需要新建 3 个类：Mapper 类、Reducer 类、main 类。另外，前两个类也可以作为内部类放到 main 类中。<br>Mapper 类需要集成 MapRecude API 所提供的Mapper 类并重写 map() 方法，Reduce() 类同理。</p>
-<h2 id="一、MapReduce-概述"><a href="#一、MapReduce-概述" class="headerlink" title="一、MapReduce 概述"></a>一、MapReduce 概述</h2><p>MapReduce 是 Hadoop 系统中最重要的计算引擎，它不仅直接支持交互式应用，基于程序的应该，还是 Hive 组件的基础。</p>
-<h3 id="1-分布式并行计算"><a href="#1-分布式并行计算" class="headerlink" title="1. 分布式并行计算"></a>1. 分布式并行计算</h3><h4 id="1-分布式计算"><a href="#1-分布式计算" class="headerlink" title="1) 分布式计算"></a>1) 分布式计算</h4><p>一个任务，拆分成无数个小任务，将这些小任务派发给多台计算机进行计算，最后将结构进行汇总以得到最终的结果。</p>
-<blockquote>
-<p>分解后的任务直接相互独立，计算结果几乎互不影响，对实时性要求不高。</p>
-</blockquote>
-<h4 id="2-并行计算"><a href="#2-并行计算" class="headerlink" title="2) 并行计算"></a>2) 并行计算</h4><p>允许让多条指令以平行方式同时进行计算的模式，包括<strong>时间与空间并行</strong>两种方式。</p>
-<blockquote>
-<p>时间并行：多条流水线同时作业<br>空间并行：使用多种计算资源（如多个处理器）执行并发计算。</p>
-</blockquote>
-<h3 id="2-MapReduce-的含义"><a href="#2-MapReduce-的含义" class="headerlink" title="2. MapReduce 的含义"></a>2. MapReduce 的含义</h3><p>针对大规模集群种的分布式文件即下并行处理的计算模型。</p>
-<p>MapReduce 主要将数据处理任务拆分为 M（映射）和 Reduce（规约）两个任务。<br>例如，要统计一个班的数学成绩，数学老师让数学课代表统计它所在班的数学成绩。数学课代表就让每一组的组长统计它们组的数学成绩，相当于 Map 任务，而数学课代表统计处理每个组所报上来的数学成绩，就是 Reduce 任务。由此可以看出，MapReduce 充分体现了 “分而治之”的思想：把一个复杂的任务拆分成小的任务并行处理，从而提高任务的处理速度。</p>
-<h3 id="3-MapReduce-的特点"><a href="#3-MapReduce-的特点" class="headerlink" title="3. MapReduce 的特点"></a>3. MapReduce 的特点</h3><p>开发简单易于实现；良好的可扩展性：动态增加节点的方式；高容错性：如果集群中某计算节点出现故障，使得作业执行失败，MapReduce 可自动将作业分配到可用的计算节点上重新执行。</p>
-<p>计算局限（不适合数据事务处理或单一请求处理）<br>性能局限<br>应用局限</p>
-<h2 id="二、MapReduce-的工作流程"><a href="#二、MapReduce-的工作流程" class="headerlink" title="二、MapReduce 的工作流程"></a>二、MapReduce 的工作流程</h2><p>输入分片和数据格式化，Map过程，Shuffle 过程，Reduce 过程，结果输出</p>
-<h3 id="1-输入分片和数据格式化"><a href="#1-输入分片和数据格式化" class="headerlink" title="1. 输入分片和数据格式化"></a>1. 输入分片和数据格式化</h3><p>首先，MapReduce 将存储在 HDFS 中的大规模数据集切分成独立的输入分片，每一个输入分片对应一个 Map 任务。<br>输入分片是一个逻辑概念，因此对输入数据集的切分也是一种<strong>逻辑切分</strong>。</p>
-<p>此外，由于 Map 任务的输入要i去是<strong>键值对</strong>的形式，所以需要对输入分片进行格式化，即对输入处理成 <code>&lt;key, balue&gt;</code> 形式的数据，然后再传递给 Map 任务。</p>
-<h3 id="2-Map-过程"><a href="#2-Map-过程" class="headerlink" title="2. Map 过程"></a>2. Map 过程</h3><p>利用 Map() 函数来处理数据</p>
-<h3 id="3-Shuffle-过程"><a href="#3-Shuffle-过程" class="headerlink" title="3. Shuffle 过程"></a>3. Shuffle 过程</h3><p>通常，Map() 后的输出需要进行一系列处理才交给 Reduce() 任务，这一系列处理过程被称作洗牌（Shuffle）过程。</p>
-<blockquote>
-<p>这一系列包括有“分区”、“排序”、“合并”、“滥写”、“归并”等。</p>
-</blockquote>
-<h3 id="4-Reduce-过程"><a href="#4-Reduce-过程" class="headerlink" title="4. Reduce 过程"></a>4. Reduce 过程</h3><p>Reduce() 任务接收归并排序后的数据流，并对已有序的相同 key 的键值对调用一次 Reduce() 函数。<br>另外，Reduce() 任务的输出结果经过输出格式化后再输出到文件系统中，并且输出结果文件名默认为“part-r-00000”开始，逐渐递增。</p>
-<h2 id="三、案例解析——单词统计编程"><a href="#三、案例解析——单词统计编程" class="headerlink" title="三、案例解析——单词统计编程"></a>三、案例解析——单词统计编程</h2><h3 id="1-案例描述"><a href="#1-案例描述" class="headerlink" title="1. 案例描述"></a>1. 案例描述</h3><p>假设在 <code>hdfs://hadoop0:9000/jqe/wc/data</code> 中存在两个文本文件（文件中仅有字符串和空格），分别是 <code>words1.txt</code> 和 <code>words2.txt</code>。<br>其中，word1.txt内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this is a good dog</span><br><span class="line">this is a good cat</span><br></pre></td></tr></table></figure>
-<p>word2.txt内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this is a bad dog</span><br><span class="line">this is a bad cat</span><br></pre></td></tr></table></figure>
-
-<p>要求 <code>计算这两个文件的单词频数</code>，输出结果 <code>按照单词的字母顺序进行排序</code>，并输出到 <code>两个文件中（以字母 g 分隔开来）</code>。另外，还要对输出数据进行格式化：<code>单词和词频之间以~~~~~隔开</code>。</p>
-<h3 id="2-设计思路"><a href="#2-设计思路" class="headerlink" title="2. 设计思路"></a>2. 设计思路</h3><p>根据分析，单词统计程序可分为 7 个模块，分别是输入、输入分片及其格式化、设计 map() 函数、分区、设计 reduce() 函数、输出格式化、输出。</p>
-<blockquote>
-<ol>
-<li>指定输入文件位置；</li>
-<li>将两个文件切分成两个输入分片，对输入分片进行格式化，如文件按行分解，从而形成以 key 为偏移量、value 为行内容的键值对；</li>
-<li>设计 map() 函数，将键值对的 value 按空格分解成一个个单词，生成 &lt;word, l&gt;形式的键值对。</li>
-<li>设计分区函数，将 key 的首字母小于 g 的键值对划分为 1 个分区，其余的划分在另一个分区。</li>
-<li>设计 reduce() 函数，将输入的 &lt;word, list(value)&gt; 形式（如 &lt;”ls”,{1, 1}&gt;）的数据进行汇总，生成以 key 为单词、value 为单词频数的键值对。</li>
-<li>系统默认的输出格式为“单词+空格+单词频数”的形式，若要输出特定样式的数据，需要对输出结果进行格式化，使得单词与但磁盘技能书之间以“~~~~~”间隔。</li>
-<li>指定单词统计程序的输出结果文件位置。</li>
-</ol>
-</blockquote>
-<h3 id="3-编程实现"><a href="#3-编程实现" class="headerlink" title="3. 编程实现"></a>3. 编程实现</h3><h3 id="4-运行程序"><a href="#4-运行程序" class="headerlink" title="4. 运行程序"></a>4. 运行程序</h3><h2 id="四、案例解析——二次排序编程"><a href="#四、案例解析——二次排序编程" class="headerlink" title="四、案例解析——二次排序编程"></a>四、案例解析——二次排序编程</h2>
-      
-    </div>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/posts/as04/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          第 4 章  抽样推断
-        
-      </div>
-    </a>
-  
-  
-    <a href="/posts/hadoop02/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">第二章  磁盘I/O操作</div>
-    </a>
-  
-</nav>
-
-  
-  <br>
-</article>
-
-
-
-
-</div>
-<div class="col-md-3 col-sm-3 blog-sidebar">
-  <!-- CATEGORIES START -->
-<h2 class="no-top-space">Categories</h2>
-
-<div class="widget-wrap">
-  <div class="widget">
-    <ul class="nav sidebar-categories margin-bottom-40">
-      
-	<li>
-	  <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备 (2)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Hadoop/">Hadoop (4)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing (4)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Applied-Statistics/">Applied Statistics (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区 (3)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Data-Mining/">Data-Mining (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/MATLAB/">MATLAB (5)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/java/">java (7)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Linux/">Linux (9)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm (5)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Python/">Python (13)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/SqlServer/">SqlServer (17)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E8%80%83%E8%AF%95/">考试 (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析 (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/spark/">spark (7)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络 (1)</a>
-	</li>
-      
-    </ul>
-  </div>
-</div>
-
-
-<!-- CATEGORIES END -->
-
-<!-- BEGIN BLOG TAGS -->
-<div class="blog-tags margin-bottom-20">
-  <h2>Tags</h2>
-  
-
-</div>
-<!-- END BLOG TAGS -->
-
-
-<!-- BEGIN FEATURED POSTS -->                            
-<h2>Featured Posts</h2>
-<div class="recent-news margin-bottom-10">
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-</div>
-<!-- END FEATURED POSTS -->                            
-
-</div>
-</div>
-
-  </section>
-</div>
-
-    <!-- BEGIN PRE-FOOTER -->
-    <div class="pre-footer">
-      <div class="container">
-        <div class="row">
-          <!-- BEGIN BOTTOM ABOUT BLOCK -->
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2>About Us</h2>
-            <p>Computer Lab is a software development and marketing company based in Brooklyn, New York. <br><br> Computer Lab was founded in 2015, and is focused on so on and so forth.</p>
-          </div>
-          <!-- END BOTTOM ABOUT BLOCK -->
-
-          <!-- BEGIN BOTTOM CONTACTS -->
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2>Contact</h2>
-            <address class="margin-bottom-40">
-              140 Metropolitan Avenue<br>
-              5th Floor<br>
-              Brooklyn, NY 11249<br>
-              Phone: 716-472-4484<br>
-              Email: <a href="mailto:ptsteadman@gmail.com">ptsteadman@gmail.com</a><br>
-            </address>
-          </div>
-          <!-- END BOTTOM CONTACTS -->
-
-	
-          <!-- BEGIN TWITTER BLOCK --> 
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-
-	  <a data-tweet-limit="1" class="twitter-timeline" data-theme="dark"
-	  target="_blank" rel="noopener" href="https://twitter.com/computerlab_">Tweets by @computerlab_</a>
-
-	  <script>!function(d,s,id){var
-	  js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-          </div>
-          <!-- END TWITTER BLOCK -->
-	
-        </div>
-      </div>
-    </div>
-    <!-- END PRE-FOOTER -->
-
-    <!-- BEGIN FOOTER -->
-    <div class="footer">
-      <div class="container">
-        <div class="row">
-          <!-- BEGIN COPYRIGHT -->
-          <div class="col-md-6 col-sm-6 padding-top-10">
-                  &copy; 2023 锦鲤未离<br>
- <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
-          </div>
-          <!-- END COPYRIGHT -->
-	  <!-- BEGIN SOCIAL -->
-<div class="col-md-6 col-sm-6">
-  <ul class="social-footer list-unstyled list-inline pull-right">
-    
-      <li><a target="_blank" rel="noopener" href="https://github.com/ptsteadman"><i class="fa fa-github"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="https://twitter.com/ptsteadman"><i class="fa fa-twitter"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="https://www.facebook.com/ptsteadman"><i class="fa fa-facebook"></i></a></li>
-    
-      <li><a href="/atom.xml"><i class="fa fa-rss"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="https://linkedin.com/in/ptsteadman"><i class="fa fa-linkedin"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="http://stackoverflow.com/users/2480493/patrick-steadman"><i class="fa fa-stackoverflow"></i></a></li>
-    
-  </ul>  
-</div>
-<!-- END SOCIAL -->
-
-        </div>
-      </div>
-    </div>
-    <!-- END FOOTER -->
-
-  <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
-<!--[if lt IE 9]>
-
-<script src="/metronic/assets/plugins/respond.min.js"></script>
-
-<![endif]--> 
-
-<script src="/metronic/assets/plugins/jquery.min.js"></script>
-
-
-<script src="/metronic/assets/plugins/jquery-migrate.min.js"></script>
-
-
-<script src="/metronic/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-
-<script src="/metronic/assets/corporate/scripts/back-to-top.js"></script>
-
-
-<script src="/metronic/assets/plugins/owl.carousel/owl.carousel.min.js"></script>
-
-
-<script src="/metronic/assets/corporate/scripts/layout.js"></script>
-
-
-<script src="/js/wow.min.js"></script>
-
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        Layout.init();    
-        Layout.initOWL();
-        Layout.initTwitter();
-        Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
-        Layout.initNavScrolling(); 
-	new WOW().init();
-    });
-</script>
-<!-- END CORE PLUGINS -->
-
-<!-- BEGIN PAGE-SPECIFIC PLUGINS --> 
-
-
-
-
-
-
-
-<!-- END PAGE-SPECIFIC PLUGINS --> 
-
-<!-- BEGIN INTEGRATIONS -->
-
-
-
-
-
-<!-- END INTEGRATIONS -->
-
-</body>
-</html>
+extends base
+
+block head
+  if is_tag()
+    title 标签：#{page.tag} | #{config.title}
+  else if page.category
+    title 分类：#{page.category} | #{config.title}
+  else if page.year && page.month
+    title 归档：#{page.year} 年 #{page.month} 月 | #{config.title}
+  else if !page.posts
+    title #{page.title} | #{config.title}
+  else
+    title= config.title
+
+mixin article(post)
+  article
+    header
+      if page.posts
+        h2
+          a(href=url_for(post.path))= post.title
+      else
+        small.right
+          a(target='_blank', href=sourceOfPost(post, theme.source_url)) 查看源代码
+        h1= post.title
+
+    .article-meta.clearfix
+      time.left= post.date.format(config.date_format)
+
+      if post.categories
+        ul.tags.left
+          - post.categories.each(function(category) {
+            li
+              a(href=url_for(category.path))= category.name
+          - });
+
+      if post.tags
+        ul.tags.right
+          - post.tags.each(function(tag) {
+            li
+              a(href=url_for(tag.path))= tag.name
+          - });
+
+    .markdown-body!= post.content
+
+    if !page.posts && theme.duoshuo
+      .ds-thread(data-thread-key=commentKey(post), data-title=post.title, data-url=post.permalink)
+
+  if !page.posts && post.appends
+    for append in formatArray(post.appends)
+      .article-widget
+        +widget-inter(append)
+
+block body
+  for banner in formatArray(theme.banners)
+    .article-widget
+      +widget-inter(banner)
+
+  if is_tag()
+    .article-widget
+      strong 标签 ##{page.tag}
+
+  if page.category
+    .article-widget
+      strong 分类 ##{page.category}
+
+  if page.year && page.month
+    .article-widget
+      strong 归档 #{page.year} 年 #{page.month} 月
+
+  if page.posts
+    - page.posts.each(function(post) {
+      +article(post)
+    - });
+
+    .archive-pagination
+      .paginator!= fixPaginator(paginator({prev_text: '&laquo;', next_text: '&raquo;'}))
+
+  else
+    +article(page)

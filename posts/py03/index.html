@@ -1,706 +1,79 @@
-<!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-<!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <title>第三章  组合数据类型 | 锦鲤未离</title>
-
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-  <meta name="description" content="组合数据类型, 分为序列类型, 集合类型和映射类型.  序列类型序列类型有列表与集合, 列表常用操作如下: 点击显&#x2F;隐代码1234567891011121314ll &#x3D; [1, 2, 3, 4, 5, 6, 7, 8, 9]# 列表增有追加, 逐增与按下标添加 3 种方法ll.append(10); ll.extend((15, 20)); ll.insert(0, 0); print(ll)#">
-<meta property="og:type" content="article">
-<meta property="og:title" content="第三章  组合数据类型">
-<meta property="og:url" content="http://example.com/posts/py03/index.html">
-<meta property="og:site_name" content="锦鲤未离">
-<meta property="og:description" content="组合数据类型, 分为序列类型, 集合类型和映射类型.  序列类型序列类型有列表与集合, 列表常用操作如下: 点击显&#x2F;隐代码1234567891011121314ll &#x3D; [1, 2, 3, 4, 5, 6, 7, 8, 9]# 列表增有追加, 逐增与按下标添加 3 种方法ll.append(10); ll.extend((15, 20)); ll.insert(0, 0); print(ll)#">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-16T11:04:06.832Z">
-<meta property="article:modified_time" content="2022-04-16T12:10:47.027Z">
-<meta property="article:author" content="Koi_NL">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternative" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.ico">
-  
-    
-  <meta content="{{ title }}" name="description">
-  <meta content="{{ title }}" name="keywords">
-  <meta content="{{ title }}" name="author">
-
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
-
-  <!-- Global styles START -->   
-  
-<link rel="stylesheet" href="/metronic/assets/plugins/font-awesome/css/font-awesome.min.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/plugins/bootstrap/css/bootstrap.min.css">
-
-  <!-- Global styles END --> 
-   
-  <!-- Page level plugin styles START -->
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/animate.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/plugins/owl.carousel/assets/owl.carousel.css">
-
-  <!-- Page level plugin styles END -->
-
-  <!-- Theme styles START -->
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/components.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/slider.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/corporate/css/style.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/portfolio.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/corporate/css/style-responsive.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/corporate/css/themes/red.css">
-
-  
-<link rel="stylesheet" href="/css/theme-styles.css">
-
-  <!-- Theme styles END -->
-<meta name="generator" content="Hexo 6.1.0"></head>
-
-<body class="corporate">
-  <!-- BEGIN TOP BAR -->
-<div class="pre-header">
-  <div class="container">
-    <div class="row">
-      <!-- BEGIN TOP BAR LEFT PART -->
-      <div class="col-md-6 col-sm-6 col-xs-9 additional-shop-info">
-	<ul class="list-unstyled list-inline">
-	  <li><i class="fa fa-phone"></i><span>716-472-4484</span></li>
-	  <li><i class="fa fa-envelope-o"></i><span>ptsteadman@gmail.com</span></li>
-	</ul>
-      </div>
-      <!-- END TOP BAR LEFT PART -->
-      <!-- BEGIN TOP BAR MENU -->
-      <div class="col-md-6 col-sm-6 col-xs-3 additional-nav">
-	<ul class="list-unstyled list-inline pull-right">
-	  <li><a href="/login">Log In</a></li>
-	</ul>
-      </div>
-      <!-- END TOP BAR MENU -->
-    </div>
-  </div>        
-</div>
-<!-- END TOP BAR -->
-<!-- BEGIN HEADER -->
-<div class="header">
-  <div class="container">
-    <!--<a class="site-logo" href="/" id="logo">锦鲤未离</a>-->
-
-    <a class="site-logo" href="/">
-      <img src="/metronic/assets/corporate/img/logos/logo-corp-red.png" alt="Metronic FrontEnd">
-    </a>
-
-    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-
-    <!-- BEGIN NAVIGATION -->
-    <div class="header-navigation pull-right font-transform-inherit">
-      <ul>
-	
-	<li class="">
-	  <a  href="/">Home</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/projects/">Projects</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/archives/">Blog</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/contact/">Contact</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/about/">About</a>
-	</li>
-	
-	<!-- BEGIN TOP SEARCH -->
-	<li class="menu-search">
-	  <span class="sep"></span>
-	  <i class="fa fa-search search-btn"></i>
-	  <div class="search-box">
-	    <form action="#">
-	      <div class="input-group">
-		<input type="text" placeholder="Search" class="form-control st-default-search-input">
-		<span class="input-group-btn">
-		  <button class="btn btn-primary" type="submit">Search</button>
-		</span>
-	      </div>
-	    </form>
-	  </div> 
-	</li>
-	<!-- END TOP SEARCH -->
-      </ul>
-    </div>
-    <!-- END NAVIGATION -->
-  </div>
-</div>
-<!-- Header END -->
-
-  <div class="container">
-  <ul class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li><a href="/archives/">Blog</a></li>
-    <li class="active">Post</li>
-  </ul>
-  <section id="main">
-    
-    <h2 itemprop="name">
-      <a class="article-title" href="/posts/py03/">第三章  组合数据类型</a>
-    </h2>
-
-
-    <div class="row">
-<div class="col-md-9 col-sm-9 blog-posts">
-<article id="post-过去半年前的学习部分/2021-2022年课程/202203Python/Python第三章  组合数据类型" class="article article-type-post blog-item" itemscope itemprop="blogPost">
-  <div class="article-meta">
-  </div>
-  <div class="article-inner">
-    
-    
-    <header class="article-header">
-      <ul class="blog-info">
-	<li><i class="fa fa-user"></i> Anonymous</li>
-	<li><i class="fa fa-calendar"></i>
-	  <time datetime="2022-04-16T11:04:06.832Z" itemprop="datePublished">2022/04/16</time>
-
-	</li>
-	<li class="hidden-xs"><i class="fa fa-comments"></i>
-	  <a href="http://example.com/posts/py03/#disqus_thread" class="article-comment-link">Comments</a>
-	</li>
-	<li class="hidden-xs"><i class="fa fa-tags"></i> 
-	  
-
-	</li>
-      </ul>
-      
-  <div class="article-category">
-    
-    Category: 
-    
-    Categories:
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </div>
-  <br>
-
-
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>组合数据类型, 分为序列类型, 集合类型和映射类型. </p>
-<h2 id="序列类型"><a href="#序列类型" class="headerlink" title="序列类型"></a>序列类型</h2><p>序列类型有列表与集合, 列表常用操作如下:</p>
-<details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ll = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line"><span class="comment"># 列表增有追加, 逐增与按下标添加 3 种方法</span></span><br><span class="line">ll.append(<span class="number">10</span>); ll.extend((<span class="number">15</span>, <span class="number">20</span>)); ll.insert(<span class="number">0</span>, <span class="number">0</span>); <span class="built_in">print</span>(ll)</span><br><span class="line"><span class="comment"># 删有按元素删与按下标删, 清空与删除 4 种方式, 其中 pop() 不指定默认最后一个</span></span><br><span class="line">ll.remove(<span class="number">15</span>); ll.pop(<span class="number">0</span>); <span class="built_in">print</span>(ll); <span class="comment"># ll.clear(); # del ll;</span></span><br><span class="line"><span class="comment"># 改: 按下标改 1 种方式</span></span><br><span class="line">ll[<span class="number">0</span>] = <span class="number">20</span>; <span class="built_in">print</span>(ll)</span><br><span class="line"><span class="comment"># 查: 查数据, 查下标, 查长度, 查最大 / 小值, 查次数 5 种方式</span></span><br><span class="line"><span class="built_in">print</span>(ll[<span class="number">5</span>]); <span class="built_in">print</span>(ll.index(<span class="number">5</span>)); <span class="built_in">print</span>(<span class="built_in">len</span>(ll)); <span class="built_in">print</span>(<span class="built_in">max</span>(ll)); <span class="built_in">print</span>(ll.count(<span class="number">20</span>))</span><br><span class="line"><span class="comment"># 序列类型独有操作</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">520</span> <span class="keyword">in</span> ll); <span class="built_in">print</span>(ll + [<span class="number">123</span>]); <span class="built_in">print</span>(ll * <span class="number">2</span>)</span><br><span class="line"><span class="comment"># 列表类型独有操作</span></span><br><span class="line"><span class="built_in">print</span>(ll.copy())    <span class="comment"># 复制</span></span><br><span class="line"><span class="built_in">print</span>(ll.reverse())    <span class="comment"># 反转</span></span><br></pre></td></tr></table></figure></div></details>
-
-<h2 id="3-集合"><a href="#3-集合" class="headerlink" title="3. 集合"></a>3. 集合</h2><p>因为去重, 因此使用场景: 元素去重<br>因为无序, 不支持下标操作</p>
-<details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">aset = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>&#125;</span><br><span class="line">aset.add(<span class="number">5</span>)   <span class="comment"># 追加</span></span><br><span class="line">aset.update((<span class="number">10</span>, <span class="number">20</span>))   <span class="comment">#逐增</span></span><br><span class="line"><span class="comment"># set.remove(5)   # 删除集合中的指定数据, 不存在会报错</span></span><br><span class="line"><span class="comment"># set.discard(5)   # 删除集合中的指定数据, 不存在不会报错</span></span><br><span class="line"><span class="comment"># set.pop()   # 随机删除集合中某个数据, 清空删除方法仍用 clear 与 del</span></span><br><span class="line"><span class="built_in">print</span>(aset)</span><br></pre></td></tr></table></figure></div></details>
-
-<h2 id="4-字典"><a href="#4-字典" class="headerlink" title="4. 字典"></a>4. 字典</h2><details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dict</span> = &#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;koi_nl&#x27;</span>, <span class="string">&#x27;sex&#x27;</span>:<span class="string">&#x27;👨&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">dict</span>[<span class="string">&#x27;name&#x27;</span>] = <span class="string">&#x27;Koi_NL&#x27;</span>   <span class="comment"># 改-Key修改法</span></span><br><span class="line"><span class="built_in">dict</span>[<span class="string">&#x27;id&#x27;</span>] = <span class="string">&#x27;001&#x27;</span>   <span class="comment"># 增-Key增加法</span></span><br><span class="line"><span class="built_in">dict</span>.pop(<span class="string">&#x27;id&#x27;</span>)</span><br><span class="line"><span class="comment"># 清除和删除同列表, clear 与 del</span></span><br><span class="line"><span class="comment"># print(dict)   # 查-查找整个字典</span></span><br><span class="line"><span class="comment"># print(dict[&#x27;name&#x27;])   # 查-查找某Key值</span></span><br><span class="line"><span class="comment"># print(dict.get(&#x27;id&#x27;,0))   # 查-查找字典某Key值,若不存在返回第二个参数(默认值None)</span></span><br><span class="line"><span class="comment"># print(dict.keys())   # 查-查找所有的Key</span></span><br><span class="line"><span class="comment"># print(dict.values())   # 查-查找所有的value</span></span><br><span class="line"><span class="comment"># print(dict.items())   # 查-查找所有的key_value, 返回的为[(&#x27;key1&#x27;,&#x27;value1&#x27;),(&#x27;key2&#x27;,&#x27;value2&#x27;)]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> <span class="built_in">dict</span>:   <span class="comment"># 遍历字典的Key</span></span><br><span class="line">	<span class="built_in">print</span>(key, end = <span class="string">&#x27; &#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> <span class="built_in">dict</span>.values():   <span class="comment"># 遍历字典的Value</span></span><br><span class="line">	<span class="built_in">print</span>(value, end = <span class="string">&#x27; &#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> <span class="built_in">dict</span>.items():   <span class="comment"># 遍历字典的元素: 以元组形式显示</span></span><br><span class="line">	<span class="built_in">print</span>(item, end = <span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure></div></details>
-
-<h2 id="3-推导式"><a href="#3-推导式" class="headerlink" title="3. 推导式"></a>3. 推导式</h2><ol>
-<li>列表推导式<br>有句口诀: 空列表尾加法无脑列表推导式就是了</li>
-</ol>
-<details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isPrime</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;判断函数是否为质数&quot;&quot;&quot;</span></span><br><span class="line">    n = <span class="built_in">eval</span>(<span class="built_in">input</span>(<span class="string">&quot;输数&quot;</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n // <span class="number">2</span> + <span class="number">1</span>):  <span class="comment"># 从 2 循环到该数的一半数字</span></span><br><span class="line">        <span class="keyword">if</span> n % i == <span class="number">0</span>:  <span class="comment"># 如果有相除为 0 的, 该数不是质数</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span>  <span class="comment"># 反之则反</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">isPrime</span>(<span class="params">n</span>):  <span class="comment"># 上函数不能转为列表推导式, 改个写法</span></span><br><span class="line">    ll = []  <span class="comment"># 空列表存储数据</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n // <span class="number">2</span> + <span class="number">1</span>):</span><br><span class="line">        ll.append(n % i)  <span class="comment"># 追加相除后的余数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">not</span> <span class="keyword">in</span> ll  <span class="comment"># 判断这些余数里面有无 0 , 无 True, 有则反</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;空列表尾加法, 我嗅到了列表推导式的味道&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">isPrime</span>(<span class="params">n</span>): <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">not</span> <span class="keyword">in</span> [n % i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n // <span class="number">2</span> + <span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">genPrime</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;将 a, b 区间的质数以列表形式显示...当然字符串也行, 我只是为了列表推导式&quot;&quot;&quot;</span></span><br><span class="line">    ll = []  <span class="comment"># 空列表</span></span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(a, b + <span class="number">1</span>):  <span class="comment"># 从区间由 a 到 b 遍历循环</span></span><br><span class="line">        <span class="keyword">if</span> isPrime(n):  <span class="comment"># 如果是素数</span></span><br><span class="line">            ll.append(n)  <span class="comment"># 追加</span></span><br><span class="line">    <span class="keyword">return</span> ll  <span class="comment"># 返回列表</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;空列表尾加法, 我嗅到了列表推导式的味道&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">genPrime</span>(<span class="params">a, b</span>): <span class="keyword">return</span> [n <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(a, b + <span class="number">1</span>) <span class="keyword">if</span> isPrime(n)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这不得俩函数叠一起</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">genPrime</span>(<span class="params">a, b</span>): <span class="keyword">return</span> [n <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(a, b + <span class="number">1</span>) <span class="keyword">if</span> <span class="number">0</span> <span class="keyword">not</span> <span class="keyword">in</span> [n % i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n // <span class="number">2</span> + <span class="number">1</span>)]]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 唔嗯, 定义一行, 调用一行, 哎呀不愧是我~</span></span><br><span class="line"><span class="built_in">print</span>(genPrime(<span class="number">1</span>, <span class="number">100</span>))   <span class="comment"># 1 ~ 100 区间的质数: [1, 2, 3, 5, 7, ...]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div></details>
-
-<ol start="2">
-<li>集合推导式<br>还是老样子, 空集合增加法无脑集合推导式就行了</li>
-</ol>
-<details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> = <span class="built_in">set</span>()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">	<span class="built_in">set</span>.add(i * <span class="number">2</span>)</span><br><span class="line"><span class="comment"># 空集合尾增法, 我嗅到了集合推导式的味道</span></span><br><span class="line"><span class="built_in">set</span> = &#123;i * <span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">set</span>)</span><br></pre></td></tr></table></figure></div></details>
-
-<ol start="3">
-<li>字典推导式</li>
-</ol>
-<details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;age&#x27;</span>]</span><br><span class="line">list_f = [<span class="string">&#x27;Koi_NL&#x27;</span>,<span class="number">19</span>]</span><br><span class="line"><span class="built_in">dict</span>= &#123;<span class="built_in">list</span>[i]:list_f[i] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(<span class="built_in">list</span>))&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">dict</span>)</span><br><span class="line"><span class="comment"># 提取字典中目标数据</span></span><br><span class="line"><span class="built_in">dict</span>[<span class="string">&#x27;weight&#x27;</span>] = <span class="number">50</span></span><br><span class="line"><span class="keyword">del</span> <span class="built_in">dict</span>[<span class="string">&#x27;name&#x27;</span>]</span><br><span class="line"><span class="comment"># 现在字典数据有:&#123; &#x27;age&#x27;: 19, &#x27;weight&#x27;: 50&#125;</span></span><br><span class="line"><span class="comment"># 需求: 提取出大于25的数据</span></span><br><span class="line">a =&#123;key:value <span class="keyword">for</span> key,value <span class="keyword">in</span> <span class="built_in">dict</span>.items() <span class="keyword">if</span> value &gt; <span class="number">25</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure></div></details>
-
-<h2 id="4-jieba-库"><a href="#4-jieba-库" class="headerlink" title="4. jieba 库"></a>4. jieba 库</h2><p>第三方库, 需要安装. 中文分词库</p>
-<details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> jieba <span class="keyword">import</span> *</span><br><span class="line">setLogLevel(logging.INFO)</span><br><span class="line"><span class="built_in">print</span>(lcut(<span class="string">&quot;锦鲤未离在中华人民共和国&quot;</span>))  <span class="comment"># 平平无奇</span></span><br><span class="line"><span class="built_in">print</span>(lcut(<span class="string">&quot;锦鲤未离在中华人民共和国&quot;</span>, cut_all=<span class="literal">True</span>))  <span class="comment"># 全模式, 冗余最长</span></span><br><span class="line"><span class="built_in">print</span>(lcut_for_search(<span class="string">&quot;锦鲤未离在中华人民共和国&quot;</span>))  <span class="comment"># 搜索引擎常用的索引</span></span><br><span class="line">add_word(<span class="string">&quot;锦鲤未离&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(lcut(<span class="string">&quot;锦鲤未离在中华人民共和国&quot;</span>))  <span class="comment"># 增加词汇</span></span><br></pre></td></tr></table></figure></div></details>
-
-<h2 id="5-综合案例"><a href="#5-综合案例" class="headerlink" title="5. 综合案例"></a>5. 综合案例</h2><ol>
-<li>重复元素判定. 编写一个函数, 用列表作为参数, 如果一个函数在该列表种出现了超过一次, 返回 True, 反之则反, 但不改变列表的值.</li>
-</ol>
-<details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">judge</span>(<span class="params"><span class="built_in">list</span></span>):</span><br><span class="line">    t =<span class="built_in">set</span>(<span class="built_in">list</span>)    <span class="comment"># 列表转集合, 去重!</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(t) !=<span class="built_in">len</span>(<span class="built_in">list</span>):    <span class="comment"># 长度不一致</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span>    <span class="comment"># 有重复值</span></span><br><span class="line">    <span class="keyword">else</span>:    <span class="comment"># 反之</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span>    <span class="comment"># 无重复值</span></span><br><span class="line"><span class="built_in">print</span>(judge(<span class="built_in">list</span>(<span class="built_in">input</span>(<span class="string">&quot;输值 (例: 123456): &quot;</span>))))</span><br></pre></td></tr></table></figure></div></details>
-
-<ol start="2">
-<li>文本词频统计. 来吧, 统计下三国演义的人物出场统计吧!</li>
-</ol>
-<details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> jieba <span class="keyword">import</span> *; setLogLevel(logging.INFO)    <span class="comment">#我也不想要第二句, 但没有程序能运行, 但有红色提醒...</span></span><br><span class="line">excludes = &#123;<span class="string">&#x27;将军&#x27;</span>, <span class="string">&#x27;却说&#x27;</span>, <span class="string">&#x27;丞相&#x27;</span>&#125;    <span class="comment"># 排除词汇, 若不加这一行会有例如 &quot;将军&quot; , &quot;丞相&quot; 不是人名的常用词</span></span><br><span class="line">txt = <span class="built_in">open</span>(<span class="string">&quot;三国演义.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>).read()</span><br><span class="line">words = lcut(txt)    <span class="comment"># 进行分词: ...&#x27;一员大将&#x27;, &#x27;，&#x27;, &#x27;乃是&#x27;, &#x27;张飞&#x27;, &#x27;。&#x27;...</span></span><br><span class="line">counts = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(word) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">continue</span>    <span class="comment"># 排除单个字符的分词结果, 不然排行前三的...是 &#x27;，&#x27;&#x27;。&#x27;和&#x27;：&#x27;</span></span><br><span class="line">    <span class="keyword">elif</span> word == <span class="string">&quot;孔明曰&quot;</span> <span class="keyword">or</span> word == <span class="string">&quot;孔明&quot;</span>:</span><br><span class="line">        rword = <span class="string">&quot;诸葛亮&quot;</span>    <span class="comment"># 增加同人不同名的处理</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        rword = word</span><br><span class="line">    counts[rword] = counts.get(rword, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> excludes:</span><br><span class="line">    <span class="keyword">del</span>(counts[word])</span><br><span class="line">items = <span class="built_in">list</span>(counts.items())    <span class="comment"># 将字典转换为列表[(&#x27;不以为意&#x27;, 3), (&#x27;努力&#x27;, 13), (&#x27;帝后&#x27;, 7),...]</span></span><br><span class="line">items.sort(key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="literal">True</span>)    <span class="comment"># 进行排序: 依据下标为 1 的元素进行从大到小的排序</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">15</span>):    <span class="comment"># 选出前 5</span></span><br><span class="line">    word, count = items[i]    <span class="comment"># 分两变量接受值</span></span><br><span class="line">    <span class="built_in">print</span>(word, <span class="string">&quot;\t&quot;</span>, count)</span><br><span class="line"><span class="comment"># 当然走到这一步还是没有完成, 例如前十五个有 &#x27;曹操&#x27; , 也有 &#x27;商议&#x27; , 或者 &#x27;玄德曰&#x27; , 不过万变不离其宗</span></span><br><span class="line"><span class="comment">#  &#x27;玄德曰&#x27; 可以继续在 6 ~ 13 中增加同人不同名的处理,  &#x27;商议&#x27; 可以在第 3 行中继续排除无关词汇</span></span><br><span class="line"><span class="comment"># 我这一程序就编到这里吧, 我想!!☆⌒(*＾-゜)v</span></span><br></pre></td></tr></table></figure></div></details>
-
-<ol start="3">
-<li>生日悖论. 指如果一个房间里有23 或以上人，那么至少有两个人生日相同的 概率大于50%。编写程序，输出在不同随机样本数量下，23 个人中至少两个人生日相同的概率。</li>
-</ol>
-<details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># def duplicate(lst):    # 判断是否有在同一天的人, 因为集合去重</span></span><br><span class="line"><span class="comment">#     return len(lst)&gt;len(set(lst))    # 长度不一致就说明有</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;只有一行, 我嗅到了匿名函数的味道&quot;&quot;&quot;</span></span><br><span class="line">is_same = <span class="keyword">lambda</span> lst: <span class="built_in">len</span>(lst) &gt; <span class="built_in">len</span>(<span class="built_in">set</span>(lst))</span><br><span class="line"><span class="comment"># def generate():</span></span><br><span class="line"><span class="comment">#     birthday=[]    # 空列表</span></span><br><span class="line"><span class="comment">#     for i in range(23):    # 遍历 23 次</span></span><br><span class="line"><span class="comment">#         birthday.append(randint(1,365))    # 追加一年的随机某天</span></span><br><span class="line"><span class="comment">#     return birthday    # 返回该列表</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;空列表尾增法, 我嗅到了列表推导式的味道↓&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate</span>(): <span class="keyword">return</span> [randint(<span class="number">1</span>, <span class="number">365</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">23</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">count_same</span>():</span><br><span class="line">    count = <span class="number">0</span>  <span class="comment"># 计数器</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):  <span class="comment"># 验证 10000 次, 更精确</span></span><br><span class="line">        birthday = generate()  <span class="comment"># 得到 23 个人的生日列表</span></span><br><span class="line">        <span class="keyword">if</span> is_same(birthday):  <span class="comment"># 如果生日有相同</span></span><br><span class="line">            count += <span class="number">1</span>  <span class="comment"># 计数器 +1</span></span><br><span class="line">    <span class="keyword">return</span> count  <span class="comment"># 返回 10000 次中生日相同的次数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;概率是<span class="subst">&#123;(<span class="built_in">float</span>(count_same) / <span class="number">10000</span>) * <span class="number">100</span>&#125;</span>％&quot;</span>)</span><br><span class="line"><span class="comment"># 概率是 10000 次中生日相同的次数占总循环次数的比例</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div></details>
-
-
-
-
-<details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></div></details>
-
-      
-    </div>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/posts/linuxlianxizuoye/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          第一章  操作基础
-        
-      </div>
-    </a>
-  
-  
-    <a href="/posts/py02/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">第二章  函数</div>
-    </a>
-  
-</nav>
-
-  
-  <br>
-</article>
-
-
-
-
-</div>
-<div class="col-md-3 col-sm-3 blog-sidebar">
-  <!-- CATEGORIES START -->
-<h2 class="no-top-space">Categories</h2>
-
-<div class="widget-wrap">
-  <div class="widget">
-    <ul class="nav sidebar-categories margin-bottom-40">
-      
-	<li>
-	  <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备 (2)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Hadoop/">Hadoop (4)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing (4)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Applied-Statistics/">Applied Statistics (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区 (3)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Data-Mining/">Data-Mining (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/MATLAB/">MATLAB (5)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/java/">java (7)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Linux/">Linux (9)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm (5)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Python/">Python (13)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/SqlServer/">SqlServer (17)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E8%80%83%E8%AF%95/">考试 (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析 (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/spark/">spark (7)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络 (1)</a>
-	</li>
-      
-    </ul>
-  </div>
-</div>
-
-
-<!-- CATEGORIES END -->
-
-<!-- BEGIN BLOG TAGS -->
-<div class="blog-tags margin-bottom-20">
-  <h2>Tags</h2>
-  
-
-</div>
-<!-- END BLOG TAGS -->
-
-
-<!-- BEGIN FEATURED POSTS -->                            
-<h2>Featured Posts</h2>
-<div class="recent-news margin-bottom-10">
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-</div>
-<!-- END FEATURED POSTS -->                            
-
-</div>
-</div>
-
-  </section>
-</div>
-
-    <!-- BEGIN PRE-FOOTER -->
-    <div class="pre-footer">
-      <div class="container">
-        <div class="row">
-          <!-- BEGIN BOTTOM ABOUT BLOCK -->
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2>About Us</h2>
-            <p>Computer Lab is a software development and marketing company based in Brooklyn, New York. <br><br> Computer Lab was founded in 2015, and is focused on so on and so forth.</p>
-          </div>
-          <!-- END BOTTOM ABOUT BLOCK -->
-
-          <!-- BEGIN BOTTOM CONTACTS -->
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2>Contact</h2>
-            <address class="margin-bottom-40">
-              140 Metropolitan Avenue<br>
-              5th Floor<br>
-              Brooklyn, NY 11249<br>
-              Phone: 716-472-4484<br>
-              Email: <a href="mailto:ptsteadman@gmail.com">ptsteadman@gmail.com</a><br>
-            </address>
-          </div>
-          <!-- END BOTTOM CONTACTS -->
-
-	
-          <!-- BEGIN TWITTER BLOCK --> 
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-
-	  <a data-tweet-limit="1" class="twitter-timeline" data-theme="dark"
-	  target="_blank" rel="noopener" href="https://twitter.com/computerlab_">Tweets by @computerlab_</a>
-
-	  <script>!function(d,s,id){var
-	  js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-          </div>
-          <!-- END TWITTER BLOCK -->
-	
-        </div>
-      </div>
-    </div>
-    <!-- END PRE-FOOTER -->
-
-    <!-- BEGIN FOOTER -->
-    <div class="footer">
-      <div class="container">
-        <div class="row">
-          <!-- BEGIN COPYRIGHT -->
-          <div class="col-md-6 col-sm-6 padding-top-10">
-                  &copy; 2023 锦鲤未离<br>
- <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
-          </div>
-          <!-- END COPYRIGHT -->
-	  <!-- BEGIN SOCIAL -->
-<div class="col-md-6 col-sm-6">
-  <ul class="social-footer list-unstyled list-inline pull-right">
-    
-      <li><a target="_blank" rel="noopener" href="https://github.com/ptsteadman"><i class="fa fa-github"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="https://twitter.com/ptsteadman"><i class="fa fa-twitter"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="https://www.facebook.com/ptsteadman"><i class="fa fa-facebook"></i></a></li>
-    
-      <li><a href="/atom.xml"><i class="fa fa-rss"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="https://linkedin.com/in/ptsteadman"><i class="fa fa-linkedin"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="http://stackoverflow.com/users/2480493/patrick-steadman"><i class="fa fa-stackoverflow"></i></a></li>
-    
-  </ul>  
-</div>
-<!-- END SOCIAL -->
-
-        </div>
-      </div>
-    </div>
-    <!-- END FOOTER -->
-
-  <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
-<!--[if lt IE 9]>
-
-<script src="/metronic/assets/plugins/respond.min.js"></script>
-
-<![endif]--> 
-
-<script src="/metronic/assets/plugins/jquery.min.js"></script>
-
-
-<script src="/metronic/assets/plugins/jquery-migrate.min.js"></script>
-
-
-<script src="/metronic/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-
-<script src="/metronic/assets/corporate/scripts/back-to-top.js"></script>
-
-
-<script src="/metronic/assets/plugins/owl.carousel/owl.carousel.min.js"></script>
-
-
-<script src="/metronic/assets/corporate/scripts/layout.js"></script>
-
-
-<script src="/js/wow.min.js"></script>
-
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        Layout.init();    
-        Layout.initOWL();
-        Layout.initTwitter();
-        Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
-        Layout.initNavScrolling(); 
-	new WOW().init();
-    });
-</script>
-<!-- END CORE PLUGINS -->
-
-<!-- BEGIN PAGE-SPECIFIC PLUGINS --> 
-
-
-
-
-
-
-
-<!-- END PAGE-SPECIFIC PLUGINS --> 
-
-<!-- BEGIN INTEGRATIONS -->
-
-
-
-
-
-<!-- END INTEGRATIONS -->
-
-</body>
-</html>
+extends base
+
+block head
+  if is_tag()
+    title 标签：#{page.tag} | #{config.title}
+  else if page.category
+    title 分类：#{page.category} | #{config.title}
+  else if page.year && page.month
+    title 归档：#{page.year} 年 #{page.month} 月 | #{config.title}
+  else if !page.posts
+    title #{page.title} | #{config.title}
+  else
+    title= config.title
+
+mixin article(post)
+  article
+    header
+      if page.posts
+        h2
+          a(href=url_for(post.path))= post.title
+      else
+        small.right
+          a(target='_blank', href=sourceOfPost(post, theme.source_url)) 查看源代码
+        h1= post.title
+
+    .article-meta.clearfix
+      time.left= post.date.format(config.date_format)
+
+      if post.categories
+        ul.tags.left
+          - post.categories.each(function(category) {
+            li
+              a(href=url_for(category.path))= category.name
+          - });
+
+      if post.tags
+        ul.tags.right
+          - post.tags.each(function(tag) {
+            li
+              a(href=url_for(tag.path))= tag.name
+          - });
+
+    .markdown-body!= post.content
+
+    if !page.posts && theme.duoshuo
+      .ds-thread(data-thread-key=commentKey(post), data-title=post.title, data-url=post.permalink)
+
+  if !page.posts && post.appends
+    for append in formatArray(post.appends)
+      .article-widget
+        +widget-inter(append)
+
+block body
+  for banner in formatArray(theme.banners)
+    .article-widget
+      +widget-inter(banner)
+
+  if is_tag()
+    .article-widget
+      strong 标签 ##{page.tag}
+
+  if page.category
+    .article-widget
+      strong 分类 ##{page.category}
+
+  if page.year && page.month
+    .article-widget
+      strong 归档 #{page.year} 年 #{page.month} 月
+
+  if page.posts
+    - page.posts.each(function(post) {
+      +article(post)
+    - });
+
+    .archive-pagination
+      .paginator!= fixPaginator(paginator({prev_text: '&laquo;', next_text: '&raquo;'}))
+
+  else
+    +article(page)

@@ -1,691 +1,79 @@
-<!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-<!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <title>第三章  数据可视化（Matplotlib） | 锦鲤未离</title>
-
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-  <meta name="description" content="数据可视化主要旨在借助于图形化手段，清晰有效地传达与沟通信息。因此本章主要在于掌握数据图像的绘画。 在本章中，我们需要先将工具 Matplotlib 下载下来；其次，我们需要掌握进行简单的图形绘制；再次，一个好的图表不能只有图形，故需要掌握如何完善图表。最后，通过一个例子（掷骰子）来总结下所学内容。 一、安装 Matplotlib巧妇安能作无面汤饼乎？Matplotlib 为 Python 中第三">
-<meta property="og:type" content="article">
-<meta property="og:title" content="第三章  数据可视化（Matplotlib）">
-<meta property="og:url" content="http://example.com/posts/DPaA03/index.html">
-<meta property="og:site_name" content="锦鲤未离">
-<meta property="og:description" content="数据可视化主要旨在借助于图形化手段，清晰有效地传达与沟通信息。因此本章主要在于掌握数据图像的绘画。 在本章中，我们需要先将工具 Matplotlib 下载下来；其次，我们需要掌握进行简单的图形绘制；再次，一个好的图表不能只有图形，故需要掌握如何完善图表。最后，通过一个例子（掷骰子）来总结下所学内容。 一、安装 Matplotlib巧妇安能作无面汤饼乎？Matplotlib 为 Python 中第三">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-07T04:05:54.496Z">
-<meta property="article:modified_time" content="2022-09-14T14:30:21.810Z">
-<meta property="article:author" content="Koi_NL">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternative" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.ico">
-  
-    
-  <meta content="{{ title }}" name="description">
-  <meta content="{{ title }}" name="keywords">
-  <meta content="{{ title }}" name="author">
-
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
-
-  <!-- Global styles START -->   
-  
-<link rel="stylesheet" href="/metronic/assets/plugins/font-awesome/css/font-awesome.min.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/plugins/bootstrap/css/bootstrap.min.css">
-
-  <!-- Global styles END --> 
-   
-  <!-- Page level plugin styles START -->
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/animate.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/plugins/owl.carousel/assets/owl.carousel.css">
-
-  <!-- Page level plugin styles END -->
-
-  <!-- Theme styles START -->
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/components.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/slider.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/corporate/css/style.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/portfolio.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/corporate/css/style-responsive.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/corporate/css/themes/red.css">
-
-  
-<link rel="stylesheet" href="/css/theme-styles.css">
-
-  <!-- Theme styles END -->
-<meta name="generator" content="Hexo 6.1.0"></head>
-
-<body class="corporate">
-  <!-- BEGIN TOP BAR -->
-<div class="pre-header">
-  <div class="container">
-    <div class="row">
-      <!-- BEGIN TOP BAR LEFT PART -->
-      <div class="col-md-6 col-sm-6 col-xs-9 additional-shop-info">
-	<ul class="list-unstyled list-inline">
-	  <li><i class="fa fa-phone"></i><span>716-472-4484</span></li>
-	  <li><i class="fa fa-envelope-o"></i><span>ptsteadman@gmail.com</span></li>
-	</ul>
-      </div>
-      <!-- END TOP BAR LEFT PART -->
-      <!-- BEGIN TOP BAR MENU -->
-      <div class="col-md-6 col-sm-6 col-xs-3 additional-nav">
-	<ul class="list-unstyled list-inline pull-right">
-	  <li><a href="/login">Log In</a></li>
-	</ul>
-      </div>
-      <!-- END TOP BAR MENU -->
-    </div>
-  </div>        
-</div>
-<!-- END TOP BAR -->
-<!-- BEGIN HEADER -->
-<div class="header">
-  <div class="container">
-    <!--<a class="site-logo" href="/" id="logo">锦鲤未离</a>-->
-
-    <a class="site-logo" href="/">
-      <img src="/metronic/assets/corporate/img/logos/logo-corp-red.png" alt="Metronic FrontEnd">
-    </a>
-
-    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-
-    <!-- BEGIN NAVIGATION -->
-    <div class="header-navigation pull-right font-transform-inherit">
-      <ul>
-	
-	<li class="">
-	  <a  href="/">Home</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/projects/">Projects</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/archives/">Blog</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/contact/">Contact</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/about/">About</a>
-	</li>
-	
-	<!-- BEGIN TOP SEARCH -->
-	<li class="menu-search">
-	  <span class="sep"></span>
-	  <i class="fa fa-search search-btn"></i>
-	  <div class="search-box">
-	    <form action="#">
-	      <div class="input-group">
-		<input type="text" placeholder="Search" class="form-control st-default-search-input">
-		<span class="input-group-btn">
-		  <button class="btn btn-primary" type="submit">Search</button>
-		</span>
-	      </div>
-	    </form>
-	  </div> 
-	</li>
-	<!-- END TOP SEARCH -->
-      </ul>
-    </div>
-    <!-- END NAVIGATION -->
-  </div>
-</div>
-<!-- Header END -->
-
-  <div class="container">
-  <ul class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li><a href="/archives/">Blog</a></li>
-    <li class="active">Post</li>
-  </ul>
-  <section id="main">
-    
-    <h2 itemprop="name">
-      <a class="article-title" href="/posts/DPaA03/">第三章  数据可视化（Matplotlib）</a>
-    </h2>
-
-
-    <div class="row">
-<div class="col-md-9 col-sm-9 blog-posts">
-<article id="post-过去半年前的学习部分/2021-2022年课程/202209Python数据处理与分析/3第三章  数据可视化（Matplotlib）" class="article article-type-post blog-item" itemscope itemprop="blogPost">
-  <div class="article-meta">
-  </div>
-  <div class="article-inner">
-    
-    
-    <header class="article-header">
-      <ul class="blog-info">
-	<li><i class="fa fa-user"></i> Anonymous</li>
-	<li><i class="fa fa-calendar"></i>
-	  <time datetime="2022-09-07T04:05:54.496Z" itemprop="datePublished">2022/09/07</time>
-
-	</li>
-	<li class="hidden-xs"><i class="fa fa-comments"></i>
-	  <a href="http://example.com/posts/DPaA03/#disqus_thread" class="article-comment-link">Comments</a>
-	</li>
-	<li class="hidden-xs"><i class="fa fa-tags"></i> 
-	  
-
-	</li>
-      </ul>
-      
-  <div class="article-category">
-    
-    Category: 
-    
-    Categories:
-    <a class="article-category-link" href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing</a>
-  </div>
-  <br>
-
-
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>数据可视化主要旨在借助于图形化手段，清晰有效地传达与沟通信息。因此本章主要在于掌握数据图像的绘画。</p>
-<p>在本章中，我们需要先将工具 Matplotlib 下载下来；其次，我们需要掌握进行简单的图形绘制；再次，一个好的图表不能只有图形，故需要掌握如何完善图表。最后，通过一个例子（掷骰子）来总结下所学内容。</p>
-<h2 id="一、安装-Matplotlib"><a href="#一、安装-Matplotlib" class="headerlink" title="一、安装 Matplotlib"></a>一、安装 Matplotlib</h2><p>巧妇安能作无面汤饼乎？Matplotlib 为 Python 中第三方库，需要进行安装。<br>安装方法：在 PyCharm 的最下方“终端中”输入：<br><code>pip install matplotlib -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com </code></p>
-<h2 id="二、简单认识下折线图、柱状图、直方图、散点图等"><a href="#二、简单认识下折线图、柱状图、直方图、散点图等" class="headerlink" title="二、简单认识下折线图、柱状图、直方图、散点图等"></a>二、简单认识下折线图、柱状图、直方图、散点图等</h2><h3 id="1-折线图（plt-plot-）"><a href="#1-折线图（plt-plot-）" class="headerlink" title="1. 折线图（plt.plot()）"></a>1. 折线图（plt.plot()）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入所需库</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="comment"># 准备数据</span></span><br><span class="line">x=np.linspace(<span class="number">1</span>,<span class="number">10</span>,<span class="number">5</span>)    <span class="comment"># 1 到 10 均匀取 5 个点</span></span><br><span class="line">y=np.sin(x)    <span class="comment"># 绘制 sin(x) 函数</span></span><br><span class="line"><span class="comment"># 绘制图形</span></span><br><span class="line">plt.plot(x,y)    <span class="comment"># 绘制折线图</span></span><br><span class="line"><span class="comment"># plt.plot(x,y,&#x27;go--&#x27;,linewidth=5,markersize=10,label=&#x27;figure&#x27;)    # 绘制折线图,</span></span><br><span class="line"><span class="comment"># 展示结果</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>go– 参数等同于：color，marker，linestyle</p>
-</blockquote>
-<h3 id="2-柱状图（bar-）"><a href="#2-柱状图（bar-）" class="headerlink" title="2. 柱状图（bar()）"></a>2. 柱状图（bar()）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入所需库</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="comment"># 准备数据</span></span><br><span class="line">x=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">y=[<span class="number">7</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">4</span>,<span class="number">6</span>]</span><br><span class="line"><span class="comment"># 绘制图形</span></span><br><span class="line">plt.bar(x,y)</span><br><span class="line"><span class="comment"># plt.bar(x,y,width=0.4,tick_label=[&#x27;库&#x27;,&#x27;博&#x27;,&#x27;c&#x27;,&#x27;d&#x27;,&#x27;e&#x27;,&#x27;f&#x27;],color=[&#x27;c&#x27;,&#x27;b&#x27;,&#x27;r&#x27;],hatch=&#x27;/&#x27;)</span></span><br><span class="line"><span class="comment"># 展示结果</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>width 柱状宽度,mor 0.8<br>hatch 填充,hatch ,&#x2F; * . o<br>bottom y轴起点数值<br>align {‘<strong>center</strong>‘,’edge’}<br>color 颜色<br>edgecolor 柱体边缘颜色<br>linewidth 柱状宽度</p>
-</blockquote>
-<h3 id="3-直方图（hist-）"><a href="#3-直方图（hist-）" class="headerlink" title="3. 直方图（hist()）"></a>3. 直方图（hist()）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入所需库</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 准备数据</span></span><br><span class="line">x=[np.random.randint(<span class="number">0</span>,<span class="number">10</span>,<span class="number">40</span>),np.random.randint(<span class="number">0</span>,<span class="number">100</span>,<span class="number">40</span>)]    <span class="comment"># [0,100)，任意取 40 个数</span></span><br><span class="line">y=<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">0</span>,<span class="number">101</span>,<span class="number">10</span>))    <span class="comment"># [0,101)，每隔 10 取一个数</span></span><br><span class="line"><span class="comment"># 绘制图形</span></span><br><span class="line">plt.hist(x,bins=y)    <span class="comment"># 0-10 内有多少个数</span></span><br><span class="line"><span class="comment"># plt.hist(x,bins=y,color=[&#x27;c&#x27;,&#x27;b&#x27;],histtype=&#x27;bar&#x27;,rwidth=1,alpha=0.6,edgecolor=&#x27;black&#x27;,label=[&#x27;one&#x27;,&#x27;two&#x27;])</span></span><br><span class="line"><span class="comment"># 展示结果</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>粗体为默认值！<br>histtype 参数，可选{‘<strong>bar</strong>‘,’barstacked’,’step’,’stepfilled’}<br>align 参数，可选{‘left’,’<strong>mid</strong>‘,’right’}<br>orientation 参数，可选{‘horizontal’,’<strong>vertical</strong>‘}<br>rwidth 参数，设置长条形的宽度占 bin 宽度的比例<br>color 参数，指定颜色<br>label 参数，区分多个数据集<br>facecolor 参数，直方图的颜色<br>edgecolor 参数，直方图边框的颜色<br>alpha 参数，设置透明度</p>
-</blockquote>
-<h3 id="4-散点图"><a href="#4-散点图" class="headerlink" title="4. 散点图"></a>4. 散点图</h3><h3 id="5-等值线图"><a href="#5-等值线图" class="headerlink" title="5. 等值线图"></a>5. 等值线图</h3><h2 id="三、对图形的优化"><a href="#三、对图形的优化" class="headerlink" title="三、对图形的优化"></a>三、对图形的优化</h2><p>总的来说，在 Matplotlib 中有两大元素：</p>
-<ul>
-<li>基础类元素：线、点、文字、图例、标题、图片等。</li>
-<li>容器类元素：图形、坐标图形、坐标轴和刻度。</li>
-</ul>
-<p>我们可以绘制出来一个</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 《导入所需库》</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 《字体设置》</span></span><br><span class="line">mpl.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>]=<span class="string">&#x27;SimHei&#x27;</span></span><br><span class="line">mpl.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>]=<span class="literal">False</span></span><br><span class="line">mpl.rcParams[<span class="string">&#x27;font.size&#x27;</span>]=<span class="number">12</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 《准备数据》</span></span><br><span class="line">x=np.linspace(<span class="number">0.2</span>,<span class="number">3.0</span>,<span class="number">100</span>)</span><br><span class="line">y1=np.sin(x)</span><br><span class="line">y2=np.random.randn(<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 《绘制图形》</span></span><br><span class="line">plt.scatter(x,y2,c=<span class="string">&#x27;g&#x27;</span>,edgecolors=<span class="string">&#x27;none&#x27;</span>,label=<span class="string">&#x27;散点图&#x27;</span>)</span><br><span class="line">plt.plot(x,y1,<span class="string">&#x27;--&#x27;</span>,c=<span class="string">&#x27;r&#x27;</span>,lw=<span class="number">3</span>,label=<span class="string">&#x27;曲线图&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 《美化图形》</span></span><br><span class="line"><span class="comment">## 标题与图例</span></span><br><span class="line">plt.title(<span class="string">&#x27;图标元素示例&#x27;</span>,color=<span class="string">&#x27;b&#x27;</span>,fontsize=<span class="number">20</span>)    <span class="comment"># 设置标题</span></span><br><span class="line">plt.legend(loc=<span class="string">&#x27;upper right&#x27;</span>,fontsize=<span class="string">&#x27;12&#x27;</span>)    <span class="comment"># 设置图例</span></span><br><span class="line"><span class="comment">## 坐标轴范围、内容、格式</span></span><br><span class="line">plt.xlim(<span class="number">0.0</span>,<span class="number">4.0</span>)    <span class="comment"># 设置刻度范围</span></span><br><span class="line">plt.ylim(-<span class="number">4.0</span>,<span class="number">4.0</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;val_y&#x27;</span>,rotation=<span class="number">360</span>)    <span class="comment"># 设置刻度标识</span></span><br><span class="line">plt.xlabel(<span class="string">&#x27;val_x&#x27;</span>)</span><br><span class="line">plt.tick_params(axis=<span class="string">&#x27;both&#x27;</span>,labelsize=<span class="number">20</span>)    <span class="comment"># 设置刻度线样式（修改哪一个，刻度字体大小）</span></span><br><span class="line"><span class="comment">## 网格线与参考线</span></span><br><span class="line">plt.grid(<span class="literal">True</span>,ls=<span class="string">&#x27;:&#x27;</span>,color=<span class="string">&#x27;grey&#x27;</span>)    <span class="comment"># 设置网格</span></span><br><span class="line">plt.axhline(y=<span class="number">0.0</span>,c=<span class="string">&#x27;r&#x27;</span>,ls=<span class="string">&#x27;--&#x27;</span>,lw=<span class="number">2</span>)    <span class="comment"># 设置x轴参考线</span></span><br><span class="line"><span class="comment">## 注释</span></span><br><span class="line">plt.annotate(<span class="string">&#x27;y=sin(x)&#x27;</span>,xy=(np.pi/<span class="number">2</span>,<span class="number">1.0</span>),xytext=(<span class="number">1.8</span>,<span class="number">2</span>),color=<span class="string">&#x27;r&#x27;</span>,fontsize=<span class="number">15</span>,arrowprops=<span class="built_in">dict</span>(arrowstyle=<span class="string">&#x27;-&gt;&#x27;</span>,connectionstyle=<span class="string">&#x27;arc3&#x27;</span>,color=<span class="string">&#x27;r&#x27;</span>))</span><br><span class="line">plt.text(<span class="number">3.0</span>,-<span class="number">1.3</span>,<span class="string">&#x27;图表参考线&#x27;</span>,color=<span class="string">&#x27;b&#x27;</span>,fontsize=<span class="number">15</span>,weight=<span class="string">&#x27;bold&#x27;</span>)    <span class="comment"># 设置注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 《保存图形》</span></span><br><span class="line">plt.savefig(<span class="string">&#x27;figure-DPaA03-a-koinl.png&#x27;</span>, dpi=<span class="number">200</span>)</span><br><span class="line"><span class="comment"># 《展示图形》</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p>在我们绘制图形时，牢记下述口诀，妈妈再也不怕我忘记如何画图了！</p>
-<blockquote>
-<p><strong>导入所需库</strong>——字体设置——<strong>准备数据</strong>——<strong>绘制图形</strong>——美化图形——保存图形——<strong>展示图形</strong></p>
-<blockquote>
-<p>字体设置在图表中出现<strong>中文</strong>的时候使用<br>美化图形在自己想要<strong>自定义图表</strong>的时候使用<br>保存图形在自己想要<strong>保存图表</strong>的时候使用<br>故最简单的绘图计划为：导入所需库——准备数据——绘制图形——展示图形</p>
-</blockquote>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 《准备数据》</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Die</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;分别为骰子点数初始化和模拟投骰子函数&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, num=<span class="number">6</span></span>): self.num = num</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">roll_die</span>(<span class="params">self</span>): <span class="keyword">return</span> randint(<span class="number">1</span>, self.num)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Roll_die</span>():</span><br><span class="line">    die1, die2 = Die(), Die()</span><br><span class="line">    results, count_nums = [], []</span><br><span class="line">    x = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">1</span>, <span class="number">13</span>))</span><br><span class="line">    <span class="comment"># 投 2000 次，将每次结果存入 results 列表；以及# 统计面数总和被投到的次数</span></span><br><span class="line">    <span class="keyword">for</span> roll_num <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2000</span>): results.append(die1.roll_die() + die2.roll_die())</span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, die1.num + die2.num + <span class="number">1</span>): count_nums.append(results.count(value))</span><br><span class="line">    <span class="keyword">return</span> x, count_nums</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 《导入所需库》</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line"></span><br><span class="line"><span class="comment"># 《字体设置》</span></span><br><span class="line">mpl.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>]=<span class="string">&#x27;SimHei&#x27;</span></span><br><span class="line">mpl.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>]=<span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 《准备数据》</span></span><br><span class="line">x,y=Roll_die()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 《绘制图形》</span></span><br><span class="line">plt.bar(x,y, width=<span class="number">0.7</span>, edgecolor=<span class="string">&#x27;r&#x27;</span>, alpha=<span class="number">0.6</span>, label=<span class="string">&#x27;频数&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 《美化图形》</span></span><br><span class="line"><span class="comment">## 标题与图例</span></span><br><span class="line">plt.title(<span class="string">&#x27;图标元素示例&#x27;</span>,color=<span class="string">&#x27;b&#x27;</span>,fontsize=<span class="number">20</span>)    <span class="comment"># 设置标题</span></span><br><span class="line">plt.legend(loc=<span class="string">&#x27;upper right&#x27;</span>,fontsize=<span class="number">12</span>)    <span class="comment"># 设置图例</span></span><br><span class="line"><span class="comment">## 坐标轴范围、内容、格式</span></span><br><span class="line">plt.xlabel(<span class="string">&#x27;骰子点数和&#x27;</span>)  <span class="comment">#</span></span><br><span class="line">plt.ylabel(<span class="string">&quot;各点数和的频数&quot;</span>)</span><br><span class="line">plt.xticks(<span class="built_in">range</span>(<span class="number">1</span>, <span class="number">13</span>))</span><br><span class="line">plt.tick_params(axis=<span class="string">&#x27;both&#x27;</span>,labelsize=<span class="number">20</span>)    <span class="comment"># 设置刻度线样式（修改哪一个，刻度字体大小）</span></span><br><span class="line"><span class="comment">## 网格线与参考线</span></span><br><span class="line">plt.grid(axis=<span class="string">&#x27;y&#x27;</span>, ls=<span class="string">&#x27;:&#x27;</span>, c=<span class="string">&#x27;grey&#x27;</span>, alpha=<span class="number">0.5</span>)</span><br><span class="line"><span class="comment"># plt.axhline(y=0.0,c=&#x27;r&#x27;,ls=&#x27;--&#x27;,lw=2)    # 设置x轴参考线</span></span><br><span class="line"><span class="comment">## 注释</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 《保存图形》</span></span><br><span class="line">plt.savefig(<span class="string">&#x27;figure-DPaA03-ROLL-DICE-koinl.png&#x27;</span>, dpi=<span class="number">200</span>)</span><br><span class="line"><span class="comment"># 《展示图形》</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-      
-    </div>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/posts/DPaA04/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          第四章  数据预处理
-        
-      </div>
-    </a>
-  
-  
-    <a href="/posts/DPaA02/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">第二章  数据分析（Pandas）</div>
-    </a>
-  
-</nav>
-
-  
-  <br>
-</article>
-
-
-
-
-</div>
-<div class="col-md-3 col-sm-3 blog-sidebar">
-  <!-- CATEGORIES START -->
-<h2 class="no-top-space">Categories</h2>
-
-<div class="widget-wrap">
-  <div class="widget">
-    <ul class="nav sidebar-categories margin-bottom-40">
-      
-	<li>
-	  <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备 (2)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Hadoop/">Hadoop (4)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing (4)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Applied-Statistics/">Applied Statistics (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区 (3)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Data-Mining/">Data-Mining (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/MATLAB/">MATLAB (5)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/java/">java (7)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Linux/">Linux (9)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm (5)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Python/">Python (13)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/SqlServer/">SqlServer (17)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E8%80%83%E8%AF%95/">考试 (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析 (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/spark/">spark (7)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络 (1)</a>
-	</li>
-      
-    </ul>
-  </div>
-</div>
-
-
-<!-- CATEGORIES END -->
-
-<!-- BEGIN BLOG TAGS -->
-<div class="blog-tags margin-bottom-20">
-  <h2>Tags</h2>
-  
-
-</div>
-<!-- END BLOG TAGS -->
-
-
-<!-- BEGIN FEATURED POSTS -->                            
-<h2>Featured Posts</h2>
-<div class="recent-news margin-bottom-10">
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-</div>
-<!-- END FEATURED POSTS -->                            
-
-</div>
-</div>
-
-  </section>
-</div>
-
-    <!-- BEGIN PRE-FOOTER -->
-    <div class="pre-footer">
-      <div class="container">
-        <div class="row">
-          <!-- BEGIN BOTTOM ABOUT BLOCK -->
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2>About Us</h2>
-            <p>Computer Lab is a software development and marketing company based in Brooklyn, New York. <br><br> Computer Lab was founded in 2015, and is focused on so on and so forth.</p>
-          </div>
-          <!-- END BOTTOM ABOUT BLOCK -->
-
-          <!-- BEGIN BOTTOM CONTACTS -->
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2>Contact</h2>
-            <address class="margin-bottom-40">
-              140 Metropolitan Avenue<br>
-              5th Floor<br>
-              Brooklyn, NY 11249<br>
-              Phone: 716-472-4484<br>
-              Email: <a href="mailto:ptsteadman@gmail.com">ptsteadman@gmail.com</a><br>
-            </address>
-          </div>
-          <!-- END BOTTOM CONTACTS -->
-
-	
-          <!-- BEGIN TWITTER BLOCK --> 
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-
-	  <a data-tweet-limit="1" class="twitter-timeline" data-theme="dark"
-	  target="_blank" rel="noopener" href="https://twitter.com/computerlab_">Tweets by @computerlab_</a>
-
-	  <script>!function(d,s,id){var
-	  js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-          </div>
-          <!-- END TWITTER BLOCK -->
-	
-        </div>
-      </div>
-    </div>
-    <!-- END PRE-FOOTER -->
-
-    <!-- BEGIN FOOTER -->
-    <div class="footer">
-      <div class="container">
-        <div class="row">
-          <!-- BEGIN COPYRIGHT -->
-          <div class="col-md-6 col-sm-6 padding-top-10">
-                  &copy; 2023 锦鲤未离<br>
- <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
-          </div>
-          <!-- END COPYRIGHT -->
-	  <!-- BEGIN SOCIAL -->
-<div class="col-md-6 col-sm-6">
-  <ul class="social-footer list-unstyled list-inline pull-right">
-    
-      <li><a target="_blank" rel="noopener" href="https://github.com/ptsteadman"><i class="fa fa-github"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="https://twitter.com/ptsteadman"><i class="fa fa-twitter"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="https://www.facebook.com/ptsteadman"><i class="fa fa-facebook"></i></a></li>
-    
-      <li><a href="/atom.xml"><i class="fa fa-rss"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="https://linkedin.com/in/ptsteadman"><i class="fa fa-linkedin"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="http://stackoverflow.com/users/2480493/patrick-steadman"><i class="fa fa-stackoverflow"></i></a></li>
-    
-  </ul>  
-</div>
-<!-- END SOCIAL -->
-
-        </div>
-      </div>
-    </div>
-    <!-- END FOOTER -->
-
-  <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
-<!--[if lt IE 9]>
-
-<script src="/metronic/assets/plugins/respond.min.js"></script>
-
-<![endif]--> 
-
-<script src="/metronic/assets/plugins/jquery.min.js"></script>
-
-
-<script src="/metronic/assets/plugins/jquery-migrate.min.js"></script>
-
-
-<script src="/metronic/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-
-<script src="/metronic/assets/corporate/scripts/back-to-top.js"></script>
-
-
-<script src="/metronic/assets/plugins/owl.carousel/owl.carousel.min.js"></script>
-
-
-<script src="/metronic/assets/corporate/scripts/layout.js"></script>
-
-
-<script src="/js/wow.min.js"></script>
-
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        Layout.init();    
-        Layout.initOWL();
-        Layout.initTwitter();
-        Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
-        Layout.initNavScrolling(); 
-	new WOW().init();
-    });
-</script>
-<!-- END CORE PLUGINS -->
-
-<!-- BEGIN PAGE-SPECIFIC PLUGINS --> 
-
-
-
-
-
-
-
-<!-- END PAGE-SPECIFIC PLUGINS --> 
-
-<!-- BEGIN INTEGRATIONS -->
-
-
-
-
-
-<!-- END INTEGRATIONS -->
-
-</body>
-</html>
+extends base
+
+block head
+  if is_tag()
+    title 标签：#{page.tag} | #{config.title}
+  else if page.category
+    title 分类：#{page.category} | #{config.title}
+  else if page.year && page.month
+    title 归档：#{page.year} 年 #{page.month} 月 | #{config.title}
+  else if !page.posts
+    title #{page.title} | #{config.title}
+  else
+    title= config.title
+
+mixin article(post)
+  article
+    header
+      if page.posts
+        h2
+          a(href=url_for(post.path))= post.title
+      else
+        small.right
+          a(target='_blank', href=sourceOfPost(post, theme.source_url)) 查看源代码
+        h1= post.title
+
+    .article-meta.clearfix
+      time.left= post.date.format(config.date_format)
+
+      if post.categories
+        ul.tags.left
+          - post.categories.each(function(category) {
+            li
+              a(href=url_for(category.path))= category.name
+          - });
+
+      if post.tags
+        ul.tags.right
+          - post.tags.each(function(tag) {
+            li
+              a(href=url_for(tag.path))= tag.name
+          - });
+
+    .markdown-body!= post.content
+
+    if !page.posts && theme.duoshuo
+      .ds-thread(data-thread-key=commentKey(post), data-title=post.title, data-url=post.permalink)
+
+  if !page.posts && post.appends
+    for append in formatArray(post.appends)
+      .article-widget
+        +widget-inter(append)
+
+block body
+  for banner in formatArray(theme.banners)
+    .article-widget
+      +widget-inter(banner)
+
+  if is_tag()
+    .article-widget
+      strong 标签 ##{page.tag}
+
+  if page.category
+    .article-widget
+      strong 分类 ##{page.category}
+
+  if page.year && page.month
+    .article-widget
+      strong 归档 #{page.year} 年 #{page.month} 月
+
+  if page.posts
+    - page.posts.each(function(post) {
+      +article(post)
+    - });
+
+    .archive-pagination
+      .paginator!= fixPaginator(paginator({prev_text: '&laquo;', next_text: '&raquo;'}))
+
+  else
+    +article(page)

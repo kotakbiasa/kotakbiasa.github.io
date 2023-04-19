@@ -1,700 +1,79 @@
-<!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-<!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <title>第二章  树和二叉树 | 锦鲤未离</title>
-
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-  <meta name="description" content="在本篇中, 首先讲述了关于二叉树的相关知识, 第二讲述了关于最优二叉树 (哈夫曼树) 所建立的哈夫曼编码. 第三阐述了树与二叉树的关系与转换 二叉树的存储, 其次讲述了二叉树的四种遍历方式, 以及如何将二叉树进行翻转 二叉树的存储 顺序存储: 只适用于完全二叉树 链式存储  二叉树的遍历 分为先序遍历 (DLR) , 中序遍历 (LDR) ,后序遍历 (LRD) 和层序遍历 先序遍历: 依次从上往">
-<meta property="og:type" content="article">
-<meta property="og:title" content="第二章  树和二叉树">
-<meta property="og:url" content="http://example.com/posts/dsa02/index.html">
-<meta property="og:site_name" content="锦鲤未离">
-<meta property="og:description" content="在本篇中, 首先讲述了关于二叉树的相关知识, 第二讲述了关于最优二叉树 (哈夫曼树) 所建立的哈夫曼编码. 第三阐述了树与二叉树的关系与转换 二叉树的存储, 其次讲述了二叉树的四种遍历方式, 以及如何将二叉树进行翻转 二叉树的存储 顺序存储: 只适用于完全二叉树 链式存储  二叉树的遍历 分为先序遍历 (DLR) , 中序遍历 (LDR) ,后序遍历 (LRD) 和层序遍历 先序遍历: 依次从上往">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-29T11:27:50.221Z">
-<meta property="article:modified_time" content="2022-08-13T09:22:07.390Z">
-<meta property="article:author" content="Koi_NL">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternative" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.ico">
-  
-    
-  <meta content="{{ title }}" name="description">
-  <meta content="{{ title }}" name="keywords">
-  <meta content="{{ title }}" name="author">
-
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
-
-  <!-- Global styles START -->   
-  
-<link rel="stylesheet" href="/metronic/assets/plugins/font-awesome/css/font-awesome.min.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/plugins/bootstrap/css/bootstrap.min.css">
-
-  <!-- Global styles END --> 
-   
-  <!-- Page level plugin styles START -->
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/animate.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/plugins/owl.carousel/assets/owl.carousel.css">
-
-  <!-- Page level plugin styles END -->
-
-  <!-- Theme styles START -->
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/components.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/slider.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/corporate/css/style.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/pages/css/portfolio.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/corporate/css/style-responsive.css">
-
-  
-<link rel="stylesheet" href="/metronic/assets/corporate/css/themes/red.css">
-
-  
-<link rel="stylesheet" href="/css/theme-styles.css">
-
-  <!-- Theme styles END -->
-<meta name="generator" content="Hexo 6.1.0"></head>
-
-<body class="corporate">
-  <!-- BEGIN TOP BAR -->
-<div class="pre-header">
-  <div class="container">
-    <div class="row">
-      <!-- BEGIN TOP BAR LEFT PART -->
-      <div class="col-md-6 col-sm-6 col-xs-9 additional-shop-info">
-	<ul class="list-unstyled list-inline">
-	  <li><i class="fa fa-phone"></i><span>716-472-4484</span></li>
-	  <li><i class="fa fa-envelope-o"></i><span>ptsteadman@gmail.com</span></li>
-	</ul>
-      </div>
-      <!-- END TOP BAR LEFT PART -->
-      <!-- BEGIN TOP BAR MENU -->
-      <div class="col-md-6 col-sm-6 col-xs-3 additional-nav">
-	<ul class="list-unstyled list-inline pull-right">
-	  <li><a href="/login">Log In</a></li>
-	</ul>
-      </div>
-      <!-- END TOP BAR MENU -->
-    </div>
-  </div>        
-</div>
-<!-- END TOP BAR -->
-<!-- BEGIN HEADER -->
-<div class="header">
-  <div class="container">
-    <!--<a class="site-logo" href="/" id="logo">锦鲤未离</a>-->
-
-    <a class="site-logo" href="/">
-      <img src="/metronic/assets/corporate/img/logos/logo-corp-red.png" alt="Metronic FrontEnd">
-    </a>
-
-    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-
-    <!-- BEGIN NAVIGATION -->
-    <div class="header-navigation pull-right font-transform-inherit">
-      <ul>
-	
-	<li class="">
-	  <a  href="/">Home</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/projects/">Projects</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/archives/">Blog</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/contact/">Contact</a>
-	</li>
-	
-	<li class="">
-	  <a  href="/about/">About</a>
-	</li>
-	
-	<!-- BEGIN TOP SEARCH -->
-	<li class="menu-search">
-	  <span class="sep"></span>
-	  <i class="fa fa-search search-btn"></i>
-	  <div class="search-box">
-	    <form action="#">
-	      <div class="input-group">
-		<input type="text" placeholder="Search" class="form-control st-default-search-input">
-		<span class="input-group-btn">
-		  <button class="btn btn-primary" type="submit">Search</button>
-		</span>
-	      </div>
-	    </form>
-	  </div> 
-	</li>
-	<!-- END TOP SEARCH -->
-      </ul>
-    </div>
-    <!-- END NAVIGATION -->
-  </div>
-</div>
-<!-- Header END -->
-
-  <div class="container">
-  <ul class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li><a href="/archives/">Blog</a></li>
-    <li class="active">Post</li>
-  </ul>
-  <section id="main">
-    
-    <h2 itemprop="name">
-      <a class="article-title" href="/posts/dsa02/">第二章  树和二叉树</a>
-    </h2>
-
-
-    <div class="row">
-<div class="col-md-9 col-sm-9 blog-posts">
-<article id="post-过去半年前的学习部分/2021-2022年课程/202203数据结构与算法（Data Structure and Algorithm）/Data Structure第二章  树和二叉树" class="article article-type-post blog-item" itemscope itemprop="blogPost">
-  <div class="article-meta">
-  </div>
-  <div class="article-inner">
-    
-    
-    <header class="article-header">
-      <ul class="blog-info">
-	<li><i class="fa fa-user"></i> Anonymous</li>
-	<li><i class="fa fa-calendar"></i>
-	  <time datetime="2022-03-29T11:27:50.221Z" itemprop="datePublished">2022/03/29</time>
-
-	</li>
-	<li class="hidden-xs"><i class="fa fa-comments"></i>
-	  <a href="http://example.com/posts/dsa02/#disqus_thread" class="article-comment-link">Comments</a>
-	</li>
-	<li class="hidden-xs"><i class="fa fa-tags"></i> 
-	  
-
-	</li>
-      </ul>
-      
-  <div class="article-category">
-    
-    Category: 
-    
-    Categories:
-    <a class="article-category-link" href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm</a>
-  </div>
-  <br>
-
-
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在本篇中, 首先讲述了关于二叉树的相关知识, 第二讲述了关于最优二叉树 (哈夫曼树) 所建立的哈夫曼编码. 第三阐述了树与二叉树的关系与转换</p>
-<p>二叉树的存储, 其次讲述了二叉树的四种遍历方式, 以及如何将二叉树进行翻转</p>
-<h2 id="二叉树的存储"><a href="#二叉树的存储" class="headerlink" title="二叉树的存储"></a>二叉树的存储</h2><ul>
-<li>顺序存储: 只适用于完全二叉树</li>
-<li>链式存储</li>
-</ul>
-<h2 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h2><ul>
-<li>分为先序遍历 (DLR) , 中序遍历 (LDR) ,后序遍历 (LRD) 和层序遍历</li>
-<li>先序遍历: 依次从上往下访问根节点, 左子树, 右子树, 若二叉树为空返回空操作</li>
-<li>中序遍历: 依次从上往下访问左子树, 根节点, 右子树, 若二叉树为空返回空操作</li>
-<li>后序遍历: 依次从上往下访问左子树, 右子树, 根节点, 若二叉树为空返回空操作</li>
-<li>层序遍历: 若二叉树为空, 则空操作返回; 否则, 从根节点从上而下逐层遍历, 同一层中顺序为从左到右</li>
-</ul>
-<h2 id="二叉树的翻转"><a href="#二叉树的翻转" class="headerlink" title="二叉树的翻转"></a>二叉树的翻转</h2><ul>
-<li>左右翻转那种样子</li>
-</ul>
-<h2 id="二叉树的存储-遍历与翻转的代码实现"><a href="#二叉树的存储-遍历与翻转的代码实现" class="headerlink" title="二叉树的存储, 遍历与翻转的代码实现"></a>二叉树的存储, 遍历与翻转的代码实现</h2><details ><summary>点击显/隐图片</summary><div class="fold-content"><p>待定</p>
-</div></details>
-<details ><summary>点击显/隐代码</summary><div class="fold-content"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;二叉树存储: 链式&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, key=<span class="literal">None</span>, lchild=<span class="literal">None</span>, rchild=<span class="literal">None</span></span>):</span><br><span class="line">        self.key, self.lchild, self.rchild = key, lchild, rchild  <span class="comment"># 表示数据域, 左子树, 右子树</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BTree</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, root=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;建立二叉树&quot;&quot;&quot;</span></span><br><span class="line">        self.root = root</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">PreOrder</span>(<span class="params">self, root</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;先序遍历: 依次从上往下访问根节点, 左子树, 右子树, 若二叉树为空返回空操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="built_in">print</span>(root.key, end=<span class="string">&quot; &quot;</span>); self.PreOrder(root.lchild); self.PreOrder(root.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">InOrder</span>(<span class="params">self, root</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;中序遍历: 依次从上往下访问左子树, 根节点, 右子树, 若二叉树为空返回空操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self.InOrder(root.lchild); <span class="built_in">print</span>(root.key, end=<span class="string">&quot; &quot;</span>); self.InOrder(root.rchild)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">PostOrder</span>(<span class="params">self, root</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;中序遍历: 依次从上往下访问左子树, 右子树, 根节点, 若二叉树为空返回空操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            self.PostOrder(root.lchild); self.PostOrder(root.rchild); <span class="built_in">print</span>(root.key, end=<span class="string">&quot; &quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">breath_travel</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;层序遍历: 若二叉树为空, 则空操作返回; 否则, 从根节点从上而下逐层遍历, 同一层中顺序为从左到右&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> root == <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        queue = []</span><br><span class="line">        queue.append(root)</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            node = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">print</span>(node.key, end=<span class="string">&quot; &quot;</span>)</span><br><span class="line">            <span class="keyword">if</span> node.lchild != <span class="literal">None</span>:</span><br><span class="line">                queue.append(node.lchild)</span><br><span class="line">            <span class="keyword">if</span> node.rchild != <span class="literal">None</span>:</span><br><span class="line">                queue.append(node.rchild)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Mirror</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;翻转二叉树&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">mirror</span>(<span class="params">self, root</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        root.lchild, root.rchild = root.rchild, root.lchild</span><br><span class="line">        self.mirror(root.lchild)</span><br><span class="line">        self.mirror(root.rchild)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    root = Node(<span class="number">1</span>, Node(<span class="number">2</span>, Node(<span class="number">4</span>, Node(<span class="number">8</span>), Node(<span class="number">9</span>)), Node(<span class="number">5</span>, Node(<span class="number">10</span>), Node(<span class="number">11</span>))),</span><br><span class="line">                Node(<span class="number">3</span>, Node(<span class="number">6</span>, Node(<span class="number">12</span>), Node(<span class="number">13</span>)), Node(<span class="number">7</span>, Node(<span class="number">14</span>), Node(<span class="number">15</span>))))</span><br><span class="line">    bt = BTree()</span><br><span class="line">    m = Mirror()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;先序遍历: &quot;</span>, bt.PreOrder(root))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;中序遍历: &quot;</span>, bt.InOrder(root))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;后序遍历: &quot;</span>, bt.PostOrder(root))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;层序遍历: &quot;</span>, bt.breath_travel())</span><br><span class="line">    m.mirror(root)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;翻转后的中序遍历&quot;</span>, bt.InOrder(root))</span><br></pre></td></tr></table></figure></div></details>
-
-<h2 id="由遍历序列创建二叉树"><a href="#由遍历序列创建二叉树" class="headerlink" title="由遍历序列创建二叉树"></a>由遍历序列创建二叉树</h2><ul>
-<li><p>可分为 “知先序中序求后序” , “知中序后序求先序” . </p>
-</li>
-<li><p>例 1 : 由先序, 中序推出后序遍历<br>已知二叉树的先序遍历是 ABCDEF , 中序遍历是 CBAEDF , 求后序遍历. </p>
-<details ><summary>点击显/隐思路</summary><div class="fold-content"><p>先序遍历是先打印根节点, 故可知 A 为根节点;<br>中序遍历是先递归左子树, 再打印根节点, 故可知 CB 为左子树节点, EDF为右子树节点.<br>左子树判断开始:<br>先序遍历是先打印根节点, 再递归左子树, 所以 B 是 A 的左孩子;<br>中序遍历是先递归左子树, 再打印根节点, C 在 B 前, 所以 C 是 B 的左孩子;<br>左子树告一段落;<br>右子树判断开始:<br>先序遍历是先递归左子树 BC , 再递归右子树 DEF , 所以 D 是 A 的右孩子;<br>中序遍历是先递归左子树, 再打印根节点, 再递归右子树, D 在 EDF 的中间, 所以 E 为 D 的左孩子, F 为 D 的右孩子.<br>右子树告一段落.<br>现在可以得到: 根节点: A, 根节点左右孩子 BD , B 的左孩子 C , D 的左右孩子 EF.<br>后序遍历由此可知: CBEFDA . </p>
-</div></details>
-</li>
-<li><p>例 2 : 由中序, 后序推出先序遍历<br>已知二叉树的中序遍历是 ABCDEFG , 后序遍历是 BDCAFGE , 求先序遍历.</p>
-</li>
-</ul>
-<details ><summary>点击显/隐思路</summary><div class="fold-content"><p>后序遍历最后一个是根节点, 因此可知 E 为根节点.<br>中序遍历先递归左子树, 再打印根节点, 再递归右子树, 由此可知 ABCD 为左子树, FG 为右子树.<br>左子树判断开始:<br>在后序遍历中, 子树的根节点是在子树的最后一个, 因此 A 为 E 的左孩子<br>在中序遍历中, 遍历顺序为 (左根右) LDR (LeftDataRight) , 所以 BCD 全为 A 的右孩子.<br>在后序遍历中, 遍历顺序为LRD, 所以 BD 是 C 的左右孩子.<br>所以 D 很明显, 是 A 的右孩子.<br>左子树告一段落;<br>右子树判断开始:<br>在后序遍历中, 子树的根节点是在子树的最后一个, 因此 G 为 E 的右孩子.<br>在后序遍历中, 遍历顺序为 LRD, 所以 F 是 G 的孩子.<br>在中序遍历中, 遍历顺序为 LDR, 所以 F 是 G 的左孩子.<br>右子树告一段落.<br>现在可以得到: 根节点 E , E 的左右孩子 AG , A 的右孩子 D, D 的左右孩子 BC , G 的左孩子 F .<br>先序遍历由此可知: EACBDGF . </p>
-</div></details>
-
-<p>##哈夫曼树<br>例 3：现有节点a，b，c，d，e，f 6个字符，其权值分别为a（9），b（12），c（6），d（3），e（5），f（15），构建哈夫曼树。</p>
-<details ><summary>点击显/隐</summary><div class="fold-content"><p>注：左子树的值小于右子树。<br>进行排序，值中，最小的是d，e，因此d，e分别为左右子树，权值之和为de（8）<br>将 de 加入后排序，最小的是 c，de，因此 c，de分别为左右子树，权值之和为 cde（14）<br>将cde加入后排序，最小的是 a，b，因此 a，b 分别为左右子树，权值之和为ab（21）<br>将 ab加入后排序，最小的是 cde，f，因此 cde，f分别为左右子树，权值之和为 cdef（29）<br>只剩下ab，cdef，因此ab，cdef分别为左右子树，权值之和为 abcdef（50）。</p>
-</div></details>
-
-<p>例 4：得到上述哈夫曼树的编码。</p>
-<details ><summary>点击显/隐</summary><div class="fold-content"><p>从根节点出发，左子树边为0，右子树为1，进行编码。<br>a：00；b：01；c：100；d：1010；e：1011；f：11.</p>
-<p>可以得到1：权值越大，长度越短。<br>可以得到2：每一个结点都是叶子结点，因此保证了译码的唯一性。</p>
-</div></details>
-      
-    </div>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/posts/dsa01/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          第一章  线性表
-        
-      </div>
-    </a>
-  
-  
-    <a href="/posts/matlabyyp02/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">应用篇-第二章  图形对用户界面设计[未完成]</div>
-    </a>
-  
-</nav>
-
-  
-  <br>
-</article>
-
-
-
-
-</div>
-<div class="col-md-3 col-sm-3 blog-sidebar">
-  <!-- CATEGORIES START -->
-<h2 class="no-top-space">Categories</h2>
-
-<div class="widget-wrap">
-  <div class="widget">
-    <ul class="nav sidebar-categories margin-bottom-40">
-      
-	<li>
-	  <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备 (2)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Hadoop/">Hadoop (4)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing (4)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Applied-Statistics/">Applied Statistics (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区 (3)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Data-Mining/">Data-Mining (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/MATLAB/">MATLAB (5)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/java/">java (7)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Linux/">Linux (9)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm (5)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/Python/">Python (13)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/SqlServer/">SqlServer (17)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E8%80%83%E8%AF%95/">考试 (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析 (1)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/spark/">spark (7)</a>
-	</li>
-      
-	<li>
-	  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络 (1)</a>
-	</li>
-      
-    </ul>
-  </div>
-</div>
-
-
-<!-- CATEGORIES END -->
-
-<!-- BEGIN BLOG TAGS -->
-<div class="blog-tags margin-bottom-20">
-  <h2>Tags</h2>
-  
-
-</div>
-<!-- END BLOG TAGS -->
-
-
-<!-- BEGIN FEATURED POSTS -->                            
-<h2>Featured Posts</h2>
-<div class="recent-news margin-bottom-10">
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-</div>
-<!-- END FEATURED POSTS -->                            
-
-</div>
-</div>
-
-  </section>
-</div>
-
-    <!-- BEGIN PRE-FOOTER -->
-    <div class="pre-footer">
-      <div class="container">
-        <div class="row">
-          <!-- BEGIN BOTTOM ABOUT BLOCK -->
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2>About Us</h2>
-            <p>Computer Lab is a software development and marketing company based in Brooklyn, New York. <br><br> Computer Lab was founded in 2015, and is focused on so on and so forth.</p>
-          </div>
-          <!-- END BOTTOM ABOUT BLOCK -->
-
-          <!-- BEGIN BOTTOM CONTACTS -->
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2>Contact</h2>
-            <address class="margin-bottom-40">
-              140 Metropolitan Avenue<br>
-              5th Floor<br>
-              Brooklyn, NY 11249<br>
-              Phone: 716-472-4484<br>
-              Email: <a href="mailto:ptsteadman@gmail.com">ptsteadman@gmail.com</a><br>
-            </address>
-          </div>
-          <!-- END BOTTOM CONTACTS -->
-
-	
-          <!-- BEGIN TWITTER BLOCK --> 
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-
-	  <a data-tweet-limit="1" class="twitter-timeline" data-theme="dark"
-	  target="_blank" rel="noopener" href="https://twitter.com/computerlab_">Tweets by @computerlab_</a>
-
-	  <script>!function(d,s,id){var
-	  js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-          </div>
-          <!-- END TWITTER BLOCK -->
-	
-        </div>
-      </div>
-    </div>
-    <!-- END PRE-FOOTER -->
-
-    <!-- BEGIN FOOTER -->
-    <div class="footer">
-      <div class="container">
-        <div class="row">
-          <!-- BEGIN COPYRIGHT -->
-          <div class="col-md-6 col-sm-6 padding-top-10">
-                  &copy; 2023 锦鲤未离<br>
- <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
-          </div>
-          <!-- END COPYRIGHT -->
-	  <!-- BEGIN SOCIAL -->
-<div class="col-md-6 col-sm-6">
-  <ul class="social-footer list-unstyled list-inline pull-right">
-    
-      <li><a target="_blank" rel="noopener" href="https://github.com/ptsteadman"><i class="fa fa-github"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="https://twitter.com/ptsteadman"><i class="fa fa-twitter"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="https://www.facebook.com/ptsteadman"><i class="fa fa-facebook"></i></a></li>
-    
-      <li><a href="/atom.xml"><i class="fa fa-rss"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="https://linkedin.com/in/ptsteadman"><i class="fa fa-linkedin"></i></a></li>
-    
-      <li><a target="_blank" rel="noopener" href="http://stackoverflow.com/users/2480493/patrick-steadman"><i class="fa fa-stackoverflow"></i></a></li>
-    
-  </ul>  
-</div>
-<!-- END SOCIAL -->
-
-        </div>
-      </div>
-    </div>
-    <!-- END FOOTER -->
-
-  <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
-<!--[if lt IE 9]>
-
-<script src="/metronic/assets/plugins/respond.min.js"></script>
-
-<![endif]--> 
-
-<script src="/metronic/assets/plugins/jquery.min.js"></script>
-
-
-<script src="/metronic/assets/plugins/jquery-migrate.min.js"></script>
-
-
-<script src="/metronic/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-
-<script src="/metronic/assets/corporate/scripts/back-to-top.js"></script>
-
-
-<script src="/metronic/assets/plugins/owl.carousel/owl.carousel.min.js"></script>
-
-
-<script src="/metronic/assets/corporate/scripts/layout.js"></script>
-
-
-<script src="/js/wow.min.js"></script>
-
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        Layout.init();    
-        Layout.initOWL();
-        Layout.initTwitter();
-        Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
-        Layout.initNavScrolling(); 
-	new WOW().init();
-    });
-</script>
-<!-- END CORE PLUGINS -->
-
-<!-- BEGIN PAGE-SPECIFIC PLUGINS --> 
-
-
-
-
-
-
-
-<!-- END PAGE-SPECIFIC PLUGINS --> 
-
-<!-- BEGIN INTEGRATIONS -->
-
-
-
-
-
-<!-- END INTEGRATIONS -->
-
-</body>
-</html>
+extends base
+
+block head
+  if is_tag()
+    title 标签：#{page.tag} | #{config.title}
+  else if page.category
+    title 分类：#{page.category} | #{config.title}
+  else if page.year && page.month
+    title 归档：#{page.year} 年 #{page.month} 月 | #{config.title}
+  else if !page.posts
+    title #{page.title} | #{config.title}
+  else
+    title= config.title
+
+mixin article(post)
+  article
+    header
+      if page.posts
+        h2
+          a(href=url_for(post.path))= post.title
+      else
+        small.right
+          a(target='_blank', href=sourceOfPost(post, theme.source_url)) 查看源代码
+        h1= post.title
+
+    .article-meta.clearfix
+      time.left= post.date.format(config.date_format)
+
+      if post.categories
+        ul.tags.left
+          - post.categories.each(function(category) {
+            li
+              a(href=url_for(category.path))= category.name
+          - });
+
+      if post.tags
+        ul.tags.right
+          - post.tags.each(function(tag) {
+            li
+              a(href=url_for(tag.path))= tag.name
+          - });
+
+    .markdown-body!= post.content
+
+    if !page.posts && theme.duoshuo
+      .ds-thread(data-thread-key=commentKey(post), data-title=post.title, data-url=post.permalink)
+
+  if !page.posts && post.appends
+    for append in formatArray(post.appends)
+      .article-widget
+        +widget-inter(append)
+
+block body
+  for banner in formatArray(theme.banners)
+    .article-widget
+      +widget-inter(banner)
+
+  if is_tag()
+    .article-widget
+      strong 标签 ##{page.tag}
+
+  if page.category
+    .article-widget
+      strong 分类 ##{page.category}
+
+  if page.year && page.month
+    .article-widget
+      strong 归档 #{page.year} 年 #{page.month} 月
+
+  if page.posts
+    - page.posts.each(function(post) {
+      +article(post)
+    - });
+
+    .archive-pagination
+      .paginator!= fixPaginator(paginator({prev_text: '&laquo;', next_text: '&raquo;'}))
+
+  else
+    +article(page)
