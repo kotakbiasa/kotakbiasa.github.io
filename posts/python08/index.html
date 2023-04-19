@@ -1,57 +1,661 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>{{ head_title() }}</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="{{ head_keywords() }}">
-  <meta name="description" content="{{ head_description() }}">
-  {{ partial('partial/og') }}
-  <!-- Canonical links -->
-  <link rel="canonical" href="{{ url }}">
-  <!-- Alternative links -->
-  <!-- CSS and JS-->
-  {{ head_jscss({js: true})}}
-  <!-- RSS -->
-  {{ feed_tag('atom.xml') }}
-  <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon" />
-  <script>
-        lc.init({
-          appId : '{{theme.lc.app_id}}',
-          appKey : '{{theme.lc.app_key}}',
-          serverURL : '{{theme.lc.url}}'
-        }, {
-          xid : '{{page_uid()}}',
-          url : '{{page.path || page.permalink}}',
-          title : '{{page_title()}}'
-        }, {
-          counterTable: '',
-          commentTable: '',
-          donateTable: ''
-        });
-  </script>
+  
+  <title>第八章  计算生态 | 锦鲤未离</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <meta name="description" content="8.1计算生态近20年的开源运动产生了深植于各信息技术领域的大量可重用资源，直接且有力地支撑了信息技术超越其他技术领域的发展速度，形成了计算生态。产业界广泛利用可重用资源快速构建应用已经是主流的产品开发方式。Python 语言从诞生之初就致力于开源开放，建立健了全球最大的编程计算生态。Python官方网站提供了第三友库索引功能:http:&#x2F;&#x2F;pypi.python.org&#x2F;pypi该页面列出了Py">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第八章  计算生态">
+<meta property="og:url" content="http://example.com/posts/python08/index.html">
+<meta property="og:site_name" content="锦鲤未离">
+<meta property="og:description" content="8.1计算生态近20年的开源运动产生了深植于各信息技术领域的大量可重用资源，直接且有力地支撑了信息技术超越其他技术领域的发展速度，形成了计算生态。产业界广泛利用可重用资源快速构建应用已经是主流的产品开发方式。Python 语言从诞生之初就致力于开源开放，建立健了全球最大的编程计算生态。Python官方网站提供了第三友库索引功能:http:&#x2F;&#x2F;pypi.python.org&#x2F;pypi该页面列出了Py">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-27T00:24:29.043Z">
+<meta property="article:modified_time" content="2022-07-27T11:49:02.289Z">
+<meta property="article:author" content="Koi_NL">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <meta content="{{ title }}" name="description">
+  <meta content="{{ title }}" name="keywords">
+  <meta content="{{ title }}" name="author">
+
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+
+  <!-- Global styles START -->   
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/font-awesome/css/font-awesome.min.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/bootstrap/css/bootstrap.min.css">
+
+  <!-- Global styles END --> 
+   
+  <!-- Page level plugin styles START -->
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/animate.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/owl.carousel/assets/owl.carousel.css">
+
+  <!-- Page level plugin styles END -->
+
+  <!-- Theme styles START -->
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/components.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/slider.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/style.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/portfolio.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/style-responsive.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/themes/red.css">
+
+  
+<link rel="stylesheet" href="/css/theme-styles.css">
+
+  <!-- Theme styles END -->
 <meta name="generator" content="Hexo 6.1.0"></head>
-<body>
-  <!-- header -->
-  {{ partial('partial/header') }}
-  <!-- main -->
-  {{ body }}
-  <!-- footer -->
-  {{ partial('partial/footer') }}
-  <!-- fixed action bar -->
-  {{ partial('partial/fab') }}
-  <!-- after footer, some 3rd script place here -->
-    <script>
-    var hljs_labels = {
-        left: "{{__('hljs.left')}}",
-        right: "{{__('hljs.right')}}",
-        copy: "{{__('hljs.copy')}}"
-    }
-    </script>
-    {{ js('js/hljs.js') }}
-    {{ js('js/script.js')}}
-    {{ partial('partial/analytics') }}
-    {{ partial('partial/lc') }}
+
+<body class="corporate">
+  <!-- BEGIN TOP BAR -->
+<div class="pre-header">
+  <div class="container">
+    <div class="row">
+      <!-- BEGIN TOP BAR LEFT PART -->
+      <div class="col-md-6 col-sm-6 col-xs-9 additional-shop-info">
+	<ul class="list-unstyled list-inline">
+	  <li><i class="fa fa-phone"></i><span>716-472-4484</span></li>
+	  <li><i class="fa fa-envelope-o"></i><span>ptsteadman@gmail.com</span></li>
+	</ul>
+      </div>
+      <!-- END TOP BAR LEFT PART -->
+      <!-- BEGIN TOP BAR MENU -->
+      <div class="col-md-6 col-sm-6 col-xs-3 additional-nav">
+	<ul class="list-unstyled list-inline pull-right">
+	  <li><a href="/login">Log In</a></li>
+	</ul>
+      </div>
+      <!-- END TOP BAR MENU -->
+    </div>
+  </div>        
+</div>
+<!-- END TOP BAR -->
+<!-- BEGIN HEADER -->
+<div class="header">
+  <div class="container">
+    <!--<a class="site-logo" href="/" id="logo">锦鲤未离</a>-->
+
+    <a class="site-logo" href="/">
+      <img src="/metronic/assets/corporate/img/logos/logo-corp-red.png" alt="Metronic FrontEnd">
+    </a>
+
+    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+    <!-- BEGIN NAVIGATION -->
+    <div class="header-navigation pull-right font-transform-inherit">
+      <ul>
+	
+	<li class="">
+	  <a  href="/">Home</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/projects/">Projects</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/archives/">Blog</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/contact/">Contact</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/about/">About</a>
+	</li>
+	
+	<!-- BEGIN TOP SEARCH -->
+	<li class="menu-search">
+	  <span class="sep"></span>
+	  <i class="fa fa-search search-btn"></i>
+	  <div class="search-box">
+	    <form action="#">
+	      <div class="input-group">
+		<input type="text" placeholder="Search" class="form-control st-default-search-input">
+		<span class="input-group-btn">
+		  <button class="btn btn-primary" type="submit">Search</button>
+		</span>
+	      </div>
+	    </form>
+	  </div> 
+	</li>
+	<!-- END TOP SEARCH -->
+      </ul>
+    </div>
+    <!-- END NAVIGATION -->
+  </div>
+</div>
+<!-- Header END -->
+
+  <div class="container">
+  <ul class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/archives/">Blog</a></li>
+    <li class="active">Post</li>
+  </ul>
+  <section id="main">
+    
+    <h2 itemprop="name">
+      <a class="article-title" href="/posts/python08/">第八章  计算生态</a>
+    </h2>
+
+
+    <div class="row">
+<div class="col-md-9 col-sm-9 blog-posts">
+<article id="post-过去半年前的学习部分/2021-2022年课程/202203Python/Python08第九章  计算生态" class="article article-type-post blog-item" itemscope itemprop="blogPost">
+  <div class="article-meta">
+  </div>
+  <div class="article-inner">
+    
+    
+    <header class="article-header">
+      <ul class="blog-info">
+	<li><i class="fa fa-user"></i> Anonymous</li>
+	<li><i class="fa fa-calendar"></i>
+	  <time datetime="2022-07-27T00:24:29.043Z" itemprop="datePublished">2022/07/27</time>
+
+	</li>
+	<li class="hidden-xs"><i class="fa fa-comments"></i>
+	  <a href="http://example.com/posts/python08/#disqus_thread" class="article-comment-link">Comments</a>
+	</li>
+	<li class="hidden-xs"><i class="fa fa-tags"></i> 
+	  
+
+	</li>
+      </ul>
+      
+  <div class="article-category">
+    
+    Category: 
+    
+    Categories:
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+  <br>
+
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>8.1计算生态<br>近20年的开源运动产生了深植于各信息技术领域的大量可重用资源，直接且有力地支撑了信息技术超越其他技术领域的发展速度，形成了计算生态。产业界广泛利用可重用资源快速构建应用已经是主流的产品开发方式。Python 语言从诞生之初就致力于开源开放，建立健了全球最大的编程计算生态。<br>Python官方网站提供了第三友库索引功能:<a target="_blank" rel="noopener" href="http://pypi.python.org/pypi">http://pypi.python.org/pypi</a><br>该页面列出了Python语言十几万个第三方库的基本信息，这些函数库覆盖了信息领域所有技术方向。这里需要说明的是，Python语言的函数库并非都采用Python语言编写。由于Python有非常简单灵活的编程方式，很多采用c、C+t等语言编写的专业库可以经过简单的接口封装供Python 语言程序调用。这样的黏性功能使得 Python语言成了各类编程语言之间的接口，Python语言也被称为什“胶水语言”。<br>正是因为什 Python语言有了胶水的黏性，围绕它迅速形成了全球最大的编程语言开放社区，建立了十几万个第三方库的庞大规模经，构建了计算生态。<br>30年前，计算机领域还处于刀耕火种年代，编写程序仅能调用官方提供的API功能。20 年前，随着开源运动的兴起和蓬勃发展，一批开源项目诞生，降低了专业人士编写程序的难度，实现了专业级别的代码复用。10 年前，开源运动深入展，专业人士开始大量贡献各领域最优秀的研究和开发成果，并通过开源库形式发布出来。那今天呢?编程领域形成了庞大的计算生态，需要一种编程语言或方式能够将不同语言、不同特点、不同使用方式的代码统一起来。历史选择了Python语言，Python语言也证明了它的价值。<br>Python第三方程序包括(库)、模块和程序包等多种命名，这些概念之间略有区别,<br>在本教程中我们统一将这些可重用的代码统称为“库”。<br>8.1.1Python标准库<br>有一部分Python计算生态随Python安装包一起发布,用户可以随时使用,被称为Pytrion标准库。受限于Python安装包的设定大小，标准库数量不会很多，270个左右。Python的标准库一般会安装在Lib目录下<br>C:\Users\Administrator\AppData\Local\Programs\Python\Python35<br>部分Python标准库由PSF (Python 软件基金会）运行维护，但大部分Python标准库仍然由最初的开发者维护。<br>8.1.2Python第三方库<br>更广泛的Python计算生态采用额外安装方式服务用户，被称为Python第三方库。这些第三方库由全球各行业专家、工程师和爱好者开发，没有顶层设计，由开发者采用“尽力而为”的方式维护。Python通过新一代安装工具 pip管理大部分Python第三方库的安装。</p>
+
+      
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/posts/python07/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第七章  文件和数据格式化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/python09/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第九章  标准库概览</div>
+    </a>
+  
+</nav>
+
+  
+  <br>
+</article>
+
+
+
+
+</div>
+<div class="col-md-3 col-sm-3 blog-sidebar">
+  <!-- CATEGORIES START -->
+<h2 class="no-top-space">Categories</h2>
+
+<div class="widget-wrap">
+  <div class="widget">
+    <ul class="nav sidebar-categories margin-bottom-40">
+      
+	<li>
+	  <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备 (2)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Hadoop/">Hadoop (4)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing (4)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Applied-Statistics/">Applied Statistics (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区 (3)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Data-Mining/">Data-Mining (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/MATLAB/">MATLAB (5)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/java/">java (7)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Linux/">Linux (9)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm (5)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Python/">Python (13)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/SqlServer/">SqlServer (17)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E8%80%83%E8%AF%95/">考试 (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析 (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/spark/">spark (7)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络 (1)</a>
+	</li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<!-- CATEGORIES END -->
+
+<!-- BEGIN BLOG TAGS -->
+<div class="blog-tags margin-bottom-20">
+  <h2>Tags</h2>
+  
+
+</div>
+<!-- END BLOG TAGS -->
+
+
+<!-- BEGIN FEATURED POSTS -->                            
+<h2>Featured Posts</h2>
+<div class="recent-news margin-bottom-10">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</div>
+<!-- END FEATURED POSTS -->                            
+
+</div>
+</div>
+
+  </section>
+</div>
+
+    <!-- BEGIN PRE-FOOTER -->
+    <div class="pre-footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN BOTTOM ABOUT BLOCK -->
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+            <h2>About Us</h2>
+            <p>Computer Lab is a software development and marketing company based in Brooklyn, New York. <br><br> Computer Lab was founded in 2015, and is focused on so on and so forth.</p>
+          </div>
+          <!-- END BOTTOM ABOUT BLOCK -->
+
+          <!-- BEGIN BOTTOM CONTACTS -->
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+            <h2>Contact</h2>
+            <address class="margin-bottom-40">
+              140 Metropolitan Avenue<br>
+              5th Floor<br>
+              Brooklyn, NY 11249<br>
+              Phone: 716-472-4484<br>
+              Email: <a href="mailto:ptsteadman@gmail.com">ptsteadman@gmail.com</a><br>
+            </address>
+          </div>
+          <!-- END BOTTOM CONTACTS -->
+
+	
+          <!-- BEGIN TWITTER BLOCK --> 
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+
+	  <a data-tweet-limit="1" class="twitter-timeline" data-theme="dark"
+	  target="_blank" rel="noopener" href="https://twitter.com/computerlab_">Tweets by @computerlab_</a>
+
+	  <script>!function(d,s,id){var
+	  js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+          </div>
+          <!-- END TWITTER BLOCK -->
+	
+        </div>
+      </div>
+    </div>
+    <!-- END PRE-FOOTER -->
+
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN COPYRIGHT -->
+          <div class="col-md-6 col-sm-6 padding-top-10">
+                  &copy; 2023 锦鲤未离<br>
+ <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
+          </div>
+          <!-- END COPYRIGHT -->
+	  <!-- BEGIN SOCIAL -->
+<div class="col-md-6 col-sm-6">
+  <ul class="social-footer list-unstyled list-inline pull-right">
+    
+      <li><a target="_blank" rel="noopener" href="https://github.com/ptsteadman"><i class="fa fa-github"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://twitter.com/ptsteadman"><i class="fa fa-twitter"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://www.facebook.com/ptsteadman"><i class="fa fa-facebook"></i></a></li>
+    
+      <li><a href="/atom.xml"><i class="fa fa-rss"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://linkedin.com/in/ptsteadman"><i class="fa fa-linkedin"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="http://stackoverflow.com/users/2480493/patrick-steadman"><i class="fa fa-stackoverflow"></i></a></li>
+    
+  </ul>  
+</div>
+<!-- END SOCIAL -->
+
+        </div>
+      </div>
+    </div>
+    <!-- END FOOTER -->
+
+  <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+<!--[if lt IE 9]>
+
+<script src="/metronic/assets/plugins/respond.min.js"></script>
+
+<![endif]--> 
+
+<script src="/metronic/assets/plugins/jquery.min.js"></script>
+
+
+<script src="/metronic/assets/plugins/jquery-migrate.min.js"></script>
+
+
+<script src="/metronic/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+<script src="/metronic/assets/corporate/scripts/back-to-top.js"></script>
+
+
+<script src="/metronic/assets/plugins/owl.carousel/owl.carousel.min.js"></script>
+
+
+<script src="/metronic/assets/corporate/scripts/layout.js"></script>
+
+
+<script src="/js/wow.min.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        Layout.init();    
+        Layout.initOWL();
+        Layout.initTwitter();
+        Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
+        Layout.initNavScrolling(); 
+	new WOW().init();
+    });
+</script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE-SPECIFIC PLUGINS --> 
+
+
+
+
+
+
+
+<!-- END PAGE-SPECIFIC PLUGINS --> 
+
+<!-- BEGIN INTEGRATIONS -->
+
+
+
+
+
+<!-- END INTEGRATIONS -->
+
 </body>
 </html>

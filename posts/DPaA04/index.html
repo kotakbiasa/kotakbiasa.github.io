@@ -1,57 +1,682 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>{{ head_title() }}</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="{{ head_keywords() }}">
-  <meta name="description" content="{{ head_description() }}">
-  {{ partial('partial/og') }}
-  <!-- Canonical links -->
-  <link rel="canonical" href="{{ url }}">
-  <!-- Alternative links -->
-  <!-- CSS and JS-->
-  {{ head_jscss({js: true})}}
-  <!-- RSS -->
-  {{ feed_tag('atom.xml') }}
-  <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon" />
-  <script>
-        lc.init({
-          appId : '{{theme.lc.app_id}}',
-          appKey : '{{theme.lc.app_key}}',
-          serverURL : '{{theme.lc.url}}'
-        }, {
-          xid : '{{page_uid()}}',
-          url : '{{page.path || page.permalink}}',
-          title : '{{page_title()}}'
-        }, {
-          counterTable: '',
-          commentTable: '',
-          donateTable: ''
-        });
-  </script>
+  
+  <title>第四章  数据预处理 | 锦鲤未离</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <meta name="description" content="数据清洗与准备正则表达式数据规整为什么要有数据预处理技术？在数据挖掘的时候，现实世界的不完整，不一致的“脏”数据会致使无法直接进行数据挖掘。因此有了数据预处理技术在数据挖掘之前使用，会大大提高数据挖掘的质量，减少实际进行数据挖掘所需要的时间。数据预处理有很多种方法：数据清理，数据集成，数据变换，数据规约等。 一、数据清洗与准备需要被清洗的数据一般有以下三种类型：重复数据、异常数据（如 “age&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第四章  数据预处理">
+<meta property="og:url" content="http://example.com/posts/DPaA04/index.html">
+<meta property="og:site_name" content="锦鲤未离">
+<meta property="og:description" content="数据清洗与准备正则表达式数据规整为什么要有数据预处理技术？在数据挖掘的时候，现实世界的不完整，不一致的“脏”数据会致使无法直接进行数据挖掘。因此有了数据预处理技术在数据挖掘之前使用，会大大提高数据挖掘的质量，减少实际进行数据挖掘所需要的时间。数据预处理有很多种方法：数据清理，数据集成，数据变换，数据规约等。 一、数据清洗与准备需要被清洗的数据一般有以下三种类型：重复数据、异常数据（如 “age&amp;#">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-07T04:07:05.447Z">
+<meta property="article:modified_time" content="2022-09-14T22:59:35.529Z">
+<meta property="article:author" content="Koi_NL">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <meta content="{{ title }}" name="description">
+  <meta content="{{ title }}" name="keywords">
+  <meta content="{{ title }}" name="author">
+
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+
+  <!-- Global styles START -->   
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/font-awesome/css/font-awesome.min.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/bootstrap/css/bootstrap.min.css">
+
+  <!-- Global styles END --> 
+   
+  <!-- Page level plugin styles START -->
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/animate.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/owl.carousel/assets/owl.carousel.css">
+
+  <!-- Page level plugin styles END -->
+
+  <!-- Theme styles START -->
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/components.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/slider.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/style.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/portfolio.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/style-responsive.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/themes/red.css">
+
+  
+<link rel="stylesheet" href="/css/theme-styles.css">
+
+  <!-- Theme styles END -->
 <meta name="generator" content="Hexo 6.1.0"></head>
-<body>
-  <!-- header -->
-  {{ partial('partial/header') }}
-  <!-- main -->
-  {{ body }}
-  <!-- footer -->
-  {{ partial('partial/footer') }}
-  <!-- fixed action bar -->
-  {{ partial('partial/fab') }}
-  <!-- after footer, some 3rd script place here -->
-    <script>
-    var hljs_labels = {
-        left: "{{__('hljs.left')}}",
-        right: "{{__('hljs.right')}}",
-        copy: "{{__('hljs.copy')}}"
-    }
-    </script>
-    {{ js('js/hljs.js') }}
-    {{ js('js/script.js')}}
-    {{ partial('partial/analytics') }}
-    {{ partial('partial/lc') }}
+
+<body class="corporate">
+  <!-- BEGIN TOP BAR -->
+<div class="pre-header">
+  <div class="container">
+    <div class="row">
+      <!-- BEGIN TOP BAR LEFT PART -->
+      <div class="col-md-6 col-sm-6 col-xs-9 additional-shop-info">
+	<ul class="list-unstyled list-inline">
+	  <li><i class="fa fa-phone"></i><span>716-472-4484</span></li>
+	  <li><i class="fa fa-envelope-o"></i><span>ptsteadman@gmail.com</span></li>
+	</ul>
+      </div>
+      <!-- END TOP BAR LEFT PART -->
+      <!-- BEGIN TOP BAR MENU -->
+      <div class="col-md-6 col-sm-6 col-xs-3 additional-nav">
+	<ul class="list-unstyled list-inline pull-right">
+	  <li><a href="/login">Log In</a></li>
+	</ul>
+      </div>
+      <!-- END TOP BAR MENU -->
+    </div>
+  </div>        
+</div>
+<!-- END TOP BAR -->
+<!-- BEGIN HEADER -->
+<div class="header">
+  <div class="container">
+    <!--<a class="site-logo" href="/" id="logo">锦鲤未离</a>-->
+
+    <a class="site-logo" href="/">
+      <img src="/metronic/assets/corporate/img/logos/logo-corp-red.png" alt="Metronic FrontEnd">
+    </a>
+
+    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+    <!-- BEGIN NAVIGATION -->
+    <div class="header-navigation pull-right font-transform-inherit">
+      <ul>
+	
+	<li class="">
+	  <a  href="/">Home</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/projects/">Projects</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/archives/">Blog</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/contact/">Contact</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/about/">About</a>
+	</li>
+	
+	<!-- BEGIN TOP SEARCH -->
+	<li class="menu-search">
+	  <span class="sep"></span>
+	  <i class="fa fa-search search-btn"></i>
+	  <div class="search-box">
+	    <form action="#">
+	      <div class="input-group">
+		<input type="text" placeholder="Search" class="form-control st-default-search-input">
+		<span class="input-group-btn">
+		  <button class="btn btn-primary" type="submit">Search</button>
+		</span>
+	      </div>
+	    </form>
+	  </div> 
+	</li>
+	<!-- END TOP SEARCH -->
+      </ul>
+    </div>
+    <!-- END NAVIGATION -->
+  </div>
+</div>
+<!-- Header END -->
+
+  <div class="container">
+  <ul class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/archives/">Blog</a></li>
+    <li class="active">Post</li>
+  </ul>
+  <section id="main">
+    
+    <h2 itemprop="name">
+      <a class="article-title" href="/posts/DPaA04/">第四章  数据预处理</a>
+    </h2>
+
+
+    <div class="row">
+<div class="col-md-9 col-sm-9 blog-posts">
+<article id="post-过去半年前的学习部分/2021-2022年课程/202209Python数据处理与分析/4第四章  数据预处理" class="article article-type-post blog-item" itemscope itemprop="blogPost">
+  <div class="article-meta">
+  </div>
+  <div class="article-inner">
+    
+    
+    <header class="article-header">
+      <ul class="blog-info">
+	<li><i class="fa fa-user"></i> Anonymous</li>
+	<li><i class="fa fa-calendar"></i>
+	  <time datetime="2022-09-07T04:07:05.447Z" itemprop="datePublished">2022/09/07</time>
+
+	</li>
+	<li class="hidden-xs"><i class="fa fa-comments"></i>
+	  <a href="http://example.com/posts/DPaA04/#disqus_thread" class="article-comment-link">Comments</a>
+	</li>
+	<li class="hidden-xs"><i class="fa fa-tags"></i> 
+	  
+
+	</li>
+      </ul>
+      
+  <div class="article-category">
+    
+    Category: 
+    
+    Categories:
+    <a class="article-category-link" href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing</a>
+  </div>
+  <br>
+
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据清洗与准备"><a href="#数据清洗与准备" class="headerlink" title="数据清洗与准备"></a>数据清洗与准备</h2><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h2 id="数据规整"><a href="#数据规整" class="headerlink" title="数据规整"></a>数据规整</h2><p>为什么要有数据预处理技术？在数据挖掘的时候，现实世界的不完整，不一致的“脏”数据会致使无法直接进行数据挖掘。因此有了数据预处理技术在数据挖掘之前使用，会大大提高数据挖掘的质量，减少实际进行数据挖掘所需要的时间。<br>数据预处理有很多种方法：数据清理，数据集成，数据变换，数据规约等。</p>
+<h2 id="一、数据清洗与准备"><a href="#一、数据清洗与准备" class="headerlink" title="一、数据清洗与准备"></a>一、数据清洗与准备</h2><p>需要被清洗的数据一般有以下三种类型：重复数据、异常数据（如 “age&#x3D;’-10’”）、缺失数据（如缺少属性值）。下面逐一介绍：</p>
+<h3 id="1-数据清洗准备"><a href="#1-数据清洗准备" class="headerlink" title="1.数据清洗准备"></a>1.数据清洗准备</h3><h4 id="1-重复数据的预处理"><a href="#1-重复数据的预处理" class="headerlink" title="1)重复数据的预处理"></a>1)重复数据的预处理</h4><p>重复数据过多，会导致结果具有错误的倾向性</p>
+<h4 id="2-异常数据的预处理"><a href="#2-异常数据的预处理" class="headerlink" title="2)异常数据的预处理"></a>2)异常数据的预处理</h4><p>也被称为噪声数据。<br>例如，一个人的身高为100米，这是一个错误数据，因此需要被剔除掉。常用的检测方法有：箱线图，简单统计量、3？原则；常用的处理方法有删除法、插补法、替换法。</p>
+<h4 id="3-缺失数据的预处理"><a href="#3-缺失数据的预处理" class="headerlink" title="3)缺失数据的预处理"></a>3)缺失数据的预处理</h4><p>如信息统计中年龄和性别丢失的情况，数据缺失的预处理方法主要有四种：均值补差、同类均值补差、极大似然估计、多重补差。</p>
+<h3 id="2-数据清洗"><a href="#2-数据清洗" class="headerlink" title="2.数据清洗"></a>2.数据清洗</h3><h4 id="1-重复数据"><a href="#1-重复数据" class="headerlink" title="1) 重复数据"></a>1) 重复数据</h4><p>获取唯一值的方法是采用 unique() 函数，用于 Series 对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; ser=Series([1,2,3,4,5,4,4,4,4,2,2])</span><br><span class="line">&gt;&gt;&gt; ser.unique()</span><br><span class="line">array([1, 2, 3, 4, 5], dtype=int64)</span><br></pre></td></tr></table></figure>
+<p>获取唯一值的方法是采用 drop_duplicates() 函数，用于 DataFrame 对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; dfr=DataFrame(&#123;&#x27;a&#x27;:[1,2,1],&#x27;b&#x27;:[1,4,1],&#x27;c&#x27;:[1,2,1]&#125;)</span><br><span class="line">&gt;&gt;&gt; dfr</span><br><span class="line">   a  b  c</span><br><span class="line">0  1  1  1</span><br><span class="line">1  2  4  2</span><br><span class="line">2  1  1  1</span><br><span class="line">&gt;&gt;&gt; dfr.drop_duplicates()</span><br><span class="line">   a  b  c</span><br><span class="line">0  1  1  1</span><br><span class="line">1  2  4  2</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-缺失数据"><a href="#2-缺失数据" class="headerlink" title="2) 缺失数据"></a>2) 缺失数据</h4><p>数据删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">删除表中含有空格的行：</span><br><span class="line">df.dropna(how=&#x27;any&#x27;)</span><br></pre></td></tr></table></figure>
+<p>数据填补</p>
+<ul>
+<li>替换缺失值。对于数值型的数据，可以使用平均数或者中位数等方法补足<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[&#x27;price&#x27;].fillna(df[&#x27;price&#x27;].mean()</span><br><span class="line">df[&#x27;price&#x27;].fillna(df[&#x27;price&#x27;].median()</span><br></pre></td></tr></table></figure></li>
+<li>拟合缺失值。如果是数值变量，采用回归模型；如果是分类变量，采用分类模型</li>
+<li>不处理。如果拥有较高的容忍度或者更灵活的处理方法，就可以在预处理阶段不做处理</li>
+</ul>
+<h4 id="3-异常数据"><a href="#3-异常数据" class="headerlink" title="3) 异常数据"></a>3) 异常数据</h4><p>1） 异常点检测</p>
+<p>箱线图、正太分布图、模型法<br>2）异常点处理①不处理<br>②填充<br>③删除<br>④编码</p>
+<h2 id="二、正则表达式"><a href="#二、正则表达式" class="headerlink" title="二、正则表达式"></a>二、正则表达式</h2><p>快速匹配，不过…也太多了点，跳过跳过后来补</p>
+<h2 id="三、数据规整"><a href="#三、数据规整" class="headerlink" title="三、数据规整"></a>三、数据规整</h2><p>进行了数据清洗准备后，需要对数据进行规整处理</p>
+<h3 id="1-聚合、分组、数据透视"><a href="#1-聚合、分组、数据透视" class="headerlink" title="1.聚合、分组、数据透视"></a>1.聚合、分组、数据透视</h3><h4 id="1-分组与聚合"><a href="#1-分组与聚合" class="headerlink" title="1) 分组与聚合"></a>1) 分组与聚合</h4>
+      
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/posts/hadoop01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第一章  分布式文件系统（HDFS）概述
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/DPaA03/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第三章  数据可视化（Matplotlib）</div>
+    </a>
+  
+</nav>
+
+  
+  <br>
+</article>
+
+
+
+
+</div>
+<div class="col-md-3 col-sm-3 blog-sidebar">
+  <!-- CATEGORIES START -->
+<h2 class="no-top-space">Categories</h2>
+
+<div class="widget-wrap">
+  <div class="widget">
+    <ul class="nav sidebar-categories margin-bottom-40">
+      
+	<li>
+	  <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备 (2)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Hadoop/">Hadoop (4)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing (4)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Applied-Statistics/">Applied Statistics (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区 (3)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Data-Mining/">Data-Mining (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/MATLAB/">MATLAB (5)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/java/">java (7)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Linux/">Linux (9)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm (5)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Python/">Python (13)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/SqlServer/">SqlServer (17)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E8%80%83%E8%AF%95/">考试 (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析 (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/spark/">spark (7)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络 (1)</a>
+	</li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<!-- CATEGORIES END -->
+
+<!-- BEGIN BLOG TAGS -->
+<div class="blog-tags margin-bottom-20">
+  <h2>Tags</h2>
+  
+
+</div>
+<!-- END BLOG TAGS -->
+
+
+<!-- BEGIN FEATURED POSTS -->                            
+<h2>Featured Posts</h2>
+<div class="recent-news margin-bottom-10">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</div>
+<!-- END FEATURED POSTS -->                            
+
+</div>
+</div>
+
+  </section>
+</div>
+
+    <!-- BEGIN PRE-FOOTER -->
+    <div class="pre-footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN BOTTOM ABOUT BLOCK -->
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+            <h2>About Us</h2>
+            <p>Computer Lab is a software development and marketing company based in Brooklyn, New York. <br><br> Computer Lab was founded in 2015, and is focused on so on and so forth.</p>
+          </div>
+          <!-- END BOTTOM ABOUT BLOCK -->
+
+          <!-- BEGIN BOTTOM CONTACTS -->
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+            <h2>Contact</h2>
+            <address class="margin-bottom-40">
+              140 Metropolitan Avenue<br>
+              5th Floor<br>
+              Brooklyn, NY 11249<br>
+              Phone: 716-472-4484<br>
+              Email: <a href="mailto:ptsteadman@gmail.com">ptsteadman@gmail.com</a><br>
+            </address>
+          </div>
+          <!-- END BOTTOM CONTACTS -->
+
+	
+          <!-- BEGIN TWITTER BLOCK --> 
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+
+	  <a data-tweet-limit="1" class="twitter-timeline" data-theme="dark"
+	  target="_blank" rel="noopener" href="https://twitter.com/computerlab_">Tweets by @computerlab_</a>
+
+	  <script>!function(d,s,id){var
+	  js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+          </div>
+          <!-- END TWITTER BLOCK -->
+	
+        </div>
+      </div>
+    </div>
+    <!-- END PRE-FOOTER -->
+
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN COPYRIGHT -->
+          <div class="col-md-6 col-sm-6 padding-top-10">
+                  &copy; 2023 锦鲤未离<br>
+ <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
+          </div>
+          <!-- END COPYRIGHT -->
+	  <!-- BEGIN SOCIAL -->
+<div class="col-md-6 col-sm-6">
+  <ul class="social-footer list-unstyled list-inline pull-right">
+    
+      <li><a target="_blank" rel="noopener" href="https://github.com/ptsteadman"><i class="fa fa-github"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://twitter.com/ptsteadman"><i class="fa fa-twitter"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://www.facebook.com/ptsteadman"><i class="fa fa-facebook"></i></a></li>
+    
+      <li><a href="/atom.xml"><i class="fa fa-rss"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://linkedin.com/in/ptsteadman"><i class="fa fa-linkedin"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="http://stackoverflow.com/users/2480493/patrick-steadman"><i class="fa fa-stackoverflow"></i></a></li>
+    
+  </ul>  
+</div>
+<!-- END SOCIAL -->
+
+        </div>
+      </div>
+    </div>
+    <!-- END FOOTER -->
+
+  <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+<!--[if lt IE 9]>
+
+<script src="/metronic/assets/plugins/respond.min.js"></script>
+
+<![endif]--> 
+
+<script src="/metronic/assets/plugins/jquery.min.js"></script>
+
+
+<script src="/metronic/assets/plugins/jquery-migrate.min.js"></script>
+
+
+<script src="/metronic/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+<script src="/metronic/assets/corporate/scripts/back-to-top.js"></script>
+
+
+<script src="/metronic/assets/plugins/owl.carousel/owl.carousel.min.js"></script>
+
+
+<script src="/metronic/assets/corporate/scripts/layout.js"></script>
+
+
+<script src="/js/wow.min.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        Layout.init();    
+        Layout.initOWL();
+        Layout.initTwitter();
+        Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
+        Layout.initNavScrolling(); 
+	new WOW().init();
+    });
+</script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE-SPECIFIC PLUGINS --> 
+
+
+
+
+
+
+
+<!-- END PAGE-SPECIFIC PLUGINS --> 
+
+<!-- BEGIN INTEGRATIONS -->
+
+
+
+
+
+<!-- END INTEGRATIONS -->
+
 </body>
 </html>

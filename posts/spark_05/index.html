@@ -1,57 +1,656 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>{{ head_title() }}</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="{{ head_keywords() }}">
-  <meta name="description" content="{{ head_description() }}">
-  {{ partial('partial/og') }}
-  <!-- Canonical links -->
-  <link rel="canonical" href="{{ url }}">
-  <!-- Alternative links -->
-  <!-- CSS and JS-->
-  {{ head_jscss({js: true})}}
-  <!-- RSS -->
-  {{ feed_tag('atom.xml') }}
-  <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon" />
-  <script>
-        lc.init({
-          appId : '{{theme.lc.app_id}}',
-          appKey : '{{theme.lc.app_key}}',
-          serverURL : '{{theme.lc.url}}'
-        }, {
-          xid : '{{page_uid()}}',
-          url : '{{page.path || page.permalink}}',
-          title : '{{page_title()}}'
-        }, {
-          counterTable: '',
-          commentTable: '',
-          donateTable: ''
-        });
-  </script>
+  
+  <title>第5章  HBase 分布式数据库 | 锦鲤未离</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <meta name="description" content="Spark计算框架如何在分布式环境下对数据处理后的结构进行随机地、实时地存储？HBase前来解决这个问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第5章  HBase 分布式数据库">
+<meta property="og:url" content="http://example.com/posts/spark_05/index.html">
+<meta property="og:site_name" content="锦鲤未离">
+<meta property="og:description" content="Spark计算框架如何在分布式环境下对数据处理后的结构进行随机地、实时地存储？HBase前来解决这个问题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-31T09:00:05.856Z">
+<meta property="article:modified_time" content="2023-04-01T03:14:15.191Z">
+<meta property="article:author" content="Koi_NL">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <meta content="{{ title }}" name="description">
+  <meta content="{{ title }}" name="keywords">
+  <meta content="{{ title }}" name="author">
+
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+
+  <!-- Global styles START -->   
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/font-awesome/css/font-awesome.min.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/bootstrap/css/bootstrap.min.css">
+
+  <!-- Global styles END --> 
+   
+  <!-- Page level plugin styles START -->
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/animate.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/owl.carousel/assets/owl.carousel.css">
+
+  <!-- Page level plugin styles END -->
+
+  <!-- Theme styles START -->
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/components.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/slider.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/style.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/portfolio.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/style-responsive.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/themes/red.css">
+
+  
+<link rel="stylesheet" href="/css/theme-styles.css">
+
+  <!-- Theme styles END -->
 <meta name="generator" content="Hexo 6.1.0"></head>
-<body>
-  <!-- header -->
-  {{ partial('partial/header') }}
-  <!-- main -->
-  {{ body }}
-  <!-- footer -->
-  {{ partial('partial/footer') }}
-  <!-- fixed action bar -->
-  {{ partial('partial/fab') }}
-  <!-- after footer, some 3rd script place here -->
-    <script>
-    var hljs_labels = {
-        left: "{{__('hljs.left')}}",
-        right: "{{__('hljs.right')}}",
-        copy: "{{__('hljs.copy')}}"
-    }
-    </script>
-    {{ js('js/hljs.js') }}
-    {{ js('js/script.js')}}
-    {{ partial('partial/analytics') }}
-    {{ partial('partial/lc') }}
+
+<body class="corporate">
+  <!-- BEGIN TOP BAR -->
+<div class="pre-header">
+  <div class="container">
+    <div class="row">
+      <!-- BEGIN TOP BAR LEFT PART -->
+      <div class="col-md-6 col-sm-6 col-xs-9 additional-shop-info">
+	<ul class="list-unstyled list-inline">
+	  <li><i class="fa fa-phone"></i><span>716-472-4484</span></li>
+	  <li><i class="fa fa-envelope-o"></i><span>ptsteadman@gmail.com</span></li>
+	</ul>
+      </div>
+      <!-- END TOP BAR LEFT PART -->
+      <!-- BEGIN TOP BAR MENU -->
+      <div class="col-md-6 col-sm-6 col-xs-3 additional-nav">
+	<ul class="list-unstyled list-inline pull-right">
+	  <li><a href="/login">Log In</a></li>
+	</ul>
+      </div>
+      <!-- END TOP BAR MENU -->
+    </div>
+  </div>        
+</div>
+<!-- END TOP BAR -->
+<!-- BEGIN HEADER -->
+<div class="header">
+  <div class="container">
+    <!--<a class="site-logo" href="/" id="logo">锦鲤未离</a>-->
+
+    <a class="site-logo" href="/">
+      <img src="/metronic/assets/corporate/img/logos/logo-corp-red.png" alt="Metronic FrontEnd">
+    </a>
+
+    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+    <!-- BEGIN NAVIGATION -->
+    <div class="header-navigation pull-right font-transform-inherit">
+      <ul>
+	
+	<li class="">
+	  <a  href="/">Home</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/projects/">Projects</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/archives/">Blog</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/contact/">Contact</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/about/">About</a>
+	</li>
+	
+	<!-- BEGIN TOP SEARCH -->
+	<li class="menu-search">
+	  <span class="sep"></span>
+	  <i class="fa fa-search search-btn"></i>
+	  <div class="search-box">
+	    <form action="#">
+	      <div class="input-group">
+		<input type="text" placeholder="Search" class="form-control st-default-search-input">
+		<span class="input-group-btn">
+		  <button class="btn btn-primary" type="submit">Search</button>
+		</span>
+	      </div>
+	    </form>
+	  </div> 
+	</li>
+	<!-- END TOP SEARCH -->
+      </ul>
+    </div>
+    <!-- END NAVIGATION -->
+  </div>
+</div>
+<!-- Header END -->
+
+  <div class="container">
+  <ul class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/archives/">Blog</a></li>
+    <li class="active">Post</li>
+  </ul>
+  <section id="main">
+    
+    <h2 itemprop="name">
+      <a class="article-title" href="/posts/spark_05/">第5章  HBase 分布式数据库</a>
+    </h2>
+
+
+    <div class="row">
+<div class="col-md-9 col-sm-9 blog-posts">
+<article id="post-Spark/第5章  HBase 分布式数据库" class="article article-type-post blog-item" itemscope itemprop="blogPost">
+  <div class="article-meta">
+  </div>
+  <div class="article-inner">
+    
+    
+    <header class="article-header">
+      <ul class="blog-info">
+	<li><i class="fa fa-user"></i> Anonymous</li>
+	<li><i class="fa fa-calendar"></i>
+	  <time datetime="2023-03-31T09:00:05.856Z" itemprop="datePublished">2023/03/31</time>
+
+	</li>
+	<li class="hidden-xs"><i class="fa fa-comments"></i>
+	  <a href="http://example.com/posts/spark_05/#disqus_thread" class="article-comment-link">Comments</a>
+	</li>
+	<li class="hidden-xs"><i class="fa fa-tags"></i> 
+	  
+
+	</li>
+      </ul>
+      
+  <div class="article-category">
+    
+    Category: 
+    
+    Categories:
+    <a class="article-category-link" href="/categories/spark/">spark</a>
+  </div>
+  <br>
+
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Spark计算框架如何在分布式环境下对数据处理后的结构进行随机地、实时地存储？HBase前来解决这个问题。</p>
+<span id="more"></span>
+<p>HBase一般使用<strong>Shell命令行</strong>或者**Java API **方式进行操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop01 conf]# hbase shell</span><br><span class="line">2023-03-31 20:06:06,069 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable</span><br><span class="line">HBase Shell</span><br><span class="line">Use &quot;help&quot; to get list of supported commands.</span><br><span class="line">Use &quot;exit&quot; to quit this interactive shell.</span><br><span class="line">Version 2.0.2, r1cfab033e779df840d5612a85277f42a6a4e8172, Tue Aug 28 20:50:40 PDT 2018</span><br><span class="line">Took 0.0022 seconds                                                    </span><br><span class="line">hbase(main):001:0&gt; create &#x27;student&#x27;,&#x27;info&#x27;.&#x27;score&#x27;</span><br><span class="line">SyntaxError: (hbase):1: syntax error, unexpected tSTRING_BEG</span><br><span class="line">create &#x27;student&#x27;,&#x27;info&#x27;.&#x27;score&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">hbase(main):002:0&gt; create &#x27;student&#x27;,&#x27;info&#x27;,&#x27;score&#x27;</span><br><span class="line">Created table student</span><br><span class="line">Took 2.2020 seconds                                                    </span><br><span class="line">=&gt; Hbase::Table - student</span><br><span class="line">hbase(main):003:0&gt; list</span><br><span class="line">TABLE                                                                  </span><br><span class="line">student                                                                </span><br><span class="line">1 row(s)</span><br><span class="line">Took 0.0968 seconds                                                    </span><br><span class="line">=&gt; [&quot;student&quot;]</span><br><span class="line">hbase(main):004:0&gt; put &#x27;student&#x27;,&#x27;1001&#x27;,&#x27;info:name&#x27;,&#x27;Graay&#x27;</span><br><span class="line">Took 0.6300 seconds     </span><br><span class="line">hbase(main):006:0&gt; put &#x27;student&#x27;,&#x27;1001&#x27;,&#x27;info:age&#x27;,&#x27;18&#x27;</span><br><span class="line">Took 0.0259 seconds                                                    </span><br><span class="line">hbase(main):007:0&gt; scan &#x27;student&#x27;</span><br><span class="line">ROW                COLUMN+CELL                                         </span><br><span class="line"> 1001              column=info:age, timestamp=1680318580788, value=18  </span><br><span class="line"> 1001              column=info:name, timestamp=1680318521517, value=Gra</span><br><span class="line">                   ay                                                  </span><br><span class="line">1 row(s)</span><br><span class="line">Took 0.1029 seconds                                                    </span><br><span class="line">hbase(main):008:0&gt; put &#x27;student&#x27;,&#x27;1002&#x27;,&#x27;info:age&#x27;,&#x27;21&#x27;</span><br><span class="line">Took 0.0161 seconds                                                    </span><br><span class="line">hbase(main):009:0&gt; scan &#x27;student&#x27;</span><br><span class="line">ROW                COLUMN+CELL                                         </span><br><span class="line"> 1001              column=info:age, timestamp=1680318580788, value=18  </span><br><span class="line"> 1001              column=info:name, timestamp=1680318521517, value=Gra</span><br><span class="line">                   ay                                                  </span><br><span class="line"> 1002              column=info:age, timestamp=1680318604807, value=21  </span><br><span class="line">2 row(s)</span><br><span class="line">Took 0.0136 seconds                                                    </span><br><span class="line">hbase(main):010:0&gt; describe &#x27;student&#x27;</span><br><span class="line">Table student is ENABLED                                               </span><br><span class="line">student                                                                </span><br><span class="line">COLUMN FAMILIES DESCRIPTION                                            </span><br><span class="line">&#123;NAME =&gt; &#x27;info&#x27;, VERSIONS =&gt; &#x27;1&#x27;, EVICT_BLOCKS_ON_CLOSE =&gt; &#x27;false&#x27;, NEW</span><br><span class="line">_VERSION_BEHAVIOR =&gt; &#x27;false&#x27;, KEEP_DELETED_CELLS =&gt; &#x27;FALSE&#x27;, CACHE_DATA</span><br><span class="line">_ON_WRITE =&gt; &#x27;false&#x27;, DATA_BLOCK_ENCODING =&gt; &#x27;NONE&#x27;, TTL =&gt; &#x27;FOREVER&#x27;, </span><br><span class="line">MIN_VERSIONS =&gt; &#x27;0&#x27;, REPLICATION_SCOPE =&gt; &#x27;0&#x27;, BLOOMFILTER =&gt; &#x27;ROW&#x27;, CA</span><br><span class="line">CHE_INDEX_ON_WRITE =&gt; &#x27;false&#x27;, IN_MEMORY =&gt; &#x27;false&#x27;, CACHE_BLOOMS_ON_WR</span><br><span class="line">ITE =&gt; &#x27;false&#x27;, PREFETCH_BLOCKS_ON_OPEN =&gt; &#x27;false&#x27;, COMPRESSION =&gt; &#x27;NON</span><br><span class="line">E&#x27;, BLOCKCACHE =&gt; &#x27;true&#x27;, BLOCKSIZE =&gt; &#x27;65536&#x27;&#125;                        </span><br><span class="line">&#123;NAME =&gt; &#x27;score&#x27;, VERSIONS =&gt; &#x27;1&#x27;, EVICT_BLOCKS_ON_CLOSE =&gt; &#x27;false&#x27;, NE</span><br><span class="line">W_VERSION_BEHAVIOR =&gt; &#x27;false&#x27;, KEEP_DELETED_CELLS =&gt; &#x27;FALSE&#x27;, CACHE_DAT</span><br><span class="line">A_ON_WRITE =&gt; &#x27;false&#x27;, DATA_BLOCK_ENCODING =&gt; &#x27;NONE&#x27;, TTL =&gt; &#x27;FOREVER&#x27;,</span><br><span class="line"> MIN_VERSIONS =&gt; &#x27;0&#x27;, REPLICATION_SCOPE =&gt; &#x27;0&#x27;, BLOOMFILTER =&gt; &#x27;ROW&#x27;, C</span><br><span class="line">ACHE_INDEX_ON_WRITE =&gt; &#x27;false&#x27;, IN_MEMORY =&gt; &#x27;false&#x27;, CACHE_BLOOMS_ON_W</span><br><span class="line">RITE =&gt; &#x27;false&#x27;, PREFETCH_BLOCKS_ON_OPEN =&gt; &#x27;false&#x27;, COMPRESSION =&gt; &#x27;NO</span><br><span class="line">NE&#x27;, BLOCKCACHE =&gt; &#x27;true&#x27;, BLOCKSIZE =&gt; &#x27;65536&#x27;&#125;                       </span><br><span class="line">2 row(s)</span><br><span class="line">Took 0.2478 seconds                                                    </span><br><span class="line">hbase(main):011:0&gt; get &#x27;student&#x27;,&#x27;1001&#x27;</span><br><span class="line">COLUMN             CELL                                                </span><br><span class="line"> info:age          timestamp=1680318580788, value=18                   </span><br><span class="line"> info:name         timestamp=1680318521517, value=Graay                </span><br><span class="line">1 row(s)</span><br><span class="line">Took 0.1066 seconds                                                    </span><br><span class="line">hbase(main):012:0&gt; count &#x27;student&#x27;</span><br><span class="line">2 row(s)</span><br><span class="line">Took 0.0993 seconds                                                    </span><br><span class="line">=&gt; 2</span><br><span class="line">hbase(main):013:0&gt; delete &#x27;student&#x27;,&#x27;1002&#x27;,&#x27;info:sex&#x27;</span><br><span class="line">Took 0.0651 seconds                                                    </span><br><span class="line">hbase(main):014:0&gt; deleteall &#x27;student&#x27;,&#x27;1001&#x27;</span><br><span class="line">Took 0.0595 seconds </span><br><span class="line">hbase(main):017:0&gt; truncate &#x27;student&#x27;</span><br><span class="line">Truncating &#x27;student&#x27; table (it may take a while):</span><br><span class="line">Disabling table...</span><br><span class="line">Truncating table...</span><br><span class="line">Took 2.8205 seconds </span><br><span class="line">hbase(main):019:0&gt; scan &#x27;student&#x27;</span><br><span class="line">ROW                COLUMN+CELL                                         </span><br><span class="line">0 row(s)</span><br><span class="line">Took 1.4101 seconds                                                    </span><br><span class="line">hbase(main):020:0&gt; disable &#x27;student&#x27;</span><br><span class="line">Took 0.5823 seconds                                                    </span><br><span class="line">hbase(main):021:0&gt; drop &#x27;student&#x27;</span><br><span class="line">Took 0.5392 seconds                                                    </span><br><span class="line">hbase(main):022:0&gt; </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/posts/spark_04/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第4章  Spark SQL结构化数据文件处理</div>
+    </a>
+  
+</nav>
+
+  
+  <br>
+</article>
+
+
+
+
+</div>
+<div class="col-md-3 col-sm-3 blog-sidebar">
+  <!-- CATEGORIES START -->
+<h2 class="no-top-space">Categories</h2>
+
+<div class="widget-wrap">
+  <div class="widget">
+    <ul class="nav sidebar-categories margin-bottom-40">
+      
+	<li>
+	  <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备 (2)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Hadoop/">Hadoop (4)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing (4)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Applied-Statistics/">Applied Statistics (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区 (3)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Data-Mining/">Data-Mining (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/MATLAB/">MATLAB (5)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/java/">java (7)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Linux/">Linux (9)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm (5)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Python/">Python (13)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/SqlServer/">SqlServer (17)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E8%80%83%E8%AF%95/">考试 (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析 (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/spark/">spark (7)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络 (1)</a>
+	</li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<!-- CATEGORIES END -->
+
+<!-- BEGIN BLOG TAGS -->
+<div class="blog-tags margin-bottom-20">
+  <h2>Tags</h2>
+  
+
+</div>
+<!-- END BLOG TAGS -->
+
+
+<!-- BEGIN FEATURED POSTS -->                            
+<h2>Featured Posts</h2>
+<div class="recent-news margin-bottom-10">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</div>
+<!-- END FEATURED POSTS -->                            
+
+</div>
+</div>
+
+  </section>
+</div>
+
+    <!-- BEGIN PRE-FOOTER -->
+    <div class="pre-footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN BOTTOM ABOUT BLOCK -->
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+            <h2>About Us</h2>
+            <p>Computer Lab is a software development and marketing company based in Brooklyn, New York. <br><br> Computer Lab was founded in 2015, and is focused on so on and so forth.</p>
+          </div>
+          <!-- END BOTTOM ABOUT BLOCK -->
+
+          <!-- BEGIN BOTTOM CONTACTS -->
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+            <h2>Contact</h2>
+            <address class="margin-bottom-40">
+              140 Metropolitan Avenue<br>
+              5th Floor<br>
+              Brooklyn, NY 11249<br>
+              Phone: 716-472-4484<br>
+              Email: <a href="mailto:ptsteadman@gmail.com">ptsteadman@gmail.com</a><br>
+            </address>
+          </div>
+          <!-- END BOTTOM CONTACTS -->
+
+	
+          <!-- BEGIN TWITTER BLOCK --> 
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+
+	  <a data-tweet-limit="1" class="twitter-timeline" data-theme="dark"
+	  target="_blank" rel="noopener" href="https://twitter.com/computerlab_">Tweets by @computerlab_</a>
+
+	  <script>!function(d,s,id){var
+	  js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+          </div>
+          <!-- END TWITTER BLOCK -->
+	
+        </div>
+      </div>
+    </div>
+    <!-- END PRE-FOOTER -->
+
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN COPYRIGHT -->
+          <div class="col-md-6 col-sm-6 padding-top-10">
+                  &copy; 2023 锦鲤未离<br>
+ <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
+          </div>
+          <!-- END COPYRIGHT -->
+	  <!-- BEGIN SOCIAL -->
+<div class="col-md-6 col-sm-6">
+  <ul class="social-footer list-unstyled list-inline pull-right">
+    
+      <li><a target="_blank" rel="noopener" href="https://github.com/ptsteadman"><i class="fa fa-github"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://twitter.com/ptsteadman"><i class="fa fa-twitter"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://www.facebook.com/ptsteadman"><i class="fa fa-facebook"></i></a></li>
+    
+      <li><a href="/atom.xml"><i class="fa fa-rss"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://linkedin.com/in/ptsteadman"><i class="fa fa-linkedin"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="http://stackoverflow.com/users/2480493/patrick-steadman"><i class="fa fa-stackoverflow"></i></a></li>
+    
+  </ul>  
+</div>
+<!-- END SOCIAL -->
+
+        </div>
+      </div>
+    </div>
+    <!-- END FOOTER -->
+
+  <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+<!--[if lt IE 9]>
+
+<script src="/metronic/assets/plugins/respond.min.js"></script>
+
+<![endif]--> 
+
+<script src="/metronic/assets/plugins/jquery.min.js"></script>
+
+
+<script src="/metronic/assets/plugins/jquery-migrate.min.js"></script>
+
+
+<script src="/metronic/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+<script src="/metronic/assets/corporate/scripts/back-to-top.js"></script>
+
+
+<script src="/metronic/assets/plugins/owl.carousel/owl.carousel.min.js"></script>
+
+
+<script src="/metronic/assets/corporate/scripts/layout.js"></script>
+
+
+<script src="/js/wow.min.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        Layout.init();    
+        Layout.initOWL();
+        Layout.initTwitter();
+        Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
+        Layout.initNavScrolling(); 
+	new WOW().init();
+    });
+</script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE-SPECIFIC PLUGINS --> 
+
+
+
+
+
+
+
+<!-- END PAGE-SPECIFIC PLUGINS --> 
+
+<!-- BEGIN INTEGRATIONS -->
+
+
+
+
+
+<!-- END INTEGRATIONS -->
+
 </body>
 </html>

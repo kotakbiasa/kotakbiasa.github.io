@@ -1,57 +1,685 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>{{ head_title() }}</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="{{ head_keywords() }}">
-  <meta name="description" content="{{ head_description() }}">
-  {{ partial('partial/og') }}
-  <!-- Canonical links -->
-  <link rel="canonical" href="{{ url }}">
-  <!-- Alternative links -->
-  <!-- CSS and JS-->
-  {{ head_jscss({js: true})}}
-  <!-- RSS -->
-  {{ feed_tag('atom.xml') }}
-  <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon" />
-  <script>
-        lc.init({
-          appId : '{{theme.lc.app_id}}',
-          appKey : '{{theme.lc.app_key}}',
-          serverURL : '{{theme.lc.url}}'
-        }, {
-          xid : '{{page_uid()}}',
-          url : '{{page.path || page.permalink}}',
-          title : '{{page_title()}}'
-        }, {
-          counterTable: '',
-          commentTable: '',
-          donateTable: ''
-        });
-  </script>
+  
+  <title>第一章  操作基础 | 锦鲤未离</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <meta name="description" content="1.请写出进入管理员账户的命令。解: su  &lt;注&gt;在本分类中，以后均在管理员账户下进行。  1. Linux 关机方法立即关机重启: shutdown -r now立即关机: shutdown -h now设定 10 分钟后挂机, 并发送信息给登录的 Linux 用户: shutdown +10 &quot;10 分钟后要关机了各位&quot; 2. Linux 命令1) pwd 命">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一章  操作基础">
+<meta property="og:url" content="http://example.com/posts/linux01/index.html">
+<meta property="og:site_name" content="锦鲤未离">
+<meta property="og:description" content="1.请写出进入管理员账户的命令。解: su  &lt;注&gt;在本分类中，以后均在管理员账户下进行。  1. Linux 关机方法立即关机重启: shutdown -r now立即关机: shutdown -h now设定 10 分钟后挂机, 并发送信息给登录的 Linux 用户: shutdown +10 &quot;10 分钟后要关机了各位&quot; 2. Linux 命令1) pwd 命">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-06T08:18:20.447Z">
+<meta property="article:modified_time" content="2022-07-06T08:22:33.036Z">
+<meta property="article:author" content="Koi_NL">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <meta content="{{ title }}" name="description">
+  <meta content="{{ title }}" name="keywords">
+  <meta content="{{ title }}" name="author">
+
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+
+  <!-- Global styles START -->   
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/font-awesome/css/font-awesome.min.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/bootstrap/css/bootstrap.min.css">
+
+  <!-- Global styles END --> 
+   
+  <!-- Page level plugin styles START -->
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/animate.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/owl.carousel/assets/owl.carousel.css">
+
+  <!-- Page level plugin styles END -->
+
+  <!-- Theme styles START -->
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/components.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/slider.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/style.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/portfolio.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/style-responsive.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/themes/red.css">
+
+  
+<link rel="stylesheet" href="/css/theme-styles.css">
+
+  <!-- Theme styles END -->
 <meta name="generator" content="Hexo 6.1.0"></head>
-<body>
-  <!-- header -->
-  {{ partial('partial/header') }}
-  <!-- main -->
-  {{ body }}
-  <!-- footer -->
-  {{ partial('partial/footer') }}
-  <!-- fixed action bar -->
-  {{ partial('partial/fab') }}
-  <!-- after footer, some 3rd script place here -->
-    <script>
-    var hljs_labels = {
-        left: "{{__('hljs.left')}}",
-        right: "{{__('hljs.right')}}",
-        copy: "{{__('hljs.copy')}}"
-    }
-    </script>
-    {{ js('js/hljs.js') }}
-    {{ js('js/script.js')}}
-    {{ partial('partial/analytics') }}
-    {{ partial('partial/lc') }}
+
+<body class="corporate">
+  <!-- BEGIN TOP BAR -->
+<div class="pre-header">
+  <div class="container">
+    <div class="row">
+      <!-- BEGIN TOP BAR LEFT PART -->
+      <div class="col-md-6 col-sm-6 col-xs-9 additional-shop-info">
+	<ul class="list-unstyled list-inline">
+	  <li><i class="fa fa-phone"></i><span>716-472-4484</span></li>
+	  <li><i class="fa fa-envelope-o"></i><span>ptsteadman@gmail.com</span></li>
+	</ul>
+      </div>
+      <!-- END TOP BAR LEFT PART -->
+      <!-- BEGIN TOP BAR MENU -->
+      <div class="col-md-6 col-sm-6 col-xs-3 additional-nav">
+	<ul class="list-unstyled list-inline pull-right">
+	  <li><a href="/login">Log In</a></li>
+	</ul>
+      </div>
+      <!-- END TOP BAR MENU -->
+    </div>
+  </div>        
+</div>
+<!-- END TOP BAR -->
+<!-- BEGIN HEADER -->
+<div class="header">
+  <div class="container">
+    <!--<a class="site-logo" href="/" id="logo">锦鲤未离</a>-->
+
+    <a class="site-logo" href="/">
+      <img src="/metronic/assets/corporate/img/logos/logo-corp-red.png" alt="Metronic FrontEnd">
+    </a>
+
+    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+    <!-- BEGIN NAVIGATION -->
+    <div class="header-navigation pull-right font-transform-inherit">
+      <ul>
+	
+	<li class="">
+	  <a  href="/">Home</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/projects/">Projects</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/archives/">Blog</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/contact/">Contact</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/about/">About</a>
+	</li>
+	
+	<!-- BEGIN TOP SEARCH -->
+	<li class="menu-search">
+	  <span class="sep"></span>
+	  <i class="fa fa-search search-btn"></i>
+	  <div class="search-box">
+	    <form action="#">
+	      <div class="input-group">
+		<input type="text" placeholder="Search" class="form-control st-default-search-input">
+		<span class="input-group-btn">
+		  <button class="btn btn-primary" type="submit">Search</button>
+		</span>
+	      </div>
+	    </form>
+	  </div> 
+	</li>
+	<!-- END TOP SEARCH -->
+      </ul>
+    </div>
+    <!-- END NAVIGATION -->
+  </div>
+</div>
+<!-- Header END -->
+
+  <div class="container">
+  <ul class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/archives/">Blog</a></li>
+    <li class="active">Post</li>
+  </ul>
+  <section id="main">
+    
+    <h2 itemprop="name">
+      <a class="article-title" href="/posts/linux01/">第一章  操作基础</a>
+    </h2>
+
+
+    <div class="row">
+<div class="col-md-9 col-sm-9 blog-posts">
+<article id="post-过去半年前的学习部分/2021-2022年课程/202203Linux/Linux1第一章  操作基础" class="article article-type-post blog-item" itemscope itemprop="blogPost">
+  <div class="article-meta">
+  </div>
+  <div class="article-inner">
+    
+    
+    <header class="article-header">
+      <ul class="blog-info">
+	<li><i class="fa fa-user"></i> Anonymous</li>
+	<li><i class="fa fa-calendar"></i>
+	  <time datetime="2022-07-06T08:18:20.447Z" itemprop="datePublished">2022/07/06</time>
+
+	</li>
+	<li class="hidden-xs"><i class="fa fa-comments"></i>
+	  <a href="http://example.com/posts/linux01/#disqus_thread" class="article-comment-link">Comments</a>
+	</li>
+	<li class="hidden-xs"><i class="fa fa-tags"></i> 
+	  
+
+	</li>
+      </ul>
+      
+  <div class="article-category">
+    
+    Category: 
+    
+    Categories:
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+  <br>
+
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.请写出进入管理员账户的命令。<br>解: <code>su</code></p>
+<blockquote>
+<p>&lt;注&gt;在本分类中，以后均在管理员账户下进行。</p>
+</blockquote>
+<h2 id="1-Linux-关机方法"><a href="#1-Linux-关机方法" class="headerlink" title="1. Linux 关机方法"></a>1. Linux 关机方法</h2><p>立即关机重启: <code>shutdown -r now</code><br>立即关机: <code>shutdown -h now</code><br>设定 10 分钟后挂机, 并发送信息给登录的 Linux 用户: <code>shutdown +10 &quot;10 分钟后要关机了各位&quot;</code></p>
+<h2 id="2-Linux-命令"><a href="#2-Linux-命令" class="headerlink" title="2. Linux 命令"></a>2. Linux 命令</h2><h3 id="1-pwd-命令-查看目录-x2F-文件所处位置"><a href="#1-pwd-命令-查看目录-x2F-文件所处位置" class="headerlink" title="1) pwd 命令: 查看目录&#x2F;文件所处位置"></a>1) pwd 命令: 查看目录&#x2F;文件所处位置</h3><h3 id="2-ls-ll-命令-显示当前目录下子项"><a href="#2-ls-ll-命令-显示当前目录下子项" class="headerlink" title="2) ls, ll 命令: 显示当前目录下子项"></a>2) ls, ll 命令: 显示当前目录下子项</h3><p>长列表 <code>ll</code> 所显示的 <code>drwxr-xr-x. 2 koinl koinl 6 Apr  2 04:58 Desktop</code> 按空格分隔, 依次为权限, 所含文件数, 属主, 属组, 文件大小, 修改日期, 文件名.<br>ls -a 显示隐藏目录</p>
+<h3 id="3-cd-命令-改变目录"><a href="#3-cd-命令-改变目录" class="headerlink" title="3) cd 命令: 改变目录"></a>3) cd 命令: 改变目录</h3><h3 id="touch-命令-创建文件"><a href="#touch-命令-创建文件" class="headerlink" title="touch 命令: 创建文件"></a>touch 命令: 创建文件</h3><h3 id="4-mkdir-命令-创建目录"><a href="#4-mkdir-命令-创建目录" class="headerlink" title="4) mkdir 命令: 创建目录"></a>4) mkdir 命令: 创建目录</h3><p>3.请分别写出创建目录file1、集联创建目录&#x2F;file2&#x2F;test2、创建目录file3的同时给用户、组以及其他人均赋予读写权限的命令。<br>解: <code>mkdir file1; mkdir -p file2/test2; mkdir -m 666 file3</code></p>
+<h3 id="5-cp-命令-复制目录或文件"><a href="#5-cp-命令-复制目录或文件" class="headerlink" title="5) cp 命令: 复制目录或文件"></a>5) cp 命令: 复制目录或文件</h3><p>选项 -r 目录添加<br>cp 源文件 目录文件<br>7.请写出将第（1）题所创建的目录file1复制到目录file2中的命令。<br>解:<code>cp -r file1 file2</code></p>
+<h3 id="6-mv-命令-移动-x2F-改名-目录或文件"><a href="#6-mv-命令-移动-x2F-改名-目录或文件" class="headerlink" title="6) mv 命令: 移动 &#x2F; 改名 目录或文件"></a>6) mv 命令: 移动 &#x2F; 改名 目录或文件</h3><p>8.请写出将第（1）题所创建的目录file2移动到目录file3中的命令。<br> 解:<code>mv file2 file3</code></p>
+<h3 id="7-rm-命令-删除目录或文件"><a href="#7-rm-命令-删除目录或文件" class="headerlink" title="7) rm 命令: 删除目录或文件"></a>7) rm 命令: 删除目录或文件</h3><p>选项 -r 目录添加</p>
+<h3 id="8-vi-m-命令-文本编辑器"><a href="#8-vi-m-命令-文本编辑器" class="headerlink" title="8) vi(m) 命令: 文本编辑器"></a>8) vi(m) 命令: 文本编辑器</h3><p>1.使用vim 编辑器创建文件num并在文件中写入如下内容：<br>apple<br>student<br>no<br>Yes<br>解: vi num 添加</p>
+<p>2.请写出统计文件num中单词数、行数以及字符数的命令。<br>解: <code>wc num</code>, 结果 4 4 21 num; 表示单词 4 个, 行数 4 个, 字节数 21 个. </p>
+<p>2.5.查看文件.<br>解: <code>cat num</code>.</p>
+<p>3.请写出将num中单词数、行数以及字符数重定向到文件num1中的命令。<br>解: <code>wc num&gt;num2</code>, -wlc 也可以加, 分别表示单词行与字节, 字符可用用m</p>
+<p>4.请写出将num中单词数、行数以及字符数追加到文件num2中的命令。<br>解: <code>wc num&gt;&gt;num2</code></p>
+<p>5.请写出创建文件&#x2F;num3,并写出查找&#x2F;num3的命令。<br>解: 创建文件:  <code>touch /num3</code>, 查找文件: <code>find / -name /num3</code></p>
+<p>使用该行代码后会进入全屏幕文本编辑器中,<br>按 e 进入编辑模式, 待编辑完成后,<br>按 esc 退出该模式, :wq! 含义是: 强制 (! ) 保存 (w) 退出 (q) , 可拆卸</p>
+<h3 id="9-tar"><a href="#9-tar" class="headerlink" title="9) tar"></a>9) tar</h3><p>gzip hello.txt<br>-d 解压缩</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[koinl@localhost Public]$ ls</span><br><span class="line">hello.txt  images</span><br><span class="line">[koinl@localhost Public]$ gzip hello.txt    # 对其本体进行压缩</span><br><span class="line">[koinl@localhost Public]$ ls</span><br><span class="line">hello.txt.gz  images</span><br><span class="line">[koinl@localhost Public]$ gzip -d hello.txt.gz</span><br><span class="line">[koinl@localhost Public]$ ls</span><br><span class="line">hello.txt  images</span><br><span class="line">[koinl@localhost Public]$ gzip -c hello.txt &gt; hello.txt.gz</span><br><span class="line">[koinl@localhost Public]$ ls</span><br><span class="line">hello.txt  hello.txt.gz  images</span><br><span class="line">[koinl@localhost Public]$ gzip -c -d hello.txt.gz &gt; hello-gzip.txt</span><br><span class="line">[koinl@localhost Public]$ ls</span><br><span class="line">hello-gzip.txt  hello.txt  hello.txt.gz  images</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="10-chmod-命令-修改权限"><a href="#10-chmod-命令-修改权限" class="headerlink" title="10) chmod 命令: 修改权限"></a>10) chmod 命令: 修改权限</h3><p>（2）为文件file设置权限，使其他用户对此文件可以进行写操作。<br>解: 设置其他用户的写权限: <code>chmod o+w file</code><br>（3）用数字设定法为file文件设置权限，所有者可读、可写、可执行，所属组只有读和执行的权限，其他用户没有权限。<br>解: 自己全操作, 组和他人读与执行: <code>chmod 750 file</code></p>
+<p>（2）把目录test及其下所有文件的所有者改为om,所属组改为student。</p>
+<p>chown om test    # 改变 test 的属主为 om<br>chgrp student test1<br>chown -R om:student test</p>
+<p>8.请写出查看当前系统时间的命令，并将当前时间修改为”20220501 18:25:25”<br>解: 查看时间: <code>date</code>. 修改时间: <code>date -s &quot;2022-05-01 18:25:25&quot;</code></p>
+
+      
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/posts/py01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第一章  程序基本结构
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/linux08/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第十章 Shell 脚本</div>
+    </a>
+  
+</nav>
+
+  
+  <br>
+</article>
+
+
+
+
+</div>
+<div class="col-md-3 col-sm-3 blog-sidebar">
+  <!-- CATEGORIES START -->
+<h2 class="no-top-space">Categories</h2>
+
+<div class="widget-wrap">
+  <div class="widget">
+    <ul class="nav sidebar-categories margin-bottom-40">
+      
+	<li>
+	  <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E5%A4%87/">电子设备 (2)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Hadoop/">Hadoop (4)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Data-Processing-and-Analysing/">Data-Processing-and-Analysing (4)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Applied-Statistics/">Applied Statistics (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E6%B5%8B%E8%AF%95%E5%8C%BA/">测试区 (3)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Data-Mining/">Data-Mining (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/MATLAB/">MATLAB (5)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/java/">java (7)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Linux/">Linux (9)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Data-Structure-and-Algorithm/">Data Structure and Algorithm (5)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/Python/">Python (13)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/SqlServer/">SqlServer (17)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E8%80%83%E8%AF%95/">考试 (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E6%9E%90/">时间序列分析 (1)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/spark/">spark (7)</a>
+	</li>
+      
+	<li>
+	  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">深度卷积神经网络 (1)</a>
+	</li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<!-- CATEGORIES END -->
+
+<!-- BEGIN BLOG TAGS -->
+<div class="blog-tags margin-bottom-20">
+  <h2>Tags</h2>
+  
+
+</div>
+<!-- END BLOG TAGS -->
+
+
+<!-- BEGIN FEATURED POSTS -->                            
+<h2>Featured Posts</h2>
+<div class="recent-news margin-bottom-10">
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</div>
+<!-- END FEATURED POSTS -->                            
+
+</div>
+</div>
+
+  </section>
+</div>
+
+    <!-- BEGIN PRE-FOOTER -->
+    <div class="pre-footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN BOTTOM ABOUT BLOCK -->
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+            <h2>About Us</h2>
+            <p>Computer Lab is a software development and marketing company based in Brooklyn, New York. <br><br> Computer Lab was founded in 2015, and is focused on so on and so forth.</p>
+          </div>
+          <!-- END BOTTOM ABOUT BLOCK -->
+
+          <!-- BEGIN BOTTOM CONTACTS -->
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+            <h2>Contact</h2>
+            <address class="margin-bottom-40">
+              140 Metropolitan Avenue<br>
+              5th Floor<br>
+              Brooklyn, NY 11249<br>
+              Phone: 716-472-4484<br>
+              Email: <a href="mailto:ptsteadman@gmail.com">ptsteadman@gmail.com</a><br>
+            </address>
+          </div>
+          <!-- END BOTTOM CONTACTS -->
+
+	
+          <!-- BEGIN TWITTER BLOCK --> 
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+
+	  <a data-tweet-limit="1" class="twitter-timeline" data-theme="dark"
+	  target="_blank" rel="noopener" href="https://twitter.com/computerlab_">Tweets by @computerlab_</a>
+
+	  <script>!function(d,s,id){var
+	  js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+          </div>
+          <!-- END TWITTER BLOCK -->
+	
+        </div>
+      </div>
+    </div>
+    <!-- END PRE-FOOTER -->
+
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN COPYRIGHT -->
+          <div class="col-md-6 col-sm-6 padding-top-10">
+                  &copy; 2023 锦鲤未离<br>
+ <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
+          </div>
+          <!-- END COPYRIGHT -->
+	  <!-- BEGIN SOCIAL -->
+<div class="col-md-6 col-sm-6">
+  <ul class="social-footer list-unstyled list-inline pull-right">
+    
+      <li><a target="_blank" rel="noopener" href="https://github.com/ptsteadman"><i class="fa fa-github"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://twitter.com/ptsteadman"><i class="fa fa-twitter"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://www.facebook.com/ptsteadman"><i class="fa fa-facebook"></i></a></li>
+    
+      <li><a href="/atom.xml"><i class="fa fa-rss"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://linkedin.com/in/ptsteadman"><i class="fa fa-linkedin"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="http://stackoverflow.com/users/2480493/patrick-steadman"><i class="fa fa-stackoverflow"></i></a></li>
+    
+  </ul>  
+</div>
+<!-- END SOCIAL -->
+
+        </div>
+      </div>
+    </div>
+    <!-- END FOOTER -->
+
+  <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+<!--[if lt IE 9]>
+
+<script src="/metronic/assets/plugins/respond.min.js"></script>
+
+<![endif]--> 
+
+<script src="/metronic/assets/plugins/jquery.min.js"></script>
+
+
+<script src="/metronic/assets/plugins/jquery-migrate.min.js"></script>
+
+
+<script src="/metronic/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+<script src="/metronic/assets/corporate/scripts/back-to-top.js"></script>
+
+
+<script src="/metronic/assets/plugins/owl.carousel/owl.carousel.min.js"></script>
+
+
+<script src="/metronic/assets/corporate/scripts/layout.js"></script>
+
+
+<script src="/js/wow.min.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        Layout.init();    
+        Layout.initOWL();
+        Layout.initTwitter();
+        Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
+        Layout.initNavScrolling(); 
+	new WOW().init();
+    });
+</script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE-SPECIFIC PLUGINS --> 
+
+
+
+
+
+
+
+<!-- END PAGE-SPECIFIC PLUGINS --> 
+
+<!-- BEGIN INTEGRATIONS -->
+
+
+
+
+
+<!-- END INTEGRATIONS -->
+
 </body>
 </html>

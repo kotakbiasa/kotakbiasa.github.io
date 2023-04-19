@@ -1,57 +1,730 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>{{ head_title() }}</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="{{ head_keywords() }}">
-  <meta name="description" content="{{ head_description() }}">
-  {{ partial('partial/og') }}
-  <!-- Canonical links -->
-  <link rel="canonical" href="{{ url }}">
-  <!-- Alternative links -->
-  <!-- CSS and JS-->
-  {{ head_jscss({js: true})}}
-  <!-- RSS -->
-  {{ feed_tag('atom.xml') }}
-  <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon" />
-  <script>
-        lc.init({
-          appId : '{{theme.lc.app_id}}',
-          appKey : '{{theme.lc.app_key}}',
-          serverURL : '{{theme.lc.url}}'
-        }, {
-          xid : '{{page_uid()}}',
-          url : '{{page.path || page.permalink}}',
-          title : '{{page_title()}}'
-        }, {
-          counterTable: '',
-          commentTable: '',
-          donateTable: ''
-        });
-  </script>
+  
+  <title>Category: Hadoop | 锦鲤未离</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="锦鲤未离">
+<meta property="og:url" content="http://example.com/categories/Hadoop/index.html">
+<meta property="og:site_name" content="锦鲤未离">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Koi_NL">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="锦鲤未离" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <meta content="{{ title }}" name="description">
+  <meta content="{{ title }}" name="keywords">
+  <meta content="{{ title }}" name="author">
+
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+
+  <!-- Global styles START -->   
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/font-awesome/css/font-awesome.min.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/bootstrap/css/bootstrap.min.css">
+
+  <!-- Global styles END --> 
+   
+  <!-- Page level plugin styles START -->
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/animate.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/plugins/owl.carousel/assets/owl.carousel.css">
+
+  <!-- Page level plugin styles END -->
+
+  <!-- Theme styles START -->
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/components.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/slider.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/style.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/pages/css/portfolio.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/style-responsive.css">
+
+  
+<link rel="stylesheet" href="/metronic/assets/corporate/css/themes/red.css">
+
+  
+<link rel="stylesheet" href="/css/theme-styles.css">
+
+  <!-- Theme styles END -->
 <meta name="generator" content="Hexo 6.1.0"></head>
-<body>
-  <!-- header -->
-  {{ partial('partial/header') }}
-  <!-- main -->
-  {{ body }}
-  <!-- footer -->
-  {{ partial('partial/footer') }}
-  <!-- fixed action bar -->
-  {{ partial('partial/fab') }}
-  <!-- after footer, some 3rd script place here -->
-    <script>
-    var hljs_labels = {
-        left: "{{__('hljs.left')}}",
-        right: "{{__('hljs.right')}}",
-        copy: "{{__('hljs.copy')}}"
-    }
-    </script>
-    {{ js('js/hljs.js') }}
-    {{ js('js/script.js')}}
-    {{ partial('partial/analytics') }}
-    {{ partial('partial/lc') }}
+
+<body class="corporate">
+  <!-- BEGIN TOP BAR -->
+<div class="pre-header">
+  <div class="container">
+    <div class="row">
+      <!-- BEGIN TOP BAR LEFT PART -->
+      <div class="col-md-6 col-sm-6 col-xs-9 additional-shop-info">
+	<ul class="list-unstyled list-inline">
+	  <li><i class="fa fa-phone"></i><span>716-472-4484</span></li>
+	  <li><i class="fa fa-envelope-o"></i><span>ptsteadman@gmail.com</span></li>
+	</ul>
+      </div>
+      <!-- END TOP BAR LEFT PART -->
+      <!-- BEGIN TOP BAR MENU -->
+      <div class="col-md-6 col-sm-6 col-xs-3 additional-nav">
+	<ul class="list-unstyled list-inline pull-right">
+	  <li><a href="/login">Log In</a></li>
+	</ul>
+      </div>
+      <!-- END TOP BAR MENU -->
+    </div>
+  </div>        
+</div>
+<!-- END TOP BAR -->
+<!-- BEGIN HEADER -->
+<div class="header">
+  <div class="container">
+    <!--<a class="site-logo" href="/" id="logo">锦鲤未离</a>-->
+
+    <a class="site-logo" href="/">
+      <img src="/metronic/assets/corporate/img/logos/logo-corp-red.png" alt="Metronic FrontEnd">
+    </a>
+
+    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+    <!-- BEGIN NAVIGATION -->
+    <div class="header-navigation pull-right font-transform-inherit">
+      <ul>
+	
+	<li class="">
+	  <a  href="/">Home</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/projects/">Projects</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/archives/">Blog</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/contact/">Contact</a>
+	</li>
+	
+	<li class="">
+	  <a  href="/about/">About</a>
+	</li>
+	
+	<!-- BEGIN TOP SEARCH -->
+	<li class="menu-search">
+	  <span class="sep"></span>
+	  <i class="fa fa-search search-btn"></i>
+	  <div class="search-box">
+	    <form action="#">
+	      <div class="input-group">
+		<input type="text" placeholder="Search" class="form-control st-default-search-input">
+		<span class="input-group-btn">
+		  <button class="btn btn-primary" type="submit">Search</button>
+		</span>
+	      </div>
+	    </form>
+	  </div> 
+	</li>
+	<!-- END TOP SEARCH -->
+      </ul>
+    </div>
+    <!-- END NAVIGATION -->
+  </div>
+</div>
+<!-- Header END -->
+
+  <div class="container">
+  <ul class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li class="active">Hadoop</li>
+  </ul>
+<section id="main">
+ <h1>Hadoop</h1>
+ <div class="row">
+
+<div class="col-xs-12 blog-posts">
+
+
+  <section class="archives-wrap">
+    <div class="archives">
+      
+	<div class="row">
+  <div class="col-md-4 col-sm-4">
+    
+  </div>
+  
+    <div class="col-xs-12">
+  
+    
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/posts/hadoop03/">第三章  MapReduce基础</a>
+    </h2>
+
+
+    <ul class="blog-info">
+      <li>
+      	<i class="fa fa-calendar"></i> 
+        <time datetime="2022-09-07T04:21:59.916Z" itemprop="datePublished">2022/09/07</time>
+
+      </li>
+      <li><i class="fa fa-comments"></i>
+        <a href="http://example.com/posts/hadoop03/#disqus_thread" class="article-comment-link">Comments</a>
+      </li>
+      <li>
+	<i class="fa fa-tags"></i>
+	
+
+      </li>
+    </ul>
+    <div class="blog-item">
+      
+	<p>本章首先介绍了 MapReduce 的基础知识和工作流程，然后通过单词统计和二次排序两个案例介绍了如何利用 MapReduce 进行编程。<br>Hadoop 支持多种语言但对 Java 支持最好，在编写 MapReduce 函数时，需要新建 3 个类：Mapper 类、Reducer 类、main 类。另外，前两个类也可以作为内部类放到 main 类中。<br>Mapper 类需要集成 MapRecude API 所提供的Mapper 类并重写 map() 方法，Reduce() 类同理。</p>
+<h2 id="一、MapReduce-概述"><a href="#一、MapReduce-概述" class="headerlink" title="一、MapReduce 概述"></a>一、MapReduce 概述</h2><p>MapReduce 是 Hadoop 系统中最重要的计算引擎，它不仅直接支持交互式应用，基于程序的应该，还是 Hive 组件的基础。</p>
+<h3 id="1-分布式并行计算"><a href="#1-分布式并行计算" class="headerlink" title="1. 分布式并行计算"></a>1. 分布式并行计算</h3><h4 id="1-分布式计算"><a href="#1-分布式计算" class="headerlink" title="1) 分布式计算"></a>1) 分布式计算</h4><p>一个任务，拆分成无数个小任务，将这些小任务派发给多台计算机进行计算，最后将结构进行汇总以得到最终的结果。</p>
+<blockquote>
+<p>分解后的任务直接相互独立，计算结果几乎互不影响，对实时性要求不高。</p>
+</blockquote>
+<h4 id="2-并行计算"><a href="#2-并行计算" class="headerlink" title="2) 并行计算"></a>2) 并行计算</h4><p>允许让多条指令以平行方式同时进行计算的模式，包括<strong>时间与空间并行</strong>两种方式。</p>
+<blockquote>
+<p>时间并行：多条流水线同时作业<br>空间并行：使用多种计算资源（如多个处理器）执行并发计算。</p>
+</blockquote>
+<h3 id="2-MapReduce-的含义"><a href="#2-MapReduce-的含义" class="headerlink" title="2. MapReduce 的含义"></a>2. MapReduce 的含义</h3><p>针对大规模集群种的分布式文件即下并行处理的计算模型。</p>
+<p>MapReduce 主要将数据处理任务拆分为 M（映射）和 Reduce（规约）两个任务。<br>例如，要统计一个班的数学成绩，数学老师让数学课代表统计它所在班的数学成绩。数学课代表就让每一组的组长统计它们组的数学成绩，相当于 Map 任务，而数学课代表统计处理每个组所报上来的数学成绩，就是 Reduce 任务。由此可以看出，MapReduce 充分体现了 “分而治之”的思想：把一个复杂的任务拆分成小的任务并行处理，从而提高任务的处理速度。</p>
+<h3 id="3-MapReduce-的特点"><a href="#3-MapReduce-的特点" class="headerlink" title="3. MapReduce 的特点"></a>3. MapReduce 的特点</h3><p>开发简单易于实现；良好的可扩展性：动态增加节点的方式；高容错性：如果集群中某计算节点出现故障，使得作业执行失败，MapReduce 可自动将作业分配到可用的计算节点上重新执行。</p>
+<p>计算局限（不适合数据事务处理或单一请求处理）<br>性能局限<br>应用局限</p>
+<h2 id="二、MapReduce-的工作流程"><a href="#二、MapReduce-的工作流程" class="headerlink" title="二、MapReduce 的工作流程"></a>二、MapReduce 的工作流程</h2><p>输入分片和数据格式化，Map过程，Shuffle 过程，Reduce 过程，结果输出</p>
+<h3 id="1-输入分片和数据格式化"><a href="#1-输入分片和数据格式化" class="headerlink" title="1. 输入分片和数据格式化"></a>1. 输入分片和数据格式化</h3><p>首先，MapReduce 将存储在 HDFS 中的大规模数据集切分成独立的输入分片，每一个输入分片对应一个 Map 任务。<br>输入分片是一个逻辑概念，因此对输入数据集的切分也是一种<strong>逻辑切分</strong>。</p>
+<p>此外，由于 Map 任务的输入要i去是<strong>键值对</strong>的形式，所以需要对输入分片进行格式化，即对输入处理成 <code>&lt;key, balue&gt;</code> 形式的数据，然后再传递给 Map 任务。</p>
+<h3 id="2-Map-过程"><a href="#2-Map-过程" class="headerlink" title="2. Map 过程"></a>2. Map 过程</h3><p>利用 Map() 函数来处理数据</p>
+<h3 id="3-Shuffle-过程"><a href="#3-Shuffle-过程" class="headerlink" title="3. Shuffle 过程"></a>3. Shuffle 过程</h3><p>通常，Map() 后的输出需要进行一系列处理才交给 Reduce() 任务，这一系列处理过程被称作洗牌（Shuffle）过程。</p>
+<blockquote>
+<p>这一系列包括有“分区”、“排序”、“合并”、“滥写”、“归并”等。</p>
+</blockquote>
+<h3 id="4-Reduce-过程"><a href="#4-Reduce-过程" class="headerlink" title="4. Reduce 过程"></a>4. Reduce 过程</h3><p>Reduce() 任务接收归并排序后的数据流，并对已有序的相同 key 的键值对调用一次 Reduce() 函数。<br>另外，Reduce() 任务的输出结果经过输出格式化后再输出到文件系统中，并且输出结果文件名默认为“part-r-00000”开始，逐渐递增。</p>
+<h2 id="三、案例解析——单词统计编程"><a href="#三、案例解析——单词统计编程" class="headerlink" title="三、案例解析——单词统计编程"></a>三、案例解析——单词统计编程</h2><h3 id="1-案例描述"><a href="#1-案例描述" class="headerlink" title="1. 案例描述"></a>1. 案例描述</h3><p>假设在 <code>hdfs://hadoop0:9000/jqe/wc/data</code> 中存在两个文本文件（文件中仅有字符串和空格），分别是 <code>words1.txt</code> 和 <code>words2.txt</code>。<br>其中，word1.txt内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this is a good dog</span><br><span class="line">this is a good cat</span><br></pre></td></tr></table></figure>
+<p>word2.txt内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this is a bad dog</span><br><span class="line">this is a bad cat</span><br></pre></td></tr></table></figure>
+
+<p>要求 <code>计算这两个文件的单词频数</code>，输出结果 <code>按照单词的字母顺序进行排序</code>，并输出到 <code>两个文件中（以字母 g 分隔开来）</code>。另外，还要对输出数据进行格式化：<code>单词和词频之间以~~~~~隔开</code>。</p>
+<h3 id="2-设计思路"><a href="#2-设计思路" class="headerlink" title="2. 设计思路"></a>2. 设计思路</h3><p>根据分析，单词统计程序可分为 7 个模块，分别是输入、输入分片及其格式化、设计 map() 函数、分区、设计 reduce() 函数、输出格式化、输出。</p>
+<blockquote>
+<ol>
+<li>指定输入文件位置；</li>
+<li>将两个文件切分成两个输入分片，对输入分片进行格式化，如文件按行分解，从而形成以 key 为偏移量、value 为行内容的键值对；</li>
+<li>设计 map() 函数，将键值对的 value 按空格分解成一个个单词，生成 &lt;word, l&gt;形式的键值对。</li>
+<li>设计分区函数，将 key 的首字母小于 g 的键值对划分为 1 个分区，其余的划分在另一个分区。</li>
+<li>设计 reduce() 函数，将输入的 &lt;word, list(value)&gt; 形式（如 &lt;”ls”,{1, 1}&gt;）的数据进行汇总，生成以 key 为单词、value 为单词频数的键值对。</li>
+<li>系统默认的输出格式为“单词+空格+单词频数”的形式，若要输出特定样式的数据，需要对输出结果进行格式化，使得单词与但磁盘技能书之间以“~~~~~”间隔。</li>
+<li>指定单词统计程序的输出结果文件位置。</li>
+</ol>
+</blockquote>
+<h3 id="3-编程实现"><a href="#3-编程实现" class="headerlink" title="3. 编程实现"></a>3. 编程实现</h3><h3 id="4-运行程序"><a href="#4-运行程序" class="headerlink" title="4. 运行程序"></a>4. 运行程序</h3><h2 id="四、案例解析——二次排序编程"><a href="#四、案例解析——二次排序编程" class="headerlink" title="四、案例解析——二次排序编程"></a>四、案例解析——二次排序编程</h2>
+      
+    </div>
+    <br>
+    <br>
+    <a href="http://example.com/posts/hadoop03/" class="more">Read more <i class="icon-angle-right"></i></a>
+  </div>
+</div>
+<hr class="blog-post-sep">
+
+      
+	<div class="row">
+  <div class="col-md-4 col-sm-4">
+    
+  </div>
+  
+    <div class="col-xs-12">
+  
+    
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/posts/hadoop02/">第二章  磁盘I/O操作</a>
+    </h2>
+
+
+    <ul class="blog-info">
+      <li>
+      	<i class="fa fa-calendar"></i> 
+        <time datetime="2022-09-07T04:20:56.899Z" itemprop="datePublished">2022/09/07</time>
+
+      </li>
+      <li><i class="fa fa-comments"></i>
+        <a href="http://example.com/posts/hadoop02/#disqus_thread" class="article-comment-link">Comments</a>
+      </li>
+      <li>
+	<i class="fa fa-tags"></i>
+	
+
+      </li>
+    </ul>
+    <div class="blog-item">
+      
+	<p>在系统中，当需要处理的数据非常大时，数据出现损坏的可能性会大很多。因此需要进行<strong>数据完整性检查</strong>；<br>Hadoop 采用 <strong>RPC</strong> 来实现进程间的通信，采用的是 <strong>Writable 序列化机制</strong>。序列化有两个目的：<strong>进程间通信与数据持久性存储</strong>。<br>在传输之前，可以对文件先进行压缩，这样做有两大好处，这俩好处也对于处理大量数据十分重要：<strong>减少存储空间与加速数据在网络和磁盘上的传输</strong>。<br>对于某些应用，往往需要一种特殊的数据结构来存储数据，所以 Hadoop 为此开发了更高层次的容器：SequenceFile 和 Mapfile.</p>
+<h2 id="一、数据完整性"><a href="#一、数据完整性" class="headerlink" title="一、数据完整性"></a>一、数据完整性</h2><p>一般情况下，可用通过<strong>验证校验和</strong>的方式来检查数据的完整性。</p>
+<blockquote>
+<p>校验和（checksum）是指再数据处理和数据通信领域用于校验一组终端数据项的和。<br>数据在传输之前会生成一个校验和，当传输过去后会再次计算校验和，若不一致，则判定数据<strong>已损坏</strong>。<br>另外，文件系统重启时也会计算校验和。</p>
+</blockquote>
+<h3 id="1-HDFS-的数据完整性"><a href="#1-HDFS-的数据完整性" class="headerlink" title="1. HDFS 的数据完整性"></a>1. HDFS 的数据完整性</h3><p>除了在写入和读取时会计算验证校验和来验证数据的完整性外，HDFS 还会定期计算 block 的校验和以验证数据完整性。</p>
+<h4 id="1-向-HDFS-中写入数据时的验证"><a href="#1-向-HDFS-中写入数据时的验证" class="headerlink" title="1) 向 HDFS 中写入数据时的验证"></a>1) 向 HDFS 中写入数据时的验证</h4><p>Client 向 HDFS 发送写入请求，最后一个接收 block 副本的 DataNode 会计算校验和，并与 Client 发送的校验和进行比较，相同存入并返回信息，错误就会给 Client 抛出一个 IOException 错误。<br>此外，DataNode 复制其他数据节点的数据时，也会通过比较校验和的方式对数据进行验证。</p>
+<h4 id="2-从-HDFS-中读取数据时的验证"><a href="#2-从-HDFS-中读取数据时的验证" class="headerlink" title="2) 从 HDFS 中读取数据时的验证"></a>2) 从 HDFS 中读取数据时的验证</h4><p>每个数据节点都会将每次验证后的校验和与校验和的更新时间持久保存到某个日志中。<br>Client 从数据节点读取数据时，会将数据放置在 Client 的缓存中，然后重新计算校验和并于数据节点所存储的最新校验和进行比较。</p>
+<h4 id="3-DataNode-后台守护进程定期检测"><a href="#3-DataNode-后台守护进程定期检测" class="headerlink" title="3) DataNode 后台守护进程定期检测"></a>3) DataNode 后台守护进程定期检测</h4><p>解决的是物理存储媒介损坏的问题，每个数据节点都会在后台运行一个 DataBlockScanner 进程，该进程定期检查数据节点上的块，以便在 Client 读取损坏的块前将其及时检测并修复。<br>此外，当发现某块副本的校验和和日志中的数据不一致，数据节点就会将其标注为已损坏。当数据节点向元数据节点发送心跳时，元数据节点就会让数据节点处理损坏的数据块。</p>
+<h3 id="2-验证数据完整性"><a href="#2-验证数据完整性" class="headerlink" title="2. 验证数据完整性"></a>2. 验证数据完整性</h3><p>为了验证，用户可用去编写程序调用客户端校验类和校验和文件系统类。</p>
+<h4 id="1-客户端校验（LocalFileSystem）类"><a href="#1-客户端校验（LocalFileSystem）类" class="headerlink" title="1) 客户端校验（LocalFileSystem）类"></a>1) 客户端校验（LocalFileSystem）类</h4><p>例如，当调用该类来写入一个“a.txt”的文件时，文件系统会自动创建一个“.a.txt.crc”的隐藏文件。</p>
+<h4 id="2-校验和文件系统（ChecksumFileSystem）类"><a href="#2-校验和文件系统（ChecksumFileSystem）类" class="headerlink" title="2) 校验和文件系统（ChecksumFileSystem）类"></a>2) 校验和文件系统（ChecksumFileSystem）类</h4><h2 id="二、序列化与反序列化"><a href="#二、序列化与反序列化" class="headerlink" title="二、序列化与反序列化"></a>二、序列化与反序列化</h2><p>Java 序列化会将 Java 对象转换为字节序列的过程，Java 反序列化是将字节序列恢复到 Java 对象的过程。<br>例如，将 Java 图片对象序列化，通过网络进行传输，最后将其反序列化以获得需要的对象。</p>
+<h3 id="1-序列化"><a href="#1-序列化" class="headerlink" title="1. 序列化"></a>1. 序列化</h3><p>简单来讲，序列化就是将对象转化为便于传输的格式，例如二进制、字节数组、json、xml等。Hadoop 使用的时 Writable。</p>
+<h4 id="1-Writable-接口"><a href="#1-Writable-接口" class="headerlink" title="1) Writable 接口"></a>1) Writable 接口</h4><p>Writable 接口针对 DataOutput 和 DataInput 定义了两个方法：write() 和 readFields() 。分别实现对数据的序列化和反序列化。</p>
+<h4 id="2-Writable-类"><a href="#2-Writable-类" class="headerlink" title="2) Writable 类"></a>2) Writable 类</h4><h4 id="3-自定义-Writable-类"><a href="#3-自定义-Writable-类" class="headerlink" title="3) 自定义 Writable 类"></a>3) 自定义 Writable 类</h4><p>有时候，还是需要自己构建新类滴，因此，实现自定义的 Writable 也是十分有必要滴，下方代码构建了一个 ListWritable 类（Writable 集合类中没有提供），用于实现 Writable 接口从而达到 List 集合的效果。</p>
+<h3 id="2-反序列化"><a href="#2-反序列化" class="headerlink" title="2. 反序列化"></a>2. 反序列化</h3><p>简单来讲，是对应的，是序列化的逆过程。</p>
+<h2 id="三、数据压缩"><a href="#三、数据压缩" class="headerlink" title="三、数据压缩"></a>三、数据压缩</h2><p>Hadoop 的数据量过大，有必要对文件进行压缩，减少文件存储所使用的存储空间，也可以加快数据在网络和磁盘上的传输速度。</p>
+<h3 id="1-压缩与解压缩方法-Codec"><a href="#1-压缩与解压缩方法-Codec" class="headerlink" title="1. 压缩与解压缩方法 Codec"></a>1. 压缩与解压缩方法 Codec</h3><h4 id="1-CompressionCodec-接口"><a href="#1-CompressionCodec-接口" class="headerlink" title="1) CompressionCodec 接口"></a>1) CompressionCodec 接口</h4><p>CompressionCodec 接口定义了数据的压缩和解压缩方法，分别是 createOutputStream() 和 createInputStream()。<br>使用 createOutputStream() 方法，可以对未压缩的数据新建一个 CompressionOutputStream 对象，对输出流的数据进行压缩。<br>使用 createInputStream() 方法，可以对输入流读取的数据进行解压缩，解压缩的数据新构建一个 CompressionInputStream 对象。</p>
+<p>在 Eclipse 中运行 Compressor() 测试方法，可以在本地系统的指定位置（如“E:&#x2F;data”）生成一个压缩文件（如“c.txt.gz”）；<br>运行 UnCompressor() 测试方法，下方的“Console”窗口中会输出将压缩文件解压缩后所得的文件内容。</p>
+<h4 id="2-CompressionCodecFactory-类"><a href="#2-CompressionCodecFactory-类" class="headerlink" title="2) CompressionCodecFactory 类"></a>2) CompressionCodecFactory 类</h4><p>当读取一个压缩文件时，CompressionCodecFactory 类可以根据文件扩展名来推断使用哪个 Codec 算法。</p>
+<p>利用 CompressionCodecFactory 提供的 getCodec() 方法，可以接收一个 Path 对象，并将文件扩展名映射到相应的 Codec 方法中。<br>在 Eclipse 中运行 FileDecompressor() 测试方法，可以在与压缩文件（即 hdfs:&#x2F;&#x2F;hadoop00:9000&#x2F;mywork&#x2F;test&#x2F;c.txt.gz）相同的目录下得到一个解压缩后的文件。</p>
+<h3 id="2-压缩与输入分片"><a href="#2-压缩与输入分片" class="headerlink" title="2. 压缩与输入分片"></a>2. 压缩与输入分片</h3><p>Hadoop 的数据量过大，压缩后是否支持切分也是很有必要的。例如，一个 2GB 的文件切分成 16 个块（默认每个块128MB），如果该文件作为 MapReduce 的作业输入，将会创建 16 个分片，每个分片启动一个 Map任务单独处理分片数据。</p>
+<p>假设压缩后的文件大小为 1.6GB，那么块个数就会降低到 13 个，此时 Map 任务也会减少，由此可用提高作业效率。<br>当然压缩格式需要支持切分功能（如 bzip2），对于不支持切分的，emmm。</p>
+<h2 id="四、Hadoop-文件的数据结构"><a href="#四、Hadoop-文件的数据结构" class="headerlink" title="四、Hadoop 文件的数据结构"></a>四、Hadoop 文件的数据结构</h2><p>其中，SequenceFile 和 MapFile 较典型，MapFile 类型文件是排序后带有索引的 SequenceFile 文件。</p>
+<h3 id="1-SequemceFile"><a href="#1-SequemceFile" class="headerlink" title="1. SequemceFile"></a>1. SequemceFile</h3><p>是序列化后的二进制文件，以<strong>键值对的方式</strong>记录数据。</p>
+<p>在 Eclipse 中运行 SequemceFileWriteDemo() 测试方法，可以将数据写入到 SequemceFile 文件（即 hdfs:&#x2F;&#x2F;hadoop00:9000&#x2F;mywork&#x2F;test&#x2F;sequencedemo.seq）。</p>
+<p>在 虚拟机中，通过执行下行命令可以查看该文件内容：<code>hdfs dfs -text /mywork/test/sequencedemo.seq</code></p>
+<p>在 Eclipse 中运行 SequemceFileReadDemo() 测试方法，可以从 SequemceFile 文件中读取数据，下方的“Console”窗口中会输出日志。</p>
+<h3 id="2-MapFile"><a href="#2-MapFile" class="headerlink" title="2. MapFile"></a>2. MapFile</h3><p>在 Eclipse 中运行 MapFileWriteDemo() 测试方法，可以将数据写入到 MapFile 文件（即 hdfs:&#x2F;&#x2F;hadoop00:9000&#x2F;mywork&#x2F;test&#x2F;mapfiledemo.map）。</p>
+<p>在虚拟机中，通过执行下行命令可以分别查看该文件的 index 和 data 内容：<code>hdfs dfs -text /mywork/test/mapfiledemo.map/index</code> 和 <code>hdfs dfs -text /mywork/test/mapfiledemo.map/data</code>。</p>
+<p>在 Eclipse 中运行 MapFileReadDemo() 测试方法，可以从 MapFile 文件中读取数据，此时下方的“Console”窗口中会输出全部文件内容及 key 值为 10 的内容。</p>
+
+      
+    </div>
+    <br>
+    <br>
+    <a href="http://example.com/posts/hadoop02/" class="more">Read more <i class="icon-angle-right"></i></a>
+  </div>
+</div>
+<hr class="blog-post-sep">
+
+      
+	<div class="row">
+  <div class="col-md-4 col-sm-4">
+    
+  </div>
+  
+    <div class="col-xs-12">
+  
+    
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/posts/hadoop01/">第一章  分布式文件系统（HDFS）概述</a>
+    </h2>
+
+
+    <ul class="blog-info">
+      <li>
+      	<i class="fa fa-calendar"></i> 
+        <time datetime="2022-09-07T04:18:31.731Z" itemprop="datePublished">2022/09/07</time>
+
+      </li>
+      <li><i class="fa fa-comments"></i>
+        <a href="http://example.com/posts/hadoop01/#disqus_thread" class="article-comment-link">Comments</a>
+      </li>
+      <li>
+	<i class="fa fa-tags"></i>
+	
+
+      </li>
+    </ul>
+    <div class="blog-item">
+      
+	<p>HDFS 是一个支持海量数据存储的分布式文件系统，是存储大数据文件的重要载体。本章主要介绍了 HDFS 的体系结构、运行机制、工作流程和基本操作。</p>
+<h2 id="一、HFDS-概述"><a href="#一、HFDS-概述" class="headerlink" title="一、HFDS 概述"></a>一、HFDS 概述</h2><h3 id="1-HDFS-的设计目标和不足"><a href="#1-HDFS-的设计目标和不足" class="headerlink" title="1. HDFS 的设计目标和不足"></a>1. HDFS 的设计目标和不足</h3><blockquote>
+<p>设计目标：</p>
+<ol>
+<li>支持超大文件存储</li>
+<li>采用一次写入多次读取（write-once-read-many）访问模型</li>
+<li>具有故障检测和快速自动恢复功能</li>
+<li>采用流式数据访问</li>
+<li>支持移动计算</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>不足：</p>
+<ol>
+<li>不适合处理低延迟数据访问</li>
+<li>无法高效存储大量小文件</li>
+<li>不支持多用户写入和任意修改文件</li>
+</ol>
+</blockquote>
+<h3 id="2-HDFS-的体系结构"><a href="#2-HDFS-的体系结构" class="headerlink" title="2. HDFS 的体系结构"></a>2. HDFS 的体系结构</h3><p>HDFS 是一个<strong>主&#x2F;从（master&#x2F;slave）</strong>架构的系统，即一个 HDFS 集群由一个 <strong>NameNode</strong> 和若干 <strong>DataNode</strong> 组成。它俩也是 HDFS 的<strong>核心组件</strong>，其中，NameNode 被称为“<strong>元数据节点</strong>”、另一个被称为“<strong>数据节点</strong>”。</p>
+<h4 id="3-数据块（block）"><a href="#3-数据块（block）" class="headerlink" title="3. 数据块（block）"></a>3. 数据块（block）</h4><p>磁盘数据块是磁盘读写的最小单位，也只能读写块整倍大小的数据。HDFS 的默认数据块大小为 <strong>128MB</strong>。</p>
+<blockquote>
+<p>通常为512B，那为什么设置这么大？<strong>数据块越大，寻址开销越小</strong>。当然，盲目过大也不行，MapReduce 中的 Map 一次只处理一个块的内容，<strong>过大会导致整体任务量变少</strong>，进而影响数据的<strong>并行</strong>处理速度。</p>
+</blockquote>
+<blockquote>
+<p>优点：<br>可以存储任意大小的数据文件，只要物理切片就可以。<br>简化了存储系统的管理：元数据信息和文件数据信息分开管理。<br>有利于实现分布式文件系统的容错性：一个节点出故障，其他块读取副本。<br>有利于实现负载军和并提高集群可靠性：某个数据节点的剩余空间低于临界点，就将这个数据节点移动到其他的数据节点上；此外，数据块的副本被安排在不同的机架上，即使丢失某台机架，读取副本即可，大大提高了集群的可靠性。与此同时，Hadoop 的故障检测和快速自动回复功能就可以及时将这些块副本数量恢复到正常水平。</p>
+</blockquote>
+<h4 id="4-NameNode-和-SecondaryNameNode"><a href="#4-NameNode-和-SecondaryNameNode" class="headerlink" title="4. NameNode 和 SecondaryNameNode"></a>4. NameNode 和 SecondaryNameNode</h4><h5 id="1-元数据节点（NameNode）"><a href="#1-元数据节点（NameNode）" class="headerlink" title="1) 元数据节点（NameNode）"></a>1) 元数据节点（NameNode）</h5><p>管理 HDFS 文件系统的命名空间（namespace）。其实就是 HDFS 的目录结构，用户可以进行增删改重命名等 HDFS 文件。</p>
+<blockquote>
+<p>所存储的元数据信息：</p>
+<ol>
+<li>文件名、目录名与层次关系</li>
+<li>文件目录的属主和权限</li>
+<li>每个文件由哪些数据块组成</li>
+<li>数据块到数据节点的映射信息</li>
+</ol>
+</blockquote>
+<p>元数据信息被持久化的存到本地磁盘的两个文件中：<strong>fsimage（元数据镜像文件）</strong>和 <strong>edits（事务日志文件）</strong>。</p>
+<p>元数据节点正常运行时，所有更新操作被写入 edits 文件中，如果直接写入元数据镜像文件，逐渐一段时间后，过大会导致系统运行速度变慢。即 edits 文件越来越大，不会对系统有明显影响，但是元数据节点的重启过程会越来越慢。</p>
+<h5 id="2-SecondaryNameNode（辅助者-·-元数据节点）"><a href="#2-SecondaryNameNode（辅助者-·-元数据节点）" class="headerlink" title="2) SecondaryNameNode（辅助者 · 元数据节点）"></a>2) SecondaryNameNode（辅助者 · 元数据节点）</h5><p>解决掉 edits 文件过大的问题。是对 元数据镜像文件和事务日志文件进行定期合并。由于合并时需要消耗内存，因此通常这俩<strong>没在一个节点</strong>上面。</p>
+<blockquote>
+<p>优点：</p>
+<ol>
+<li>提升了集群性能，保存了元数据节点的元数据信息，一定程度上提高了元数据的安全性和可靠性。</li>
+</ol>
+</blockquote>
+<h5 id="3-数据节点（DataNode）"><a href="#3-数据节点（DataNode）" class="headerlink" title="3) 数据节点（DataNode）"></a>3) 数据节点（DataNode）</h5><p>一个数据节点有多个数据块，每个数据块会在多个数据节点上存储副本，但一个数据节点只能有一个副本。</p>
+<blockquote>
+<p>作用：<br>负责向<strong>客户端</strong>或<strong>元数据节点</strong>提供数据的检索和读写服务，并通过<strong>心跳机制</strong>定期向元数据节点发送自己的块列表信息。<br>一般情况下，数据节点会从磁盘中读取数据块，但如果某个块被频繁访问，系统会将其存放在数据节点的内存中。</p>
+</blockquote>
+<h6 id="从现有集群里面动态增加一个数据节点，怎么破？"><a href="#从现有集群里面动态增加一个数据节点，怎么破？" class="headerlink" title="从现有集群里面动态增加一个数据节点，怎么破？"></a>从现有集群里面动态增加一个数据节点，怎么破？</h6><p>—索引眼：<em>增加数据节点<strong>增加一个数据节点</strong>增加一个DataNode<strong>增加DataNode</strong>hadoop04**Hadoop04</em>—</p>
+<h2 id="二、数据错误与恢复"><a href="#二、数据错误与恢复" class="headerlink" title="二、数据错误与恢复"></a>二、数据错误与恢复</h2><p>HDFS 的主要目标有一条是“具有故障检测和快速自动恢复功能”，这就要求即使再出错的情况下也要保证数据存储的可靠性。常见的出错情况包括block 损坏、NameNode 和 DataNode 的错误。</p>
+<h3 id="1-block-损坏处理"><a href="#1-block-损坏处理" class="headerlink" title="1. block 损坏处理"></a>1. block 损坏处理</h3><p><strong>网络传输错误</strong>和<strong>机器硬件故障</strong>等因素会造成数据损坏。<br>客户端在读取文件时会对每个读取的块进行校验，如果出错，就会读取其他数据节点上的数据块，并将错误块报告给元数据节点，元数据节点随后会重新复制。<br>此外，每一个数据节点都会开启一个<strong>块扫描进程</strong>，来定期验证块的正确性，不正确会报告给元数据节点进行处理。</p>
+<h3 id="2-NameNode-和-DataNode-错误处理"><a href="#2-NameNode-和-DataNode-错误处理" class="headerlink" title="2. NameNode 和 DataNode 错误处理"></a>2. NameNode 和 DataNode 错误处理</h3><h4 id="1-NameNode-错误处理"><a href="#1-NameNode-错误处理" class="headerlink" title="1) NameNode 错误处理"></a>1) NameNode 错误处理</h4><p>NameNode 上保存了元数据信息，仅此一份独一无二，因此必须确保该安全。</p>
+<blockquote>
+<p>容错方式有以下三种：</p>
+<ol>
+<li>元数据信息持久化到本地磁盘并同步到 NFS 中，但会因网络带宽等原因造成元数据丢失。</li>
+<li>运行 SecondaryNameNode。但由于该备份的元数据信息滞后于 NameNode，所以也会丢失掉部分的数据信息。</li>
+<li>启用主备两个NameNode。</li>
+</ol>
+</blockquote>
+<h2 id="三、HDFS的运行机制"><a href="#三、HDFS的运行机制" class="headerlink" title="三、HDFS的运行机制"></a>三、HDFS的运行机制</h2><h3 id="1-副本机制"><a href="#1-副本机制" class="headerlink" title="1. 副本机制"></a>1. 副本机制</h3><blockquote>
+<p>作用：<br>为了维护爱与和平…咳咳串台了，再来！为了保证集群的容错性和可用性。</p>
+</blockquote>
+<h3 id="2-心跳机制"><a href="#2-心跳机制" class="headerlink" title="2. 心跳机制"></a>2. 心跳机制</h3><p>NameNode 启动后，会等待所有 DataNode 的“心跳”：DataNode 每隔一定间隔（默认三秒）主动向 NameNode 发送“心跳”，主动报告自己的状态信息。然后 NameNode 通过心跳向 DataNode 下达命令。<br>如果长时间未收到，则可以证明该 DataNode 宕机，然后检查该 DataNode 上的块副本信息并备份到其他的 DataNode 上。<br>对了，DataNode 会给主备主数据节点都会发送“心跳”。</p>
+<h3 id="3-副本放置与机架感应策略"><a href="#3-副本放置与机架感应策略" class="headerlink" title="3. 副本放置与机架感应策略"></a>3. 副本放置与机架感应策略</h3><h4 id="1-副本放置"><a href="#1-副本放置" class="headerlink" title="1) 副本放置"></a>1) 副本放置</h4><p>一个集群中多个机架，每个机架上多个数据节点，每个数据节点保存多个块副本。另外，元数据节点的元数据存储着每个数据节点所属的机架 ID。那么，如何分配文件的块副本到集群中的数据节点上面呢？</p>
+<p>默认下，副本的配置数为 3，其中，有两个被放在同一机架的不同数据节点上面，另外一个被另一个机架上。</p>
+<blockquote>
+<p>一般情况下，3 个足矣。若大于等于 3，则之后的副本可以随意放置。避免一个机架有太多同意副本即可。</p>
+</blockquote>
+<h4 id="2-机架感应（rack-aware）"><a href="#2-机架感应（rack-aware）" class="headerlink" title="2) 机架感应（rack-aware）"></a>2) 机架感应（rack-aware）</h4><p>由于副本的存放位置会影响 HDFS 的可靠性和性能，HDFS 采用了一种机架感知策略来提高数据的可靠性，并提高网络带宽的利用率。<br>这样一来，即使一个机架发生故障，由于其他机架上的副本仍然可用，不会影响数据的可靠性。另外，当读取数据时，应用程序可用在多个机架上同时读取，大大提高数据的读取速度。</p>
+<h3 id="4-联邦（Federation）机制"><a href="#4-联邦（Federation）机制" class="headerlink" title="4. 联邦（Federation）机制"></a>4. 联邦（Federation）机制</h3><p>每个文件的元数据信息都需要保存到 NameNode 的内存中，于是便有了联邦机制。</p>
+<blockquote>
+<p>作用：<br>集群横向扩展的方式解决 NameNode 的瓶颈问题，即<strong>增加元数据节点的数量</strong>。<br>由于 Hadoop 针对海量数据进行存储管理，并采用了数据冗余存储方式，所以<strong>磁盘I&#x2F;O才是集群的《主要瓶颈》。</strong></p>
+</blockquote>
+<p>在联邦机制中，每个 NameNode 分别管理文件系统命名口径的一部分（命名空间卷）。各卷中分别存储了命名空间的元数据和文件数据块的块池。同时，各卷相互独立互不影响互不通信。此外，集群中的所有 DataNode 都必须注册到各个 NameNode。</p>
+<p>不过，没有解决掉单点故障问题，若某一个 NameNode 失效，仍无法恢复无法访问。</p>
+<h3 id="5-HA（7-24小时不中断服务）-机制"><a href="#5-HA（7-24小时不中断服务）-机制" class="headerlink" title="5. HA（7*24小时不中断服务） 机制"></a>5. HA（7*24小时不中断服务） 机制</h3><p>所谓HA，即高可用（7*24小时不中断服务）。实现高可用最关键的是消除单点故障。<br>方式：允许运行主备两个 NameNode，当 NameNode 节点发生故障时，可以快速启用备用的 NameNode，以确保集群正常运行。</p>
+<p>备主数据节点和主主数据节点始终同步（元数据信息一致），它们之间通过 JournalNode 守护进程进行通信。</p>
+<h3 id="6-安全模式"><a href="#6-安全模式" class="headerlink" title="6. 安全模式"></a>6. 安全模式</h3><p>启用后，就进入了安全模式。该模式下，主数据节点会检查块的完整性。此外，它还是一种只读模式。<br>正常情况下，NameNode启动（额外延迟30s）就会退出安全模式，但是如果DataNode 丢失的数据块超过设定的值，集群就会一直处于安全模式。</p>
+<p>两件事</p>
+<ol>
+<li>等待每个数据节点的心跳，判断是否宕机，然后NameNode 将 DataNode 所发送的 block 报告与其元数据进行对比，以判断数据块是否正常。</li>
+<li>在内存中加载 fsimage，然后将 fsimage 和edits 合并成新的 fsimage，并创建一个新的 edits。合并完成后删除旧的 fsimage 和 edits，并将新的俩重命名。<h3 id="7-垃圾回收"><a href="#7-垃圾回收" class="headerlink" title="7. 垃圾回收"></a>7. 垃圾回收</h3>没有任何利用价值的块副本被认为是垃圾：若一个文件被删除，那么备份的该文件副本也就没有用。<br>删除不会直接删除，会移动到回收站。<h2 id="四、HDFS-的工作流程"><a href="#四、HDFS-的工作流程" class="headerlink" title="四、HDFS 的工作流程"></a>四、HDFS 的工作流程</h2>在 Hadoop 集群中，<strong>客户端</strong>与<strong>元数据节点</strong>之间的通信、<strong>元数据节点</strong>与<strong>数据节点</strong>之间的通信、<strong>数据节点</strong>相互之间的通信、都是基于 <strong>RPC（远程过程调用）</strong>机制的。</li>
+</ol>
+<h3 id="1-启动流程"><a href="#1-启动流程" class="headerlink" title="1. 启动流程"></a>1. 启动流程</h3><p>在 HDFS 的启动过程中，需要启动 NameNode 和DataNode。<br>启动时，会先进入安全模式。<br>数据节点启动时，会开启一个 DataBlockScanner 进程来扫描 block，并且由该进程定期向各个 NameNode 发送“心跳”。</p>
+<h3 id="2-读流程"><a href="#2-读流程" class="headerlink" title="2. 读流程"></a>2. 读流程</h3><p>Client 读取时，首先会访问 NameNode 以确认是否可以读取。是，则 Client 获得文件的 block 和 DataNode 信息，然后执行 HDFS 的读操作来获取数据。在读取数据结束后，需要关闭文件输入流。</p>
+<h3 id="3-写流程"><a href="#3-写流程" class="headerlink" title="3. 写流程"></a>3. 写流程</h3><p>Client 将数据预备写入到 HDFS 文件时，首先会访问 NameNode 确认写入的权限和文件是否存在（存在是否覆盖）。是，Client 在 NameNode 上创建写入文件的元数据信息，并返回可存储数据的 block 和 DataNode 信息，然后根据返回信息执行副本复制过程。写入结束后，需要关闭文件输出流。</p>
+<h3 id="4-删除流程"><a href="#4-删除流程" class="headerlink" title="4. 删除流程"></a>4. 删除流程</h3><h4 id="1-使用-HDFS-命令删除文件"><a href="#1-使用-HDFS-命令删除文件" class="headerlink" title="1) 使用 HDFS 命令删除文件"></a>1) 使用 HDFS 命令删除文件</h4><p>root 用户的回收站目录为 <code>hdfs://hadoop0:9000/user/root/.Trash</code>。<br>当用户使用 HDFS 命令执行删除操作后，系统会将需要删除的文件移动到回收站内的“&#x2F;Current”下。例如，root用户删除了“koinl01.txt”文件，就可以在 <code>hdfs://hadoop0:9000/user/root/.Trash/Current/koinl01.txt</code> 找到。<br>回收站也是有时间周期滴。</p>
+<h4 id="2-使用-Java-API-删除文件"><a href="#2-使用-Java-API-删除文件" class="headerlink" title="2) 使用 Java API 删除文件"></a>2) 使用 Java API 删除文件</h4><p>需要有一段延迟时间，才可以真正删除掉。</p>
+<h2 id="五、HDFS-的基本操作"><a href="#五、HDFS-的基本操作" class="headerlink" title="五、HDFS 的基本操作"></a>五、HDFS 的基本操作</h2><p>基本操作包括：创建文件、移动文件、查看文件目录、读取文件等</p>
+<h3 id="1-HDFS-命令行操作"><a href="#1-HDFS-命令行操作" class="headerlink" title="1. HDFS 命令行操作"></a>1. HDFS 命令行操作</h3><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">解析</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">hdfs dfs -help</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -ls &#x2F;</td>
+<td align="center">查看HDFS根目录下目录和文件</td>
+<td align="center">-R选项递归展示</td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -mkdir &#x2F;mywork</td>
+<td align="center">根目录下创建文件夹</td>
+<td align="center">-p选项多级目录</td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -put a.txt &#x2F;mywork</td>
+<td align="center">虚拟机本地文件上传到HDFS中</td>
+<td align="center">-f 强制覆盖</td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -get &#x2F;mywork&#x2F;a.txt &#x2F;root&#x2F;Downloads</td>
+<td align="center">HDFS中文件下载到虚拟机本地</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -cp &#x2F;mywork&#x2F;a.txt &#x2F;mywork&#x2F;t1</td>
+<td align="center">HDFS中文件复制到目录</td>
+<td align="center">若复制到文件，即复制+重命名</td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -mv &#x2F;mywork&#x2F;a.txt &#x2F;input&#x2F;</td>
+<td align="center">HDFS中文件移动到目录</td>
+<td align="center">若移动到文件，即移动+重命名</td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -cat &#x2F;input&#x2F;word.txt</td>
+<td align="center">HDFS中查看文件内容</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -rm &#x2F;imput&#x2F;a.txt</td>
+<td align="center">HDFS中删除文件</td>
+<td align="center">-r选项删除目录</td>
+</tr>
+<tr>
+<td align="center">hdfs dfs -df&#x2F;</td>
+<td align="center">查看HDFS可用空间</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="2-HDFS-Java-API-操作"><a href="#2-HDFS-Java-API-操作" class="headerlink" title="2. HDFS Java API 操作"></a>2. HDFS Java API 操作</h3><p>使用 HDFS Java API 可以远程对 HDFS 中文件进行创建、上传、下载、删除、读写等操作。</p>
+<h4 id="1-新建-Map-x2F-Reduce-项目和测试类"><a href="#1-新建-Map-x2F-Reduce-项目和测试类" class="headerlink" title="1) 新建 Map&#x2F;Reduce 项目和测试类"></a>1) 新建 Map&#x2F;Reduce 项目和测试类</h4><h5 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h5><p>在 Testfiles 类中添加一个<strong>用于创建目录</strong>的 createDir() 测试方法，该方法可以创建新目录<br>。</p>
+<h5 id="上传-Windows-本地文件"><a href="#上传-Windows-本地文件" class="headerlink" title="上传 Windows 本地文件"></a>上传 Windows 本地文件</h5><p>在 Testfiles 类中添加一个<strong>用于上传文件</strong>的 putFiles() 测试方法，该方法用于从 Windows 系统本地上传多个文件到集群。</p>
+<h5 id="下载文件到本地"><a href="#下载文件到本地" class="headerlink" title="下载文件到本地"></a>下载文件到本地</h5><p>在 Testfiles 类中添加一个<strong>用于下载文件</strong>的 getFiles() 测试方法，该方法通过正则表达式过滤出以“txt”为文件扩展名的文件并下载。</p>
+<h5 id="删除文件（或目录）"><a href="#删除文件（或目录）" class="headerlink" title="删除文件（或目录）"></a>删除文件（或目录）</h5><p>在 Testfiles 类中添加一个<strong>用于删除文件（或目录）</strong>的 deleteFiles() 测试方法，该方法用于从 HDFS 中删除文件（或目录）。</p>
+<h5 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h5><p>在 Testfiles 类中添加一个<strong>用于写入数据到文件</strong>的 writeHDFS() 测试方法，该方法用于向 HDFS 中写入文件。</p>
+<h5 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h5><p>在 Testfiles 类中添加一个<strong>用于读取文件数据</strong>的 readHDFS() 测试方法，该方法可以分行读取文件数据。</p>
+
+      
+    </div>
+    <br>
+    <br>
+    <a href="http://example.com/posts/hadoop01/" class="more">Read more <i class="icon-angle-right"></i></a>
+  </div>
+</div>
+<hr class="blog-post-sep">
+
+      
+	<div class="row">
+  <div class="col-md-4 col-sm-4">
+    
+  </div>
+  
+    <div class="col-xs-12">
+  
+    
+    <h2 itemprop="name">
+      <a class="archive-article-title" href="/posts/hadoop00/">绪论  聊聊需要的软件</a>
+    </h2>
+
+
+    <ul class="blog-info">
+      <li>
+      	<i class="fa fa-calendar"></i> 
+        <time datetime="2022-09-07T03:40:48.292Z" itemprop="datePublished">2022/09/07</time>
+
+      </li>
+      <li><i class="fa fa-comments"></i>
+        <a href="http://example.com/posts/hadoop00/#disqus_thread" class="article-comment-link">Comments</a>
+      </li>
+      <li>
+	<i class="fa fa-tags"></i>
+	
+
+      </li>
+    </ul>
+    <div class="blog-item">
+      
+	
+      
+    </div>
+    <br>
+    <br>
+    <a href="http://example.com/posts/hadoop00/" class="more">Read more <i class="icon-angle-right"></i></a>
+  </div>
+</div>
+<hr class="blog-post-sep">
+
+      
+    </div>
+    
+      <div id="page-nav" class="pagination">
+	<span class="page-number current">1</span>
+      </div>
+    
+  </section>
+
+</div>
+
+</div>
+
+</section>
+</div>
+
+    <!-- BEGIN PRE-FOOTER -->
+    <div class="pre-footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN BOTTOM ABOUT BLOCK -->
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+            <h2>About Us</h2>
+            <p>Computer Lab is a software development and marketing company based in Brooklyn, New York. <br><br> Computer Lab was founded in 2015, and is focused on so on and so forth.</p>
+          </div>
+          <!-- END BOTTOM ABOUT BLOCK -->
+
+          <!-- BEGIN BOTTOM CONTACTS -->
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+            <h2>Contact</h2>
+            <address class="margin-bottom-40">
+              140 Metropolitan Avenue<br>
+              5th Floor<br>
+              Brooklyn, NY 11249<br>
+              Phone: 716-472-4484<br>
+              Email: <a href="mailto:ptsteadman@gmail.com">ptsteadman@gmail.com</a><br>
+            </address>
+          </div>
+          <!-- END BOTTOM CONTACTS -->
+
+	
+          <!-- BEGIN TWITTER BLOCK --> 
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+
+	  <a data-tweet-limit="1" class="twitter-timeline" data-theme="dark"
+	  target="_blank" rel="noopener" href="https://twitter.com/computerlab_">Tweets by @computerlab_</a>
+
+	  <script>!function(d,s,id){var
+	  js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+          </div>
+          <!-- END TWITTER BLOCK -->
+	
+        </div>
+      </div>
+    </div>
+    <!-- END PRE-FOOTER -->
+
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN COPYRIGHT -->
+          <div class="col-md-6 col-sm-6 padding-top-10">
+                  &copy; 2023 锦鲤未离<br>
+ <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
+          </div>
+          <!-- END COPYRIGHT -->
+	  <!-- BEGIN SOCIAL -->
+<div class="col-md-6 col-sm-6">
+  <ul class="social-footer list-unstyled list-inline pull-right">
+    
+      <li><a target="_blank" rel="noopener" href="https://github.com/ptsteadman"><i class="fa fa-github"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://twitter.com/ptsteadman"><i class="fa fa-twitter"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://www.facebook.com/ptsteadman"><i class="fa fa-facebook"></i></a></li>
+    
+      <li><a href="/atom.xml"><i class="fa fa-rss"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="https://linkedin.com/in/ptsteadman"><i class="fa fa-linkedin"></i></a></li>
+    
+      <li><a target="_blank" rel="noopener" href="http://stackoverflow.com/users/2480493/patrick-steadman"><i class="fa fa-stackoverflow"></i></a></li>
+    
+  </ul>  
+</div>
+<!-- END SOCIAL -->
+
+        </div>
+      </div>
+    </div>
+    <!-- END FOOTER -->
+
+  <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+<!--[if lt IE 9]>
+
+<script src="/metronic/assets/plugins/respond.min.js"></script>
+
+<![endif]--> 
+
+<script src="/metronic/assets/plugins/jquery.min.js"></script>
+
+
+<script src="/metronic/assets/plugins/jquery-migrate.min.js"></script>
+
+
+<script src="/metronic/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+<script src="/metronic/assets/corporate/scripts/back-to-top.js"></script>
+
+
+<script src="/metronic/assets/plugins/owl.carousel/owl.carousel.min.js"></script>
+
+
+<script src="/metronic/assets/corporate/scripts/layout.js"></script>
+
+
+<script src="/js/wow.min.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        Layout.init();    
+        Layout.initOWL();
+        Layout.initTwitter();
+        Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
+        Layout.initNavScrolling(); 
+	new WOW().init();
+    });
+</script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE-SPECIFIC PLUGINS --> 
+
+
+
+
+
+
+
+<!-- END PAGE-SPECIFIC PLUGINS --> 
+
+<!-- BEGIN INTEGRATIONS -->
+
+
+
+
+
+<!-- END INTEGRATIONS -->
+
 </body>
 </html>
