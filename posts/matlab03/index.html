@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<head>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <link rel="icon" href="/favicon.ico">
+  
+  <title>锦鲤未离 | 第三章  程序流程控制[未完成]</title>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css">
+
+  <!--在这里倒入jquery 方便处理部分页面的jquery-->
+  <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+	<header class="site-header navfixed-false">
+  <div class="container">
+      <h1><a href="/" title="锦鲤未离"><span class="octicon octicon-mark-github"></span> 锦鲤未离</a></h1>
+      <nav class="site-header-nav" role="navigation">
+        
+              
+              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
+        
+              
+              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="Category">Category</a>
+        
+              
+              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
+        
+              
+              <a href="/message/"  class=" site-header-nav-item hvr-underline-from-center" title="Message">Message</a>
+        
+      </nav>
+  </div>
+</header>
+
+	
+<section class="collection-head geopattern" data-pattern-id="第三章  程序流程控制[未完成]" >
+    <div class="container">
+        <div class="collection-title">
+            <h1 class="collection-header">
+                第三章  程序流程控制[未完成]
+            </h1>
+            
+                <div class="collection-info">
+                    <span class="meta-info">
+                        <span class="octicon octicon-calendar"></span>
+                        <time datetime="2022-02-20T04:01:14.702Z" itemprop="datePublished">2022-02-20</time>
+                    </span>
+                    
+                        <span class="meta-info">
+                            <span class="octicon octicon-file-directory"></span>
+                            <a href='/categories/MATLAB/' title=''>MATLAB</a>
+                        </span>
+                    
+                </div>
+            
+        </div>
+    </div>
+</section>
+	<section class="container">
+    <div class="columns">
+        <div class="column  three-fourths " >
+            <article class="article-content markdown-body">
+                <h1 id="第三章-程序流程控制"><a href="#第三章-程序流程控制" class="headerlink" title="第三章  程序流程控制"></a>第三章  程序流程控制</h1><ol>
+<li>顺序结构<br>a &#x3D; input(‘请输入a值: ‘);<br>b &#x3D; input(‘请输入b值: ‘);<br>c &#x3D; input(‘请输入c值: ‘);<br>d &#x3D; b * b - 4 * a * c;<br>x &#x3D; [(-b + sqrt(d)) &#x2F; (2 * a), (-b - sqrt(d)) &#x2F; (2 * a)];<br>disp([‘x1的值是: ‘,num2str(x(1)), ‘, x2的值是: ‘,num2str(x(2))])</li>
+<li>选择结构<br>% 需求: x在1<del>9内, y &#x3D; x + 10; x在10</del>29内, y &#x3D; x - 10; 否则, 输出错误信息<br>x &#x3D; input(‘请输入x的值: ‘);<br>if x &gt;&#x3D; 1 &amp;&amp; x &lt;&#x3D; 9<br> y &#x3D; x + 10;<br> y<br>elseif x &gt;&#x3D; 10 &amp;&amp; x &lt;&#x3D; 19<br> y &#x3D; x - 10;<br> y<br>else<br> disp(‘错误信息’)<br>end</li>
+<li>多分支结构<br>c &#x3D; input(‘请输入一个字符’,’s’);<br>if c &gt;&#x3D; ‘a’ &amp;&amp; c &lt;&#x3D; ‘z’<br> disp(upper(c))<br>elseif c &gt;&#x3D; ‘0’ &amp;&amp; c &lt;&#x3D; ‘9’<br> disp([‘最终结果是: ‘,num2str(str2double(c) * 2)])<br>end</li>
+<li>switch<br>% 需求: n &#x2F; 10, 当结果为0, 输出零蛋; 当结果为1, 2,<br>% 输出他们的乘4; 当结果为3, 4, 5, 输出’最终结果是: 开平方’<br>% 当结果为5~9, 输出开根号, 当结果为10+, 输出错误信息<br>n &#x3D; input(‘请输入想要输入的值: ‘);<br>switch rem(n, 10)<br> case 0<br> disp(‘零蛋’);<br> case {1, 2}<br> disp(n * 4);<br> case {3, 4, 5}<br> disp([‘最终结果是: ‘,num2str(sqrt(n))]);<br> case num2cell(6:9)<br> n &#x3D; n &#x2F; 2;<br> otherwise<br> disp(‘错误信息’);<br>end<br>n</li>
+</ol>
+
+            </article>
+            
+                <div class="share">
+                    <!--开启分享-->
+<div class="share-component" data-disabled="google,twitter,facebook" data-description=""></div>
+
+
+<script src="/js/share.min.js"></script>
+
+
+                </div>    
+            
+
+            
+            
+                
+<div class="comments">
+    <div id="gitalk-container"></div>
+        
+<script src="/js/gitalk.js"></script>
+
+        <script>
+            var gitalk = new Gitalk({
+                clientID: "",
+                clientSecret: "",
+                repo: '',
+                owner: '',
+                admin: [''],
+                id: decodeURI('/posts/matlab03/'),
+            })
+        gitalk.render('gitalk-container')
+        </script>
+</div>
+
+            
+
+        </div>
+        <div class="column one-fourth">
+            
+                
+                
+
+
+<h3>Post Directory</h3>
+
+<div id="post-directory-module">
+	<section class="post-directory">
+		<p><strong class="toc-title">文章目录</strong></p>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-text">第三章  程序流程控制</span></a></li></ol>
+	</section>
+</div>
+            
+        </div>
+    </div>
+</section>
+
+<footer class="container">
+    <div class="site-footer" role="contentinfo">
+        <div class="copyright left mobile-block">
+                © 2016
+                <span title="yumemor">yumemor</span>
+                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+        </div>
+
+        <ul class="site-footer-links right mobile-hidden">
+            <li>
+                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+            </li>
+        </ul>
+
+        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
+            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+        </a>
+
+        <ul class="site-footer-links mobile-hidden">
+            
+                  
+                  <li>
+                    <a href="/"  title="Home">Home</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/categories/"  title="Category">Category</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/open-source/"  title="Open-Source">Open-Source</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/message/"  title="Message">Message</a>
+                  </li>
+            
+            <li>
+                <a href="/atom.xml">
+                    <span class="octicon octicon-rss" style="color:orange;"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+		
+<script src="/js/geopattern.js"></script>
+
+		
+<script src="/js/highlight.pack.js"></script>
+
+		
+<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+		
+			
+<script src="/js/toc.js"></script>
+
+		
+
+		
+<script src="/js/index.js"></script>
+
+
+		 
+<script src="/js/popular_repo.js"></script>
+ 
+
+	</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<head>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <link rel="icon" href="/favicon.ico">
+  
+  <title>锦鲤未离 | 第四章  用户和组管理</title>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css">
+
+  <!--在这里倒入jquery 方便处理部分页面的jquery-->
+  <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+	<header class="site-header navfixed-false">
+  <div class="container">
+      <h1><a href="/" title="锦鲤未离"><span class="octicon octicon-mark-github"></span> 锦鲤未离</a></h1>
+      <nav class="site-header-nav" role="navigation">
+        
+              
+              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
+        
+              
+              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="Category">Category</a>
+        
+              
+              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
+        
+              
+              <a href="/message/"  class=" site-header-nav-item hvr-underline-from-center" title="Message">Message</a>
+        
+      </nav>
+  </div>
+</header>
+
+	
+<section class="collection-head geopattern" data-pattern-id="第四章  用户和组管理" >
+    <div class="container">
+        <div class="collection-title">
+            <h1 class="collection-header">
+                第四章  用户和组管理
+            </h1>
+            
+                <div class="collection-info">
+                    <span class="meta-info">
+                        <span class="octicon octicon-calendar"></span>
+                        <time datetime="2022-06-09T03:18:08.001Z" itemprop="datePublished">2022-06-09</time>
+                    </span>
+                    
+                        <span class="meta-info">
+                            <span class="octicon octicon-file-directory"></span>
+                            <a href='/categories/Linux/' title=''>Linux</a>
+                        </span>
+                    
+                </div>
+            
+        </div>
+    </div>
+</section>
+	<section class="container">
+    <div class="columns">
+        <div class="column  three-fourths " >
+            <article class="article-content markdown-body">
+                <p>用户信息一般保存在 &#x2F;etc&#x2F;passwd 与 &#x2F;etc&#x2F;shadow 中; 组信息一般保存在 &#x2F;etc&#x2F;group 与 &#x2F;etc&#x2F;gshadow 中.</p>
+<p>其中, UID 的 <code>koinl:x:1000:1000:koinl:/home/koinl:/bin/bash</code> 分别表示 <code>用户名:密码:UID:GID:用户描述信息:用户主目录:用户默认登录 Shell</code> ;<br>其二, GID 的 <code>koinl:x:1000:</code> 分别表示 <code>组名:密码:GID:组成员</code>.</p>
+<p>在 UID 与 GID 中, 0 表示超级用户 root, 系统用户 UID 的数字范围为 1<del>499, 普通用户的数字范围为 499</del>65535.</p>
+<p>在下述中, 会阐述下关于增删改用户与组的命令以及修改用户密码的命令.</p>
+<h2 id="一-用户管理"><a href="#一-用户管理" class="headerlink" title="一. 用户管理"></a>一. 用户管理</h2><h3 id="1-查看用户"><a href="#1-查看用户" class="headerlink" title="1. 查看用户"></a>1. 查看用户</h3><p>通常情况下，使用 <code>id u1</code> 就可以揽大部分情况，其中<code>uid=1234(u1) gid=1000(koinl) groups=1000(koinl)</code>分别表示 UID、GID、组名。<br>若需要更精确的信息，可以使用<code>cat /etc/passwd | tail -5</code>。</p>
+<h3 id="1-创建用户"><a href="#1-创建用户" class="headerlink" title="1. 创建用户"></a>1. 创建用户</h3><p>useradd om,<br>-u 选项可以指定 UID; -g 选项可以指定 GID 或属组;<br>-G 选项可以指定附属组, -d 选项可以指定主目录.</p>
+<details ><summary>点击显/隐创建用户代码</summary><div class="fold-content"><p>[root@localhost koinl]# useradd -u 1234 -g koinl u1<br>[root@localhost koinl]# id u1<br>uid&#x3D;1234(u1) gid&#x3D;1000(koinl) groups&#x3D;1000(koinl)<br>可以得到创建后的信息: <code>uid=1234(u1) gid=1000(koinl) groups=1000(koinl)</code></p>
+</div></details>
+
+<h3 id="2-修改用户"><a href="#2-修改用户" class="headerlink" title="2. 修改用户"></a>2. 修改用户</h3><p>usermod om,<br>-l 选项仅修改名称 (主目录名称不会改变); -g 选项可以修改 GID; -u 选项可以修改 UID<br>-G 选项可以指定附属组, -d 选项可以指定主目录.</p>
+<details ><summary>点击显/隐修改用户代码</summary><div class="fold-content"><p>已知旧用户信息: <code>uid=1202(koi) gid=1202(koi) groups=1202(koi)</code><br>[root@localhost koinl]# usermod -l KOI -g u1 -u 1220 koi<br>[root@localhost koinl]# id KOI<br>uid&#x3D;1220(KOI) gid&#x3D;1200(u1) groups&#x3D;1200(u1)<br>可以得到修改后的信息: <code>uid=1220(KOI) gid=1200(u1) groups=1200(u1)</code></p>
+</div></details>
+
+<h3 id="3-删除用户"><a href="#3-删除用户" class="headerlink" title="3. 删除用户"></a>3. 删除用户</h3><p>userdel om,<br>-r 选项连同主目录一起删除</p>
+<h3 id="4-修改密码"><a href="#4-修改密码" class="headerlink" title="4. 修改密码"></a>4. 修改密码</h3><p>passwd [om],<br>-d 选项可以设置成为无密码</p>
+<details ><summary>点击显/隐</summary><div class="fold-content"><p>[root@s7 ~]# passwd wuhs<br>Changing password for user wuhs.<br>New password:<br>BAD PASSWORD: The password is shorter than 8 characters<br>Retype new password:<br>passwd: all authentication tokens updated successfully.</p>
+</div></details>
+
+<h2 id="二-组管理"><a href="#二-组管理" class="headerlink" title="二. 组管理"></a>二. 组管理</h2><h3 id="1-创建组"><a href="#1-创建组" class="headerlink" title="1. 创建组"></a>1. 创建组</h3><p>groupadd student,<br>-g 选项可以指定 GID;</p>
+<h3 id="2-修改组"><a href="#2-修改组" class="headerlink" title="2. 修改组"></a>2. 修改组</h3><p>groupmod student,<br>-n 选项可以修改名称; -g 选项可以修改 GID;</p>
+<details ><summary>点击显/隐修改组代码</summary><div class="fold-content"><p>已知旧组信息: <code>STUDENT:x:1349:</code><br>[root@localhost koinl]# groupmod -n stu -g 1299 STUDENT<br>[root@localhost koinl]# cat &#x2F;etc&#x2F;group | tail -1<br>stu:x:1299:<br>可以得到修改后的信息: <code>stu:x:1299:</code></p>
+</div></details>
+
+<h3 id="3-删除组"><a href="#3-删除组" class="headerlink" title="3. 删除组"></a>3. 删除组</h3><p>groupdel student, 组中必须无用户</p>
+<h3 id="4-查看组"><a href="#4-查看组" class="headerlink" title="4. 查看组"></a>4. 查看组</h3><p>与查看用户信息类似, 同样使用 <code>cat /etc/group | tail -5</code>即可.</p>
+<blockquote>
+<p>小背诵:<br>用户 user 组 group,<br>增删改 add del mod,<br>用户中, u g 定改 ID, l 改名<br>组中, g 定改 ID, n 改名</p>
+</blockquote>
+
+            </article>
+            
+                <div class="share">
+                    <!--开启分享-->
+<div class="share-component" data-disabled="google,twitter,facebook" data-description=""></div>
+
+
+<script src="/js/share.min.js"></script>
+
+
+                </div>    
+            
+
+            
+            
+                
+<div class="comments">
+    <div id="gitalk-container"></div>
+        
+<script src="/js/gitalk.js"></script>
+
+        <script>
+            var gitalk = new Gitalk({
+                clientID: "",
+                clientSecret: "",
+                repo: '',
+                owner: '',
+                admin: [''],
+                id: decodeURI('/posts/linux04/'),
+            })
+        gitalk.render('gitalk-container')
+        </script>
+</div>
+
+            
+
+        </div>
+        <div class="column one-fourth">
+            
+                
+                
+
+
+<h3>Post Directory</h3>
+
+<div id="post-directory-module">
+	<section class="post-directory">
+		<p><strong class="toc-title">文章目录</strong></p>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-text">一. 用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7"><span class="toc-text">1. 查看用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-text">1. 创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7"><span class="toc-text">2. 修改用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-text">3. 删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-text">4. 修改密码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-text">二. 组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%BB%84"><span class="toc-text">1. 创建组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E7%BB%84"><span class="toc-text">2. 修改组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%BB%84"><span class="toc-text">3. 删除组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E7%BB%84"><span class="toc-text">4. 查看组</span></a></li></ol></li></ol>
+	</section>
+</div>
+            
+        </div>
+    </div>
+</section>
+
+<footer class="container">
+    <div class="site-footer" role="contentinfo">
+        <div class="copyright left mobile-block">
+                © 2016
+                <span title="yumemor">yumemor</span>
+                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+        </div>
+
+        <ul class="site-footer-links right mobile-hidden">
+            <li>
+                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+            </li>
+        </ul>
+
+        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
+            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+        </a>
+
+        <ul class="site-footer-links mobile-hidden">
+            
+                  
+                  <li>
+                    <a href="/"  title="Home">Home</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/categories/"  title="Category">Category</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/open-source/"  title="Open-Source">Open-Source</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/message/"  title="Message">Message</a>
+                  </li>
+            
+            <li>
+                <a href="/atom.xml">
+                    <span class="octicon octicon-rss" style="color:orange;"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+		
+<script src="/js/geopattern.js"></script>
+
+		
+<script src="/js/highlight.pack.js"></script>
+
+		
+<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+		
+			
+<script src="/js/toc.js"></script>
+
+		
+
+		
+<script src="/js/index.js"></script>
+
+
+		 
+<script src="/js/popular_repo.js"></script>
+ 
+
+	</body>
+</html>

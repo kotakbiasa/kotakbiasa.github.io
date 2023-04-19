@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<head>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <link rel="icon" href="/favicon.ico">
+  
+  <title>锦鲤未离</title>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css">
+
+  <!--在这里倒入jquery 方便处理部分页面的jquery-->
+  <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body class="home">
+	<header class="site-header navfixed-false">
+  <div class="container">
+      <h1><a href="/" title="锦鲤未离"><span class="octicon octicon-mark-github"></span> 锦鲤未离</a></h1>
+      <nav class="site-header-nav" role="navigation">
+        
+              
+              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
+        
+              
+              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="Category">Category</a>
+        
+              
+              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
+        
+              
+              <a href="/message/"  class=" site-header-nav-item hvr-underline-from-center" title="Message">Message</a>
+        
+      </nav>
+  </div>
+</header>
+
+	<section class="banner-false">
+    <div class="collection-head">
+        <div class="container">
+            <div class="collection-title">
+                <h1 class="collection-header" id="site-description">
+                    
+                </h1>
+                <div class="collection-info">
+                    
+                    
+                        <span class="meta-info">
+                            
+                                <span class="octicon octicon-location">
+                                   
+                                        ChengDu, China
+                                    
+                                </span>
+                                
+                            
+                        </span>
+                    
+                        <span class="meta-info">
+                            
+                                <span class="octicon octicon-mark-github">
+                                   
+                                </span>
+                                
+                                    <a href="http://github.com/yumemor" target="_blank">yumemor</a>
+                                
+                            
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+	   <section class="container">
+    <div class="columns">
+        <div class="column two-thirds">
+            
+                  <article id="post-过去半年前的学习部分/2021-2022年课程/202209Python数据处理与分析/1第一章  数据计算（NumPy）" class="repo-list">
+    <div class="repo-list-item" >
+      <h3 class="repo-list-name" itemprop="name">
+        
+  
+      <a class="article-title" href="/posts/DPaA01/">第一章  数据计算（NumPy）</a>
+  
+
+      </h3>
+      <div class="repo-list-description">
+        
+          <p>NumPy 是用于<strong>科学计算</strong>的基础软件库，主要用来<strong>存储数组对象</strong>和<strong>处理大型矩阵</strong>，主要用于<strong>数组计算</strong>。</p>
+<h2 id="一、下载-NumPy-库"><a href="#一、下载-NumPy-库" class="headerlink" title="一、下载 NumPy 库"></a>一、下载 NumPy 库</h2><p>下载方法：在PyCharm的最下方“终端中”输入：<br><code>pip install numpy -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com </code></p>
+<h2 id="二、认识NumPy-中的数组对象"><a href="#二、认识NumPy-中的数组对象" class="headerlink" title="二、认识NumPy 中的数组对象"></a>二、认识NumPy 中的数组对象</h2><h3 id="数据对象的创建"><a href="#数据对象的创建" class="headerlink" title="数据对象的创建"></a>数据对象的创建</h3><ul>
+<li>使用 array() 函数创建数组</li>
+<li>使用 zeros()、ones()、empty() 函数创建全 0、全 1、随机数组</li>
+<li>使用 arange() 函数创建等间隔的数组<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])    <span class="comment"># 创建一维数组 [1 2 3]</span></span><br><span class="line">np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>]])    <span class="comment"># 创建二维数组 [[1 2 3] [9 8 7]]</span></span><br><span class="line">np.zeros(<span class="number">3</span>)    <span class="comment"># 创建全零一维数组 [0. 0. 0.]</span></span><br><span class="line">np.zeros((<span class="number">3</span>,<span class="number">4</span>))    <span class="comment"># 创建全零二维数组 [[0. 0. 0. 0.] [0. 0. 0. 0.] [0. 0. 0. 0.]]</span></span><br><span class="line">np.ones(<span class="number">3</span>)    <span class="comment"># 创建全壹一维数组 [1. 1. 1.]，全壹二维数组与全零二维数组格式相同</span></span><br><span class="line">np.empty(<span class="number">3</span>)    <span class="comment"># 创建随机一维数组 [1.37962185e-306 1.37962049e-306 1.24610723e-306 1.42410974e-306]，随机二维数组与全零二维数组格式相同</span></span><br><span class="line">np.arange(<span class="number">6</span>,<span class="number">10</span>,<span class="number">1.2</span>)    <span class="comment"># arange() 创建 [6,10) 内间隔为 1.2 的一维数组 [6.  7.2 8.4 9.6]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="数组对象的常用属性"><a href="#数组对象的常用属性" class="headerlink" title="数组对象的常用属性"></a>数组对象的常用属性</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr=array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>],[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr.ndim    <span class="comment"># 该对象的秩：2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr.shape    <span class="comment"># 数组的维度或矩阵的 m 行 n 列：(3, 3)</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr.size    <span class="comment"># 该对象的元素总个数：9</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr.dtype    <span class="comment"># 该对象中的元素类型：dtype(&#x27;int32&#x27;)</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr.itemsize    <span class="comment"># 该对象中的每个元素的字节大小：4</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr.flags    <span class="comment"># 该对象的内存信息</span></span><br><span class="line">  C_CONTIGUOUS : <span class="literal">True</span></span><br><span class="line">  F_CONTIGUOUS : <span class="literal">False</span></span><br><span class="line">  OWNDATA : <span class="literal">True</span></span><br><span class="line">  WRITEABLE : <span class="literal">True</span></span><br><span class="line">  ALIGNED : <span class="literal">True</span></span><br><span class="line">  WRITEBACKIFCOPY : <span class="literal">False</span></span><br><span class="line">  UPDATEIFCOPY : <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组元素的访问与修改"><a href="#数组元素的访问与修改" class="headerlink" title="数组元素的访问与修改"></a>数组元素的访问与修改</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr[<span class="number">2</span>]    <span class="comment"># 一维数组的访问：3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr[<span class="number">2</span>]=<span class="number">4</span>    <span class="comment"># 一维数组的修改：&gt;&gt;&gt; arr[2]：3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr[<span class="number">1</span>][<span class="number">2</span>]    <span class="comment"># 二维数组的访问：7</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr[<span class="number">1</span>][<span class="number">2</span>]=<span class="number">8</span>    <span class="comment"># 二维数组的修改：&gt;&gt;&gt; arr[1][2]：8</span></span><br><span class="line"><span class="comment"># n 维数组的访问可以参考二维数组依此类推。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组对象的基础运算"><a href="#数组对象的基础运算" class="headerlink" title="数组对象的基础运算"></a>数组对象的基础运算</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1=arr+<span class="number">1</span>    <span class="comment"># 算术运算，数组中所有元素都+1.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1-=<span class="number">3</span>    <span class="comment"># 自减运算，数组本身所有元素-3.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组对象的常用函数"><a href="#数组对象的常用函数" class="headerlink" title="数组对象的常用函数"></a>数组对象的常用函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr=np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>],[<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr.reshape([<span class="number">4</span>,<span class="number">3</span>])</span><br><span class="line">array([[ <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],</span><br><span class="line">       [ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>],</span><br><span class="line">       [ <span class="number">7</span>,  <span class="number">8</span>,  <span class="number">9</span>],</span><br><span class="line">       [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr.ravel()</span><br><span class="line">array([ <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>])</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.delete(arr,<span class="number">3</span>)    <span class="comment"># 删除下标为 3 的元素：array([ 1,  2,  3,  5,  6,  7,  8,  9, 10, 11, 12])</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.delete(arr,<span class="number">1</span>,<span class="number">0</span>)    <span class="comment"># 删除第 2 行</span></span><br><span class="line">array([[ <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>], [ <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.delete(arr,<span class="number">0</span>,<span class="number">1</span>)    <span class="comment"># 删除第一列</span></span><br><span class="line">array([[ <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>],</span><br><span class="line">       [ <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>],</span><br><span class="line">       [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]])</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">reshape()</td>
+<td align="center">改变数组的形状</td>
+</tr>
+<tr>
+<td align="center">ravel()</td>
+<td align="center">展开至一维数组</td>
+</tr>
+<tr>
+<td align="center">concatenate()</td>
+<td align="center">连接数组</td>
+</tr>
+<tr>
+<td align="center">delete()</td>
+<td align="center">删除指定值</td>
+</tr>
+<tr>
+<td align="center">sort</td>
+<td align="center">排序</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="小试牛刀：使用-NumPy-进行数学运算"><a href="#小试牛刀：使用-NumPy-进行数学运算" class="headerlink" title="小试牛刀：使用 NumPy 进行数学运算"></a>小试牛刀：使用 NumPy 进行数学运算</h2><h3 id="位运算函数"><a href="#位运算函数" class="headerlink" title="位运算函数"></a>位运算函数</h3><table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">bitwize_and()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">bitwize_or()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">invert()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">left_shift()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">right_shift()</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="数学运算函数"><a href="#数学运算函数" class="headerlink" title="数学运算函数"></a>数学运算函数</h3><table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">三角函数</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">舍入函数</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h3><table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">add()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">subtract()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">multiply()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">divide()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">reciprocal()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">power()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">mod() remainder()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="统计函数"><a href="#统计函数" class="headerlink" title="统计函数"></a>统计函数</h3><table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">amax()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">amin()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">percentile()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">median()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">mean() average()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">std()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">var()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="线性代数函数"><a href="#线性代数函数" class="headerlink" title="线性代数函数"></a>线性代数函数</h3><table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">dot()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">vdot()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">inner()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">matmul()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">linalg.det()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">linalg.solve()</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">linalg.inv()</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+
+        
+      </div>
+      <p class="repo-list-meta">
+        <span class="meta-info">
+          <span class="octicon octicon-calendar"></span>
+           <time datetime="2022-09-07T04:03:46.766Z" itemprop="datePublished">2022-09-07</time>
+        </span>
+
+        
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href='/categories/Data-Processing-and-Analysing/' title=''>Data-Processing-and-Analysing</a>
+          </span>
+        
+      
+        <!--
+          
+        -->
+
+      </p>
+    </div>
+  </article>
+            
+                  <article id="post-过去半年前的学习部分/2021-2022年课程/202209数据挖掘/第一章 " class="repo-list">
+    <div class="repo-list-item" >
+      <h3 class="repo-list-name" itemprop="name">
+        
+  
+      <a class="article-title" href="/posts/DM01/">第一章 待补充...</a>
+  
+
+      </h3>
+      <div class="repo-list-description">
+        
+          
+        
+      </div>
+      <p class="repo-list-meta">
+        <span class="meta-info">
+          <span class="octicon octicon-calendar"></span>
+           <time datetime="2022-09-07T03:44:49.016Z" itemprop="datePublished">2022-09-07</time>
+        </span>
+
+        
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href='/categories/Data-Mining/' title=''>Data-Mining</a>
+          </span>
+        
+      
+        <!--
+          
+        -->
+
+      </p>
+    </div>
+  </article>
+            
+                  <article id="post-过去半年前的学习部分/2021-2022年课程/202209Hadoop集群系统/0绪论  聊聊需要的软件 " class="repo-list">
+    <div class="repo-list-item" >
+      <h3 class="repo-list-name" itemprop="name">
+        
+  
+      <a class="article-title" href="/posts/hadoop00/">绪论  聊聊需要的软件</a>
+  
+
+      </h3>
+      <div class="repo-list-description">
+        
+          
+        
+      </div>
+      <p class="repo-list-meta">
+        <span class="meta-info">
+          <span class="octicon octicon-calendar"></span>
+           <time datetime="2022-09-07T03:40:48.292Z" itemprop="datePublished">2022-09-07</time>
+        </span>
+
+        
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href='/categories/Hadoop/' title=''>Hadoop</a>
+          </span>
+        
+      
+        <!--
+          
+        -->
+
+      </p>
+    </div>
+  </article>
+            
+                  <article id="post-⌊电脑篇⌉电脑的声音无法出席-驱动问题" class="repo-list">
+    <div class="repo-list-item" >
+      <h3 class="repo-list-name" itemprop="name">
+        
+  
+      <a class="article-title" href="/posts/EDc-sound/">⌊电脑篇⌉ 电脑声音无法出现</a>
+  
+
+      </h3>
+      <div class="repo-list-description">
+        
+          <p>挺不幸的是，最近电脑的声音老是会出现故障，便有了这篇文章可以在不便处供查询。<br>我遇到的问题是这样：“外放没有声音，但是耳机正常能够识别到声音”</p>
+<h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>在写本篇时所使用的电脑是 <code>惠普 星13 Air</code>。<br>本篇也仅使用于 <code>惠普 星13 Air</code>。</p>
+<p>…</p>
+<p>一般情况，喇叭的话，一般分成两个方面，首先，硬件喇叭出现损坏，导致的没有声音，硬件正常的情况下，一般就是跟驱动，系统文件，甚至一些可能的软件，病毒等导致的一个外放识别错误。那就先检查下硬件！先确认硬件正常后，再调试调试，如果无效后续也可以通过重装系统全面修复，如果硬件有问题就直接尝试保修下。</p>
+<h3 id="查询电脑是否为硬件问题"><a href="#查询电脑是否为硬件问题" class="headerlink" title="查询电脑是否为硬件问题"></a>查询电脑是否为硬件问题</h3><p>查询硬件正常的工具：<a target="_blank" rel="noopener" href="https://ftp.hp.com/pub/softpaq/sp141501-142000/sp141572.exe">点击此处下载查询硬件工具</a></p>
+<p>使用方法：重启机器，重启过程中连续点击f2按键，出现选择界面后，选择组件测试选项，选择音频，选择音频播放测试，如若有声音，证明电脑硬件正常。</p>
+<p>该步骤完毕。可以强制关机掉。</p>
+<h3 id="软件问题，重装驱动即可"><a href="#软件问题，重装驱动即可" class="headerlink" title="软件问题，重装驱动即可"></a>软件问题，重装驱动即可</h3><p>即全面重置还原重装下声音模块。</p>
+<ol>
+<li><p>首先，设备管理器下，所有的声音，游戏视频控制器位置所有的程序都右键，卸载，</p>
+<blockquote>
+<p>此设备的驱动程序也应该一并卸载。这样机器会直接喇叭变成x，没有声音。</p>
+</blockquote>
+</li>
+<li><p>然后下载这个： <a target="_blank" rel="noopener" href="http://h30438.www3.hp.com/pub/softpaq/sp113501-114000/sp113539.exe">点击此处下载驱动工具</a></p>
+<blockquote>
+<p>下载好后运行安装，会出现一个cmd框框，自动消失后，关机，</p>
+</blockquote>
+</li>
+<li><p>关机状态下同时按住win+v不松手，再按住电源开关两秒，然后先松开电源开关，待画面提示COMS reset（502）的信息后松开全部按键，按回车进入系统</p>
+<blockquote>
+<p>重新让电脑加载各个驱动还有设备</p>
+</blockquote>
+</li>
+</ol>
+<p>　<br>　<br>　<br>•<br>•<br>•<br>大功告成！</p>
+
+        
+      </div>
+      <p class="repo-list-meta">
+        <span class="meta-info">
+          <span class="octicon octicon-calendar"></span>
+           <time datetime="2022-08-25T08:03:44.238Z" itemprop="datePublished">2022-08-25</time>
+        </span>
+
+        
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href='/categories/电子设备/' title=''>电子设备</a>
+          </span>
+        
+      
+        <!--
+          
+        -->
+
+      </p>
+    </div>
+  </article>
+            
+                  <article id="post-过去半年前的学习部分/2021-2022年课程/202203数据结构与算法（Data Structure and Algorithm）/Algorithm第二章  查找" class="repo-list">
+    <div class="repo-list-item" >
+      <h3 class="repo-list-name" itemprop="name">
+        
+  
+      <a class="article-title" href="/posts/dsa05/">第二章  查找</a>
+  
+
+      </h3>
+      <div class="repo-list-description">
+        
+          <p>查找算法分为静态查找表与动态，其中，静态只能进行查找操作、动态可以在其中进行增删操作。</p>
+<h2 id="基于线性表的查找"><a href="#基于线性表的查找" class="headerlink" title="基于线性表的查找"></a>基于线性表的查找</h2><h3 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h3><p>[1,2,3,4,5,6,7,8,9]<br>当腰查找8时，查看下标为0的是否等于，不等于查看下标为1，依此类推。<br>若超出查找范围仍未找到，可以设定返回一个值。</p>
+<h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><p>顺序查找的改进。<br>[1,2,3,4,5,6,7,8,9]，若找8<br>先将a[(0+7)&#x2F;2]&#x3D;a[4]&#x3D;5与8比较，8大，所以8肯定在下标4-7内。<br>再将a[(4+7)&#x2F;2]&#x3D;a[5]&#x3D;6与8比较，8大，所以8肯定在下标6-7内。<br>再将a[(6+7)&#x2F;2]&#x3D;a[6]&#x3D;7与8比较，8大，所以8肯定在下标7内。</p>
+<h3 id="分块查找"><a href="#分块查找" class="headerlink" title="分块查找"></a>分块查找</h3><p>又称索引顺序查找，是上述两个查找的结合，性能介于两者之间。</p>
+<p><img src="https://img-blog.csdnimg.cn/20201013195825742.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lpbXRjb2Rl,size_16,color_FFFFFF,t_70#pic_center" alt="image"></p>
+<p>每个块可以无序，但是关键码（即最大值）必须从左到右由小到大。</p>
+<p>步骤：</p>
+<ol>
+<li>选取各块的最大关键码构成一个索引表；</li>
+<li>对索引表进行两种选一查找方法，以确定在哪一块中；</li>
+<li>对已确定的块进行顺序查找。</li>
+</ol>
+<h2 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h2>
+        
+      </div>
+      <p class="repo-list-meta">
+        <span class="meta-info">
+          <span class="octicon octicon-calendar"></span>
+           <time datetime="2022-08-13T09:21:22.107Z" itemprop="datePublished">2022-08-13</time>
+        </span>
+
+        
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href='/categories/Data-Structure-and-Algorithm/' title=''>Data Structure and Algorithm</a>
+          </span>
+        
+      
+        <!--
+          
+        -->
+
+      </p>
+    </div>
+  </article>
+            
+                  <article id="post-过去半年前的学习部分/2021-2022年课程/202201SQL_Server/三级数据库考试整理 - 副本" class="repo-list">
+    <div class="repo-list-item" >
+      <h3 class="repo-list-name" itemprop="name">
+        
+  
+      <a class="article-title" href="/posts/sqlservers/">三级考试(数据库篇)错题整理(选择题, 填空题篇)</a>
+  
+
+      </h3>
+      <div class="repo-list-description">
+        
+          <h2 id="第-1-套"><a href="#第-1-套" class="headerlink" title="第 1 套"></a>第 1 套</h2><h2 id="第-2-套"><a href="#第-2-套" class="headerlink" title="第 2 套"></a>第 2 套</h2><h2 id="第-3-套"><a href="#第-3-套" class="headerlink" title="第 3 套"></a>第 3 套</h2><h2 id="第-4-套"><a href="#第-4-套" class="headerlink" title="第 4 套"></a>第 4 套</h2><h2 id="第-5-套"><a href="#第-5-套" class="headerlink" title="第 5 套"></a>第 5 套</h2><h2 id="第-6-套"><a href="#第-6-套" class="headerlink" title="第 6 套"></a>第 6 套</h2><h2 id="第-7-套"><a href="#第-7-套" class="headerlink" title="第 7 套"></a>第 7 套</h2><h2 id="第-8-套"><a href="#第-8-套" class="headerlink" title="第 8 套"></a>第 8 套</h2><h2 id="第-9-套"><a href="#第-9-套" class="headerlink" title="第 9 套"></a>第 9 套</h2><h2 id="第-10-套"><a href="#第-10-套" class="headerlink" title="第 10 套"></a>第 10 套</h2><h2 id="第-11-套"><a href="#第-11-套" class="headerlink" title="第 11 套"></a>第 11 套</h2><h2 id="第-12-套"><a href="#第-12-套" class="headerlink" title="第 12 套"></a>第 12 套</h2><h2 id="第-13-套"><a href="#第-13-套" class="headerlink" title="第 13 套"></a>第 13 套</h2><h2 id="第-14-套"><a href="#第-14-套" class="headerlink" title="第 14 套"></a>第 14 套</h2><h2 id="第-15-套"><a href="#第-15-套" class="headerlink" title="第 15 套"></a>第 15 套</h2><p>O</p>
+<h2 id="第-16-套"><a href="#第-16-套" class="headerlink" title="第 16 套"></a>第 16 套</h2><p>OK</p>
+<h2 id="第-17-套"><a href="#第-17-套" class="headerlink" title="第 17 套"></a>第 17 套</h2><p>已做完</p>
+<h2 id="第-18-套"><a href="#第-18-套" class="headerlink" title="第 18 套"></a>第 18 套</h2><p>已做完</p>
+<h2 id="第-19-套"><a href="#第-19-套" class="headerlink" title="第 19 套"></a>第 19 套</h2><p>已做完</p>
+<h2 id="第-20-套"><a href="#第-20-套" class="headerlink" title="第 20 套"></a>第 20 套</h2><p>已做完</p>
+<h2 id="第-21-套"><a href="#第-21-套" class="headerlink" title="第 21 套"></a>第 21 套</h2><p>已做完</p>
+<h2 id="第-22-套"><a href="#第-22-套" class="headerlink" title="第 22 套"></a>第 22 套</h2><p>已做完</p>
+
+        
+      </div>
+      <p class="repo-list-meta">
+        <span class="meta-info">
+          <span class="octicon octicon-calendar"></span>
+           <time datetime="2022-07-29T21:54:00.718Z" itemprop="datePublished">2022-07-30</time>
+        </span>
+
+        
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href='/categories/SqlServer/' title=''>SqlServer</a>
+          </span>
+        
+      
+        <!--
+          
+        -->
+
+      </p>
+    </div>
+  </article>
+            
+                  <article id="post-过去半年前的学习部分/2021-2022年课程/202203Python/Python07第七章  文件和数据格式化" class="repo-list">
+    <div class="repo-list-item" >
+      <h3 class="repo-list-name" itemprop="name">
+        
+  
+      <a class="article-title" href="/posts/python07/">第七章  文件和数据格式化</a>
+  
+
+      </h3>
+      <div class="repo-list-description">
+        
+          <p>7.1文件的使用<br>文件是存储在辅助存储器上的一组数据序列，可以包含任何数据内容。概念上，文件是数据的集合和抽象。文件包括文本文件和二进制文件两种类型。<br>7.1.1文件的类型<br>文本文件一般由单一特定编码的字符组成，如UTF-8编码，内容容易统一展示和阅读。大部分文本文件都可以通过文本编辑软件或文字处理软件创建、修改和阅读。由于文本文件<br>存在编码,所以，它也可以被看作是存储在磁盘上的长字符串，如一个txt 格式的文本文件<br>二进制文件直接由比特О和比特1组成，没有统一的字符编码，文件内部数据的组织格<br>式与文件用途有关。二进制是信息按照非字符但有特定格式形式的文件，如png格式的图片文件、avi格式的视频文件。二进制文件和文本文件最主要的区别在于是否有统一的这符编码。二进制文件没有统一的字符编码，只能当作字节流，而不能看作是字符串<br>无论文件创建为文本文件或者是二进制文件，都可以用“文本文件方式”和“二进制文件方式”打开，但打开后的操作不同。<br>一个文本文件 a.txt，其内容为“全国计算机等级考试”，采用文本方式打开。这里需要将文本文件与Python程序文件放在同一个目录中。<br>采用文本方式读入文件，文件经过编码形成字符串，打印出有含义的字符;采用二进制方式打开文件,文件被解析为字节流。由于存在编码,字符串中的一个字符由多个字节表示。<br>7.1.2文件的打开和关闭<br>Python对文本文件和二进制文件采用统一的操作步骤，即“打开—操作—关闭”，操作系统中的文件默认处于存储状态，首先需要将其打开，使用得当前程序有权操作这个文件，打开不存在的文件系统可以创建这个文件。打开后的文件处于占用状态，此时，另一个进程不能操作这个文件。可以通过一组方法读取文件的内容或向文件写入内容，操作之后需要将文件关闭，关闭将释放对文件的控制使用文件恢复成存储状态，此时，另一进程能够操作这个文件。<br>Python通过open()函数打开一个文件，并返回一个操作这个文件的变量。语法结构:<br>变量名&#x3D;open(文件路径及文件名,打开模式)<br>open()函数有两个参数:文件名和打开模式。文件名可以是文件的实际名字，也可以是包含完整路径的名字。打开模式用于控制使用何种方式打开文件，open()函数提供了7种基本的打开模式。<br>文件的打开模式<br>r 只读模式，如果文件不存在，返回异常FileNotFoundError，默认值<br>w 覆盖写模式，文件不存在则创建，存在则完全覆盖原文件<br>x 创建写模式，文件不存在则创建，存在则返回异常FileExistsError<br>a 追加写模式，文件不存在则创建，存在则在原文件最后追加内容<br>b 二进制文件模式<br>t 文本文件模式，默认值</p>
+<ul>
+<li>与r&#x2F;w&#x2F;x&#x2F;a一同使用，在原功能基础上增加同时读写功能<br>打开模式使用字符串方式表示，根据字符串定义，单引号或者双引号均可。上述打开模式中，r,w,x,a或以和 b,t,+组合使用，形成既表达读写又表达文件模式的方式。</li>
+</ul>
+<p>7.1.3文件的读写<br>根据打开方式不同，文件读写也会根据文本文件或二进制打开方式有所不同。<br>f.read(size&#x3D;-1)：从文件中读入整个文件内容。参数可选，如果给出，读入前size长度的字符串或字节流。<br>f.readline(size&#x3D;-1)：从文件中读入一行内容。参数可选，如果给出，读入该行前size长度的字符串或字节流。<br>f.readlines(hint&#x3D;-1)：从文件中读入所有行，以每行为元素形成一个列表。参数可选，如果给出，读入hint行。<br>f.seek(offset)：改变当前文件操作指针的位置，offset的值:o为文件开头;2为文件结尾。<br>如果文件以文本文件方式打开，则读入字符串;如果文件以二进制方式打开，则读入字节流。<br>如果文件不大，可以一次性将文件内容读入，保存到程序内部变量中。f.read()是最常用的一次性读入文件的函数．其结果是一个字符串。<br>f.write(s)：向文件写入一个字符串或字节流<br>f.writelines(lines)：将一个元素为字符串的列表整体写入文件<br>f.write(s)向文件写入字符串 s，每次写入后，将会记录一个写入指针。该方法可以反复调用，在写入指针后分批写入内容，直至文件被关闭。<br>使用f.write(s)时，要显示地使用”\n”对写入文本进行分行，如果不进行分行，每次写入的字符串会被连接起来。<br>f.writelines(lines)直接将列表类型的各元素连接起来写入文件f。<br>7.2数据组织的维度<br>一组数据在被计算机处理前需要进行一定的组织，表明数据之间的基本关系和逻辑，进而形成“数据的维度”。根据数据的关系不同，数据组织可以分为:一维数据、二维数据和高维数据。<br>7.2.1一维数据<br>一维数据由对等关系的有序或无序数据构成，采用线性方式组织，对应于数学中数组的概念。例如，中国的直辖市列表即可表示为一维数据，一维数据具有线性特点。<br>维数据十分常见，任何表现为序列或集合的内容都可以看作是一维数据。<br>7.2.2二维数据<br>二维数据，也称表格数据，由关联关系数据构成，采用二维表格方式组织，对应于数学中的矩阵，常见的表格都属于二维数据。<br>例如，国家统计局发布的居民消费价格数是二维数据。表格横向包括“指标”“2014年”“2015年”“2016年”，分别表示项目和时间维度，表格纵向为具体指标点，形成了二维数据关系。其中，第一行为说明部分，可以看作是与其他行一致的二维数据一行，也可以看作具数据外的数明部分<br>7.2.3高维数据<br>高维数据由键值对类型的数据构成，采用对象方式组织，可以我层嵌套。<br>高维数据在Web系统中十分常用，作另当今Internet组织内容的主要方式，高维数据衍生出HTML、XML、JSON等具体数据组织的语法结构。<br>以JSON格式为例，下面给出了描述“本书”的高维数据表示形式，其中冒号(:）形成一个键值对，逗号(,）分隔键值对，JSON格式中[]组织各键值对成为一个整体，与“本书”形成高层次的键值对。高维数据相比一维数据和二维数据能表达更加灵活和复杂的数据产系。<br>7.3.1一维数据的表示<br>一维数据是最简单的数据组织类型，幽于是线性结构，在Python 语言中主要采用列表形式表示。例如，中国的直辖市数据可以采用一个列表变量表示。<br>采用列表类型表示一维数据的时候需要注意每个数据的数据类型。7.3.2一维数据的存储<br>一维数据的文件存储有多种方式，总体思路是采用特殊字符分隔各数据。采用存储方法包括如下4种。<br>(1）采用空格分隔元素，列如:<br>(2)采用逗号分隔元素，例如:<br>(3）使用换行分隔元素，例如:<br>(4)  其他特殊符号分割<br>这4种方法中，逗号分隔的存储格式叫作csv格式(Comma-Separated Values，即逗号分隔值)，它是一种通用的、相对简单的文件格式，在商业和科学上广泛应用，大部分编辑器都支持直接读入或保存文件为CSv格式，如 Windows平台上的记事本或微软Office Excel等。存储的文件一般采用.csv为扩展名。<br>一维数据保存成CSV格式后，各元素采用逗号分隔，形成一行，这里的逗号是英文逗号。从Python表示到数据存储，需要将列表对象输出为CSV格式以及CSV格式读入成列表对象。<br>列表对象输出为CSV格式文件方法如下，采用字符串的join()方法最为方便。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list=[]</span><br><span class="line">f=open()</span><br><span class="line">f.write(&#x27;,&#x27;.join(list)+&#x27;\n&#x27;)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<p>7.3.3一维数据的处理<br>对一维数据进行处理首先需要从CSV格式文件读入一维数据,并将其表示为列表对象。需要注意，从CSV文件中获得内容时，最后一个元素后面包含了一个换行符(“‘n”)。对于数据的表达和使用来说，这个换行是多余的，需要采用字符串的strip()方法去掉数据尾部的换行符，进一步使用split()方法以逗号进行分隔。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f=open()</span><br><span class="line">list=f.read().strip(&#x27;\n&#x27;).split(&#x27;,&#x27;)</span><br><span class="line">f.close()</span><br><span class="line">print(list)</span><br></pre></td></tr></table></figure>
+<p>7.4二维数据的处理<br>7.4.1二维数据的表示<br>二维数据由多个一维数据构成，可以看作是一维数据的组合形式。因此，二维数据可以采用二维列表来表示,即列表的每个元素对应二维数据的一行,这个元素本身也是列表类型,其内部各元素对应这行中的各列值。<br>提示:二维数据的数据类型<br>二维数据一般采用相同的数据类型存储数据，便于操作。<br>尽管在二维数据中存在大量数值，但由于本例中数值所在行或列不都是数字，存在字符文本，因此，将数值统一表示为字符串形式。<br>7.4.2二维数据的存储<br>二维数据由一维数据组成，用CSV格式文件存储。CSV文件的每一行是一维数据，整个CSV文件是一个二维数据。存储以下数据为.csv文件，名称为cpi.csv。<br>二维数据存储为CSV格式，需要将二维列表对象写入CSV格式文件以及将CSV格式读成二维列表对象。<br>二维列表对象输出为CSV格式文件方法如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list=</span><br><span class="line">f=o</span><br><span class="line">for row in list:</span><br><span class="line">    f.write(&#x27;,&#x27;.join(row)+&#x27;\n&#x27;)</span><br><span class="line">f.c</span><br></pre></td></tr></table></figure>
+<p>7.4.3二维数据的处理<br>对二维数据进行处理首先需要从CSV格式文件读入二维数据，并将其表示为二维列表对象。读取CSV格式文件方法如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f=o</span><br><span class="line">list=[]</span><br><span class="line">for line in f:</span><br><span class="line">    list.append(line.strip(&#x27;\n&#x27;).split(&#x27;,&#x27;))</span><br><span class="line">f.c</span><br><span class="line">print(list)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+      <p class="repo-list-meta">
+        <span class="meta-info">
+          <span class="octicon octicon-calendar"></span>
+           <time datetime="2022-07-27T00:45:51.475Z" itemprop="datePublished">2022-07-27</time>
+        </span>
+
+        
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href='/categories/Python/' title=''>Python</a>
+          </span>
+        
+      
+        <!--
+          
+        -->
+
+      </p>
+    </div>
+  </article>
+            
+                  <article id="post-过去半年前的学习部分/2021-2022年课程/202203Python/Python08第九章  计算生态" class="repo-list">
+    <div class="repo-list-item" >
+      <h3 class="repo-list-name" itemprop="name">
+        
+  
+      <a class="article-title" href="/posts/python08/">第八章  计算生态</a>
+  
+
+      </h3>
+      <div class="repo-list-description">
+        
+          <p>8.1计算生态<br>近20年的开源运动产生了深植于各信息技术领域的大量可重用资源，直接且有力地支撑了信息技术超越其他技术领域的发展速度，形成了计算生态。产业界广泛利用可重用资源快速构建应用已经是主流的产品开发方式。Python 语言从诞生之初就致力于开源开放，建立健了全球最大的编程计算生态。<br>Python官方网站提供了第三友库索引功能:<a target="_blank" rel="noopener" href="http://pypi.python.org/pypi">http://pypi.python.org/pypi</a><br>该页面列出了Python语言十几万个第三方库的基本信息，这些函数库覆盖了信息领域所有技术方向。这里需要说明的是，Python语言的函数库并非都采用Python语言编写。由于Python有非常简单灵活的编程方式，很多采用c、C+t等语言编写的专业库可以经过简单的接口封装供Python 语言程序调用。这样的黏性功能使得 Python语言成了各类编程语言之间的接口，Python语言也被称为什“胶水语言”。<br>正是因为什 Python语言有了胶水的黏性，围绕它迅速形成了全球最大的编程语言开放社区，建立了十几万个第三方库的庞大规模经，构建了计算生态。<br>30年前，计算机领域还处于刀耕火种年代，编写程序仅能调用官方提供的API功能。20 年前，随着开源运动的兴起和蓬勃发展，一批开源项目诞生，降低了专业人士编写程序的难度，实现了专业级别的代码复用。10 年前，开源运动深入展，专业人士开始大量贡献各领域最优秀的研究和开发成果，并通过开源库形式发布出来。那今天呢?编程领域形成了庞大的计算生态，需要一种编程语言或方式能够将不同语言、不同特点、不同使用方式的代码统一起来。历史选择了Python语言，Python语言也证明了它的价值。<br>Python第三方程序包括(库)、模块和程序包等多种命名，这些概念之间略有区别,<br>在本教程中我们统一将这些可重用的代码统称为“库”。<br>8.1.1Python标准库<br>有一部分Python计算生态随Python安装包一起发布,用户可以随时使用,被称为Pytrion标准库。受限于Python安装包的设定大小，标准库数量不会很多，270个左右。Python的标准库一般会安装在Lib目录下<br>C:\Users\Administrator\AppData\Local\Programs\Python\Python35<br>部分Python标准库由PSF (Python 软件基金会）运行维护，但大部分Python标准库仍然由最初的开发者维护。<br>8.1.2Python第三方库<br>更广泛的Python计算生态采用额外安装方式服务用户，被称为Python第三方库。这些第三方库由全球各行业专家、工程师和爱好者开发，没有顶层设计，由开发者采用“尽力而为”的方式维护。Python通过新一代安装工具 pip管理大部分Python第三方库的安装。</p>
+
+        
+      </div>
+      <p class="repo-list-meta">
+        <span class="meta-info">
+          <span class="octicon octicon-calendar"></span>
+           <time datetime="2022-07-27T00:24:29.043Z" itemprop="datePublished">2022-07-27</time>
+        </span>
+
+        
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href='/categories/Python/' title=''>Python</a>
+          </span>
+        
+      
+        <!--
+          
+        -->
+
+      </p>
+    </div>
+  </article>
+            
+                  <article id="post-过去半年前的学习部分/2021-2022年课程/202203Python/Python09第九章  标准库概览" class="repo-list">
+    <div class="repo-list-item" >
+      <h3 class="repo-list-name" itemprop="name">
+        
+  
+      <a class="article-title" href="/posts/python09/">第九章  标准库概览</a>
+  
+
+      </h3>
+      <div class="repo-list-description">
+        
+          <p>9.1turtle库概述<br>turtle（海龟）是 Python重要的标准库之一，它能够进行基本的图形绘制。turtle 图形绘制的概念诞生于1969年，成功就用于LOGO编程语言。由于 turtle图形绘制概念十分直观且非常流行，Python接受了这个概念，形成了Python 的turtle库，<br>并成为标准库之一。<br>turtle 库绘制图形有一个基本框架:一个小海龟在坐标系中爬行，其爬行轨迹形成了绘制图形。对于小海龟来说，有“前进”“后退”“旋转”等爬行行为，对坐标系的探索也通过“前进方向”“后退方向”“左侧方向”和“右侧方向”等小海龟自身角度方位来完成。则开始绘制时，小海龟位于画布中，此处坐标为（o，0)，前进方向为水平右方。<br>turtle是最有价值的程序设计入门实践库,它是程序设计入门层面最常用的基本绘图库。5使用import 保留字对turtle库的引用有如下3种方式:<br>importturtle，则对turtle库中函数调用采用turtle.函数名()形式。<br>from turtle import* ,则对turtle库中函数调用直接采用函数名()形式，不再使用turtle作为前导。<br>from turtle import *circle(200)<br>import turtle as t ,则对turtle库中函数调用采用更简洁的t.函数名()形式，保留字as 的作用是将turtle库给予别名t。此处也可以使用t 之外的其他别名。<br>import turtle as t t.circle(200)<br>9.2turtle 库与基本绘图<br>turtle库包含100多个功能函数，主要包括窗体函数、画笔状态和画笔运动函数3类。<br>9.2.1窗体函数<br>turtle库的turtle.setup()函数与窗体有关。<br>函数定义如下:<br>turtle.setup(width,height,startx,starty)<br>参数详解:<br>width:窗口宽度。如果值是整数，表示的是像素值;如果值是小数，表示窗口宽度与屏幕的比例。<br>height:窗口高度。如果值是整数，表示的是像素值;如果值是小数，表示窗口高度与屏幕的比例。<br>startx:窗口左侧与屏幕左侧的像素距离。如果值是None，窗口位于屏幕水平中央。starty:窗口顶部与屏幕顶部的像素距离。如果值是None，窗口位于屏幕垂直中央。<br>import turtle<br>turtle.setup(100,100,100,100)<br>9.2.2画笔状态函数</p>
+<p>pendown()：放下画笔,别名pd(),down()<br>penup()：提起画笔，与pendown()配对使用，别名pu(),up()<br>pensize(width)：设置画笔线条的粗细为指定大小，别名width()<br>pencolor()：设置画笔的颜色<br>color() I：设置画笔和填充颜色<br>begin_fill()：填充图形前,调用该方法<br>end_fill()：填充图形结束<br>filling():返回填充的状态,True为填充,False为未填充<br>clear():清空当前窗口，但不改变当前窗口的位置<br>reset():重置当前窗口，并重置位置等状态为默认值<br>screensize():设置画布窗口的宽度、.高度和背景颜色<br>hideturtle():隐藏画笔的turtle形状<br>showturtle():显示画笔的turtle形状<br>isvisible()：如果turtle可见，则返回True<br>write(str,font&#x3D;None)：输出font字体的字符串：font&#x3D;(‘Arial’,50,’normal’))<br>9.2.3画笔运动函数<br>turtle通过一组函数控制画笔的行进动作，进而绘制形状序号<br>forward(distance)：沿着当前方向前进指定距离，别名fd()<br>background(distance)：沿着当前相反方向后退指定距离，别名bk()<br>right(angle)：向右旋转angle角度<br>left(angle)：向左旋转angle角度<br>goto(x,y)：移动到绝对坐标(x,y)处<br>setx(x)：修改画笔的横坐标到x，纵坐标不变<br>sety(y)：修改画笔的纵坐标到y，横坐标不变<br>seth[eading] (angle)：设置当前朝向为angle角度<br>home()：设置当前画笔位置为原点，朝向东<br>circle(radius,e)<br>：绘制一个指定半径r和角度e的圆或弧形<br>dot(r,color)<br>：绘制一个指定半径r和颜色color的圆点<br>undo()：撤销画笔最后一步动作<br>speed()：设置画笔的绘制速度，参数为0~10之间<br>9.3random库概述<br>随机数在计算机应用中十分常见，Python语言提供了random库用于产生各种分布的伪随机数序列。random库采用梅森旋转算法生成伪随机数序列，可用于除随机性要求更高的加密算法外的大多数工程应用。<br>使用random库的主要目的是生成随机数。这个库提供了不同类型的随机数，其中最基本的函数是random.random()，它生成一个[0.0,1.0)之间的随机小数，所有其他随机数都是基于这个函数而来的。<br>seed(a&#x3D;None)：初始化随机数种子，默认值为当前系统时间<br>random()：生成一个[0.0,1.0)之间的随机小数<br>randint(a,b)：生成一个[a,b]之间的整数<br>getranddbits(k)：生成一个k比特长度的随机整数<br>randrange(start,stop[,step])：生成一个[start,stop)之间以step为步数的随机整数<br>uniform(a,b)：生成一个[a,b]之间的随机小数<br>choice(seq)：从序列类型中随机返回一个元素<br>shuffle(seq)：将序列类型中元素随机排列，返回打乱后的序列<br>sample(pop,k)：从pop类型中随机选取k个元素，以列表类型返回<br>与其他编程语言相似，Python语言中随机数的生成基于随机数“种子”，每个种子作为输入，利用算法生成一系列随机数，构成伪随机序列。random 库使用random.seed(a)对后续产生成的随机数设置种子。<br>所有的随机数都是基于random()函数实现的基种具体功能。(再次设置相同的种子，则后续产生的随机数相同)<br>9.5time 库概述<br>处理时间是程序最常用的功能之一，time库是 Python提供的处理时间标准库。Time库提供系统级精确计时器的计时功能，可以用来分析程序性能，也可让程序暂停运行时间。<br>使用time库之前需要使用import进行导入<br>time库的功能主要分为3个方面:时间处理、时间格式化和计时。<br>时间处理主要包括4个函数: time.time()、time.gmtime()、time.localtime()、 time.ctime()。<br>时间格式化主要包括3个函数:time.mktime()、time.strftime()、time.strptime()。<br>计时主要包括3个函数:time.sleep()、time.monotonic()、time.perf_counter()o使用time.time()获取当前时间戳<br>使用time.time()获取当前时间戳<br>使用time.gmtime(sec)获取当前时间戳对应的struct_time对象。<br>使用time.localtime(secs)获取当前时间戳对应的本地时间的 struct_time对象。与<br>time.gmtime()的区别，是UTC时间已自动转的为北京时间。<br>time.ctime(secs)获取当前时间戳对应的易读字符串表示，内部会调用time.localtime()函数以输出当地时间。<br>time库使用time.mktime()、time.strftime()、time.strptime()进行时间格式化。使用time.mktime(t)将 struct_time对象t转换为时间戳，注意t代表当地时间。<br>struct_time对象的元素构成<br>下标  属性  值<br>0 tm_year 年份、整数<br>1 tm_mon 月份[1,12]<br>tm_mday 日期[1,31]<br>tm_hour 小时[0,23]<br>tm_min 分钟[0,59]<br>tm_sec 秒[0,61]<br>tm_wday 星期[o,6]（o表示星期一）<br>tm_yday 该年第几天[1,366]<br>tm_isdst 是否夏令时，o否，1是，-1未知<br>调用time.mktime(t)函数</p>
+<p>time.strftime()函数是时间格式化最有效的方法，几乎可以以任何通用格式输出时间。该方法利用一个格式字符串，对时间林式进行表示。<br>strftime()方法的格式化控制符<br>%Y 年份 0001<del>9999例如:1900<br>%m 月份 01</del>12例如:10<br>%B 月名 January<del>December例如:April<br>%b 月名缩写 Jan</del>Dec例如Apr<br>%d 日期 01<del>31例如25<br>%A 星期 Monday</del>Sunday 例如 wWednesday<br>%a 星期缩写 Mon<del>sun例如Wed<br>%H 小时（24h制) 00</del>23例如12<br>%I 小时（12h制) 01<del>12例如7<br>%p 上&#x2F;下午 AM,PM例如PM<br>%M 分钟 00</del>59例如26<br>%S 秒 o0~59例如26</p>
+<p>strptime()方法与strftime()方法完全相反，用于提取字符串中的时间来生成struct_time对象，可以很灵活地作为time模块输入接口。</p>
+
+        
+      </div>
+      <p class="repo-list-meta">
+        <span class="meta-info">
+          <span class="octicon octicon-calendar"></span>
+           <time datetime="2022-07-26T23:22:06.596Z" itemprop="datePublished">2022-07-27</time>
+        </span>
+
+        
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href='/categories/Python/' title=''>Python</a>
+          </span>
+        
+      
+        <!--
+          
+        -->
+
+      </p>
+    </div>
+  </article>
+            
+        </div>
+        <div class="column one-third">
+          <!--处理未安装 search 插件 默认 Google 搜索-->
+ 
+
+<h3>Search</h3>
+
+<div id="site_search">
+
+	<!-- Google -->
+	
+		<form action="http://www.google.com/search?" data-site="">
+	    	<input type="text" id="search_box" name="q" placeholder="Search">
+	    	<button type="button" class="btn btn-default" id="site_search_do"><span class="octicon octicon-search"></span></button>
+	    </form>
+	
+
+	<!-- 本地搜索 -->
+	
+
+</div>
+
+<h3>Popular Repositories</h3>
+    <div class="popular-container"></div>
+    
+    <script type="text/template" id="popular-list-template">
+        <a href="{%=clone_url%}" class="card text-center" target="_blank">
+            <div class="thumbnail">
+                <div class="card-image geopattern" data-pattern-id="{%=name%}">
+                    <div class="card-image-cell">
+                        <h3 class="card-title">
+                            {%=name%}
+                        </h3>
+                    </div>
+                </div>
+                <div class="caption">
+                    <div class="card-description">
+                        <p class="card-text">
+                            {%=description%}
+                        </p>
+                    </div>
+                    <div class="card-text">
+                        <span class="meta-info tooltipped tooltipped-n" aria-label="{%=stargazers_count%} stars">
+                            <span class="octicon octicon-star"></span> {%=stargazers_count%}
+                        </span>
+                        <span class="meta-info tooltipped tooltipped-n" aria-label="{%=forks_count%} forks">
+                            <span class="octicon octicon-git-branch"></span> {%=forks_count%}
+                        </span>
+                        <span class="meta-info tooltipped tooltipped-n" aria-label="最后更新时间：{%=updated_at%}">
+                            <span class="octicon octicon-clock"></span>
+                            <time datetime="{%=updated_at%}">{%=updated_at%}</time>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </script>
+
+    
+<script src="/js/baiduTemplate.js"></script>
+
+    <script type="text/javascript">
+        var popular_repos = function(){
+
+            var baiduTpl = new Object();
+
+            var handleTpl = function(){
+                baiduTpl.popular_list = baidu.template("popular-list-template");
+            };
+
+            var handleGithub = function(){
+                var popularContainer = $(".popular-container");
+
+                var repos = "hexo-theme-primer".split(",");
+                for(var i in repos){
+                    var name = repos[i];
+                    $.get("https://api.github.com/repos/yumemor/"+name,handle);
+                }
+
+                function handle(result){
+                    result.updated_at = result.updated_at.split("T")[0];
+                    if(result){
+                        var html = baiduTpl.popular_list(result);
+                        popularContainer.append(html);
+                        $(".geopattern").each(function(){           
+                            $(this).geopattern($(this).data('pattern-id'));
+                        });
+                    }
+                }
+            };
+
+            return {
+                init:function(){
+                    handleTpl();
+                    handleGithub();
+                }
+            }
+        }; 
+        $(popular_repos().init);
+    </script>
+
+        </div>
+    </div>
+
+    
+      <div class="pagination text-align">
+          <div class="btn-group">
+              <a class="extend prev" rel="prev" href="/archives/2022/">&amp;laquo;</a><a class="page-number" href="/archives/2022/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2022/page/3/">3</a><a class="page-number" href="/archives/2022/page/4/">4</a><a class="page-number" href="/archives/2022/page/5/">5</a><a class="page-number" href="/archives/2022/page/6/">6</a><a class="page-number" href="/archives/2022/page/7/">7</a><a class="page-number" href="/archives/2022/page/8/">8</a><a class="extend next" rel="next" href="/archives/2022/page/3/">&amp;raquo;</a>
+          </div>
+      </div>
+    
+</section>
+
+<footer class="container">
+    <div class="site-footer" role="contentinfo">
+        <div class="copyright left mobile-block">
+                © 2016
+                <span title="yumemor">yumemor</span>
+                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+        </div>
+
+        <ul class="site-footer-links right mobile-hidden">
+            <li>
+                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+            </li>
+        </ul>
+
+        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
+            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+        </a>
+
+        <ul class="site-footer-links mobile-hidden">
+            
+                  
+                  <li>
+                    <a href="/"  title="Home">Home</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/categories/"  title="Category">Category</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/open-source/"  title="Open-Source">Open-Source</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/message/"  title="Message">Message</a>
+                  </li>
+            
+            <li>
+                <a href="/atom.xml">
+                    <span class="octicon octicon-rss" style="color:orange;"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+		
+<script src="/js/geopattern.js"></script>
+
+		
+<script src="/js/highlight.pack.js"></script>
+
+		
+<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+		
+
+		
+<script src="/js/index.js"></script>
+
+
+		 
+<script src="/js/popular_repo.js"></script>
+ 
+
+	</body>
+</html>

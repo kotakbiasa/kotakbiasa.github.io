@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<head>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <link rel="icon" href="/favicon.ico">
+  
+  <title>锦鲤未离 | 第九章  标准库概览</title>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css">
+
+  <!--在这里倒入jquery 方便处理部分页面的jquery-->
+  <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+	<header class="site-header navfixed-false">
+  <div class="container">
+      <h1><a href="/" title="锦鲤未离"><span class="octicon octicon-mark-github"></span> 锦鲤未离</a></h1>
+      <nav class="site-header-nav" role="navigation">
+        
+              
+              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
+        
+              
+              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="Category">Category</a>
+        
+              
+              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
+        
+              
+              <a href="/message/"  class=" site-header-nav-item hvr-underline-from-center" title="Message">Message</a>
+        
+      </nav>
+  </div>
+</header>
+
+	
+<section class="collection-head geopattern" data-pattern-id="第九章  标准库概览" >
+    <div class="container">
+        <div class="collection-title">
+            <h1 class="collection-header">
+                第九章  标准库概览
+            </h1>
+            
+                <div class="collection-info">
+                    <span class="meta-info">
+                        <span class="octicon octicon-calendar"></span>
+                        <time datetime="2022-07-26T23:22:06.596Z" itemprop="datePublished">2022-07-27</time>
+                    </span>
+                    
+                        <span class="meta-info">
+                            <span class="octicon octicon-file-directory"></span>
+                            <a href='/categories/Python/' title=''>Python</a>
+                        </span>
+                    
+                </div>
+            
+        </div>
+    </div>
+</section>
+	<section class="container">
+    <div class="columns">
+        <div class="column  three-fourths " >
+            <article class="article-content markdown-body">
+                <p>9.1turtle库概述<br>turtle（海龟）是 Python重要的标准库之一，它能够进行基本的图形绘制。turtle 图形绘制的概念诞生于1969年，成功就用于LOGO编程语言。由于 turtle图形绘制概念十分直观且非常流行，Python接受了这个概念，形成了Python 的turtle库，<br>并成为标准库之一。<br>turtle 库绘制图形有一个基本框架:一个小海龟在坐标系中爬行，其爬行轨迹形成了绘制图形。对于小海龟来说，有“前进”“后退”“旋转”等爬行行为，对坐标系的探索也通过“前进方向”“后退方向”“左侧方向”和“右侧方向”等小海龟自身角度方位来完成。则开始绘制时，小海龟位于画布中，此处坐标为（o，0)，前进方向为水平右方。<br>turtle是最有价值的程序设计入门实践库,它是程序设计入门层面最常用的基本绘图库。5使用import 保留字对turtle库的引用有如下3种方式:<br>importturtle，则对turtle库中函数调用采用turtle.函数名()形式。<br>from turtle import* ,则对turtle库中函数调用直接采用函数名()形式，不再使用turtle作为前导。<br>from turtle import *circle(200)<br>import turtle as t ,则对turtle库中函数调用采用更简洁的t.函数名()形式，保留字as 的作用是将turtle库给予别名t。此处也可以使用t 之外的其他别名。<br>import turtle as t t.circle(200)<br>9.2turtle 库与基本绘图<br>turtle库包含100多个功能函数，主要包括窗体函数、画笔状态和画笔运动函数3类。<br>9.2.1窗体函数<br>turtle库的turtle.setup()函数与窗体有关。<br>函数定义如下:<br>turtle.setup(width,height,startx,starty)<br>参数详解:<br>width:窗口宽度。如果值是整数，表示的是像素值;如果值是小数，表示窗口宽度与屏幕的比例。<br>height:窗口高度。如果值是整数，表示的是像素值;如果值是小数，表示窗口高度与屏幕的比例。<br>startx:窗口左侧与屏幕左侧的像素距离。如果值是None，窗口位于屏幕水平中央。starty:窗口顶部与屏幕顶部的像素距离。如果值是None，窗口位于屏幕垂直中央。<br>import turtle<br>turtle.setup(100,100,100,100)<br>9.2.2画笔状态函数</p>
+<p>pendown()：放下画笔,别名pd(),down()<br>penup()：提起画笔，与pendown()配对使用，别名pu(),up()<br>pensize(width)：设置画笔线条的粗细为指定大小，别名width()<br>pencolor()：设置画笔的颜色<br>color() I：设置画笔和填充颜色<br>begin_fill()：填充图形前,调用该方法<br>end_fill()：填充图形结束<br>filling():返回填充的状态,True为填充,False为未填充<br>clear():清空当前窗口，但不改变当前窗口的位置<br>reset():重置当前窗口，并重置位置等状态为默认值<br>screensize():设置画布窗口的宽度、.高度和背景颜色<br>hideturtle():隐藏画笔的turtle形状<br>showturtle():显示画笔的turtle形状<br>isvisible()：如果turtle可见，则返回True<br>write(str,font&#x3D;None)：输出font字体的字符串：font&#x3D;(‘Arial’,50,’normal’))<br>9.2.3画笔运动函数<br>turtle通过一组函数控制画笔的行进动作，进而绘制形状序号<br>forward(distance)：沿着当前方向前进指定距离，别名fd()<br>background(distance)：沿着当前相反方向后退指定距离，别名bk()<br>right(angle)：向右旋转angle角度<br>left(angle)：向左旋转angle角度<br>goto(x,y)：移动到绝对坐标(x,y)处<br>setx(x)：修改画笔的横坐标到x，纵坐标不变<br>sety(y)：修改画笔的纵坐标到y，横坐标不变<br>seth[eading] (angle)：设置当前朝向为angle角度<br>home()：设置当前画笔位置为原点，朝向东<br>circle(radius,e)<br>：绘制一个指定半径r和角度e的圆或弧形<br>dot(r,color)<br>：绘制一个指定半径r和颜色color的圆点<br>undo()：撤销画笔最后一步动作<br>speed()：设置画笔的绘制速度，参数为0~10之间<br>9.3random库概述<br>随机数在计算机应用中十分常见，Python语言提供了random库用于产生各种分布的伪随机数序列。random库采用梅森旋转算法生成伪随机数序列，可用于除随机性要求更高的加密算法外的大多数工程应用。<br>使用random库的主要目的是生成随机数。这个库提供了不同类型的随机数，其中最基本的函数是random.random()，它生成一个[0.0,1.0)之间的随机小数，所有其他随机数都是基于这个函数而来的。<br>seed(a&#x3D;None)：初始化随机数种子，默认值为当前系统时间<br>random()：生成一个[0.0,1.0)之间的随机小数<br>randint(a,b)：生成一个[a,b]之间的整数<br>getranddbits(k)：生成一个k比特长度的随机整数<br>randrange(start,stop[,step])：生成一个[start,stop)之间以step为步数的随机整数<br>uniform(a,b)：生成一个[a,b]之间的随机小数<br>choice(seq)：从序列类型中随机返回一个元素<br>shuffle(seq)：将序列类型中元素随机排列，返回打乱后的序列<br>sample(pop,k)：从pop类型中随机选取k个元素，以列表类型返回<br>与其他编程语言相似，Python语言中随机数的生成基于随机数“种子”，每个种子作为输入，利用算法生成一系列随机数，构成伪随机序列。random 库使用random.seed(a)对后续产生成的随机数设置种子。<br>所有的随机数都是基于random()函数实现的基种具体功能。(再次设置相同的种子，则后续产生的随机数相同)<br>9.5time 库概述<br>处理时间是程序最常用的功能之一，time库是 Python提供的处理时间标准库。Time库提供系统级精确计时器的计时功能，可以用来分析程序性能，也可让程序暂停运行时间。<br>使用time库之前需要使用import进行导入<br>time库的功能主要分为3个方面:时间处理、时间格式化和计时。<br>时间处理主要包括4个函数: time.time()、time.gmtime()、time.localtime()、 time.ctime()。<br>时间格式化主要包括3个函数:time.mktime()、time.strftime()、time.strptime()。<br>计时主要包括3个函数:time.sleep()、time.monotonic()、time.perf_counter()o使用time.time()获取当前时间戳<br>使用time.time()获取当前时间戳<br>使用time.gmtime(sec)获取当前时间戳对应的struct_time对象。<br>使用time.localtime(secs)获取当前时间戳对应的本地时间的 struct_time对象。与<br>time.gmtime()的区别，是UTC时间已自动转的为北京时间。<br>time.ctime(secs)获取当前时间戳对应的易读字符串表示，内部会调用time.localtime()函数以输出当地时间。<br>time库使用time.mktime()、time.strftime()、time.strptime()进行时间格式化。使用time.mktime(t)将 struct_time对象t转换为时间戳，注意t代表当地时间。<br>struct_time对象的元素构成<br>下标  属性  值<br>0 tm_year 年份、整数<br>1 tm_mon 月份[1,12]<br>tm_mday 日期[1,31]<br>tm_hour 小时[0,23]<br>tm_min 分钟[0,59]<br>tm_sec 秒[0,61]<br>tm_wday 星期[o,6]（o表示星期一）<br>tm_yday 该年第几天[1,366]<br>tm_isdst 是否夏令时，o否，1是，-1未知<br>调用time.mktime(t)函数</p>
+<p>time.strftime()函数是时间格式化最有效的方法，几乎可以以任何通用格式输出时间。该方法利用一个格式字符串，对时间林式进行表示。<br>strftime()方法的格式化控制符<br>%Y 年份 0001<del>9999例如:1900<br>%m 月份 01</del>12例如:10<br>%B 月名 January<del>December例如:April<br>%b 月名缩写 Jan</del>Dec例如Apr<br>%d 日期 01<del>31例如25<br>%A 星期 Monday</del>Sunday 例如 wWednesday<br>%a 星期缩写 Mon<del>sun例如Wed<br>%H 小时（24h制) 00</del>23例如12<br>%I 小时（12h制) 01<del>12例如7<br>%p 上&#x2F;下午 AM,PM例如PM<br>%M 分钟 00</del>59例如26<br>%S 秒 o0~59例如26</p>
+<p>strptime()方法与strftime()方法完全相反，用于提取字符串中的时间来生成struct_time对象，可以很灵活地作为time模块输入接口。</p>
+
+            </article>
+            
+                <div class="share">
+                    <!--开启分享-->
+<div class="share-component" data-disabled="google,twitter,facebook" data-description=""></div>
+
+
+<script src="/js/share.min.js"></script>
+
+
+                </div>    
+            
+
+            
+            
+                
+<div class="comments">
+    <div id="gitalk-container"></div>
+        
+<script src="/js/gitalk.js"></script>
+
+        <script>
+            var gitalk = new Gitalk({
+                clientID: "",
+                clientSecret: "",
+                repo: '',
+                owner: '',
+                admin: [''],
+                id: decodeURI('/posts/python09/'),
+            })
+        gitalk.render('gitalk-container')
+        </script>
+</div>
+
+            
+
+        </div>
+        <div class="column one-fourth">
+            
+                
+                
+
+
+<h3>Post Directory</h3>
+
+<div id="post-directory-module">
+	<section class="post-directory">
+		<p><strong class="toc-title">文章目录</strong></p>
+		
+	</section>
+</div>
+            
+        </div>
+    </div>
+</section>
+
+<footer class="container">
+    <div class="site-footer" role="contentinfo">
+        <div class="copyright left mobile-block">
+                © 2016
+                <span title="yumemor">yumemor</span>
+                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+        </div>
+
+        <ul class="site-footer-links right mobile-hidden">
+            <li>
+                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+            </li>
+        </ul>
+
+        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
+            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+        </a>
+
+        <ul class="site-footer-links mobile-hidden">
+            
+                  
+                  <li>
+                    <a href="/"  title="Home">Home</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/categories/"  title="Category">Category</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/open-source/"  title="Open-Source">Open-Source</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/message/"  title="Message">Message</a>
+                  </li>
+            
+            <li>
+                <a href="/atom.xml">
+                    <span class="octicon octicon-rss" style="color:orange;"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+		
+<script src="/js/geopattern.js"></script>
+
+		
+<script src="/js/highlight.pack.js"></script>
+
+		
+<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+		
+			
+<script src="/js/toc.js"></script>
+
+		
+
+		
+<script src="/js/index.js"></script>
+
+
+		 
+<script src="/js/popular_repo.js"></script>
+ 
+
+	</body>
+</html>

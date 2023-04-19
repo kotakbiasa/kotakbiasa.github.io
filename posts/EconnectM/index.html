@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<head>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <link rel="icon" href="/favicon.ico">
+  
+  <title>锦鲤未离 | 数据库实训-Eclipse 连接 MySQL</title>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css">
+
+  <!--在这里倒入jquery 方便处理部分页面的jquery-->
+  <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+	<header class="site-header navfixed-false">
+  <div class="container">
+      <h1><a href="/" title="锦鲤未离"><span class="octicon octicon-mark-github"></span> 锦鲤未离</a></h1>
+      <nav class="site-header-nav" role="navigation">
+        
+              
+              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
+        
+              
+              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="Category">Category</a>
+        
+              
+              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
+        
+              
+              <a href="/message/"  class=" site-header-nav-item hvr-underline-from-center" title="Message">Message</a>
+        
+      </nav>
+  </div>
+</header>
+
+	
+<section class="collection-head geopattern" data-pattern-id="数据库实训-Eclipse 连接 MySQL" >
+    <div class="container">
+        <div class="collection-title">
+            <h1 class="collection-header">
+                数据库实训-Eclipse 连接 MySQL
+            </h1>
+            
+                <div class="collection-info">
+                    <span class="meta-info">
+                        <span class="octicon octicon-calendar"></span>
+                        <time datetime="2022-11-17T11:03:28.093Z" itemprop="datePublished">2022-11-17</time>
+                    </span>
+                    
+                        <span class="meta-info">
+                            <span class="octicon octicon-file-directory"></span>
+                            <a href='/categories/测试区/' title=''>测试区</a>
+                        </span>
+                    
+                </div>
+            
+        </div>
+    </div>
+</section>
+	<section class="container">
+    <div class="columns">
+        <div class="column  three-fourths " >
+            <article class="article-content markdown-body">
+                <h2 id="1-所需软件"><a href="#1-所需软件" class="headerlink" title="1. 所需软件"></a>1. 所需软件</h2><p>首先，我们来看看我们需要用到的软件</p>
+<h2 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h2><p>我等打开 Eclipse，依次点击导航栏 “Window-Preferences-Server-Runtime Environments-右边的Add…-添加Apache Tomcat v9.0 版-Browse选择该文件夹所在路径”</p>
+<h2 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h2><p>我等引入项目，这里项目选用“”。依次点击导航栏“File-Import…-General-Existing Projects into Workspace-选择该文件夹所在路径”.</p>
+<h2 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h2><p>发现有错误，怎么办？别急。<br>右击“JavaWebExample-Build Path-Configure Build Path-Libraries-选中带红x的‘JRE’-右边的Edit-Workspace default JRE(jre1.8.0_333)”<br>可以看到1-6都没有x了。<br>剩下7，依次点击导航栏 “Window-Preferences-Validation-右边的JSON Validator 的两个方框去掉”<br>这样子就可以了。</p>
+<h2 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h2><p>执行“JavaWebExample&#x2F;WebContent&#x2F;chapter6&#x2F;exam18_reg.jsp”发现在Eclipse里面成功运行。<br>如何在浏览器上运行？依次点击导航栏 “Window-Web Browser-里面选择浏览器就可，推荐选用 ‘1 Default system web browser（默认系统网页浏览器）’”</p>
+<h2 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h2><p>先干件这事：将下载的“mysql-connector-java.jar”复制到“JavaWebExample&#x2F;WebContent&#x2F;WEB-INF&#x2F;lib”里面。<br>再然后打开“JavaWebExample&#x2F;Java Resources&#x2F;src&#x2F;chapter6&#x2F;MYSQLDB.java”，将下列代码替换掉源文件的代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> public Connection  ConnDB() &#123;</span><br><span class="line">  conn = null;</span><br><span class="line">  try &#123;  </span><br><span class="line">	  String url=&quot;jdbc:mysql://localhost:3306/javaweb?useUnicode=true&amp;character=UTF-8&amp;serverTimezone=UTC&quot;;</span><br><span class="line">	  Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;).newInstance();</span><br><span class="line">	  conn=DriverManager.getConnection(url,&quot;root&quot;,&quot;123456&quot;);</span><br><span class="line">	  return conn;</span><br><span class="line">	&#125;</span><br><span class="line">	catch (Exception fe) &#123;</span><br><span class="line">		System.err.println(&quot;ConnDB(): &quot; + fe.getMessage());</span><br><span class="line">		return null;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意第4行的javaweb是需要在数据库里面创建的DataBase。<br>注意第6行的root和123456分别为你自己数据库的用户名和密码。</p>
+<h2 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h2><p>创建数据库后，建表语句在这里：“JavaWebExample&#x2F;WebContent&#x2F;chapter6&#x2F;chapter6.sql”</p>
+
+            </article>
+            
+                <div class="share">
+                    <!--开启分享-->
+<div class="share-component" data-disabled="google,twitter,facebook" data-description=""></div>
+
+
+<script src="/js/share.min.js"></script>
+
+
+                </div>    
+            
+
+            
+            
+                
+<div class="comments">
+    <div id="gitalk-container"></div>
+        
+<script src="/js/gitalk.js"></script>
+
+        <script>
+            var gitalk = new Gitalk({
+                clientID: "",
+                clientSecret: "",
+                repo: '',
+                owner: '',
+                admin: [''],
+                id: decodeURI('/posts/EconnectM/'),
+            })
+        gitalk.render('gitalk-container')
+        </script>
+</div>
+
+            
+
+        </div>
+        <div class="column one-fourth">
+            
+                
+                
+
+
+<h3>Post Directory</h3>
+
+<div id="post-directory-module">
+	<section class="post-directory">
+		<p><strong class="toc-title">文章目录</strong></p>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%89%80%E9%9C%80%E8%BD%AF%E4%BB%B6"><span class="toc-text">1. 所需软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-text">2.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-text">3.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-text">4.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5"><span class="toc-text">5.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6"><span class="toc-text">6.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7"><span class="toc-text">7.</span></a></li></ol>
+	</section>
+</div>
+            
+        </div>
+    </div>
+</section>
+
+<footer class="container">
+    <div class="site-footer" role="contentinfo">
+        <div class="copyright left mobile-block">
+                © 2016
+                <span title="yumemor">yumemor</span>
+                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+        </div>
+
+        <ul class="site-footer-links right mobile-hidden">
+            <li>
+                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+            </li>
+        </ul>
+
+        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
+            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+        </a>
+
+        <ul class="site-footer-links mobile-hidden">
+            
+                  
+                  <li>
+                    <a href="/"  title="Home">Home</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/categories/"  title="Category">Category</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/open-source/"  title="Open-Source">Open-Source</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/message/"  title="Message">Message</a>
+                  </li>
+            
+            <li>
+                <a href="/atom.xml">
+                    <span class="octicon octicon-rss" style="color:orange;"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+		
+<script src="/js/geopattern.js"></script>
+
+		
+<script src="/js/highlight.pack.js"></script>
+
+		
+<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+		
+			
+<script src="/js/toc.js"></script>
+
+		
+
+		
+<script src="/js/index.js"></script>
+
+
+		 
+<script src="/js/popular_repo.js"></script>
+ 
+
+	</body>
+</html>
