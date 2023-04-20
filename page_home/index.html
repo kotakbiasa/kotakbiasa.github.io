@@ -1,0 +1,36 @@
+
+        <main class="main HOME">
+            <style>.cover,.header {clip-path: circle(0); max-width: 1px; max-height: 1px; min-height: 0; margin: 0; line-height: 0;}</style>
+            <!-- 海月·前尘镜·因你闪耀·午后时光·大乔花嫁·昭君七夕·我乔神女·妲己女仆·昭君联动·舞绯月行·阿骨朵史诗·天降福星 -->
+            <script>function randomWord (randomFlag, min, max) {let str1 = "",range = min,arr = [
+                  'https://shp.qpic.cn/ishow/2735092117/1663751765_1265602313_3889_sProdImgNo_6.jpg/0'
+                , 'https://shp.qpic.cn/ishow/2735081214/1660287379_1265602313_2633_sProdImgNo_6.jpg/0'
+                , 'https://shp.qpic.cn/ishow/2735080516/1659689660_1265602313_45350_sProdImgNo_6.jpg/0' 
+                , 'https://shp.qpic.cn/ishow/2735062217/1655888573_1265602313_23182_sProdImgNo_6.jpg/0'
+                , 'https://shp.qpic.cn/ishow/2735052410/1653360574_1265602313_29105_sProdImgNo_6.jpg/0'
+                , 'http://shp.qpic.cn/ishow/2735081114/1628662774_84828260_7450_sProdImgNo_6.jpg/0'
+                , 'http://shp.qpic.cn/ishow/2735070109/1625101470_84828260_6040_sProdImgNo_6.jpg/0'
+                , 'http://shp.qpic.cn/ishow/2735061617/1623836896_84828260_11275_sProdImgNo_6.jpg/0'
+                , 'https://shp.qpic.cn/ishow/2735102114/1666333115_1265602313_24957_sProdImgNo_6.jpg/0'
+                , 'https://shp.qpic.cn/ishow/2735110114/1667283541_1265602313_46894_sProdImgNo_6.jpg/0'
+                , 'https://shp.qpic.cn/ishow/2735111118/1668162018_1265602313_25078_sProdImgNo_6.jpg/0'
+                , 'https://shp.qpic.cn/ishow/2735110711/1667792479_1265602313_25985_sProdImgNo_6.jpg/0'
+            ];if (randomFlag) {range = Math.round(Math.random() * (max - min)) + min;}for (let i = 0; i < range; i++) {pos = Math.round(Math.random() * (arr.length - 1));str1 += arr[pos];}str2=str1;return pos+1;};console.log('test:',randomWord(true,1,1));</script>
+            <div id="background"></div>
+            <script> var imgobj=document.getElementById('background');console.log('imgobj:',imgobj);imgobj.innerHTML='<img src='+str2+'/>';</script>
+            <div class="app2">
+                <div class="stable">
+                    <div class="logo"><a href="/page_home/" target="_self"><img alt="錦鯉未離.png" src="/img/avator.png"></a></div>
+                    <p class="name">锦鲤未离</p>
+                    <div id="desc"><p id="say">我在这里！一直都在！</p></div>
+                    <div class="button">
+                        <button onclick="aboutMe()">关于我</button>
+                        <button onclick="window.open('https://koinl.github.io')">进入博客</button>
+                    </div>
+                </div>
+            </div>
+            <script>var i = 0;function aboutMe() {var desc = document.getElementById("desc");var say = document.getElementById("say");
+                    if (i == 0) {i = 1;desc.style.height = "50px";say.innerHTML = "如果想要联系我，请发邮件koinl@qq.com";}
+                    else if (i == 1) {i = 2;desc.style.height = "50px";say.innerHTML = "这里是锦鲤未离";}
+                    else {i = 0;desc.style.height = "50px";say.innerHTML = "我在这里！一直都在！";}}</script>
+        </main>
