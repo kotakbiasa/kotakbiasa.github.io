@@ -30,6 +30,7 @@
   padding-top: 20px;
   box-shadow: 0 0 5px #333;
   backdrop-filter: blur(2px);
+  opacity: 0.4;
 }
 .header::after {
   content: '';
@@ -39,7 +40,7 @@
   opacity: 0.8;
   left: 0;
   top: 0;
-  background: url("https://t7.baidu.com/it/u=376303577,3502948048&fm=193&f=GIF") no-repeat;
+  background: url("https://t7.baidu.com/it/u=924185248,2715642622&fm=193&f=GIF") no-repeat;
   background-size: cover;
 }
 .header-wrapper {
