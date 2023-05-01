@@ -442,9 +442,9 @@
   <div class="index-center">
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/java-fzjzyfwkz/">『java』封装机制与访问控制 </a>
@@ -464,9 +464,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/java-dgdy/">『java』递归调用 </a>
@@ -486,9 +486,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/java-cxlckz/">『java』程序流程控制 </a>
@@ -522,7 +522,11 @@
   </div>
 </div>
 
-
+<script>
+  var colors = ['#ff0000','#00ff00','#0000ff'];
+  var random_color = colors[Math.floor(Math.random() * colors.length)];
+  document.getElementById('index-article--box').style.color = random_color;
+</script>
 <script>
   var allImgBoxs = document.querySelectorAll('.index-article--box');
   var windowHeight = window.innerHeight;

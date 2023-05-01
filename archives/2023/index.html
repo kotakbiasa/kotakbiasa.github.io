@@ -467,9 +467,9 @@
   <div class="index-center">
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/spark_04/">『spark』第4章  Spark SQL结构化数据文件处理 </a>
@@ -489,9 +489,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/spark_03/">『spark』第3章  Spark RDD弹性分布式数据集 </a>
@@ -511,9 +511,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/spark_07/">『spark』第7章  Spark Streaming </a>
@@ -533,9 +533,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/DCNN_ALL/">『深度卷积神经网络』第1章  深度卷积神经网络分析 </a>
@@ -555,9 +555,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/%E8%80%83%E8%AF%95---%E5%8F%AF%E8%A7%86%E5%8C%96/">『考试』考试---可视化 </a>
@@ -591,7 +591,11 @@
   </div>
 </div>
 
-
+<script>
+  var colors = ['#ff0000','#00ff00','#0000ff'];
+  var random_color = colors[Math.floor(Math.random() * colors.length)];
+  document.getElementById('index-article--box').style.color = random_color;
+</script>
 <script>
   var allImgBoxs = document.querySelectorAll('.index-article--box');
   var windowHeight = window.innerHeight;

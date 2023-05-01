@@ -398,9 +398,9 @@
   <div class="index-center">
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/DPaA03/">『Data-Processing-and-Analysing』第三章  数据可视化（Matplotlib） </a>
@@ -420,9 +420,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/DPaA01/">『Data-Processing-and-Analysing』第一章  数据计算（NumPy） </a>
@@ -456,7 +456,11 @@
   </div>
 </div>
 
-
+<script>
+  var colors = ['#ff0000','#00ff00','#0000ff'];
+  var random_color = colors[Math.floor(Math.random() * colors.length)];
+  document.getElementById('index-article--box').style.color = random_color;
+</script>
 <script>
   var allImgBoxs = document.querySelectorAll('.index-article--box');
   var windowHeight = window.innerHeight;

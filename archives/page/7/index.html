@@ -469,9 +469,9 @@
   <div class="index-center">
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/linuxlianxizuoye/">『Linux』第一章  操作基础 </a>
@@ -491,9 +491,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/py02/">『Python』第二章  函数 </a>
@@ -513,9 +513,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/dsa02/">『Data Structure and Algorithm』第二章  树和二叉树 </a>
@@ -535,9 +535,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/matlab05/">『MATLAB』第五章  数据分析与多项式计算[未完成] </a>
@@ -557,9 +557,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/matlab03/">『MATLAB』第三章  程序流程控制[未完成] </a>
@@ -593,7 +593,11 @@
   </div>
 </div>
 
-
+<script>
+  var colors = ['#ff0000','#00ff00','#0000ff'];
+  var random_color = colors[Math.floor(Math.random() * colors.length)];
+  document.getElementById('index-article--box').style.color = random_color;
+</script>
 <script>
   var allImgBoxs = document.querySelectorAll('.index-article--box');
   var windowHeight = window.innerHeight;

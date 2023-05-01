@@ -464,9 +464,9 @@
   <div class="index-center">
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/sqlserver2/">『SqlServer』『SQL Server』考二 </a>
@@ -487,9 +487,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/sqlserver09/">『SqlServer』『SQL Server』第九章  安全管理 </a>
@@ -509,9 +509,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/sqlserver08/">『SqlServer』『SQL Server』第八章  数据库后台编程技术 </a>
@@ -531,9 +531,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/sqlserver05/">『SqlServer』『SQL Server』第五章  UML与DBAS </a>
@@ -553,9 +553,9 @@
       </div>
     
       <div class="index-article">
-        <!-- <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div> -->
+        <div class="index-article--box">
+          <!-- <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt=""> -->
+        </div>
         <div class="index-article--content">
           
           <a href="/posts/sqlserver10/">『SqlServer』『SQL Server』第十章  数据库运行管理与维护 </a>
@@ -589,7 +589,11 @@
   </div>
 </div>
 
-
+<script>
+  var colors = ['#ff0000','#00ff00','#0000ff'];
+  var random_color = colors[Math.floor(Math.random() * colors.length)];
+  document.getElementById('index-article--box').style.color = random_color;
+</script>
 <script>
   var allImgBoxs = document.querySelectorAll('.index-article--box');
   var windowHeight = window.innerHeight;
