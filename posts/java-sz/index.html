@@ -236,6 +236,43 @@
 <div class="main-left">
   <div class="main-left--block">
     <div class="main-left--info">
+      <style>
+        /*头像呼吸光环和鼠标悬停旋转放大*/
+.main-left--avatar img {
+  border-radius: 50%;
+  animation: light 4s ease-in-out infinite;
+  width: 25px;
+  transition: 2s;
+  margin-bottom: -3px;
+  margin-right: 9px;
+}
+
+.main-left--avatar img:hover {
+  transform: scale(1.15) rotate(-720deg);
+}
+
+@keyframes light {
+  0% {
+    box-shadow: 0 0 3px #f00;
+  }
+
+  25% {
+    box-shadow: 0 0 10px #0f0;
+  }
+
+  50% {
+    box-shadow: 0 0 3px #00f;
+  }
+
+  75% {
+    box-shadow: 0 0 10px #0f0;
+  }
+
+  100% {
+    box-shadow: 0 0 3px #f00;
+  }
+}
+      </style>
       <img src="/imgs/avatar.jpg"" class="main-left--avatar" />
       <div class="main-left--intro">
         <p class="main-left--name">KoiNL.</p>
@@ -532,6 +569,122 @@ pre:active {
       <h5>公告栏</h5>
       <i class="iconfont icon-gonggao"></i>
     </div>
+    <style>
+      #carousel_main {
+          display: inline-block;
+          height: var(--main-height-LunBoTu);
+          width: var(--main-width-LunBoTu);
+          overflow: hidden;
+          position: relative;
+          padding: 0;
+          border-radius: 15px;
+          margin: 0 auto;
+          /* margin-left: 10px; */
+          opacity: 0.9;
+        }
+        
+        #carousel_main #div_img {
+          height: var(--main-height-LunBoTu);
+          position: absolute;
+          list-style: none;
+          padding: 0;
+        }
+        
+        #carousel_main #div_img .every_img {
+          width: var(--main-width-LunBoTu);
+          height: var(--main-height-LunBoTu);
+          float: left;
+          margin-top: 0;
+        }
+        
+        #carousel_main #div_img .every_img #link_img {
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+        }
+        
+        #carousel_main .div_circle {
+          width: 92px;
+          height: 0px;
+          position: absolute;
+          z-index: 3;
+          left: 50%;
+          margin-left: -58px;
+          bottom: -4px;
+          list-style: none;
+        }
+        
+        #carousel_main .div_circle>.every_circle {
+          width: var(--main-radius-circle-LunBoTu);
+          height: var(--main-radius-circle-LunBoTu);
+          background: #FFFFFF;
+          float: left;
+          border-radius: 50%;
+          margin: 4px 4px;
+        }
+        
+        #carousel_main .btn {
+          position: absolute;
+          z-index: 2;
+          color: #ffffff4d;
+          cursor: pointer;
+        }
+        
+        #carousel_main .left {
+          left: -75px;
+          /* 不论正负，数值增加5px */
+          cursor: w-resize;
+        }
+        
+        #carousel_main .right {
+          left: 205px;
+          /* 不论正负，数值下降5px */
+          cursor: e-resize;
+        }
+        
+        #carousel_main .btn_p,
+        #carousel_main .btn_p font {
+          vertical-align: inherit;
+          font-size: xxx-large;
+          width: 170px;
+          /* 若每次上升10px */
+          height: var(--main-height-LunBoTu);
+          vertical-align: middle;
+          line-height: 132px;
+        }
+        
+        
+        #carousel_main .left:hover>.btn_p {
+          color: #00000036;
+        }
+        
+        #carousel_main .right:hover>.btn_p {
+          color: #00000036;
+        }
+        
+        
+        #carousel_main .left:active>.btn_p {
+          color: #00000036;
+          background: #00000045;
+        }
+        
+        #carousel_main .right:active>.btn_p {
+          color: #00000036;
+          background: #00000045;
+        }
+        </style>
+    <div class="carousel" id="carousel_main">
+      <ul id="div_img">
+          <li class="every_img"><img src="/img/cover/LunBoTu/pan.jpg" id="link_img" onClick="link('https://www.csdn.net/', '_self')" alt="" title="" /></li>
+          <li class="every_img"><img src="/img/cover/LunBoTu/development_log.jpg" id="link_img" onClick="link('https://koinl.github.io/development_log/', '_self')" alt="" title="" /></li>
+          <li class="every_img"><img src="/img/cover/LunBoTu/home_welcome.jpg" id="link_img" onClick="link('https://koinl.github.io/page_home/', '_self')" alt="" title="" /></li>
+          <li class="every_img"><img src="/img/cover/LunBoTu/Picture_APP_By_KoiNL.jpg" id="link_img" onClick="link('https://koinl.github.io/apk/APP_By_KoiNL.apk', '_self')" alt="" title="" /></li>
+          <li class="every_img"><img src="/img/cover/LunBoTu/new_blog_theme.jpg" id="link_img" onClick="link('https://koinl.github.io/', '_self')" alt="" title="" /></li>
+      </ul>
+      <ul class="div_circle"><li class = every_circle></li><li class = every_circle></li><li class = every_circle></li><li class = every_circle></li><li class = every_circle></li></ul>
+      <div class="btn left"><p class="btn_p">《&nbsp</p></div><div class="btn right"><p class="btn_p">&nbsp》</p></div>
+  </div>
+  <script type="text/javascript">$(function () { var max_num = 4; var time_stop = 4250; var time_swap = 1250; var num = 0; var chosen_circle_color = "#0aa1ed"; var chosen_not_circle_color = "#ffffff"; function every_thing() { $("#div_img").animate({ left: -$(".every_img").eq(0).width() * num }, time_swap); $(".every_circle").eq(num).css("background", chosen_circle_color).siblings('li').css("background", chosen_not_circle_color); } function Right_move() { if (num >= max_num) { num = 0; } else { num++; } every_thing(); } function Left_move() { if (num === 0) { num = max_num; } else { num--; } every_thing(); } $(".every_circle").eq(0).css("background", chosen_circle_color); $("#div_img").width($('.every_img').length * $('.every_img').eq(0).width()); var id = setInterval(Right_move, time_stop); $("#carousel_main").mouseover(function () { clearInterval(id) }); $("#carousel_main").mouseout(function () { id = setInterval(Right_move, time_stop); }); $(".left").click(function () { $("#div_img").stop(); Left_move(); }); $(".right").click(function () { $("#div_img").stop(); Right_move(); }); $(".every_circle").mouseover(function () { num = $(this).index(); $("#div_img").stop(); every_thing(); }); }); function link(jinliweili_Url, quality_target) { window.open(jinliweili_Url, quality_target);}</script>
     <div class="main-right--content">
       Hello~大噶好。锦鲤未离。测试文字测试测试测试测试测试测试测试测试，测试测试测试测试测试测试。 
     </div>
