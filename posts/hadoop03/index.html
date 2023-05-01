@@ -570,9 +570,9 @@ pre {
   })
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
 
 <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
 <script>
   /*页面载入完成后，创建复制按钮*/
 !function (e, t, a) { 
@@ -583,7 +583,7 @@ var initCopyCode = function(){
     copyHtml += '  <i class="fa fa-globe"></i><span>copy</span>';
     copyHtml += '</button>';
     $(".highlight .code").before(copyHtml);
-    new Clipboard('.btn-copy', {
+    new ClipboardJS('.btn-copy', {
         target: function(trigger) {
             return trigger.nextElementSibling;
         }
